@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LogViewer — NuneX 2026</title>
+  <style>
+    :root {
+      --bg:       #0d1117;
+      --surface:  #161b22;
+      --border:   #30363d;
+      --accent:   #58a6ff;
+      --accent2:  #3fb950;
+      --text:     #c9d1d9;
+      --muted:    #8b949e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 560px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 1.25rem;
+      background: linear-gradient(135deg, #1f6feb 0%, #388bfd 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #e6edf3;
+      margin-bottom: .35rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: .75rem;
+      color: var(--muted);
+      background: #21262d;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: .2rem .75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #0d1117;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: .75rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity .15s;
+      margin-bottom: .75rem;
+    }
+    .btn-primary:hover { opacity: .85; }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: .9rem;
+      padding: .6rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color .15s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .sep { margin: 1.5rem 0; border: none; border-top: 1px solid var(--border); }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .feature {
+      background: #21262d;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    .feature span { color: var(--accent2); margin-right: .4rem; }
+
+    .note {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">📋</div>
+  <h1>LogViewer</h1>
+  <div class="badge">NuneX 2026 · v1.2.58</div>
+
+  <p>
+    Desktop log viewer for Windows with real-time tail, highlight rules,
+    multi-language support and a clean dark UI.
+  </p>
+
+  <div class="features">
+    <div class="feature"><span>✦</span> Real-time tail</div>
+    <div class="feature"><span>✦</span> Highlight rules</div>
+    <div class="feature"><span>✦</span> 9 languages</div>
+    <div class="feature"><span>✦</span> Split pane view</div>
+    <div class="feature"><span>✦</span> Directory browser</div>
+    <div class="feature"><span>✦</span> Auto-update</div>
+  </div>
+
+  <!-- ClickOnce install link — gerado pelo dotnet publish -->
+  <a class="btn-primary" href="LogViewer.application">
+    ⬇ Install via ClickOnce
+  </a>
+  <br/>
+  <a class="btn-secondary"
+     href="https://github.com/Nunex-mBrothers/TheAbsoluteLogViewer/releases/latest">
+    Download standalone .exe
+  </a>
+
+  <hr class="sep" />
+
+  <p class="note">
+    ClickOnce requires <strong>.NET 10 Desktop Runtime</strong> for Windows.<br/>
+    The standalone .exe includes the runtime — no install needed.
+  </p>
+</div>
+
+<footer>
+  <a href="https://github.com/Nunex-mBrothers/TheAbsoluteLogViewer">GitHub</a>
+  &nbsp;·&nbsp; Made with ♥ by NuneX
+</footer>
+
+</body>
+</html>
