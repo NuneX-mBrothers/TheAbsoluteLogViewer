@@ -1,0 +1,14 @@
+[[headers]]
+  for = "/*.application"
+  [headers.values]
+    Content-Type = "application/x-ms-application"
+
+[[headers]]
+  for = "/*.manifest"
+  [headers.values]
+    Content-Type = "application/x-ms-manifest"
+
+[[headers]]
+  for = "/*.deploy"
+  [headers.values]
+    Content-Type = "application/octet-stream"
