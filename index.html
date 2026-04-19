@@ -11,6 +11,9 @@
       --border:   #30363d;
       --accent:   #58a6ff;
       --accent2:  #3fb950;
+      --warn:     #d29922;
+      --warn-bg:  #272115;
+      --warn-border: #3d2f0a;
       --text:     #c9d1d9;
       --muted:    #8b949e;
     }
@@ -86,21 +89,8 @@
       border-radius: 8px;
       text-decoration: none;
       transition: opacity .15s;
-      margin-bottom: .75rem;
     }
     .btn-primary:hover { opacity: .85; }
-
-    .btn-secondary {
-      display: inline-block;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: .9rem;
-      padding: .6rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: border-color .15s;
-    }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
     .sep { margin: 1.5rem 0; border: none; border-top: 1px solid var(--border); }
 
@@ -126,6 +116,22 @@
       color: var(--muted);
       margin-top: 1rem;
     }
+
+    /* Chrome warning banner */
+    .chrome-warning {
+      display: none;
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      text-align: left;
+      font-size: .875rem;
+      color: var(--warn);
+      line-height: 1.6;
+    }
+    .chrome-warning strong { display: block; margin-bottom: .35rem; font-size: .95rem; }
+    .chrome-warning a { color: var(--accent); }
 
     footer {
       margin-top: 2rem;
@@ -156,28 +162,41 @@
     <div class="feature"><span>✦</span> Auto-update</div>
   </div>
 
-  <!-- ClickOnce install link — gerado pelo dotnet publish -->
-  <a class="btn-primary" href="LogViewer.application">
+  <!-- Chrome warning — shown via JS if Chrome detected -->
+  <div class="chrome-warning" id="chromeWarning">
+    <strong>⚠ Chrome detected</strong>
+    ClickOnce requires Microsoft Edge or Internet Explorer to install.<br/>
+    <strong>Option 1:</strong> Open this page in <strong>Microsoft Edge</strong> and click Install.<br/>
+    <strong>Option 2:</strong> Install the
+    <a href="https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb" target="_blank">
+      ClickOnce extension for Chrome
+    </a> and try again.
+  </div>
+
+  <a class="btn-primary" href="LogViewer.application" id="installBtn">
     ⬇ Install via ClickOnce
-  </a>
-  <br/>
-  <a class="btn-secondary"
-     href="https://github.com/Nunex-mBrothers/TheAbsoluteLogViewer/releases/latest">
-    Download standalone .exe
   </a>
 
   <hr class="sep" />
 
   <p class="note">
-    ClickOnce requires <strong>.NET 10 Desktop Runtime</strong> for Windows.<br/>
-    The standalone .exe includes the runtime — no install needed.
+    Requires <strong>.NET 10 Desktop Runtime</strong> for Windows.<br/>
+    Best experienced on <strong>Microsoft Edge</strong>.
   </p>
 </div>
 
 <footer>
-  <a href="https://github.com/Nunex-mBrothers/TheAbsoluteLogViewer">GitHub</a>
+  <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer">GitHub</a>
   &nbsp;·&nbsp; Made with ♥ by NuneX
 </footer>
+
+<script>
+  // Detect Chrome (but not Edge, which also has Chrome in UA)
+  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg/.test(navigator.userAgent);
+  if (isChrome) {
+    document.getElementById('chromeWarning').style.display = 'block';
+  }
+</script>
 
 </body>
 </html>
