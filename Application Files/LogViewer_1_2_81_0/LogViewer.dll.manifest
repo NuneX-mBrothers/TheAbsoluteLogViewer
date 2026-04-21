@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="LogViewer.exe" version="1.2.81.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="LogViewer.exe" version="1.2.81.0" publicKeyToken="58e8e6232af77654" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="app.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="17784">
       <assemblyIdentity name="Launcher" version="8.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TUtzyLeWUCENGnCaygQ9Tdy4qTbMBKUNeltLAXQHaUs=</dsig:DigestValue>
+        <dsig:DigestValue>H/9VC25+dBbMrSvaD+qICFXI1Ad60UPO8f4OcOW0cE4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -72,22 +72,22 @@
       <dsig:DigestValue>thcYWGiWOXYSzbWtxayrzVuVi96w4EYIOqM3EU6FxDw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LogViewer.dll" size="544256">
+  <file name="LogViewer.dll" size="545656">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4yjlNoyXDn4iBKMa46hcQcG97ZmNu3MNfm8VB4ZwHIE=</dsig:DigestValue>
+      <dsig:DigestValue>Hm1+AC82Ki/FBJ97/odT+uUwsUUK8uCwJEszENDH0+E=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LogViewer.exe" size="175104">
+  <file name="LogViewer.exe" size="176504">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>n/Z6PkuSkK7hlqg/xWXRWe9WMLmLx3YRqVyuDiH/Uc4=</dsig:DigestValue>
+      <dsig:DigestValue>ZXMGNICLlzxPXHcGVMAij3wUdABt7+LI1rLEGWNvlF4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LogViewer.runtimeconfig.json" size="519">
@@ -180,4 +180,4 @@
       <dsig:DigestValue>aq+Sk0P9AkFdbLXZA4FsLxyDGxlL/noVeJh5CT0Pprc=</dsig:DigestValue>
     </hash>
   </file>
-</asmv1:assembly>
+<publisherIdentity name="CN=NuneX-mBrothers" issuerKeyHash="dff3d4229883b2d8afc04275a159190012bd3cdc" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>a01V0MGLyRG/PbZxMRoociicsbe4o3JgBxlT73pXwh8=</DigestValue></Reference></SignedInfo><SignatureValue>NlRDAzwEBY486edOHlrvNhg2EdOO76fmtO911jKPaLnFsFHJWRPCb3XKyTh9t5EY+DIZZAF9DXzgh/gjQ7nZXQEMBeHP8b0syiZE1+RVaDWXZgRbjMREwQP1qBncytjQjkp0KHj6OZSU4NVYPDReiR7xumg+ZKanwC+dd9R8rqADD7UuIq8MTbA6DNostxnZ+7kkgxBp34NoeyrWw1B/Z4R3nFJFT4ZxByion3kqbkSE9Yn24eSRUaFawGxlS8ONtVOSUdTtDfWVesVQIx1FPMnmiyMo1LQBQe00kxEQpJc4JWt2T2rZIVCFwljkgDBdTTw4CttrEGwvsl36fhBhQA==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>980XWXMZoz7AGSHDXnBXZXUi+tQdnJGT7iiR+J3D7i3TMKcQnGHUbIu22WcBvAFS0ETGGE+119HX0/0/XUd0qXPEdrJVUYj4ZssTnjn202eAftFCq4JP+bYwdzBLwDSTWz8zdhNGWK+p/rVW+GHDo/r+IGEWr96rUHemt6Bi19wgpNtvPsUuuwIhVaZgAyLE18wMi2IwGdWnR07VIdzPjeWGSg1Cut8/T3HW4Lp2sPDYeABE8iYgqzDIH4mgRmkiXcDoeMEroTCLxO2jlEwcTaDNrVMh35qD2V56p7qNWduHQEiGyPDD/TiSyz9EPKSrulpnBZCre5VopO1cE8MXhQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="1fc2577aef5319076072a3b8b7b19c2872281a3171b63dbf11c98bc1d0554d6b" Description="" Url=""><as:assemblyIdentity name="LogViewer.exe" version="1.2.81.0" publicKeyToken="58e8e6232af77654" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=NuneX-mBrothers</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>vwjn9ttSEoNFBOwP57GzgNr/Qh891gvuDuVe8YMy3qM=</DigestValue></Reference></SignedInfo><SignatureValue>ysIHIvvoyhoi0zcpy5BGFzYRjPem67J+kOP6Vz876FVlBC8+hj7BvB7OarGdTQ12OPjao57bbPsf1katk7BVMHUkCTCxYYdz0gyRaiG3QwNEFZzHeXf6jqe1r9mOGLKzSWPvYqQU77Ke4766vOtx8vZrBvW9+GzFgCfn247cQ8v0n21uegFazMO+8ji7uX/LUepuRTnfKROhE8BFUa3oDxO64aub+c0iPzu7hih0URTsQTVg/to0z6Xd7gyzTJulaDwGYlse4VqcGKi9/2/bBdMZKL+tEQFqZZzyXnBe5hsvU36SeieIff+KFAnLzfA/fMgMqX6nszidecjJSz8Jdw==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>980XWXMZoz7AGSHDXnBXZXUi+tQdnJGT7iiR+J3D7i3TMKcQnGHUbIu22WcBvAFS0ETGGE+119HX0/0/XUd0qXPEdrJVUYj4ZssTnjn202eAftFCq4JP+bYwdzBLwDSTWz8zdhNGWK+p/rVW+GHDo/r+IGEWr96rUHemt6Bi19wgpNtvPsUuuwIhVaZgAyLE18wMi2IwGdWnR07VIdzPjeWGSg1Cut8/T3HW4Lp2sPDYeABE8iYgqzDIH4mgRmkiXcDoeMEroTCLxO2jlEwcTaDNrVMh35qD2V56p7qNWduHQEiGyPDD/TiSyz9EPKSrulpnBZCre5VopO1cE8MXhQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIDBDCCAeygAwIBAgIQFNN6Si5VPIdA1UcEFf8rSDANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDDA9OdW5lWC1tQnJvdGhlcnMwHhcNMjYwNDIxMTM0NTA3WhcNMzEwNDIxMTM1NTA3WjAaMRgwFgYDVQQDDA9OdW5lWC1tQnJvdGhlcnMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQD3zRdZcxmjPsAZIcNecFdldSL61B2ckZPuKJH4ncPuLdMwpxCcYdRsi7bZZwG8AVLQRMYYT7XX0dfT/T9dR3Spc8R2slVRiPhmyxOeOfbTZ4B+0UKrgk/5tjB3MEvANJNbPzN2E0ZYr6n+tVb4YcOj+v4gYRav3qtQd6a3oGLX3CCk228+xS67AiFVpmADIsTXzAyLYjAZ1adHTtUh3M+N5YZKDUK63z9Pcdbgunaw8Nh4AETyJiCrMMgfiaBGaSJdwOh4wSuhMIvE7aOUTBxNoM2tUyHfmoPZXnqnuo1Z24dASIbI8MP9OJLLP0Q8pKu6WmcFkKt7lWik7VwTwxeFAgMBAAGjRjBEMA4GA1UdDwEB/wQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDAzAdBgNVHQ4EFgQU3/PUIpiDstivwEJ1oVkZABK9PNwwDQYJKoZIhvcNAQELBQADggEBADaQZLOckt0qvPbU7EO266FdL8HG0bd1jU978CL7EulQEHx7L6l+dNB8Z8M9SXczvVI7X4m1s0pHlc4oJgFKdIG6+p6i2hIHW2UZEhdXLwCsOFc3fqzRLPzZTXdh4MQI2qYZoDJm+A7ZaEuyCtQrVSYbvOyItxYWlVmJXFJsiNBsnl7GDLe5C4DSt8o54HCS8iylDMBtJyMJxu9hTzNlMsoGmrHGJ5Khp77AYOjGOY7n4L7DkYNSWl8VftxCtHWXQ4Q3zBXZWecVJBMF8HnCSbBl6nvmFSWvBpQVX41qLQu1KL5yZROO6ANZkhMXLuTCqIuvzmnJGrwFqWaqTQZ9FC8=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
