@@ -69,7 +69,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>UnYe5QeJY8xiWQeovra3YpCBs4trdXbMKpagJ3V8DZM=</dsig:DigestValue>
+      <dsig:DigestValue>xQCz3ixhqcvvAaj1sh05adDWsT8JCVHxqZBjTRNDR50=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LogViewer.dll" size="543232">
@@ -78,7 +78,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kwU6+RORuroKTU8b4yMTqOvwVH7ID7FwngFouvRi5t4=</dsig:DigestValue>
+      <dsig:DigestValue>O3JMzYb8OKPna0buiOpJF6bBEnVYqf7dYKORDDxqr9U=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LogViewer.exe" size="175104">
@@ -87,7 +87,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>68stzh5RCKBRrT+UGLJiOQWHsHWdgHA2ojSEUGYcoWw=</dsig:DigestValue>
+      <dsig:DigestValue>Tpu6uO6L3mk+sGQmbfr7LCyYpIylMUJ/dchGQnmz1RQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LogViewer.runtimeconfig.json" size="519">
