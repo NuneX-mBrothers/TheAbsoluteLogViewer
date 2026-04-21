@@ -7,7 +7,7 @@
   "targets": {
     ".NETCoreApp,Version=v10.0": {},
     ".NETCoreApp,Version=v10.0/win-x64": {
-      "LogViewer/1.2.71.0": {
+      "LogViewer/1.2.72.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "10.0.0",
           "Microsoft.Extensions.Configuration.Binder": "10.0.0",
@@ -124,7 +124,7 @@
     }
   },
   "libraries": {
-    "LogViewer/1.2.71.0": {
+    "LogViewer/1.2.72.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
