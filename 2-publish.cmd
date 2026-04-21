@@ -3,17 +3,16 @@ setlocal EnableDelayedExpansion
 
 set "DIST_DIR=%~dp0"
 set "CSPROJ=%~dp0..\LogViewer\LogViewer.csproj"
-set "PUBXML=%~dp0..\LogViewer\Properties\PublishProfiles\ClickOnceProfile.pubxml"
 set "DOCS=%~dp0..\LogViewer\docs\index.html"
 
 echo.
 echo ==========================================
-echo   The Absolute LogViewer  --  Git Push
+echo   The Absolute LogViewer  --  Publish
 echo ==========================================
 echo.
 
 :: ── 1. Ler versao do .csproj ──────────────────────────────────
-echo [1/6] A ler versao do LogViewer.csproj...
+echo [1/5] A ler versao do LogViewer.csproj...
 if not exist "%CSPROJ%" (
     echo [ERRO] Nao encontrou: %CSPROJ%
     pause & exit /b 1
@@ -28,27 +27,8 @@ if "%VERSION%"=="" (
 echo       Versao: %VERSION%
 echo       OK
 
-:: ── 2. Localizar e actualizar o .pubxml ───────────────────────
-echo [2/6] A localizar ClickOnceProfile.pubxml...
-if not exist "%PUBXML%" (
-    echo       Nao encontrou em Properties\ - a pesquisar...
-    for /r "%~dp0..\LogViewer" %%f in (ClickOnceProfile.pubxml) do set "PUBXML=%%f"
-)
-if not exist "%PUBXML%" (
-    echo [ERRO] ClickOnceProfile.pubxml nao encontrado.
-    pause & exit /b 1
-)
-echo       Encontrado: %PUBXML%
-powershell -NoProfile -Command ^
-    "(Get-Content -Path '%PUBXML%') -replace '<ApplicationVersion>.*</ApplicationVersion>', '<ApplicationVersion>%VERSION%</ApplicationVersion>' | Set-Content -Path '%PUBXML%'"
-if %ERRORLEVEL% neq 0 (
-    echo [ERRO] Falhou a actualizar o pubxml.
-    pause & exit /b 1
-)
-echo       OK
-
-:: ── 3. Actualizar versao no index.html ───────────────────────
-echo [3/6] A actualizar index.html para v%VERSHOW%...
+:: ── 2. Actualizar versao no index.html ───────────────────────
+echo [2/5] A actualizar index.html para v%VERSHOW%...
 if not exist "%DOCS%" (
     echo       [AVISO] docs\index.html nao encontrado - ignorado.
 ) else (
@@ -61,8 +41,8 @@ if not exist "%DOCS%" (
     echo       OK
 )
 
-:: ── 4. git add ────────────────────────────────────────────────
-echo [4/6] git add...
+:: ── 3. git add ────────────────────────────────────────────────
+echo [3/5] git add...
 cd /d "%DIST_DIR%"
 git add -A
 if %ERRORLEVEL% neq 0 (
@@ -71,8 +51,8 @@ if %ERRORLEVEL% neq 0 (
 )
 echo       OK
 
-:: ── 5. git commit ─────────────────────────────────────────────
-echo [5/6] git commit...
+:: ── 4. git commit ─────────────────────────────────────────────
+echo [4/5] git commit...
 git commit -m "Release v%VERSION%"
 if %ERRORLEVEL% neq 0 (
     echo       [AVISO] Nada para fazer commit - ficheiros identicos?
@@ -80,8 +60,8 @@ if %ERRORLEVEL% neq 0 (
     echo       OK
 )
 
-:: ── 6. git push ───────────────────────────────────────────────
-echo [6/6] git push para GitHub...
+:: ── 5. git push ───────────────────────────────────────────────
+echo [5/5] git push para GitHub...
 git push origin main
 if %ERRORLEVEL% neq 0 (
     echo [ERRO] Push falhou. Verifica a ligacao ao GitHub.
