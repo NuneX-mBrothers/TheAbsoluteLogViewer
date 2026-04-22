@@ -27,6 +27,9 @@ for /f "tokens=1,2,3 delims=." %%a in ("%CURRENT%") do (
 echo       Versao actual: %CURRENT%
 echo       OK
 
+
+
+
 :: ── 2. Pedir nova versao ──────────────────────────────────────
 echo [2/4] Nova versao (Enter para manter %CURRENT%):
 set /p NEWVER=      Nova versao: 
@@ -65,6 +68,11 @@ if %ERRORLEVEL% neq 0 (
     pause & exit /b 1
 )
 echo       OK
+
+:: ── 1 A. A apagar anterior publish em  ──────────────────────────
+echo A Apagar a anterior distribuição "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
+rmdir /s /q "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
+
 
 echo.
 echo ==========================================
