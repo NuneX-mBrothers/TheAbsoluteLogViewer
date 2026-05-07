@@ -1,0 +1,59 @@
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  Botão "Procurar atualizações" — adicionar à secção About no MainWindow.xaml,
+  numa zona estética (idealmente perto do número da versão).
+
+  Pré-requisitos:
+    - DataContext já liga a MainViewModel
+    - LocProxy disponível como recurso
+
+  Recomendação: usar um Button com aparência de hyperlink (sem chrome) para
+  ficar discreto, como faz o resto da app.
+
+  Comportamento:
+    - Em ClickOnce, o comando mostra um MessageBox a explicar que essa versão
+      tem auto-update próprio. Para esconder o botão completamente em ClickOnce,
+      adicionar um conversor BooleanToVisibilityConverter ligado a uma
+      propriedade do tipo "IsStandalone" (não implementado por defeito — só
+      adicionar se o utilizador preferir esconder em vez de informar).
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<!-- Variante 1: hyperlink-style (recomendado para a área About) -->
+<Button Content="{Binding Loc.UpdateCheckButton, Mode=OneWay}"
+        Command="{Binding CheckForUpdatesCommand}"
+        Background="Transparent"
+        BorderThickness="0"
+        Foreground="#1565C0"
+        Cursor="Hand"
+        Padding="0"
+        Margin="0,8,0,0"
+        HorizontalAlignment="Left">
+    <Button.Style>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   TextDecorations="Underline"
+                                   Foreground="{TemplateBinding Foreground}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#0D47A1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Button.Style>
+</Button>
+
+<!-- Variante 2: botão tradicional (mais visível) -->
+<!--
+<Button Content="{Binding Loc.UpdateCheckButton, Mode=OneWay}"
+        Command="{Binding CheckForUpdatesCommand}"
+        Padding="12,4"
+        Margin="0,8,0,0"
+        HorizontalAlignment="Left"/>
+-->
