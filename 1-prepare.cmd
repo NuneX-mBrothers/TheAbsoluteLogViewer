@@ -69,9 +69,14 @@ if %ERRORLEVEL% neq 0 (
 )
 echo       OK
 
-:: ── 1 A. A apagar anterior publish em  ──────────────────────────
-echo A Apagar a anterior distribuição "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
-rmdir /s /q "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
+:: ── 1 A. A apagar anterior publish (cobre ClickOnce e Standalone) ──
+echo A Apagar a anterior distribuicao "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
+if exist "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64" (
+    rmdir /s /q "C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
+    echo       OK
+) else (
+    echo       (nao existe - ignorado)
+)
 
 
 echo.
@@ -80,7 +85,8 @@ echo   Pronto para publicar!
 echo   Versao: %NEWVER%
 echo.
 echo   Faz agora o Publish no Visual Studio
-echo   e depois corre o 2-publish.cmd
+echo   (ClickOnce e/ou Standalone) e depois
+echo   corre o 2-publish.cmd
 echo ==========================================
 echo.
 pause
