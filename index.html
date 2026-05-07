@@ -119,6 +119,23 @@
     }
     .btn-install:hover { opacity: .88; box-shadow: 0 0 40px rgba(0,230,118,.55); }
 
+    /* Variante secundária — para o download standalone (alternativa ao ClickOnce) */
+    .btn-install-alt {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--surface);
+      color: var(--accent);
+      font-weight: 700; font-size: 1.05rem;
+      padding: .85rem 2.2rem; border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid rgba(0,230,118,.4);
+      transition: background .15s, border-color .15s, box-shadow .15s;
+    }
+    .btn-install-alt:hover {
+      background: var(--surface2);
+      border-color: var(--accent);
+      box-shadow: 0 0 24px rgba(0,230,118,.2);
+    }
+
     .chrome-warning {
       display: none;
       background: var(--warn-bg);
@@ -258,6 +275,49 @@
       margin: 0 auto;
       box-shadow: 0 0 60px rgba(0,230,118,.05);
     }
+    .install-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+    .install-grid .install-card {
+      max-width: none;
+      margin: 0;
+      padding: 2.25rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .install-grid .install-card h3 {
+      font-size: 1.25rem; font-weight: 800;
+      color: #dde8dd; margin-bottom: .5rem;
+    }
+    .install-grid .install-card p.lede {
+      font-size: .85rem; color: var(--muted);
+      margin-bottom: 1.5rem; min-height: 2.5rem;
+    }
+    .install-grid .install-card .btn-install,
+    .install-grid .install-card .btn-install-alt {
+      align-self: center;
+      margin-top: auto;
+    }
+    .install-tag {
+      display: inline-block;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .15rem .55rem; border-radius: 999px;
+      margin-bottom: .9rem;
+    }
+    .install-tag-recommended {
+      background: rgba(0,230,118,.12); color: var(--accent);
+      border: 1px solid rgba(0,230,118,.3);
+    }
+    .install-tag-alt {
+      background: rgba(0,176,255,.08); color: var(--accent3);
+      border: 1px solid rgba(0,176,255,.25);
+    }
     .req-list {
       display: flex; flex-wrap: wrap; gap: .5rem;
       justify-content: center; margin: 1.5rem 0;
@@ -299,6 +359,7 @@
   <p class="tagline">
     A professional-grade log viewer for Windows — real-time tailing, powerful highlight rules,
     split-pane comparison and 12-language support. Free, lightweight, always up-to-date.
+    <br><span style="color:var(--accent3); font-size:.85em;">Available as ClickOnce install or standalone .exe.</span>
   </p>
 
   <div class="badge-row">
@@ -312,7 +373,16 @@
 
   <div class="cta-row">
     <a class="btn-install" href="LogViewer.application">⬇ &nbsp;Install via ClickOnce</a>
+    <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download>⬇ &nbsp;Standalone .exe</a>
   </div>
+
+  <p style="text-align:center; font-size:.78rem; color:var(--muted); margin-top:.85rem; max-width:560px; margin-left:auto; margin-right:auto;">
+    ClickOnce includes the .NET 10 Runtime · Standalone requires
+    <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore"
+       target="_blank" rel="noopener"
+       style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a>
+    pre-installed
+  </p>
 
   <div class="chrome-warning" id="chromeWarning">
     <strong>⚠ Chrome is not supported for ClickOnce installation</strong>
@@ -399,7 +469,7 @@
       <div class="feat">
         <div class="feat-icon">🔄</div>
         <h3>Auto-update</h3>
-        <p>Delivered via ClickOnce — updates are checked automatically every time you launch the app. Zero manual maintenance required.</p>
+        <p>ClickOnce updates silently on every launch. The standalone .exe checks GitHub on startup and offers a one-click in-place update.</p>
       </div>
     </div>
   </div>
@@ -440,8 +510,8 @@
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h4>Install via ClickOnce</h4>
-          <p>Click the install button above in Microsoft Edge. The .NET 10 Desktop Runtime is bundled automatically if not already installed.</p>
+          <h4>Install via ClickOnce or download standalone</h4>
+          <p>ClickOnce (open in Microsoft Edge) gives you silent auto-updates and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.</p>
         </div>
       </div>
       <div class="step">
@@ -462,7 +532,7 @@
         <div class="step-num">4</div>
         <div class="step-body">
           <h4>Stay updated automatically</h4>
-          <p>Every time you launch the app it checks for updates silently. New versions are applied in seconds — no downloads, no installers.</p>
+          <p>ClickOnce installs check on every launch. The standalone build queries GitHub on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.</p>
         </div>
       </div>
     </div>
@@ -472,32 +542,91 @@
 <!-- ═══════════════════════════ INSTALL ═══════════════════════════ -->
 <section class="install-section" id="install">
   <div class="container">
-    <div class="install-card">
-      <div style="font-size:2.5rem; margin-bottom:1rem;">⬇</div>
-      <h2 style="font-size:1.6rem; font-weight:800; color:#dde8dd; margin-bottom:.5rem;">Install The Absolute LogViewer</h2>
-      <p style="color:var(--muted); font-size:.9rem; margin-bottom:1.5rem;">
-        Free, no ads, no telemetry. Powered by NuneX &amp; the mBrothers expertize.
-      </p>
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <div class="section-label" style="text-align:center;">Install</div>
+      <h2 class="section-title">Pick your preferred install method</h2>
+      <p class="section-sub" style="margin: 0 auto;">Two delivery options — both auto-update. Choose ClickOnce for zero hassle, or the standalone .exe if you need a portable file (and have .NET 10 Runtime installed).</p>
+    </div>
 
-      <a class="btn-install" href="LogViewer.application" style="font-size:1.1rem; padding:1rem 2.5rem;">
-        ⬇ &nbsp;Install via ClickOnce
-      </a>
+    <div class="install-grid">
 
-      <div class="req-list">
-        <span class="req">Windows 10 / 11</span>
-        <span class="req">.NET 10 Desktop Runtime</span>
-        <span class="req">Microsoft Edge required</span>
-        <span class="req">x64</span>
+      <!-- ── ClickOnce ───────────────────────────────────────────────── -->
+      <div class="install-card">
+        <span class="install-tag install-tag-recommended">Recommended · Zero-friction</span>
+        <div style="font-size:2.25rem; margin-bottom:.5rem;">⬇</div>
+        <h3>ClickOnce install</h3>
+        <p class="lede">
+          One-click install with silent automatic updates on every launch.
+          <strong style="color:#dde8dd;">.NET 10 runtime bundled</strong> if not already installed.
+        </p>
+
+        <a class="btn-install" href="LogViewer.application">
+          ⬇ &nbsp;Install via ClickOnce
+        </a>
+
+        <div class="req-list">
+          <span class="req">Windows 10 / 11</span>
+          <span class="req">Microsoft Edge</span>
+          <span class="req">x64</span>
+        </div>
+
+        <div class="chrome-warning" id="chromeWarning2" style="margin-top:0; max-width:100%;">
+          <strong>⚠ Chrome is not supported for ClickOnce installation</strong>
+          Please open this page in <strong>Microsoft Edge</strong> to install.
+        </div>
+
+        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;">
+          Updates apply automatically on each launch.
+        </p>
       </div>
 
-      <div class="chrome-warning" id="chromeWarning2" style="margin-top:0; max-width:100%;">
-        <strong>⚠ Chrome is not supported for ClickOnce installation</strong>
-        Please open this page in <strong>Microsoft Edge</strong> to install.
+      <!-- ── Standalone ──────────────────────────────────────────────── -->
+      <div class="install-card">
+        <span class="install-tag install-tag-alt">Portable</span>
+        <div style="font-size:2.25rem; margin-bottom:.5rem;">📦</div>
+        <h3>Standalone executable</h3>
+        <p class="lede">
+          A small portable .exe — copy anywhere, run from anywhere.
+          Works in any browser. No installer, no admin rights.
+        </p>
+
+        <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download>
+          ⬇ &nbsp;Download .exe
+        </a>
+
+        <div class="req-list">
+          <span class="req">Windows 10 / 11</span>
+          <span class="req">Any browser</span>
+          <span class="req">x64</span>
+          <span class="req">~10&nbsp;MB</span>
+        </div>
+
+        <!-- Aviso destacado: runtime obrigatório -->
+        <div style="margin-top:1.25rem; padding:.85rem 1rem;
+                    background: rgba(0,176,255,.07);
+                    border: 1px solid rgba(0,176,255,.3);
+                    border-radius: 8px;
+                    text-align: left;">
+          <p style="font-size:.78rem; font-weight:700; color:var(--accent3); margin:0 0 .35rem 0;">
+            ⚙ &nbsp;Requires .NET 10 Desktop Runtime
+          </p>
+          <p style="font-size:.72rem; color:var(--muted); margin:0 0 .55rem 0; line-height:1.5;">
+            The standalone build is framework-dependent. If the runtime is not installed, Windows will show a generic error when you launch the app.
+          </p>
+          <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore"
+             target="_blank" rel="noopener"
+             style="display:inline-block; font-size:.72rem; font-weight:600;
+                    color:var(--accent3); text-decoration:none;
+                    border-bottom:1px dashed var(--accent3); padding-bottom:1px;">
+            ⬇ Download .NET 10 Desktop Runtime →
+          </a>
+        </div>
+
+        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;">
+          Checks GitHub on startup and offers one-click in-place updates.
+        </p>
       </div>
 
-      <p style="font-size:.75rem; color:var(--muted); margin-top:1.25rem;">
-        Updates are delivered automatically on each launch via ClickOnce.
-      </p>
     </div>
   </div>
 </section>
