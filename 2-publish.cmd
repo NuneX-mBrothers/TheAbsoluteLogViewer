@@ -61,15 +61,6 @@ if not exist "%STANDALONE_EXE%" (
 ) else (
     set "STANDALONE_OK=1"
     echo       Encontrado: %STANDALONE_EXE%
-
-    rem ── Limpeza: o Publish single-file deixa .pdb ao lado do .exe.
-    rem    Apagamos extensoes nao desejadas (mantendo LogViewer.exe e
-    rem    version.json intactos). del aceita wildcards e e idempotente.
-    if exist "%STANDALONE_DIR%\*.pdb"               del /q "%STANDALONE_DIR%\*.pdb"
-    if exist "%STANDALONE_DIR%\*.xml"               del /q "%STANDALONE_DIR%\*.xml"
-    if exist "%STANDALONE_DIR%\*.deps.json"         del /q "%STANDALONE_DIR%\*.deps.json"
-    if exist "%STANDALONE_DIR%\*.runtimeconfig.json" del /q "%STANDALONE_DIR%\*.runtimeconfig.json"
-
     echo       OK
 )
 
