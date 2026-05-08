@@ -328,6 +328,39 @@
       border-radius: 6px; padding: .3rem .7rem;
     }
 
+    /* ── Language picker (top-right) ─────────────────────────────────── */
+    .lang-picker {
+      position: fixed; top: 14px; right: 18px; z-index: 100;
+      display: flex; gap: 8px; padding: 6px 10px;
+      background: rgba(15, 22, 16, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .lang-btn {
+      width: 26px; height: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 3px; background: transparent;
+      padding: 0; cursor: pointer; overflow: hidden;
+      transition: transform .15s, border-color .15s, box-shadow .15s;
+      display: block;
+    }
+    .lang-btn:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(0,230,118,.4);
+    }
+    .lang-btn.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 6px rgba(0,230,118,.5);
+    }
+    .lang-btn svg { display: block; width: 100%; height: 100%; }
+
+    @media (max-width: 768px) {
+      .lang-picker { top: 10px; right: 10px; padding: 4px 7px; gap: 5px; }
+      .lang-btn { width: 22px; height: 15px; }
+    }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -349,6 +382,53 @@
 </head>
 <body>
 
+<!-- ═══════════════════════════ LANGUAGE PICKER ═══════════════════════════ -->
+<!--
+  Bandeiras SVG inline (sem requests externos). Click → setLang() em script.
+  Ordem: PT, US, DE, CN. Idioma activo recebe classe .active.
+-->
+<div class="lang-picker" role="group" aria-label="Language">
+  <button class="lang-btn" data-lang="pt" aria-label="Português" title="Português">
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="40" fill="#FF0000"/>
+      <rect width="24" height="40" fill="#006600"/>
+      <circle cx="24" cy="20" r="7" fill="#FFCC00" stroke="#000" stroke-width="0.5"/>
+      <rect x="20.5" y="16.5" width="7" height="7" fill="#FFF" stroke="#000" stroke-width="0.5"/>
+    </svg>
+  </button>
+  <button class="lang-btn" data-lang="en" aria-label="English (US)" title="English (US)">
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="40" fill="#FFF"/>
+      <rect y="0"     width="60" height="3.08" fill="#B22234"/>
+      <rect y="6.15"  width="60" height="3.08" fill="#B22234"/>
+      <rect y="12.31" width="60" height="3.08" fill="#B22234"/>
+      <rect y="18.46" width="60" height="3.08" fill="#B22234"/>
+      <rect y="24.62" width="60" height="3.08" fill="#B22234"/>
+      <rect y="30.77" width="60" height="3.08" fill="#B22234"/>
+      <rect y="36.92" width="60" height="3.08" fill="#B22234"/>
+      <rect width="24" height="21.54" fill="#3C3B6E"/>
+    </svg>
+  </button>
+  <button class="lang-btn" data-lang="de" aria-label="Deutsch" title="Deutsch">
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="13.33" fill="#000"/>
+      <rect y="13.33" width="60" height="13.33" fill="#DD0000"/>
+      <rect y="26.66" width="60" height="13.34" fill="#FFCE00"/>
+    </svg>
+  </button>
+  <button class="lang-btn" data-lang="zh" aria-label="中文" title="中文">
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="40" fill="#DE2910"/>
+      <polygon points="12,6 13.5,10.5 18,10.5 14.4,13.5 15.9,18 12,15 8.1,18 9.6,13.5 6,10.5 10.5,10.5"
+               fill="#FFDE00"/>
+      <circle cx="22" cy="4"  r="1" fill="#FFDE00"/>
+      <circle cx="25" cy="7"  r="1" fill="#FFDE00"/>
+      <circle cx="25" cy="11" r="1" fill="#FFDE00"/>
+      <circle cx="22" cy="14" r="1" fill="#FFDE00"/>
+    </svg>
+  </button>
+</div>
+
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section class="hero">
   <div class="logo-wrap">
@@ -356,27 +436,28 @@
   </div>
 
   <h1>The Absolute <span>LogViewer</span></h1>
-  <p class="tagline">
+  <p class="tagline" data-i18n-html="hero.tagline">
     A professional-grade log viewer for Windows — real-time tailing, powerful highlight rules,
     split-pane comparison and 12-language support. Free, lightweight, always up-to-date.
     <br><span style="color:var(--accent3); font-size:.85em;">Available as ClickOnce install or standalone .exe.</span>
   </p>
 
   <div class="badge-row">
-    <span class="badge badge-green">v1.4.2</span>
+    <span class="badge badge-green">v1.4.3</span>
     <span class="badge badge-blue">.NET 10 · WPF</span>
     <span class="badge badge-yellow">Windows 10/11</span>
-    <span class="badge badge-green">12 Languages</span>
-    <span class="badge badge-green">Auto-update</span>
-    <span class="badge badge-blue">Free</span>
+    <span class="badge badge-green" data-i18n="hero.badge.languages">12 Languages</span>
+    <span class="badge badge-green" data-i18n="hero.badge.autoupdate">Auto-update</span>
+    <span class="badge badge-blue" data-i18n="hero.badge.free">Free</span>
   </div>
 
   <div class="cta-row">
-    <a class="btn-install" href="LogViewer.application">⬇ &nbsp;Install via ClickOnce</a>
-    <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download>⬇ &nbsp;Standalone .exe</a>
+    <a class="btn-install" href="LogViewer.application" data-i18n-html="hero.cta.clickonce">⬇ &nbsp;Install via ClickOnce</a>
+    <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download data-i18n-html="hero.cta.standalone">⬇ &nbsp;Standalone .exe</a>
   </div>
 
-  <p style="text-align:center; font-size:.78rem; color:var(--muted); margin-top:.85rem; max-width:560px; margin-left:auto; margin-right:auto;">
+  <p style="text-align:center; font-size:.78rem; color:var(--muted); margin-top:.85rem; max-width:560px; margin-left:auto; margin-right:auto;"
+     data-i18n-html="hero.runtimeNote">
     ClickOnce includes the .NET 10 Runtime · Standalone requires
     <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore"
        target="_blank" rel="noopener"
@@ -384,12 +465,12 @@
     pre-installed
   </p>
 
-  <div class="chrome-warning" id="chromeWarning">
+  <div class="chrome-warning" id="chromeWarning" data-i18n-html="hero.chromeWarning">
     <strong>⚠ Chrome is not supported for ClickOnce installation</strong>
     Please open this page in <strong>Microsoft Edge</strong> to install the application.
   </div>
 
-  <div class="scroll-hint">↓ &nbsp; learn more</div>
+  <div class="scroll-hint" data-i18n="hero.scrollHint">↓ &nbsp; learn more</div>
 </section>
 
 <!-- ═══════════════════════════ LOG MOCKUP ═══════════════════════════ -->
@@ -421,55 +502,60 @@
 <!-- ═══════════════════════════ FEATURES ═══════════════════════════ -->
 <section style="background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="container">
-    <div class="section-label">Features</div>
-    <h2 class="section-title">Everything you need to master your logs</h2>
-    <p class="section-sub">Built for developers and sysadmins who spend real time reading log files.</p>
+    <div class="section-label" data-i18n="features.label">Features</div>
+    <h2 class="section-title" data-i18n="features.title">Everything you need to master your logs</h2>
+    <p class="section-sub" data-i18n="features.sub">Built for developers and sysadmins who spend real time reading log files.</p>
 
     <div class="features-grid">
       <div class="feat">
         <div class="feat-icon">⚡</div>
-        <h3>Real-time Tail</h3>
-        <p>Follows log files as they grow. Automatically pauses when you scroll back to review, and resumes after configurable inactivity timeout.</p>
+        <h3 data-i18n="feat.tail.title">Real-time Tail</h3>
+        <p data-i18n="feat.tail.body">Follows log files as they grow. Automatically pauses when you scroll back to review, and resumes after configurable inactivity timeout.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">🎨</div>
-        <h3>Highlight Rules</h3>
-        <p>Create regex-based colour rules with a full HSV colour picker. Highlight the entire line or just the matched word. Live preview as you type.</p>
+        <h3 data-i18n="feat.highlight.title">Highlight Rules</h3>
+        <p data-i18n="feat.highlight.body">Create regex-based colour rules with a full HSV colour picker. Highlight the entire line or just the matched word. Live preview as you type.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">⬛⬛</div>
-        <h3>Split Pane View</h3>
-        <p>Open two log files side by side for simultaneous monitoring. Each pane has independent tailing, search and highlight state.</p>
+        <h3 data-i18n="feat.split.title">Split Pane View</h3>
+        <p data-i18n="feat.split.body">Open two log files side by side for simultaneous monitoring. Each pane has independent tailing, search and highlight state.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">🔍</div>
-        <h3>Search & Filter</h3>
-        <p>Full-text search with match-case toggle, filter mode to show only matching lines, and keyboard navigation between occurrences.</p>
+        <h3 data-i18n="feat.search.title">Search &amp; Filter</h3>
+        <p data-i18n="feat.search.body">Full-text search with match-case toggle, filter mode to show only matching lines, and keyboard navigation between occurrences.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔭</div>
+        <h3 data-i18n="feat.preview.title">Context Preview</h3>
+        <p data-i18n="feat.preview.body">While filtering, hover any matching line to see the surrounding context in a floating window — the configurable number of lines before and after the match, including lines hidden by the filter. Position is remembered between sessions.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">📁</div>
-        <h3>Directory Browser</h3>
-        <p>Add entire folders and watch them for new files. Unread badges appear when a file is updated while not currently open.</p>
+        <h3 data-i18n="feat.dirs.title">Directory Browser</h3>
+        <p data-i18n="feat.dirs.body">Add entire folders and watch them for new files. Unread badges appear when a file is updated while not currently open.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">🗂</div>
-        <h3>Named Separators</h3>
-        <p>Organise your file list with named separators and drag-and-drop reordering. Inline editing with double-click.</p>
+        <h3 data-i18n="feat.sep.title">Named Separators</h3>
+        <p data-i18n="feat.sep.body">Organise your file list with named separators and drag-and-drop reordering. Inline editing with double-click.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">📋</div>
-        <h3>Multi-line Copy</h3>
-        <p>Select and copy multiple log lines at once, preserving original formatting. Works seamlessly with keyboard and mouse selection.</p>
+        <h3 data-i18n="feat.copy.title">Multi-line Copy</h3>
+        <p data-i18n="feat.copy.body">Select and copy multiple log lines at once, preserving original formatting. Works seamlessly with keyboard and mouse selection.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">🔢</div>
-        <h3>Line Numbers</h3>
-        <p>Toggleable line numbers, configurable font sizes, line height and word wrap. All settings persist across sessions.</p>
+        <h3 data-i18n="feat.numbers.title">Line Numbers</h3>
+        <p data-i18n="feat.numbers.body">Toggleable line numbers, configurable font sizes, line height and word wrap. All settings persist across sessions.</p>
       </div>
       <div class="feat">
         <div class="feat-icon">🔄</div>
-        <h3>Auto-update</h3>
-        <p>ClickOnce updates silently on every launch. The standalone .exe checks GitHub on startup and offers a one-click in-place update.</p>
+        <h3 data-i18n="feat.update.title">Auto-update</h3>
+        <p data-i18n="feat.update.body">ClickOnce updates silently on every launch. The standalone .exe checks GitHub on startup and offers a one-click in-place update.</p>
       </div>
     </div>
   </div>
@@ -478,23 +564,23 @@
 <!-- ═══════════════════════════ LANGUAGES ═══════════════════════════ -->
 <section>
   <div class="container">
-    <div class="section-label">Localisation</div>
-    <h2 class="section-title">12 languages, fully localised</h2>
-    <p class="section-sub">Every label, button, tooltip and message is translated. Switch language instantly without restarting.</p>
+    <div class="section-label" data-i18n="loc.label">Localisation</div>
+    <h2 class="section-title" data-i18n="loc.title">12 languages, fully localised</h2>
+    <p class="section-sub" data-i18n="loc.sub">Every label, button, tooltip and message is translated. Switch language instantly without restarting.</p>
 
     <div class="lang-grid">
-      <div class="lang-card"><span class="lang-flag">🇵🇹</span> Portuguese</div>
-      <div class="lang-card"><span class="lang-flag">🇬🇧</span> English (UK)</div>
-      <div class="lang-card"><span class="lang-flag">🇺🇸</span> English (US)</div>
-      <div class="lang-card"><span class="lang-flag">🇪🇸</span> Spanish</div>
-      <div class="lang-card"><span class="lang-flag">🇫🇷</span> French</div>
-      <div class="lang-card"><span class="lang-flag">🇮🇹</span> Italian</div>
-      <div class="lang-card"><span class="lang-flag">🇩🇪</span> German</div>
-      <div class="lang-card"><span class="lang-flag">🇮🇳</span> Hindi</div>
-      <div class="lang-card"><span class="lang-flag">🇸🇦</span> Arabic</div>
-      <div class="lang-card"><span class="lang-flag">🇧🇷</span> Portuguese (BR)</div>
-      <div class="lang-card"><span class="lang-flag">🇨🇳</span> Chinese</div>
-      <div class="lang-card"><span class="lang-flag">🇷🇺</span> Russian</div>
+      <div class="lang-card"><span class="lang-flag">🇵🇹</span> <span data-i18n="lang.pt">Portuguese</span></div>
+      <div class="lang-card"><span class="lang-flag">🇬🇧</span> <span data-i18n="lang.enuk">English (UK)</span></div>
+      <div class="lang-card"><span class="lang-flag">🇺🇸</span> <span data-i18n="lang.enus">English (US)</span></div>
+      <div class="lang-card"><span class="lang-flag">🇪🇸</span> <span data-i18n="lang.es">Spanish</span></div>
+      <div class="lang-card"><span class="lang-flag">🇫🇷</span> <span data-i18n="lang.fr">French</span></div>
+      <div class="lang-card"><span class="lang-flag">🇮🇹</span> <span data-i18n="lang.it">Italian</span></div>
+      <div class="lang-card"><span class="lang-flag">🇩🇪</span> <span data-i18n="lang.de">German</span></div>
+      <div class="lang-card"><span class="lang-flag">🇮🇳</span> <span data-i18n="lang.hi">Hindi</span></div>
+      <div class="lang-card"><span class="lang-flag">🇸🇦</span> <span data-i18n="lang.ar">Arabic</span></div>
+      <div class="lang-card"><span class="lang-flag">🇧🇷</span> <span data-i18n="lang.ptbr">Portuguese (BR)</span></div>
+      <div class="lang-card"><span class="lang-flag">🇨🇳</span> <span data-i18n="lang.zh">Chinese</span></div>
+      <div class="lang-card"><span class="lang-flag">🇷🇺</span> <span data-i18n="lang.ru">Russian</span></div>
     </div>
   </div>
 </section>
@@ -502,37 +588,37 @@
 <!-- ═══════════════════════════ HOW IT WORKS ═══════════════════════════ -->
 <section style="background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="container">
-    <div class="section-label">Getting started</div>
-    <h2 class="section-title">Up and running in minutes</h2>
-    <p class="section-sub">No configuration files, no complex setup. Just install and open your logs.</p>
+    <div class="section-label" data-i18n="howto.label">Getting started</div>
+    <h2 class="section-title" data-i18n="howto.title">Up and running in minutes</h2>
+    <p class="section-sub" data-i18n="howto.sub">No configuration files, no complex setup. Just install and open your logs.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h4>Install via ClickOnce or download standalone</h4>
-          <p>ClickOnce (open in Microsoft Edge) gives you silent auto-updates and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.</p>
+          <h4 data-i18n="step1.title">Install via ClickOnce or download standalone</h4>
+          <p data-i18n-html="step1.body">ClickOnce (open in Microsoft Edge) gives you silent auto-updates and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h4>Add files or folders</h4>
-          <p>Drag &amp; drop log files directly onto the app, or use the directory browser to watch entire folders and discover logs automatically.</p>
+          <h4 data-i18n="step2.title">Add files or folders</h4>
+          <p data-i18n="step2.body">Drag &amp; drop log files directly onto the app, or use the directory browser to watch entire folders and discover logs automatically.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h4>Set up highlight rules</h4>
-          <p>Open the Highlight Rules editor and create regex patterns for ERROR, WARN, INFO and any custom patterns you need. See them applied live immediately.</p>
+          <h4 data-i18n="step3.title">Set up highlight rules</h4>
+          <p data-i18n="step3.body">Open the Highlight Rules editor and create regex patterns for ERROR, WARN, INFO and any custom patterns you need. See them applied live immediately.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h4>Stay updated automatically</h4>
-          <p>ClickOnce installs check on every launch. The standalone build queries GitHub on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.</p>
+          <h4 data-i18n="step4.title">Stay updated automatically</h4>
+          <p data-i18n="step4.body">ClickOnce installs check on every launch. The standalone build queries GitHub on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.</p>
         </div>
       </div>
     </div>
@@ -543,24 +629,24 @@
 <section class="install-section" id="install">
   <div class="container">
     <div style="text-align:center; margin-bottom:2.5rem;">
-      <div class="section-label" style="text-align:center;">Install</div>
-      <h2 class="section-title">Pick your preferred install method</h2>
-      <p class="section-sub" style="margin: 0 auto;">Two delivery options — both auto-update. Choose ClickOnce for zero hassle, or the standalone .exe if you need a portable file (and have .NET 10 Runtime installed).</p>
+      <div class="section-label" style="text-align:center;" data-i18n="install.label">Install</div>
+      <h2 class="section-title" data-i18n="install.title">Pick your preferred install method</h2>
+      <p class="section-sub" style="margin: 0 auto;" data-i18n="install.sub">Two delivery options — both auto-update. Choose ClickOnce for zero hassle, or the standalone .exe if you need a portable file (and have .NET 10 Runtime installed).</p>
     </div>
 
     <div class="install-grid">
 
       <!-- ── ClickOnce ───────────────────────────────────────────────── -->
       <div class="install-card">
-        <span class="install-tag install-tag-recommended">Recommended · Zero-friction</span>
+        <span class="install-tag install-tag-recommended" data-i18n="install.tag.recommended">Recommended · Zero-friction</span>
         <div style="font-size:2.25rem; margin-bottom:.5rem;">⬇</div>
-        <h3>ClickOnce install</h3>
-        <p class="lede">
+        <h3 data-i18n="install.clickonce.title">ClickOnce install</h3>
+        <p class="lede" data-i18n-html="install.clickonce.lede">
           One-click install with silent automatic updates on every launch.
           <strong style="color:#dde8dd;">.NET 10 runtime bundled</strong> if not already installed.
         </p>
 
-        <a class="btn-install" href="LogViewer.application">
+        <a class="btn-install" href="LogViewer.application" data-i18n-html="install.clickonce.cta">
           ⬇ &nbsp;Install via ClickOnce
         </a>
 
@@ -570,33 +656,33 @@
           <span class="req">x64</span>
         </div>
 
-        <div class="chrome-warning" id="chromeWarning2" style="margin-top:0; max-width:100%;">
+        <div class="chrome-warning" id="chromeWarning2" style="margin-top:0; max-width:100%;" data-i18n-html="hero.chromeWarning">
           <strong>⚠ Chrome is not supported for ClickOnce installation</strong>
           Please open this page in <strong>Microsoft Edge</strong> to install.
         </div>
 
-        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;">
+        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;" data-i18n="install.clickonce.note">
           Updates apply automatically on each launch.
         </p>
       </div>
 
       <!-- ── Standalone ──────────────────────────────────────────────── -->
       <div class="install-card">
-        <span class="install-tag install-tag-alt">Portable</span>
+        <span class="install-tag install-tag-alt" data-i18n="install.tag.portable">Portable</span>
         <div style="font-size:2.25rem; margin-bottom:.5rem;">📦</div>
-        <h3>Standalone executable</h3>
-        <p class="lede">
+        <h3 data-i18n="install.standalone.title">Standalone executable</h3>
+        <p class="lede" data-i18n="install.standalone.lede">
           A small portable .exe — copy anywhere, run from anywhere.
           Works in any browser. No installer, no admin rights.
         </p>
 
-        <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download>
+        <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download data-i18n-html="install.standalone.cta">
           ⬇ &nbsp;Download .exe
         </a>
 
         <div class="req-list">
           <span class="req">Windows 10 / 11</span>
-          <span class="req">Any browser</span>
+          <span class="req" data-i18n="req.anybrowser">Any browser</span>
           <span class="req">x64</span>
           <span class="req">~10&nbsp;MB</span>
         </div>
@@ -607,22 +693,23 @@
                     border: 1px solid rgba(0,176,255,.3);
                     border-radius: 8px;
                     text-align: left;">
-          <p style="font-size:.78rem; font-weight:700; color:var(--accent3); margin:0 0 .35rem 0;">
+          <p style="font-size:.78rem; font-weight:700; color:var(--accent3); margin:0 0 .35rem 0;" data-i18n="install.standalone.runtime.title">
             ⚙ &nbsp;Requires .NET 10 Desktop Runtime
           </p>
-          <p style="font-size:.72rem; color:var(--muted); margin:0 0 .55rem 0; line-height:1.5;">
+          <p style="font-size:.72rem; color:var(--muted); margin:0 0 .55rem 0; line-height:1.5;" data-i18n="install.standalone.runtime.body">
             The standalone build is framework-dependent. If the runtime is not installed, Windows will show a generic error when you launch the app.
           </p>
           <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore"
              target="_blank" rel="noopener"
              style="display:inline-block; font-size:.72rem; font-weight:600;
                     color:var(--accent3); text-decoration:none;
-                    border-bottom:1px dashed var(--accent3); padding-bottom:1px;">
+                    border-bottom:1px dashed var(--accent3); padding-bottom:1px;"
+             data-i18n="install.standalone.runtime.cta">
             ⬇ Download .NET 10 Desktop Runtime →
           </a>
         </div>
 
-        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;">
+        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;" data-i18n="install.standalone.note">
           Checks GitHub on startup and offers one-click in-place updates.
         </p>
       </div>
@@ -635,17 +722,393 @@
 <footer>
   <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer">GitHub</a>
   &nbsp;·&nbsp;
-  Powered by NuneX &amp; the mBrothers expertize
+  <span data-i18n="footer.poweredBy">Powered by NuneX &amp; the mBrothers expertize</span>
   &nbsp;·&nbsp;
-  <a href="#install">Install</a>
+  <a href="#install" data-i18n="footer.install">Install</a>
 </footer>
 
 <script>
-  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg/.test(navigator.userAgent);
-  if (isChrome) {
-    document.getElementById('chromeWarning').style.display = 'block';
-    document.getElementById('chromeWarning2').style.display = 'block';
+  /* ═══════════════════════════════════════════════════════════════════════
+     i18n — 4 languages: PT, EN (US), DE, ZH
+     - Auto-detect via navigator.language on first visit
+     - Persisted in localStorage under "tal.lang"
+     - Click flag → setLang(code)
+     - Elements with data-i18n="key" → textContent replaced
+     - Elements with data-i18n-html="key" → innerHTML replaced
+     ═══════════════════════════════════════════════════════════════════════ */
+  const I18N = {
+    en: {
+      "hero.tagline": 'A professional-grade log viewer for Windows — real-time tailing, powerful highlight rules, split-pane comparison and 12-language support. Free, lightweight, always up-to-date.<br><span style="color:var(--accent3); font-size:.85em;">Available as ClickOnce install or standalone .exe.</span>',
+      "hero.badge.languages": "12 Languages",
+      "hero.badge.autoupdate": "Auto-update",
+      "hero.badge.free": "Free",
+      "hero.cta.clickonce": "⬇ &nbsp;Install via ClickOnce",
+      "hero.cta.standalone": "⬇ &nbsp;Standalone .exe",
+      "hero.runtimeNote": 'ClickOnce includes the .NET 10 Runtime · Standalone requires <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a> pre-installed',
+      "hero.chromeWarning": "<strong>⚠ Chrome is not supported for ClickOnce installation</strong>Please open this page in <strong>Microsoft Edge</strong> to install the application.",
+      "hero.scrollHint": "↓ &nbsp; learn more",
+
+      "features.label": "Features",
+      "features.title": "Everything you need to master your logs",
+      "features.sub": "Built for developers and sysadmins who spend real time reading log files.",
+
+      "feat.tail.title": "Real-time Tail",
+      "feat.tail.body": "Follows log files as they grow. Automatically pauses when you scroll back to review, and resumes after configurable inactivity timeout.",
+      "feat.highlight.title": "Highlight Rules",
+      "feat.highlight.body": "Create regex-based colour rules with a full HSV colour picker. Highlight the entire line or just the matched word. Live preview as you type.",
+      "feat.split.title": "Split Pane View",
+      "feat.split.body": "Open two log files side by side for simultaneous monitoring. Each pane has independent tailing, search and highlight state.",
+      "feat.search.title": "Search & Filter",
+      "feat.search.body": "Full-text search with match-case toggle, filter mode to show only matching lines, and keyboard navigation between occurrences.",
+      "feat.preview.title": "Context Preview",
+      "feat.preview.body": "While filtering, hover any matching line to see the surrounding context in a floating window — the configurable number of lines before and after the match, including lines hidden by the filter. Position is remembered between sessions.",
+      "feat.dirs.title": "Directory Browser",
+      "feat.dirs.body": "Add entire folders and watch them for new files. Unread badges appear when a file is updated while not currently open.",
+      "feat.sep.title": "Named Separators",
+      "feat.sep.body": "Organise your file list with named separators and drag-and-drop reordering. Inline editing with double-click.",
+      "feat.copy.title": "Multi-line Copy",
+      "feat.copy.body": "Select and copy multiple log lines at once, preserving original formatting. Works seamlessly with keyboard and mouse selection.",
+      "feat.numbers.title": "Line Numbers",
+      "feat.numbers.body": "Toggleable line numbers, configurable font sizes, line height and word wrap. All settings persist across sessions.",
+      "feat.update.title": "Auto-update",
+      "feat.update.body": "ClickOnce updates silently on every launch. The standalone .exe checks GitHub on startup and offers a one-click in-place update.",
+
+      "loc.label": "Localisation",
+      "loc.title": "12 languages, fully localised",
+      "loc.sub": "Every label, button, tooltip and message is translated. Switch language instantly without restarting.",
+      "lang.pt": "Portuguese", "lang.enuk": "English (UK)", "lang.enus": "English (US)",
+      "lang.es": "Spanish", "lang.fr": "French", "lang.it": "Italian", "lang.de": "German",
+      "lang.hi": "Hindi", "lang.ar": "Arabic", "lang.ptbr": "Portuguese (BR)",
+      "lang.zh": "Chinese", "lang.ru": "Russian",
+
+      "howto.label": "Getting started",
+      "howto.title": "Up and running in minutes",
+      "howto.sub": "No configuration files, no complex setup. Just install and open your logs.",
+      "step1.title": "Install via ClickOnce or download standalone",
+      "step1.body": 'ClickOnce (open in Microsoft Edge) gives you silent auto-updates and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.',
+      "step2.title": "Add files or folders",
+      "step2.body": "Drag & drop log files directly onto the app, or use the directory browser to watch entire folders and discover logs automatically.",
+      "step3.title": "Set up highlight rules",
+      "step3.body": "Open the Highlight Rules editor and create regex patterns for ERROR, WARN, INFO and any custom patterns you need. See them applied live immediately.",
+      "step4.title": "Stay updated automatically",
+      "step4.body": "ClickOnce installs check on every launch. The standalone build queries GitHub on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.",
+
+      "install.label": "Install",
+      "install.title": "Pick your preferred install method",
+      "install.sub": "Two delivery options — both auto-update. Choose ClickOnce for zero hassle, or the standalone .exe if you need a portable file (and have .NET 10 Runtime installed).",
+      "install.tag.recommended": "Recommended · Zero-friction",
+      "install.tag.portable": "Portable",
+      "install.clickonce.title": "ClickOnce install",
+      "install.clickonce.lede": 'One-click install with silent automatic updates on every launch. <strong style="color:#dde8dd;">.NET 10 runtime bundled</strong> if not already installed.',
+      "install.clickonce.cta": "⬇ &nbsp;Install via ClickOnce",
+      "install.clickonce.note": "Updates apply automatically on each launch.",
+      "install.standalone.title": "Standalone executable",
+      "install.standalone.lede": "A small portable .exe — copy anywhere, run from anywhere. Works in any browser. No installer, no admin rights.",
+      "install.standalone.cta": "⬇ &nbsp;Download .exe",
+      "install.standalone.note": "Checks GitHub on startup and offers one-click in-place updates.",
+      "install.standalone.runtime.title": "⚙ &nbsp;Requires .NET 10 Desktop Runtime",
+      "install.standalone.runtime.body": "The standalone build is framework-dependent. If the runtime is not installed, Windows will show a generic error when you launch the app.",
+      "install.standalone.runtime.cta": "⬇ Download .NET 10 Desktop Runtime →",
+      "req.anybrowser": "Any browser",
+
+      "footer.poweredBy": "Powered by NuneX & the mBrothers expertize",
+      "footer.install": "Install"
+    },
+
+    pt: {
+      "hero.tagline": 'Um visualizador de logs profissional para Windows — tail em tempo real, regras de realce poderosas, vista em painel dividido e suporte a 12 línguas. Gratuito, leve, sempre atualizado.<br><span style="color:var(--accent3); font-size:.85em;">Disponível em ClickOnce ou executável standalone.</span>',
+      "hero.badge.languages": "12 línguas",
+      "hero.badge.autoupdate": "Auto-atualização",
+      "hero.badge.free": "Gratuito",
+      "hero.cta.clickonce": "⬇ &nbsp;Instalar via ClickOnce",
+      "hero.cta.standalone": "⬇ &nbsp;.exe Standalone",
+      "hero.runtimeNote": 'ClickOnce inclui o .NET 10 Runtime · Standalone requer <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a> pré-instalado',
+      "hero.chromeWarning": "<strong>⚠ O Chrome não suporta a instalação ClickOnce</strong>Abra esta página no <strong>Microsoft Edge</strong> para instalar a aplicação.",
+      "hero.scrollHint": "↓ &nbsp; saber mais",
+
+      "features.label": "Funcionalidades",
+      "features.title": "Tudo o que precisa para dominar os seus logs",
+      "features.sub": "Feito para programadores e administradores de sistemas que passam tempo a ler ficheiros de log.",
+
+      "feat.tail.title": "Tail em tempo real",
+      "feat.tail.body": "Acompanha os ficheiros de log à medida que crescem. Pausa automaticamente quando faz scroll para trás e retoma após um tempo de inatividade configurável.",
+      "feat.highlight.title": "Regras de realce",
+      "feat.highlight.body": "Crie regras de cor baseadas em regex com um seletor HSV completo. Realce a linha inteira ou apenas a palavra correspondente. Pré-visualização ao vivo.",
+      "feat.split.title": "Vista em painel dividido",
+      "feat.split.body": "Abra dois ficheiros lado a lado para monitorização simultânea. Cada painel tem tail, pesquisa e realces independentes.",
+      "feat.search.title": "Pesquisa e filtro",
+      "feat.search.body": "Pesquisa completa com toggle case-sensitive, modo filtro para mostrar apenas linhas correspondentes e navegação por teclado entre ocorrências.",
+      "feat.preview.title": "Pré-visualização de contexto",
+      "feat.preview.body": "Com o filtro ativo, passe o cursor sobre qualquer linha correspondente para ver o contexto numa janela flutuante — o número configurável de linhas antes e depois da correspondência, incluindo linhas escondidas pelo filtro. Posição memorizada entre sessões.",
+      "feat.dirs.title": "Navegador de pastas",
+      "feat.dirs.body": "Adicione pastas inteiras e monitorize-as. Aparecem badges de não lido quando um ficheiro é atualizado fora da vista atual.",
+      "feat.sep.title": "Separadores nomeados",
+      "feat.sep.body": "Organize a lista de ficheiros com separadores nomeados e reordenação por arrastar. Edição inline com duplo clique.",
+      "feat.copy.title": "Cópia multilinha",
+      "feat.copy.body": "Selecione e copie várias linhas de log de uma vez, mantendo o formato original. Funciona com teclado e rato.",
+      "feat.numbers.title": "Números de linha",
+      "feat.numbers.body": "Números de linha alternáveis, tamanhos de fonte configuráveis, altura de linha e quebra de linha. Tudo persiste entre sessões.",
+      "feat.update.title": "Auto-atualização",
+      "feat.update.body": "ClickOnce atualiza silenciosamente em cada arranque. O .exe standalone consulta o GitHub no arranque e oferece atualização em um clique.",
+
+      "loc.label": "Localização",
+      "loc.title": "12 línguas, totalmente traduzido",
+      "loc.sub": "Cada etiqueta, botão, tooltip e mensagem está traduzido. Mude de língua instantaneamente sem reiniciar.",
+      "lang.pt": "Português", "lang.enuk": "Inglês (UK)", "lang.enus": "Inglês (US)",
+      "lang.es": "Espanhol", "lang.fr": "Francês", "lang.it": "Italiano", "lang.de": "Alemão",
+      "lang.hi": "Hindi", "lang.ar": "Árabe", "lang.ptbr": "Português (BR)",
+      "lang.zh": "Chinês", "lang.ru": "Russo",
+
+      "howto.label": "Começar",
+      "howto.title": "A funcionar em minutos",
+      "howto.sub": "Sem ficheiros de configuração, sem instalações complexas. Instale e abra os seus logs.",
+      "step1.title": "Instale via ClickOnce ou descarregue standalone",
+      "step1.body": 'ClickOnce (abra no Microsoft Edge) dá-lhe auto-atualizações silenciosas e inclui o .NET 10 Runtime se faltar. O .exe standalone é um ficheiro pequeno e portátil — copie e execute; requer o <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> instalado.',
+      "step2.title": "Adicione ficheiros ou pastas",
+      "step2.body": "Arraste e largue ficheiros de log na aplicação, ou use o navegador de pastas para monitorizar pastas inteiras e descobrir logs automaticamente.",
+      "step3.title": "Configure regras de realce",
+      "step3.body": "Abra o editor de Regras de Realce e crie padrões regex para ERROR, WARN, INFO e qualquer padrão personalizado. Veja-os aplicados imediatamente.",
+      "step4.title": "Mantenha-se atualizado",
+      "step4.body": "Instalações ClickOnce verificam em cada arranque. A versão standalone consulta o GitHub no arranque; se houver versão nova, recebe upgrade em um clique — sem instalador.",
+
+      "install.label": "Instalação",
+      "install.title": "Escolha o método de instalação",
+      "install.sub": "Duas opções — ambas com auto-atualização. ClickOnce para zero atrito, ou o .exe standalone se precisa de um ficheiro portátil (com .NET 10 Runtime instalado).",
+      "install.tag.recommended": "Recomendado · Sem fricção",
+      "install.tag.portable": "Portátil",
+      "install.clickonce.title": "Instalação ClickOnce",
+      "install.clickonce.lede": 'Instalação em um clique com auto-atualizações silenciosas em cada arranque. <strong style="color:#dde8dd;">.NET 10 Runtime incluído</strong> se ainda não estiver instalado.',
+      "install.clickonce.cta": "⬇ &nbsp;Instalar via ClickOnce",
+      "install.clickonce.note": "Atualizações aplicadas automaticamente em cada arranque.",
+      "install.standalone.title": "Executável standalone",
+      "install.standalone.lede": "Um .exe pequeno e portátil — copie e execute em qualquer lado. Funciona em qualquer browser. Sem instalador, sem privilégios de administrador.",
+      "install.standalone.cta": "⬇ &nbsp;Descarregar .exe",
+      "install.standalone.note": "Verifica o GitHub no arranque e oferece atualização em um clique.",
+      "install.standalone.runtime.title": "⚙ &nbsp;Requer .NET 10 Desktop Runtime",
+      "install.standalone.runtime.body": "A versão standalone é dependente do framework. Se o runtime não estiver instalado, o Windows mostra um erro genérico ao arrancar a aplicação.",
+      "install.standalone.runtime.cta": "⬇ Descarregar .NET 10 Desktop Runtime →",
+      "req.anybrowser": "Qualquer browser",
+
+      "footer.poweredBy": "Desenvolvido por NuneX & a expertise dos mBrothers",
+      "footer.install": "Instalar"
+    },
+
+    de: {
+      "hero.tagline": 'Ein professioneller Log-Viewer für Windows — Echtzeit-Tailing, leistungsstarke Highlight-Regeln, geteilter Bereichsvergleich und Unterstützung für 12 Sprachen. Kostenlos, schlank, immer aktuell.<br><span style="color:var(--accent3); font-size:.85em;">Verfügbar als ClickOnce-Installation oder eigenständige .exe.</span>',
+      "hero.badge.languages": "12 Sprachen",
+      "hero.badge.autoupdate": "Auto-Update",
+      "hero.badge.free": "Kostenlos",
+      "hero.cta.clickonce": "⬇ &nbsp;Über ClickOnce installieren",
+      "hero.cta.standalone": "⬇ &nbsp;Eigenständige .exe",
+      "hero.runtimeNote": 'ClickOnce enthält die .NET 10 Runtime · Standalone benötigt <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a> vorinstalliert',
+      "hero.chromeWarning": "<strong>⚠ Chrome unterstützt die ClickOnce-Installation nicht</strong>Bitte öffnen Sie diese Seite in <strong>Microsoft Edge</strong>, um die Anwendung zu installieren.",
+      "hero.scrollHint": "↓ &nbsp; mehr erfahren",
+
+      "features.label": "Funktionen",
+      "features.title": "Alles, was Sie brauchen, um Ihre Logs zu meistern",
+      "features.sub": "Entwickelt für Entwickler und Systemadministratoren, die viel Zeit mit Log-Dateien verbringen.",
+
+      "feat.tail.title": "Echtzeit-Tail",
+      "feat.tail.body": "Folgt Log-Dateien beim Wachsen. Pausiert automatisch, wenn Sie zurückblättern, und nimmt nach konfigurierbarer Inaktivität wieder auf.",
+      "feat.highlight.title": "Highlight-Regeln",
+      "feat.highlight.body": "Erstellen Sie regex-basierte Farbregeln mit vollem HSV-Farbwähler. Heben Sie die ganze Zeile oder nur das passende Wort hervor. Live-Vorschau beim Tippen.",
+      "feat.split.title": "Geteilte Ansicht",
+      "feat.split.body": "Öffnen Sie zwei Log-Dateien nebeneinander für gleichzeitige Überwachung. Jeder Bereich hat unabhängiges Tailing, Suche und Highlights.",
+      "feat.search.title": "Suchen & Filtern",
+      "feat.search.body": "Volltextsuche mit Groß-/Kleinschreibung-Toggle, Filter-Modus zum Anzeigen nur passender Zeilen und Tastaturnavigation zwischen Treffern.",
+      "feat.preview.title": "Kontextvorschau",
+      "feat.preview.body": "Beim Filtern: Maus über eine passende Zeile bewegen, um den Kontext in einem schwebenden Fenster zu sehen — konfigurierbare Anzahl von Zeilen davor und danach, einschließlich vom Filter ausgeblendeter Zeilen. Position wird zwischen Sitzungen gespeichert.",
+      "feat.dirs.title": "Verzeichnis-Browser",
+      "feat.dirs.body": "Fügen Sie ganze Ordner hinzu und überwachen Sie sie auf neue Dateien. Ungelesen-Markierungen erscheinen bei Aktualisierungen außerhalb der aktuellen Ansicht.",
+      "feat.sep.title": "Benannte Trennlinien",
+      "feat.sep.body": "Organisieren Sie Ihre Dateiliste mit benannten Trennern und Drag-and-Drop-Sortierung. Inline-Bearbeitung per Doppelklick.",
+      "feat.copy.title": "Mehrzeilen-Kopie",
+      "feat.copy.body": "Wählen Sie mehrere Log-Zeilen auf einmal aus und kopieren Sie sie unter Beibehaltung des Originalformats. Funktioniert mit Tastatur und Maus.",
+      "feat.numbers.title": "Zeilennummern",
+      "feat.numbers.body": "Umschaltbare Zeilennummern, konfigurierbare Schriftgrößen, Zeilenhöhe und Zeilenumbruch. Alle Einstellungen bleiben über Sitzungen erhalten.",
+      "feat.update.title": "Auto-Update",
+      "feat.update.body": "ClickOnce aktualisiert sich bei jedem Start. Die eigenständige .exe prüft GitHub beim Start und bietet ein In-Place-Update mit einem Klick.",
+
+      "loc.label": "Lokalisierung",
+      "loc.title": "12 Sprachen, vollständig lokalisiert",
+      "loc.sub": "Jedes Label, jeder Button, jeder Tooltip und jede Nachricht ist übersetzt. Sprache sofort wechseln, ohne Neustart.",
+      "lang.pt": "Portugiesisch", "lang.enuk": "Englisch (UK)", "lang.enus": "Englisch (US)",
+      "lang.es": "Spanisch", "lang.fr": "Französisch", "lang.it": "Italienisch", "lang.de": "Deutsch",
+      "lang.hi": "Hindi", "lang.ar": "Arabisch", "lang.ptbr": "Portugiesisch (BR)",
+      "lang.zh": "Chinesisch", "lang.ru": "Russisch",
+
+      "howto.label": "Erste Schritte",
+      "howto.title": "In Minuten einsatzbereit",
+      "howto.sub": "Keine Konfigurationsdateien, kein komplexes Setup. Einfach installieren und Logs öffnen.",
+      "step1.title": "Über ClickOnce installieren oder Standalone herunterladen",
+      "step1.body": 'ClickOnce (in Microsoft Edge öffnen) bietet stille Auto-Updates und inkludiert die .NET 10 Runtime, falls sie fehlt. Die eigenständige .exe ist eine kleine portable Datei — überall hinkopieren und ausführen; benötigt die installierte <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>.',
+      "step2.title": "Dateien oder Ordner hinzufügen",
+      "step2.body": "Ziehen Sie Log-Dateien direkt auf die App oder verwenden Sie den Verzeichnis-Browser, um ganze Ordner zu überwachen und Logs automatisch zu finden.",
+      "step3.title": "Highlight-Regeln einrichten",
+      "step3.body": "Öffnen Sie den Highlight-Regeln-Editor und erstellen Sie Regex-Muster für ERROR, WARN, INFO und beliebige eigene Muster. Sehen Sie sie sofort live angewendet.",
+      "step4.title": "Automatisch aktuell bleiben",
+      "step4.body": "ClickOnce-Installationen prüfen bei jedem Start. Der Standalone-Build fragt GitHub beim Start ab; bei neuer Version erhalten Sie ein In-Place-Upgrade mit einem Klick — kein Installer nötig.",
+
+      "install.label": "Installation",
+      "install.title": "Wählen Sie Ihre bevorzugte Installationsmethode",
+      "install.sub": "Zwei Optionen — beide mit Auto-Update. ClickOnce für null Aufwand, oder die Standalone-.exe für eine portable Datei (mit installierter .NET 10 Runtime).",
+      "install.tag.recommended": "Empfohlen · Reibungslos",
+      "install.tag.portable": "Portabel",
+      "install.clickonce.title": "ClickOnce-Installation",
+      "install.clickonce.lede": 'Ein-Klick-Installation mit stillen automatischen Updates bei jedem Start. <strong style="color:#dde8dd;">.NET 10 Runtime inklusive</strong>, falls noch nicht installiert.',
+      "install.clickonce.cta": "⬇ &nbsp;Über ClickOnce installieren",
+      "install.clickonce.note": "Updates werden automatisch bei jedem Start angewendet.",
+      "install.standalone.title": "Eigenständige Executable",
+      "install.standalone.lede": "Eine kleine portable .exe — überall hinkopieren und ausführen. Funktioniert in jedem Browser. Kein Installer, keine Admin-Rechte.",
+      "install.standalone.cta": "⬇ &nbsp;.exe herunterladen",
+      "install.standalone.note": "Prüft GitHub beim Start und bietet In-Place-Updates mit einem Klick.",
+      "install.standalone.runtime.title": "⚙ &nbsp;Benötigt .NET 10 Desktop Runtime",
+      "install.standalone.runtime.body": "Der Standalone-Build ist framework-abhängig. Ist die Runtime nicht installiert, zeigt Windows beim Start einen generischen Fehler an.",
+      "install.standalone.runtime.cta": "⬇ .NET 10 Desktop Runtime herunterladen →",
+      "req.anybrowser": "Jeder Browser",
+
+      "footer.poweredBy": "Powered by NuneX & die mBrothers-Expertise",
+      "footer.install": "Installieren"
+    },
+
+    zh: {
+      "hero.tagline": '专业级 Windows 日志查看器 — 实时跟踪、强大的高亮规则、分屏对比和 12 种语言支持。免费、轻量、始终最新。<br><span style="color:var(--accent3); font-size:.85em;">提供 ClickOnce 安装或独立 .exe 版本。</span>',
+      "hero.badge.languages": "12 种语言",
+      "hero.badge.autoupdate": "自动更新",
+      "hero.badge.free": "免费",
+      "hero.cta.clickonce": "⬇ &nbsp;通过 ClickOnce 安装",
+      "hero.cta.standalone": "⬇ &nbsp;独立 .exe",
+      "hero.runtimeNote": 'ClickOnce 已包含 .NET 10 运行时 · 独立版需要预先安装 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 桌面运行时</a>',
+      "hero.chromeWarning": "<strong>⚠ Chrome 不支持 ClickOnce 安装</strong>请在 <strong>Microsoft Edge</strong> 中打开此页面以安装应用程序。",
+      "hero.scrollHint": "↓ &nbsp; 了解更多",
+
+      "features.label": "功能特性",
+      "features.title": "驾驭日志所需的一切",
+      "features.sub": "为花费大量时间阅读日志文件的开发者和系统管理员而设计。",
+
+      "feat.tail.title": "实时跟踪",
+      "feat.tail.body": "随日志文件的增长持续跟踪。当您向上滚动查看时自动暂停,并在可配置的不活动超时后恢复。",
+      "feat.highlight.title": "高亮规则",
+      "feat.highlight.body": "使用完整的 HSV 颜色选择器创建基于正则的颜色规则。高亮整行或仅匹配的单词。键入时实时预览。",
+      "feat.split.title": "分屏视图",
+      "feat.split.body": "并排打开两个日志文件以同时监控。每个面板拥有独立的跟踪、搜索和高亮状态。",
+      "feat.search.title": "搜索与筛选",
+      "feat.search.body": "全文搜索支持区分大小写、筛选模式仅显示匹配行,以及在出现处之间的键盘导航。",
+      "feat.preview.title": "上下文预览",
+      "feat.preview.body": "筛选时,将鼠标悬停在任何匹配行上,在浮动窗口中查看周围上下文 — 匹配前后可配置的行数,包括被筛选器隐藏的行。位置在各次会话间保留。",
+      "feat.dirs.title": "目录浏览器",
+      "feat.dirs.body": "添加整个文件夹并监视新文件。当文件在当前未打开时被更新,会出现未读标记。",
+      "feat.sep.title": "命名分隔符",
+      "feat.sep.body": "用命名分隔符整理文件列表,支持拖放排序。双击进行内联编辑。",
+      "feat.copy.title": "多行复制",
+      "feat.copy.body": "一次选择并复制多个日志行,保留原始格式。键盘和鼠标选择无缝协作。",
+      "feat.numbers.title": "行号",
+      "feat.numbers.body": "可切换的行号、可配置的字体大小、行高和换行。所有设置在各次会话间持久化。",
+      "feat.update.title": "自动更新",
+      "feat.update.body": "ClickOnce 在每次启动时静默更新。独立 .exe 在启动时检查 GitHub 并提供一键就地更新。",
+
+      "loc.label": "本地化",
+      "loc.title": "12 种语言,完全本地化",
+      "loc.sub": "每个标签、按钮、提示和消息都已翻译。即时切换语言,无需重启。",
+      "lang.pt": "葡萄牙语", "lang.enuk": "英语(英国)", "lang.enus": "英语(美国)",
+      "lang.es": "西班牙语", "lang.fr": "法语", "lang.it": "意大利语", "lang.de": "德语",
+      "lang.hi": "印地语", "lang.ar": "阿拉伯语", "lang.ptbr": "葡萄牙语(巴西)",
+      "lang.zh": "中文", "lang.ru": "俄语",
+
+      "howto.label": "快速开始",
+      "howto.title": "几分钟内即可运行",
+      "howto.sub": "无需配置文件,无需复杂设置。安装并打开您的日志即可。",
+      "step1.title": "通过 ClickOnce 安装或下载独立版",
+      "step1.body": 'ClickOnce(在 Microsoft Edge 中打开)提供静默自动更新,并在缺失时打包 .NET 10 运行时。独立 .exe 是一个小型可移植文件 — 复制到任意位置即可运行;需要安装 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 桌面运行时</a>。',
+      "step2.title": "添加文件或文件夹",
+      "step2.body": "将日志文件直接拖放到应用程序中,或使用目录浏览器监视整个文件夹并自动发现日志。",
+      "step3.title": "设置高亮规则",
+      "step3.body": "打开高亮规则编辑器,为 ERROR、WARN、INFO 和任何自定义模式创建正则表达式模式。立即查看实时应用。",
+      "step4.title": "保持自动更新",
+      "step4.body": "ClickOnce 安装在每次启动时检查。独立版本在启动时查询 GitHub;如果有新版本,可一键就地升级 — 无需安装程序。",
+
+      "install.label": "安装",
+      "install.title": "选择您喜欢的安装方式",
+      "install.sub": "两个发布选项 — 都支持自动更新。选择 ClickOnce 零烦恼,或选择独立 .exe 如果您需要可移植文件(并已安装 .NET 10 运行时)。",
+      "install.tag.recommended": "推荐 · 零摩擦",
+      "install.tag.portable": "便携",
+      "install.clickonce.title": "ClickOnce 安装",
+      "install.clickonce.lede": '一键安装,每次启动都有静默自动更新。<strong style="color:#dde8dd;">.NET 10 运行时已打包</strong>(若尚未安装)。',
+      "install.clickonce.cta": "⬇ &nbsp;通过 ClickOnce 安装",
+      "install.clickonce.note": "更新在每次启动时自动应用。",
+      "install.standalone.title": "独立可执行文件",
+      "install.standalone.lede": "一个小型便携 .exe — 复制到任意位置即可运行。可在任何浏览器中工作。无需安装程序,无需管理员权限。",
+      "install.standalone.cta": "⬇ &nbsp;下载 .exe",
+      "install.standalone.note": "在启动时检查 GitHub 并提供一键就地更新。",
+      "install.standalone.runtime.title": "⚙ &nbsp;需要 .NET 10 桌面运行时",
+      "install.standalone.runtime.body": "独立版本依赖框架。如果未安装运行时,Windows 启动应用时会显示通用错误。",
+      "install.standalone.runtime.cta": "⬇ 下载 .NET 10 桌面运行时 →",
+      "req.anybrowser": "任何浏览器",
+
+      "footer.poweredBy": "由 NuneX 和 mBrothers 专业团队提供支持",
+      "footer.install": "安装"
+    }
+  };
+
+  const SUPPORTED = ["pt", "en", "de", "zh"];
+  const STORAGE_KEY = "tal.lang";
+
+  function detectLang() {
+    // 1. localStorage (escolha anterior do utilizador)
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && SUPPORTED.includes(stored)) return stored;
+    // 2. navigator.language ("pt-PT" → "pt")
+    const nav = (navigator.language || "en").toLowerCase().split("-")[0];
+    if (SUPPORTED.includes(nav)) return nav;
+    // 3. fallback
+    return "en";
   }
+
+  function applyLang(code) {
+    const dict = I18N[code] || I18N.en;
+    document.documentElement.lang = code;
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => {
+      const key = el.getAttribute("data-i18n-html");
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    // Atualizar estado activo das bandeiras
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === code);
+    });
+
+    // Re-disparar Chrome warning (caso o innerHTML do .chrome-warning tenha sido reescrito)
+    showChromeWarningIfNeeded();
+  }
+
+  function setLang(code) {
+    if (!SUPPORTED.includes(code)) return;
+    localStorage.setItem(STORAGE_KEY, code);
+    applyLang(code);
+  }
+
+  function showChromeWarningIfNeeded() {
+    const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg/.test(navigator.userAgent);
+    if (isChrome) {
+      const w1 = document.getElementById("chromeWarning");
+      const w2 = document.getElementById("chromeWarning2");
+      if (w1) w1.style.display = "block";
+      if (w2) w2.style.display = "block";
+    }
+  }
+
+  // Wire up flags
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang")));
+  });
+
+  // Apply on first load
+  applyLang(detectLang());
 </script>
 
 </body>
