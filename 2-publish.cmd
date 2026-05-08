@@ -41,6 +41,20 @@ if not exist "%DOCS%" (
         echo [ERRO] Falhou a actualizar o index.html.
         pause & exit /b 1
     )
+
+    rem ── Copiar assets estaticos da pasta docs\ (imagens, ficheiros que
+    rem    o index.html referencia). Permite manter docs\ como fonte unica
+    rem    de verdade para tudo o que e servido pelo GitHub Pages.
+    set "DOCS_DIR=%~dp0..\LogViewer\docs"
+    for %%E in (jpg jpeg png gif svg ico webp) do (
+        for %%F in ("!DOCS_DIR!\*.%%E") do (
+            if exist "%%~F" (
+                copy /Y "%%~F" "%DIST_DIR%" >nul
+                echo       Asset copiado: %%~nxF
+            )
+        )
+    )
+
     echo       OK
 )
 
