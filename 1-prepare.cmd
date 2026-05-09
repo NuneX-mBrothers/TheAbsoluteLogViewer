@@ -118,16 +118,19 @@ echo       OK
 echo [6/6] A copiar index.html e assets para LogViewer-dist\...
 set "DOCS_DIR=%~dp0..\LogViewer\docs"
 set "DOCS_INDEX=%DOCS_DIR%\index.html"
+set "DIST_INDEX=%~dp0index.html"
 
 if not exist "%DOCS_INDEX%" (
     echo       [AVISO] %DOCS_INDEX% nao encontrado - ignorado.
 ) else (
-    copy /Y "%DOCS_INDEX%" "%~dp0index.html" >nul
+    rem Copiar substituindo __VERSION__ pela versao actual.
+    rem Usa PowerShell para replace fiavel (tolera UTF-8/BOM/qualquer charset).
+    powershell -NoProfile -Command "(Get-Content -Raw '%DOCS_INDEX%') -replace '__VERSION__', '%NEWVER%' | Set-Content -NoNewline '%DIST_INDEX%'"
     if errorlevel 1 (
-        echo [ERRO] Falhou a copiar index.html.
+        echo [ERRO] Falhou a copiar/substituir index.html.
         pause & exit /b 1
     )
-    echo       Copiado: index.html
+    echo       Copiado e versao injectada: index.html ^(v%NEWVER%^)
 )
 
 :: Copiar assets graficos (jpg, png, ico, etc.) que o index.html possa
