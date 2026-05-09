@@ -1,0 +1,20 @@
+# ════════════════════════════════════════════════════════════════════
+# LogViewer-dist  --  ficheiros que NÃO vão para o repo
+# ════════════════════════════════════════════════════════════════════
+# Os binários de Standalone e Portable vivem em GitHub Releases.
+# O repo só contém: index.html, manifests ClickOnce, version.json,
+# scripts (1-prepare.cmd, 2-publish.cmd) e assets gráficos.
+
+# Standalone — apenas version.json fica no repo
+StandAlone/LogViewer.exe
+StandAlone/LogViewer.zip
+StandAlone/*.pdb
+
+# Portable — tudo vive em Releases
+Portable/LogViewer.exe
+Portable/LogViewerPortable.exe
+Portable/LogViewerPortable.zip
+Portable/*.pdb
+
+# Lixo geral
+*.tmp

@@ -179,6 +179,64 @@
       box-shadow: 0 0 24px rgba(0,230,118,.2);
     }
 
+    /* CTA com 3 colunas — cada coluna tem botão principal + microlinks/tagline */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 1.4rem;
+      max-width: 880px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 720px) {
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+    .cta-col {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: .55rem;
+    }
+    .cta-col .btn-install,
+    .cta-col .btn-install-alt {
+      width: 100%;
+      justify-content: center;
+      padding: .85rem 1.2rem;
+    }
+    .cta-tagline {
+      font-size: .78rem; color: var(--muted); line-height: 1.4;
+      min-height: 2.2em;
+    }
+    .cta-tagline .recommended {
+      color: var(--accent); font-weight: 700;
+      display: block; margin-bottom: .15rem;
+    }
+    .cta-microlink {
+      font-size: .72rem; color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,.2);
+      padding-bottom: 1px;
+      transition: color .15s, border-color .15s;
+    }
+    .cta-microlink:hover {
+      color: var(--accent3);
+      border-color: var(--accent3);
+    }
+    .cta-microlink + .cta-microlink {
+      margin-top: -.15rem;
+    }
+    .cta-runtime-link {
+      font-size: .72rem; color: var(--accent3);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(0,176,255,.3);
+      padding-bottom: 1px;
+    }
+    .cta-runtime-link:hover { border-color: var(--accent3); }
+    .cta-smartscreen {
+      font-size: .68rem; color: var(--muted);
+      font-style: italic;
+      max-width: 18em;
+      line-height: 1.35;
+    }
+
     .chrome-warning {
       display: none;
       background: var(--warn-bg);
@@ -320,9 +378,9 @@
     }
     .install-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       align-items: stretch;
     }
@@ -486,7 +544,7 @@
   </p>
 
   <div class="badge-row">
-    <span class="badge badge-green">v1.5.0</span>
+    <span class="badge badge-green">v1.3.1</span>
     <span class="badge badge-blue">.NET 10 · WPF</span>
     <span class="badge badge-yellow">Windows 10/11</span>
     <span class="badge badge-green" data-i18n="hero.badge.languages">12 Languages</span>
@@ -494,19 +552,35 @@
     <span class="badge badge-blue" data-i18n="hero.badge.free">Free</span>
   </div>
 
-  <div class="cta-row">
-    <a class="btn-install" href="LogViewer.application" data-i18n-html="hero.cta.clickonce">⬇ &nbsp;Install via ClickOnce</a>
-    <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download data-i18n-html="hero.cta.standalone">⬇ &nbsp;Standalone .exe</a>
-  </div>
+  <div class="cta-grid">
+    <!-- Col 1: ClickOnce (recommended) -->
+    <div class="cta-col">
+      <a class="btn-install" href="LogViewer.application" data-i18n-html="hero.cta.clickonce">⬇ &nbsp;Install via ClickOnce</a>
+      <p class="cta-tagline" data-i18n-html="hero.cta.clickonce.tag">
+        <span class="recommended">★ Recommended</span>
+        Auto-updates · 1-click install
+      </p>
+    </div>
 
-  <p style="text-align:center; font-size:.78rem; color:var(--muted); margin-top:.85rem; max-width:560px; margin-left:auto; margin-right:auto;"
-     data-i18n-html="hero.runtimeNote">
-    ClickOnce includes the .NET 10 Runtime · Standalone requires
-    <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore"
-       target="_blank" rel="noopener"
-       style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a>
-    pre-installed
-  </p>
+    <!-- Col 2: Standalone (.exe + .zip) -->
+    <div class="cta-col">
+      <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download data-i18n-html="hero.cta.standalone">⬇ &nbsp;Standalone .exe</a>
+      <p class="cta-tagline" data-i18n="hero.cta.standalone.tag">Small file · Requires .NET 10</p>
+      <a class="cta-microlink" href="StandAlone/LogViewer.zip" download data-i18n="hero.cta.standalone.zip">⬇ also as .zip</a>
+      <a class="cta-runtime-link" href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore"
+         target="_blank" rel="noopener" data-i18n="hero.cta.standalone.runtime">⬇ Get .NET 10 Runtime</a>
+    </div>
+
+    <!-- Col 3: Portable (.exe in Releases + .zip in repo) -->
+    <div class="cta-col">
+      <a class="btn-install-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe" download data-i18n-html="hero.cta.portable">⬇ &nbsp;Portable .exe</a>
+      <p class="cta-tagline" data-i18n="hero.cta.portable.tag">No install · Self-contained</p>
+      <a class="cta-microlink" href="Portable/LogViewerPortable.zip" download data-i18n="hero.cta.portable.zip">⬇ also as .zip</a>
+      <p class="cta-smartscreen" data-i18n="hero.cta.portable.smartscreen">
+        On first run, Windows may show a SmartScreen warning — click "More info" → "Run anyway".
+      </p>
+    </div>
+  </div>
 
   <div class="chrome-warning" id="chromeWarning" data-i18n-html="hero.chromeWarning">
     <strong>⚠ Chrome is not supported for ClickOnce installation</strong>
@@ -598,7 +672,7 @@
       <div class="feat">
         <div class="feat-icon">🔄</div>
         <h3 data-i18n="feat.update.title">Auto-update</h3>
-        <p data-i18n="feat.update.body">ClickOnce updates silently on every launch. The standalone .exe checks GitHub on startup and offers a one-click in-place update.</p>
+        <p data-i18n="feat.update.body">ClickOnce checks for updates on every launch and applies them automatically. The standalone .exe checks online for new versions on startup and offers a one-click in-place update.</p>
       </div>
     </div>
   </div>
@@ -640,7 +714,7 @@
         <div class="step-num">1</div>
         <div class="step-body">
           <h4 data-i18n="step1.title">Install via ClickOnce or download standalone</h4>
-          <p data-i18n-html="step1.body">ClickOnce (open in Microsoft Edge) gives you silent auto-updates and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.</p>
+          <p data-i18n-html="step1.body">ClickOnce (open in Microsoft Edge) keeps the app up to date with one-click updates on every launch and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.</p>
         </div>
       </div>
       <div class="step">
@@ -661,7 +735,7 @@
         <div class="step-num">4</div>
         <div class="step-body">
           <h4 data-i18n="step4.title">Stay updated automatically</h4>
-          <p data-i18n="step4.body">ClickOnce installs check on every launch. The standalone build queries GitHub on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.</p>
+          <p data-i18n="step4.body">ClickOnce installations check for updates on every launch. The standalone build checks online on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.</p>
         </div>
       </div>
     </div>
@@ -674,7 +748,7 @@
     <div style="text-align:center; margin-bottom:2.5rem;">
       <div class="section-label" style="text-align:center;" data-i18n="install.label">Install</div>
       <h2 class="section-title" data-i18n="install.title">Pick your preferred install method</h2>
-      <p class="section-sub" style="margin: 0 auto;" data-i18n="install.sub">Two delivery options — both auto-update. Choose ClickOnce for zero hassle, or the standalone .exe if you need a portable file (and have .NET 10 Runtime installed).</p>
+      <p class="section-sub" style="margin: 0 auto;" data-i18n="install.sub">Three delivery options. Choose ClickOnce for zero hassle, the Standalone .exe if you have .NET 10 installed, or the Portable .exe to run from anywhere with no setup.</p>
     </div>
 
     <div class="install-grid">
@@ -685,7 +759,7 @@
         <div style="font-size:2.25rem; margin-bottom:.5rem;">⬇</div>
         <h3 data-i18n="install.clickonce.title">ClickOnce install</h3>
         <p class="lede" data-i18n-html="install.clickonce.lede">
-          One-click install with silent automatic updates on every launch.
+          One-click install. Checks for new versions on every launch and applies them automatically.
           <strong style="color:#dde8dd;">.NET 10 runtime bundled</strong> if not already installed.
         </p>
 
@@ -705,13 +779,13 @@
         </div>
 
         <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;" data-i18n="install.clickonce.note">
-          Updates apply automatically on each launch.
+          Checks for updates and applies them on launch.
         </p>
       </div>
 
-      <!-- ── Standalone ──────────────────────────────────────────────── -->
+      <!-- ── Standalone (.exe + .zip, runtime externo) ───────────────── -->
       <div class="install-card">
-        <span class="install-tag install-tag-alt" data-i18n="install.tag.portable">Portable</span>
+        <span class="install-tag install-tag-alt" data-i18n="install.tag.standalone">Standalone</span>
         <div style="font-size:2.25rem; margin-bottom:.5rem;">📦</div>
         <h3 data-i18n="install.standalone.title">Standalone executable</h3>
         <p class="lede" data-i18n="install.standalone.lede">
@@ -722,6 +796,7 @@
         <a class="btn-install-alt" href="StandAlone/LogViewer.exe" download data-i18n-html="install.standalone.cta">
           ⬇ &nbsp;Download .exe
         </a>
+        <a class="cta-microlink" style="margin-top:.6rem;" href="StandAlone/LogViewer.zip" download data-i18n="install.standalone.zip">⬇ also as .zip</a>
 
         <div class="req-list">
           <span class="req">Windows 10 / 11</span>
@@ -753,7 +828,48 @@
         </div>
 
         <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;" data-i18n="install.standalone.note">
-          Checks GitHub on startup and offers one-click in-place updates.
+          Checks online for new versions on startup and offers one-click in-place updates.
+        </p>
+      </div>
+
+      <!-- ── Portable (.exe via Releases, .zip via repo, .NET 10 embed) ─ -->
+      <div class="install-card">
+        <span class="install-tag install-tag-alt" data-i18n="install.tag.portable">Portable</span>
+        <div style="font-size:2.25rem; margin-bottom:.5rem;">🎒</div>
+        <h3 data-i18n="install.portable.title">Portable executable</h3>
+        <p class="lede" data-i18n="install.portable.lede">
+          Self-contained .exe with .NET 10 runtime embedded.
+          Drop it on a USB stick and run on any Windows machine — no setup, no admin rights, no runtime needed.
+        </p>
+
+        <a class="btn-install-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe" download data-i18n-html="install.portable.cta">
+          ⬇ &nbsp;Download .exe
+        </a>
+        <a class="cta-microlink" style="margin-top:.6rem;" href="Portable/LogViewerPortable.zip" download data-i18n="install.portable.zip">⬇ also as .zip</a>
+
+        <div class="req-list">
+          <span class="req">Windows 10 / 11</span>
+          <span class="req" data-i18n="req.anybrowser">Any browser</span>
+          <span class="req">x64</span>
+          <span class="req">~160&nbsp;MB</span>
+        </div>
+
+        <!-- Aviso SmartScreen -->
+        <div style="margin-top:1.25rem; padding:.85rem 1rem;
+                    background: rgba(255,176,0,.07);
+                    border: 1px solid rgba(255,176,0,.3);
+                    border-radius: 8px;
+                    text-align: left;">
+          <p style="font-size:.78rem; font-weight:700; color:var(--warn-bdr); margin:0 0 .35rem 0;" data-i18n="install.portable.smartscreen.title">
+            ⚠ &nbsp;First-run SmartScreen warning
+          </p>
+          <p style="font-size:.72rem; color:var(--muted); margin:0; line-height:1.5;" data-i18n="install.portable.smartscreen.body">
+            On the first launch, Windows may show a SmartScreen prompt. Click "More info" → "Run anyway" to proceed. This happens because the executable is not yet code-signed.
+          </p>
+        </div>
+
+        <p style="font-size:.72rem; color:var(--muted); margin-top:1rem;" data-i18n="install.portable.note">
+          No runtime installation required — everything is bundled.
         </p>
       </div>
 
@@ -786,8 +902,15 @@
       "hero.badge.autoupdate": "Auto-update",
       "hero.badge.free": "Free",
       "hero.cta.clickonce": "⬇ &nbsp;Install via ClickOnce",
+      "hero.cta.clickonce.tag": '<span class="recommended">★ Recommended</span>Auto-updates · 1-click install',
       "hero.cta.standalone": "⬇ &nbsp;Standalone .exe",
-      "hero.runtimeNote": 'ClickOnce includes the .NET 10 Runtime · Standalone requires <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a> pre-installed',
+      "hero.cta.standalone.tag": "Small file · Requires .NET 10",
+      "hero.cta.standalone.zip": "⬇ also as .zip",
+      "hero.cta.standalone.runtime": "⬇ Get .NET 10 Runtime",
+      "hero.cta.portable": "⬇ &nbsp;Portable .exe",
+      "hero.cta.portable.tag": "No install · Self-contained",
+      "hero.cta.portable.zip": "⬇ also as .zip",
+      "hero.cta.portable.smartscreen": 'On first run, Windows may show a SmartScreen warning — click "More info" → "Run anyway".',
       "hero.chromeWarning": "<strong>⚠ Chrome is not supported for ClickOnce installation</strong>Please open this page in <strong>Microsoft Edge</strong> to install the application.",
       "hero.scrollHint": "↓ &nbsp; learn more",
 
@@ -814,7 +937,7 @@
       "feat.numbers.title": "Line Numbers",
       "feat.numbers.body": "Toggleable line numbers, configurable font sizes, line height and word wrap. All settings persist across sessions.",
       "feat.update.title": "Auto-update",
-      "feat.update.body": "ClickOnce updates silently on every launch. The standalone .exe checks GitHub on startup and offers a one-click in-place update.",
+      "feat.update.body": "ClickOnce checks for updates on every launch and applies them automatically. The standalone .exe checks online for new versions on startup and offers a one-click in-place update.",
 
       "loc.label": "Localisation",
       "loc.title": "12 languages, fully localised",
@@ -828,30 +951,39 @@
       "howto.title": "Up and running in minutes",
       "howto.sub": "No configuration files, no complex setup. Just install and open your logs.",
       "step1.title": "Install via ClickOnce or download standalone",
-      "step1.body": 'ClickOnce (open in Microsoft Edge) gives you silent auto-updates and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.',
+      "step1.body": 'ClickOnce (open in Microsoft Edge) keeps the app up to date with one-click updates on every launch and bundles the .NET 10 Runtime if missing. The standalone .exe is a small portable file — copy anywhere and run; it requires the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> to be installed.',
       "step2.title": "Add files or folders",
       "step2.body": "Drag & drop log files directly onto the app, or use the directory browser to watch entire folders and discover logs automatically.",
       "step3.title": "Set up highlight rules",
       "step3.body": "Open the Highlight Rules editor and create regex patterns for ERROR, WARN, INFO and any custom patterns you need. See them applied live immediately.",
       "step4.title": "Stay updated automatically",
-      "step4.body": "ClickOnce installs check on every launch. The standalone build queries GitHub on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.",
+      "step4.body": "ClickOnce installations check for updates on every launch. The standalone build checks online on startup; if a newer version is available, you get a one-click in-place upgrade — no installer needed.",
 
       "install.label": "Install",
       "install.title": "Pick your preferred install method",
-      "install.sub": "Two delivery options — both auto-update. Choose ClickOnce for zero hassle, or the standalone .exe if you need a portable file (and have .NET 10 Runtime installed).",
+      "install.sub": "Three delivery options. Choose ClickOnce for zero hassle, the Standalone .exe if you have .NET 10 installed, or the Portable .exe to run from anywhere with no setup.",
       "install.tag.recommended": "Recommended · Zero-friction",
+      "install.tag.standalone": "Standalone",
       "install.tag.portable": "Portable",
       "install.clickonce.title": "ClickOnce install",
-      "install.clickonce.lede": 'One-click install with silent automatic updates on every launch. <strong style="color:#dde8dd;">.NET 10 runtime bundled</strong> if not already installed.',
+      "install.clickonce.lede": 'One-click install. Checks for new versions on every launch and applies them automatically. <strong style="color:#dde8dd;">.NET 10 runtime bundled</strong> if not already installed.',
       "install.clickonce.cta": "⬇ &nbsp;Install via ClickOnce",
-      "install.clickonce.note": "Updates apply automatically on each launch.",
+      "install.clickonce.note": "Checks for updates and applies them on launch.",
       "install.standalone.title": "Standalone executable",
       "install.standalone.lede": "A small portable .exe — copy anywhere, run from anywhere. Works in any browser. No installer, no admin rights.",
       "install.standalone.cta": "⬇ &nbsp;Download .exe",
-      "install.standalone.note": "Checks GitHub on startup and offers one-click in-place updates.",
+      "install.standalone.note": "Checks online for new versions on startup and offers one-click in-place updates.",
       "install.standalone.runtime.title": "⚙ &nbsp;Requires .NET 10 Desktop Runtime",
       "install.standalone.runtime.body": "The standalone build is framework-dependent. If the runtime is not installed, Windows will show a generic error when you launch the app.",
       "install.standalone.runtime.cta": "⬇ Download .NET 10 Desktop Runtime →",
+      "install.standalone.zip": "⬇ also as .zip",
+      "install.portable.title": "Portable executable",
+      "install.portable.lede": "Self-contained .exe with .NET 10 runtime embedded. Drop it on a USB stick and run on any Windows machine — no setup, no admin rights, no runtime needed.",
+      "install.portable.cta": "⬇ &nbsp;Download .exe",
+      "install.portable.zip": "⬇ also as .zip",
+      "install.portable.smartscreen.title": "⚠ &nbsp;First-run SmartScreen warning",
+      "install.portable.smartscreen.body": 'On the first launch, Windows may show a SmartScreen prompt. Click "More info" → "Run anyway" to proceed. This happens because the executable is not yet code-signed.',
+      "install.portable.note": "No runtime installation required — everything is bundled.",
       "req.anybrowser": "Any browser",
 
       "footer.poweredBy": "Powered by NuneX & the mBrothers expertize",
@@ -864,8 +996,15 @@
       "hero.badge.autoupdate": "Auto-atualização",
       "hero.badge.free": "Gratuito",
       "hero.cta.clickonce": "⬇ &nbsp;Instalar via ClickOnce",
+      "hero.cta.clickonce.tag": '<span class="recommended">★ Recomendado</span>Auto-atualização · Instalação em 1 clique',
       "hero.cta.standalone": "⬇ &nbsp;.exe Standalone",
-      "hero.runtimeNote": 'ClickOnce inclui o .NET 10 Runtime · Standalone requer <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a> pré-instalado',
+      "hero.cta.standalone.tag": "Ficheiro pequeno · Requer .NET 10",
+      "hero.cta.standalone.zip": "⬇ também em .zip",
+      "hero.cta.standalone.runtime": "⬇ Obter o .NET 10 Runtime",
+      "hero.cta.portable": "⬇ &nbsp;.exe Portátil",
+      "hero.cta.portable.tag": "Sem instalação · Autocontido",
+      "hero.cta.portable.zip": "⬇ também em .zip",
+      "hero.cta.portable.smartscreen": 'No primeiro arranque, o Windows pode mostrar um aviso SmartScreen — clique em "Mais informações" → "Executar mesmo assim".',
       "hero.chromeWarning": "<strong>⚠ O Chrome não suporta a instalação ClickOnce</strong>Abra esta página no <strong>Microsoft Edge</strong> para instalar a aplicação.",
       "hero.scrollHint": "↓ &nbsp; saber mais",
 
@@ -892,7 +1031,7 @@
       "feat.numbers.title": "Números de linha",
       "feat.numbers.body": "Números de linha alternáveis, tamanhos de fonte configuráveis, altura de linha e quebra de linha. Tudo persiste entre sessões.",
       "feat.update.title": "Auto-atualização",
-      "feat.update.body": "ClickOnce atualiza silenciosamente em cada arranque. O .exe standalone consulta o GitHub no arranque e oferece atualização em um clique.",
+      "feat.update.body": "ClickOnce verifica novas versões em cada arranque e aplica-as automaticamente. O .exe standalone verifica online se há uma nova versão no arranque e oferece atualização em um clique.",
 
       "loc.label": "Localização",
       "loc.title": "12 línguas, totalmente traduzido",
@@ -906,30 +1045,39 @@
       "howto.title": "A funcionar em minutos",
       "howto.sub": "Sem ficheiros de configuração, sem instalações complexas. Instale e abra os seus logs.",
       "step1.title": "Instale via ClickOnce ou descarregue standalone",
-      "step1.body": 'ClickOnce (abra no Microsoft Edge) dá-lhe auto-atualizações silenciosas e inclui o .NET 10 Runtime se faltar. O .exe standalone é um ficheiro pequeno e portátil — copie e execute; requer o <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> instalado.',
+      "step1.body": 'ClickOnce (abra no Microsoft Edge) mantém a aplicação atualizada com atualizações em um clique em cada arranque e inclui o .NET 10 Runtime se faltar. O .exe standalone é um ficheiro pequeno e portátil — copie e execute; requer o <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> instalado.',
       "step2.title": "Adicione ficheiros ou pastas",
       "step2.body": "Arraste e largue ficheiros de log na aplicação, ou use o navegador de pastas para monitorizar pastas inteiras e descobrir logs automaticamente.",
       "step3.title": "Configure regras de realce",
       "step3.body": "Abra o editor de Regras de Realce e crie padrões regex para ERROR, WARN, INFO e qualquer padrão personalizado. Veja-os aplicados imediatamente.",
       "step4.title": "Mantenha-se atualizado",
-      "step4.body": "Instalações ClickOnce verificam em cada arranque. A versão standalone consulta o GitHub no arranque; se houver versão nova, recebe upgrade em um clique — sem instalador.",
+      "step4.body": "Instalações ClickOnce verificam novas versões em cada arranque. A versão standalone verifica online no arranque; se houver versão nova, recebe upgrade em um clique — sem instalador.",
 
       "install.label": "Instalação",
       "install.title": "Escolha o método de instalação",
-      "install.sub": "Duas opções — ambas com auto-atualização. ClickOnce para zero atrito, ou o .exe standalone se precisa de um ficheiro portátil (com .NET 10 Runtime instalado).",
+      "install.sub": "Três opções de entrega. ClickOnce para zero atrito, .exe Standalone se tiver o .NET 10 instalado, ou .exe Portátil para correr em qualquer lado sem configuração.",
       "install.tag.recommended": "Recomendado · Sem fricção",
+      "install.tag.standalone": "Standalone",
       "install.tag.portable": "Portátil",
       "install.clickonce.title": "Instalação ClickOnce",
-      "install.clickonce.lede": 'Instalação em um clique com auto-atualizações silenciosas em cada arranque. <strong style="color:#dde8dd;">.NET 10 Runtime incluído</strong> se ainda não estiver instalado.',
+      "install.clickonce.lede": 'Instalação em um clique. Verifica novas versões em cada arranque e aplica-as automaticamente. <strong style="color:#dde8dd;">.NET 10 Runtime incluído</strong> se ainda não estiver instalado.',
       "install.clickonce.cta": "⬇ &nbsp;Instalar via ClickOnce",
-      "install.clickonce.note": "Atualizações aplicadas automaticamente em cada arranque.",
+      "install.clickonce.note": "Verifica e aplica atualizações no arranque.",
       "install.standalone.title": "Executável standalone",
       "install.standalone.lede": "Um .exe pequeno e portátil — copie e execute em qualquer lado. Funciona em qualquer browser. Sem instalador, sem privilégios de administrador.",
       "install.standalone.cta": "⬇ &nbsp;Descarregar .exe",
-      "install.standalone.note": "Verifica o GitHub no arranque e oferece atualização em um clique.",
+      "install.standalone.note": "Verifica online se há nova versão no arranque e oferece atualização em um clique.",
       "install.standalone.runtime.title": "⚙ &nbsp;Requer .NET 10 Desktop Runtime",
       "install.standalone.runtime.body": "A versão standalone é dependente do framework. Se o runtime não estiver instalado, o Windows mostra um erro genérico ao arrancar a aplicação.",
       "install.standalone.runtime.cta": "⬇ Descarregar .NET 10 Desktop Runtime →",
+      "install.standalone.zip": "⬇ também em .zip",
+      "install.portable.title": "Executável Portátil",
+      "install.portable.lede": "Ficheiro .exe autocontido com o .NET 10 Runtime embutido. Coloque numa pen e execute em qualquer máquina Windows — sem instalação, sem permissões de administrador, sem precisar de runtime.",
+      "install.portable.cta": "⬇ &nbsp;Descarregar .exe",
+      "install.portable.zip": "⬇ também em .zip",
+      "install.portable.smartscreen.title": "⚠ &nbsp;Aviso SmartScreen no primeiro arranque",
+      "install.portable.smartscreen.body": 'No primeiro arranque, o Windows pode mostrar um aviso SmartScreen. Clique em "Mais informações" → "Executar mesmo assim". Isto acontece porque o executável ainda não está assinado digitalmente.',
+      "install.portable.note": "Não requer instalação de runtime — tudo está incluído.",
       "req.anybrowser": "Qualquer browser",
 
       "footer.poweredBy": "Desenvolvido por NuneX & a expertise dos mBrothers",
@@ -942,8 +1090,15 @@
       "hero.badge.autoupdate": "Auto-Update",
       "hero.badge.free": "Kostenlos",
       "hero.cta.clickonce": "⬇ &nbsp;Über ClickOnce installieren",
+      "hero.cta.clickonce.tag": '<span class="recommended">★ Empfohlen</span>Auto-Updates · Ein-Klick-Installation',
       "hero.cta.standalone": "⬇ &nbsp;Eigenständige .exe",
-      "hero.runtimeNote": 'ClickOnce enthält die .NET 10 Runtime · Standalone benötigt <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 Desktop Runtime</a> vorinstalliert',
+      "hero.cta.standalone.tag": "Kleine Datei · Benötigt .NET 10",
+      "hero.cta.standalone.zip": "⬇ auch als .zip",
+      "hero.cta.standalone.runtime": "⬇ .NET 10 Runtime herunterladen",
+      "hero.cta.portable": "⬇ &nbsp;Portable .exe",
+      "hero.cta.portable.tag": "Keine Installation · Eigenständig",
+      "hero.cta.portable.zip": "⬇ auch als .zip",
+      "hero.cta.portable.smartscreen": 'Beim ersten Start zeigt Windows ggf. eine SmartScreen-Warnung — auf "Weitere Informationen" → "Trotzdem ausführen" klicken.',
       "hero.chromeWarning": "<strong>⚠ Chrome unterstützt die ClickOnce-Installation nicht</strong>Bitte öffnen Sie diese Seite in <strong>Microsoft Edge</strong>, um die Anwendung zu installieren.",
       "hero.scrollHint": "↓ &nbsp; mehr erfahren",
 
@@ -970,7 +1125,7 @@
       "feat.numbers.title": "Zeilennummern",
       "feat.numbers.body": "Umschaltbare Zeilennummern, konfigurierbare Schriftgrößen, Zeilenhöhe und Zeilenumbruch. Alle Einstellungen bleiben über Sitzungen erhalten.",
       "feat.update.title": "Auto-Update",
-      "feat.update.body": "ClickOnce aktualisiert sich bei jedem Start. Die eigenständige .exe prüft GitHub beim Start und bietet ein In-Place-Update mit einem Klick.",
+      "feat.update.body": "ClickOnce prüft bei jedem Start auf neue Versionen und wendet sie automatisch an. Die eigenständige .exe prüft beim Start online auf neue Versionen und bietet ein In-Place-Update mit einem Klick.",
 
       "loc.label": "Lokalisierung",
       "loc.title": "12 Sprachen, vollständig lokalisiert",
@@ -984,30 +1139,39 @@
       "howto.title": "In Minuten einsatzbereit",
       "howto.sub": "Keine Konfigurationsdateien, kein komplexes Setup. Einfach installieren und Logs öffnen.",
       "step1.title": "Über ClickOnce installieren oder Standalone herunterladen",
-      "step1.body": 'ClickOnce (in Microsoft Edge öffnen) bietet stille Auto-Updates und inkludiert die .NET 10 Runtime, falls sie fehlt. Die eigenständige .exe ist eine kleine portable Datei — überall hinkopieren und ausführen; benötigt die installierte <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>.',
+      "step1.body": 'ClickOnce (in Microsoft Edge öffnen) hält die App mit Ein-Klick-Updates bei jedem Start aktuell und inkludiert die .NET 10 Runtime, falls sie fehlt. Die eigenständige .exe ist eine kleine portable Datei — überall hinkopieren und ausführen; benötigt die installierte <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>.',
       "step2.title": "Dateien oder Ordner hinzufügen",
       "step2.body": "Ziehen Sie Log-Dateien direkt auf die App oder verwenden Sie den Verzeichnis-Browser, um ganze Ordner zu überwachen und Logs automatisch zu finden.",
       "step3.title": "Highlight-Regeln einrichten",
       "step3.body": "Öffnen Sie den Highlight-Regeln-Editor und erstellen Sie Regex-Muster für ERROR, WARN, INFO und beliebige eigene Muster. Sehen Sie sie sofort live angewendet.",
       "step4.title": "Automatisch aktuell bleiben",
-      "step4.body": "ClickOnce-Installationen prüfen bei jedem Start. Der Standalone-Build fragt GitHub beim Start ab; bei neuer Version erhalten Sie ein In-Place-Upgrade mit einem Klick — kein Installer nötig.",
+      "step4.body": "ClickOnce-Installationen prüfen bei jedem Start auf neue Versionen. Der Standalone-Build prüft beim Start online; bei neuer Version erhalten Sie ein In-Place-Upgrade mit einem Klick — kein Installer nötig.",
 
       "install.label": "Installation",
       "install.title": "Wählen Sie Ihre bevorzugte Installationsmethode",
-      "install.sub": "Zwei Optionen — beide mit Auto-Update. ClickOnce für null Aufwand, oder die Standalone-.exe für eine portable Datei (mit installierter .NET 10 Runtime).",
+      "install.sub": "Drei Bereitstellungsoptionen. Wählen Sie ClickOnce für reibungslose Installation, die Standalone-.exe wenn .NET 10 installiert ist, oder die Portable-.exe für überall — ohne Setup.",
       "install.tag.recommended": "Empfohlen · Reibungslos",
+      "install.tag.standalone": "Standalone",
       "install.tag.portable": "Portabel",
       "install.clickonce.title": "ClickOnce-Installation",
-      "install.clickonce.lede": 'Ein-Klick-Installation mit stillen automatischen Updates bei jedem Start. <strong style="color:#dde8dd;">.NET 10 Runtime inklusive</strong>, falls noch nicht installiert.',
+      "install.clickonce.lede": 'Ein-Klick-Installation. Prüft bei jedem Start auf neue Versionen und wendet sie automatisch an. <strong style="color:#dde8dd;">.NET 10 Runtime inklusive</strong>, falls noch nicht installiert.',
       "install.clickonce.cta": "⬇ &nbsp;Über ClickOnce installieren",
-      "install.clickonce.note": "Updates werden automatisch bei jedem Start angewendet.",
+      "install.clickonce.note": "Prüft bei jedem Start auf Updates und wendet sie an.",
       "install.standalone.title": "Eigenständige Executable",
       "install.standalone.lede": "Eine kleine portable .exe — überall hinkopieren und ausführen. Funktioniert in jedem Browser. Kein Installer, keine Admin-Rechte.",
       "install.standalone.cta": "⬇ &nbsp;.exe herunterladen",
-      "install.standalone.note": "Prüft GitHub beim Start und bietet In-Place-Updates mit einem Klick.",
+      "install.standalone.note": "Prüft beim Start online auf neue Versionen und bietet In-Place-Updates mit einem Klick.",
       "install.standalone.runtime.title": "⚙ &nbsp;Benötigt .NET 10 Desktop Runtime",
       "install.standalone.runtime.body": "Der Standalone-Build ist framework-abhängig. Ist die Runtime nicht installiert, zeigt Windows beim Start einen generischen Fehler an.",
       "install.standalone.runtime.cta": "⬇ .NET 10 Desktop Runtime herunterladen →",
+      "install.standalone.zip": "⬇ auch als .zip",
+      "install.portable.title": "Portables Programm",
+      "install.portable.lede": "Eigenständige .exe mit eingebetteter .NET 10 Runtime. Auf einen USB-Stick kopieren und auf jedem Windows-PC starten — kein Setup, keine Admin-Rechte, keine Runtime nötig.",
+      "install.portable.cta": "⬇ &nbsp;.exe herunterladen",
+      "install.portable.zip": "⬇ auch als .zip",
+      "install.portable.smartscreen.title": "⚠ &nbsp;SmartScreen-Warnung beim ersten Start",
+      "install.portable.smartscreen.body": 'Beim ersten Start zeigt Windows ggf. eine SmartScreen-Warnung. Klicken Sie auf "Weitere Informationen" → "Trotzdem ausführen". Dies geschieht, weil das Programm noch nicht codesigniert ist.',
+      "install.portable.note": "Keine Runtime-Installation erforderlich — alles ist enthalten.",
       "req.anybrowser": "Jeder Browser",
 
       "footer.poweredBy": "Powered by NuneX & die mBrothers-Expertise",
@@ -1020,8 +1184,15 @@
       "hero.badge.autoupdate": "自动更新",
       "hero.badge.free": "免费",
       "hero.cta.clickonce": "⬇ &nbsp;通过 ClickOnce 安装",
+      "hero.cta.clickonce.tag": '<span class="recommended">★ 推荐</span>自动更新 · 一键安装',
       "hero.cta.standalone": "⬇ &nbsp;独立 .exe",
-      "hero.runtimeNote": 'ClickOnce 已包含 .NET 10 运行时 · 独立版需要预先安装 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" target="_blank" rel="noopener" style="color:var(--accent3); text-decoration:underline;">.NET 10 桌面运行时</a>',
+      "hero.cta.standalone.tag": "文件小 · 需要 .NET 10",
+      "hero.cta.standalone.zip": "⬇ 也可下载 .zip",
+      "hero.cta.standalone.runtime": "⬇ 获取 .NET 10 运行时",
+      "hero.cta.portable": "⬇ &nbsp;便携 .exe",
+      "hero.cta.portable.tag": "无需安装 · 自包含",
+      "hero.cta.portable.zip": "⬇ 也可下载 .zip",
+      "hero.cta.portable.smartscreen": '首次运行时,Windows 可能显示 SmartScreen 警告 — 点击"更多信息"→"仍要运行"。',
       "hero.chromeWarning": "<strong>⚠ Chrome 不支持 ClickOnce 安装</strong>请在 <strong>Microsoft Edge</strong> 中打开此页面以安装应用程序。",
       "hero.scrollHint": "↓ &nbsp; 了解更多",
 
@@ -1048,7 +1219,7 @@
       "feat.numbers.title": "行号",
       "feat.numbers.body": "可切换的行号、可配置的字体大小、行高和换行。所有设置在各次会话间持久化。",
       "feat.update.title": "自动更新",
-      "feat.update.body": "ClickOnce 在每次启动时静默更新。独立 .exe 在启动时检查 GitHub 并提供一键就地更新。",
+      "feat.update.body": "ClickOnce 在每次启动时检查更新并自动应用。独立 .exe 在启动时联网检查新版本,并提供一键就地更新。",
 
       "loc.label": "本地化",
       "loc.title": "12 种语言,完全本地化",
@@ -1062,30 +1233,39 @@
       "howto.title": "几分钟内即可运行",
       "howto.sub": "无需配置文件,无需复杂设置。安装并打开您的日志即可。",
       "step1.title": "通过 ClickOnce 安装或下载独立版",
-      "step1.body": 'ClickOnce(在 Microsoft Edge 中打开)提供静默自动更新,并在缺失时打包 .NET 10 运行时。独立 .exe 是一个小型可移植文件 — 复制到任意位置即可运行;需要安装 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 桌面运行时</a>。',
+      "step1.body": 'ClickOnce(在 Microsoft Edge 中打开)通过每次启动时的一键更新保持应用最新,并在缺失时打包 .NET 10 运行时。独立 .exe 是一个小型可移植文件 — 复制到任意位置即可运行;需要安装 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0/runtime?cid=getdotnetcore" style="color:var(--accent3);" target="_blank" rel="noopener">.NET 10 桌面运行时</a>。',
       "step2.title": "添加文件或文件夹",
       "step2.body": "将日志文件直接拖放到应用程序中,或使用目录浏览器监视整个文件夹并自动发现日志。",
       "step3.title": "设置高亮规则",
       "step3.body": "打开高亮规则编辑器,为 ERROR、WARN、INFO 和任何自定义模式创建正则表达式模式。立即查看实时应用。",
       "step4.title": "保持自动更新",
-      "step4.body": "ClickOnce 安装在每次启动时检查。独立版本在启动时查询 GitHub;如果有新版本,可一键就地升级 — 无需安装程序。",
+      "step4.body": "ClickOnce 安装在每次启动时检查新版本。独立版本在启动时联网检查;如果有新版本,可一键就地升级 — 无需安装程序。",
 
       "install.label": "安装",
       "install.title": "选择您喜欢的安装方式",
-      "install.sub": "两个发布选项 — 都支持自动更新。选择 ClickOnce 零烦恼,或选择独立 .exe 如果您需要可移植文件(并已安装 .NET 10 运行时)。",
+      "install.sub": "三种发布选项。选择 ClickOnce 零烦恼,如果已安装 .NET 10 选择独立 .exe,或便携 .exe 在任何地方运行 — 无需设置。",
       "install.tag.recommended": "推荐 · 零摩擦",
+      "install.tag.standalone": "独立",
       "install.tag.portable": "便携",
       "install.clickonce.title": "ClickOnce 安装",
-      "install.clickonce.lede": '一键安装,每次启动都有静默自动更新。<strong style="color:#dde8dd;">.NET 10 运行时已打包</strong>(若尚未安装)。',
+      "install.clickonce.lede": '一键安装。在每次启动时检查新版本并自动应用。<strong style="color:#dde8dd;">.NET 10 运行时已打包</strong>(若尚未安装)。',
       "install.clickonce.cta": "⬇ &nbsp;通过 ClickOnce 安装",
-      "install.clickonce.note": "更新在每次启动时自动应用。",
+      "install.clickonce.note": "在启动时检查并应用更新。",
       "install.standalone.title": "独立可执行文件",
       "install.standalone.lede": "一个小型便携 .exe — 复制到任意位置即可运行。可在任何浏览器中工作。无需安装程序,无需管理员权限。",
       "install.standalone.cta": "⬇ &nbsp;下载 .exe",
-      "install.standalone.note": "在启动时检查 GitHub 并提供一键就地更新。",
+      "install.standalone.note": "在启动时联网检查新版本,并提供一键就地更新。",
       "install.standalone.runtime.title": "⚙ &nbsp;需要 .NET 10 桌面运行时",
       "install.standalone.runtime.body": "独立版本依赖框架。如果未安装运行时,Windows 启动应用时会显示通用错误。",
       "install.standalone.runtime.cta": "⬇ 下载 .NET 10 桌面运行时 →",
+      "install.standalone.zip": "⬇ 也可下载 .zip",
+      "install.portable.title": "便携可执行文件",
+      "install.portable.lede": "自包含 .exe,内置 .NET 10 运行时。放在 U 盘上,可在任何 Windows 机器上运行 — 无需设置、无需管理员权限、无需运行时。",
+      "install.portable.cta": "⬇ &nbsp;下载 .exe",
+      "install.portable.zip": "⬇ 也可下载 .zip",
+      "install.portable.smartscreen.title": "⚠ &nbsp;首次运行 SmartScreen 警告",
+      "install.portable.smartscreen.body": '首次运行时,Windows 可能显示 SmartScreen 提示。点击"更多信息"→"仍要运行"以继续。这是因为可执行文件尚未进行代码签名。',
+      "install.portable.note": "无需安装运行时 — 一切已包含。",
       "req.anybrowser": "任何浏览器",
 
       "footer.poweredBy": "由 NuneX 和 mBrothers 专业团队提供支持",
