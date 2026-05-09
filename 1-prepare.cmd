@@ -82,6 +82,19 @@ if not exist "%VERSIONJSON_DIR%" (
     echo        Cria a pasta StandAlone\ em LogViewer-dist\ antes de continuar.
     pause & exit /b 1
 )
+
+:: Skip se versao nao mudou e o ficheiro ja existe.
+:: Razao: o version.json grava a "released" date, que so deve mudar
+:: quando ha realmente uma nova versao. Re-correr o prepare para a
+:: mesma versao nao deveria alterar a data publicamente registada.
+if "%NEWVER%"=="%CURRENT%" (
+    if exist "%VERSIONJSON%" (
+        echo       Versao nao mudou e ficheiro existe - preservado.
+        echo       OK
+        goto :version_json_done
+    )
+)
+
 :: Data ISO YYYY-MM-DD obtida via PowerShell (independente do locale)
 for /f %%d in ('powershell -NoProfile -Command "Get-Date -Format yyyy-MM-dd"') do set TODAY=%%d
 
@@ -113,6 +126,8 @@ if %ERRORLEVEL% neq 0 (
 del "%TMPPS%" 2>nul
 echo       Data: %TODAY%
 echo       OK
+
+:version_json_done
 
 :: ── 6. Copiar index.html + assets para LogViewer-dist\ ─────────
 echo [6/6] A copiar index.html e assets para LogViewer-dist\...
