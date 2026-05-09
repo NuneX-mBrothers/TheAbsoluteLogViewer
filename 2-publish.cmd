@@ -3,10 +3,18 @@ setlocal EnableDelayedExpansion
 
 set "DIST_DIR=%~dp0"
 set "CSPROJ=%~dp0..\LogViewer\LogViewer.csproj"
-set "DOCS=%~dp0..\LogViewer\docs\index.html"
+
 set "STANDALONE_DIR=%~dp0StandAlone"
 set "STANDALONE_EXE=%STANDALONE_DIR%\LogViewer.exe"
-set "VERSION_JSON=%STANDALONE_DIR%\version.json"
+set "STANDALONE_ZIP=%STANDALONE_DIR%\LogViewer.zip"
+
+set "PORTABLE_DIR=%~dp0Portable"
+set "PORTABLE_RAW_EXE=%PORTABLE_DIR%\LogViewer.exe"
+set "PORTABLE_FINAL_EXE=%PORTABLE_DIR%\LogViewerPortable.exe"
+set "PORTABLE_PDB=%PORTABLE_DIR%\LogViewer.pdb"
+set "PORTABLE_ZIP=%PORTABLE_DIR%\LogViewerPortable.zip"
+
+set "REPO=NuneX-mBrothers/TheAbsoluteLogViewer"
 
 echo.
 echo ==========================================
@@ -15,14 +23,13 @@ echo ==========================================
 echo.
 
 :: ── 1. Ler versao do .csproj ──────────────────────────────────
-echo [1/6] A ler versao do LogViewer.csproj...
+echo [1/8] A ler versao do LogViewer.csproj...
 if not exist "%CSPROJ%" (
     echo [ERRO] Nao encontrou: %CSPROJ%
     pause & exit /b 1
 )
 for /f "tokens=*" %%a in ('findstr /r /c:"<Version>[0-9][0-9.]*</Version>" "%CSPROJ%"') do set LINE=%%a
 for /f "tokens=2 delims=><" %%b in ("%LINE%") do set VERSION=%%b
-for /f "tokens=1,2,3 delims=." %%a in ("%VERSION%") do set VERSHOW=%%a.%%b.%%c
 if "%VERSION%"=="" (
     echo [ERRO] Nao foi possivel ler a versao.
     pause & exit /b 1
@@ -30,96 +37,145 @@ if "%VERSION%"=="" (
 echo       Versao: %VERSION%
 echo       OK
 
-:: ── 2. Actualizar versao no index.html ───────────────────────
-echo [2/6] A actualizar index.html para v%VERSHOW%...
-if not exist "%DOCS%" (
-    echo       [AVISO] docs\index.html nao encontrado - ignorado.
-) else (
-    powershell -NoProfile -Command ^
-        "(Get-Content -Path '%DOCS%') -replace 'v[0-9]+\.[0-9]+\.[0-9]+', 'v%VERSHOW%' | Set-Content -Path '%DIST_DIR%index.html'"
-    if %ERRORLEVEL% neq 0 (
-        echo [ERRO] Falhou a actualizar o index.html.
-        pause & exit /b 1
-    )
-
-    rem ── Copiar assets estaticos da pasta docs\ (imagens, ficheiros que
-    rem    o index.html referencia). Permite manter docs\ como fonte unica
-    rem    de verdade para tudo o que e servido pelo GitHub Pages.
-    set "DOCS_DIR=%~dp0..\LogViewer\docs"
-    for %%E in (jpg jpeg png gif svg ico webp) do (
-        for %%F in ("!DOCS_DIR!\*.%%E") do (
-            if exist "%%~F" (
-                copy /Y "%%~F" "%DIST_DIR%" >nul
-                echo       Asset copiado: %%~nxF
-            )
-        )
-    )
-
-    echo       OK
-)
-
-:: ── 3. Validar .exe standalone ────────────────────────────────
-echo [3/6] A validar .exe standalone...
+:: ── 2. Validar Standalone ─────────────────────────────────────
+echo [2/8] A validar Standalone...
 if not exist "%STANDALONE_EXE%" (
-    echo       [AVISO] %STANDALONE_EXE% nao encontrado.
-    echo       Faz Publish standalone no Visual Studio antes de continuar,
-    echo       ou ignora este passo se so estas a publicar ClickOnce.
-    echo.
-    set /p "SKIP_STANDALONE=      Continuar sem actualizar standalone [S/N]? "
-    if /i not "!SKIP_STANDALONE!"=="S" (
-        echo Cancelado pelo utilizador.
-        pause & exit /b 1
-    )
-    set "STANDALONE_OK=0"
-    echo       Standalone IGNORADO.
-) else (
-    set "STANDALONE_OK=1"
-    echo       Encontrado: %STANDALONE_EXE%
-    echo       OK
-)
-
-:: ── 4. Gerar version.json (so se o .exe existe) ───────────────
-echo [4/6] A gerar version.json...
-if "%STANDALONE_OK%"=="0" (
-    echo       Ignorado - sem .exe standalone para anunciar.
-) else (
-    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-        "$today = Get-Date -Format 'yyyy-MM-dd';" ^
-        "$obj = [ordered]@{" ^
-        "  version    = '%VERSION%';" ^
-        "  url        = 'https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/StandAlone/LogViewer.exe';" ^
-        "  released   = $today;" ^
-        "  min_version= '1.0.0.0'" ^
-        "};" ^
-        "$obj | ConvertTo-Json | Set-Content -Path '%VERSION_JSON%' -Encoding UTF8"
-    if %ERRORLEVEL% neq 0 (
-        echo [ERRO] Falhou a gerar version.json.
-        pause & exit /b 1
-    )
-    echo       Gerado: %VERSION_JSON%
-    echo       OK
-)
-
-:: ── 5. git add + commit ───────────────────────────────────────
-echo [5/6] git add + commit...
-cd /d "%DIST_DIR%"
-git add -A
-if %ERRORLEVEL% neq 0 (
-    echo [ERRO] git add falhou.
+    echo [ERRO] Nao encontrou %STANDALONE_EXE%
+    echo        Faz Publish do Standalone no Visual Studio antes de continuar.
     pause & exit /b 1
 )
-git commit -m "Release v%VERSION%"
-if %ERRORLEVEL% neq 0 (
-    echo       [AVISO] Nada para fazer commit - ficheiros identicos?
-) else (
-    echo       OK
+echo       OK: %STANDALONE_EXE%
+
+:: ── 3. Validar Portable ───────────────────────────────────────
+echo [3/8] A validar Portable...
+if not exist "%PORTABLE_RAW_EXE%" (
+    if not exist "%PORTABLE_FINAL_EXE%" (
+        echo [ERRO] Nao encontrou Portable .exe em %PORTABLE_DIR%
+        echo        Faz Publish do Portable no Visual Studio antes de continuar.
+        pause & exit /b 1
+    )
+)
+echo       OK
+
+:: ── 4. Standalone: apagar zip antigo + criar novo ─────────────
+echo [4/8] A preparar Standalone (zip)...
+if exist "%STANDALONE_ZIP%" (
+    del "%STANDALONE_ZIP%"
+    echo       Apagado: LogViewer.zip antigo
+)
+powershell -NoProfile -Command "Compress-Archive -Path '%STANDALONE_EXE%' -DestinationPath '%STANDALONE_ZIP%' -Force"
+if errorlevel 1 (
+    echo [ERRO] Falhou a criar Standalone zip.
+    pause & exit /b 1
+)
+echo       Criado: LogViewer.zip
+echo       OK
+
+:: ── 5. Portable: limpar antigos, renomear, criar zip ──────────
+echo [5/8] A preparar Portable (rename + clean + zip)...
+
+rem 5a. Apagar .pdb (debug symbols, nao distribuir)
+if exist "%PORTABLE_PDB%" (
+    del "%PORTABLE_PDB%"
+    echo       Apagado: LogViewer.pdb
 )
 
-:: ── 6. git push ───────────────────────────────────────────────
-echo [6/6] git push para GitHub...
+rem 5b. Apagar zip antigo se existe
+if exist "%PORTABLE_ZIP%" (
+    del "%PORTABLE_ZIP%"
+    echo       Apagado: LogViewerPortable.zip antigo
+)
+
+rem 5c. Apagar versao final antiga se existe (caso de re-run)
+if exist "%PORTABLE_FINAL_EXE%" (
+    del "%PORTABLE_FINAL_EXE%"
+    echo       Apagado: LogViewerPortable.exe antigo
+)
+
+rem 5d. Renomear LogViewer.exe -> LogViewerPortable.exe
+if exist "%PORTABLE_RAW_EXE%" (
+    ren "%PORTABLE_RAW_EXE%" "LogViewerPortable.exe"
+    echo       Renomeado: LogViewer.exe -^> LogViewerPortable.exe
+)
+
+rem 5e. Validar resultado
+if not exist "%PORTABLE_FINAL_EXE%" (
+    echo [ERRO] LogViewerPortable.exe nao existe apos rename.
+    pause & exit /b 1
+)
+
+rem 5f. Criar zip
+powershell -NoProfile -Command "Compress-Archive -Path '%PORTABLE_FINAL_EXE%' -DestinationPath '%PORTABLE_ZIP%' -Force"
+if errorlevel 1 (
+    echo [ERRO] Falhou a criar Portable zip.
+    pause & exit /b 1
+)
+echo       Criado: LogViewerPortable.zip
+echo       OK
+
+:: ── 6. Criar release no GitHub ────────────────────────────────
+echo [6/8] A criar release v%VERSION% no GitHub...
+echo       (upload de 4 ficheiros, ~225 MB total - pode demorar 2-5 min)
+
+gh release create "v%VERSION%" ^
+    "%STANDALONE_EXE%" ^
+    "%STANDALONE_ZIP%" ^
+    "%PORTABLE_FINAL_EXE%" ^
+    "%PORTABLE_ZIP%" ^
+    --repo "%REPO%" ^
+    --title "v%VERSION%" ^
+    --notes "Release v%VERSION%. See landing page for installation options."
+if errorlevel 1 (
+    echo [ERRO] gh release create falhou.
+    echo        Causas possiveis:
+    echo          - tag v%VERSION% ja existe ^(usa 'gh release delete v%VERSION%' primeiro^)
+    echo          - login expirado ^(corre 'gh auth status'^)
+    echo          - sem ligacao a internet
+    pause & exit /b 1
+)
+echo       OK
+echo       URL: https://github.com/%REPO%/releases/tag/v%VERSION%
+
+:: ── 7. Limpar repo dos binarios grandes ───────────────────────
+echo [7/8] A limpar binarios grandes do repo...
+cd /d "%DIST_DIR%"
+
+rem .gitignore deve impedir que sejam adicionados, mas se ja estiverem
+rem tracked no historico do git temos de os remover do indice.
+rem Os binarios vivem agora em GitHub Releases.
+if not exist ".gitignore" (
+    echo       [AVISO] .gitignore nao encontrado em %DIST_DIR%
+    echo               Os binarios podem nao estar a ser ignorados!
+)
+
+for %%F in (
+    "StandAlone\LogViewer.exe"
+    "StandAlone\LogViewer.zip"
+    "Portable\LogViewer.exe"
+    "Portable\LogViewerPortable.exe"
+    "Portable\LogViewerPortable.zip"
+) do (
+    git ls-files --error-unmatch "%%~F" >nul 2>&1
+    if not errorlevel 1 (
+        git rm --cached "%%~F" >nul
+        echo       git rm --cached: %%~F
+    )
+)
+echo       OK
+
+:: ── 8. git add + commit + push ────────────────────────────────
+echo [8/8] git commit + push...
+git add -A
+git commit -m "Release v%VERSION%"
+if errorlevel 1 (
+    echo       [AVISO] Nada para commit ^(sem alteracoes nos ficheiros do repo^)
+) else (
+    echo       Commit criado.
+)
+
 git push origin main
-if %ERRORLEVEL% neq 0 (
-    echo [ERRO] Push falhou. Verifica a ligacao ao GitHub.
+if errorlevel 1 (
+    echo [ERRO] git push falhou.
     pause & exit /b 1
 )
 echo       OK
@@ -128,7 +184,9 @@ echo.
 echo ==========================================
 echo   Publicado com sucesso!
 echo   v%VERSION%
-echo   https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/
+echo.
+echo   Landing:  https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/
+echo   Release:  https://github.com/%REPO%/releases/tag/v%VERSION%
 echo ==========================================
 echo.
 pause
