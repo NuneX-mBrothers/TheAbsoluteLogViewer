@@ -160,15 +160,29 @@ for %%E in (jpg jpeg png gif svg ico webp) do (
 )
 echo       OK
 
-:: ── Limpeza: apagar publish anterior ──────────────────────────
+:: ── Limpeza: apagar artefactos de build anteriores ────────────
+:: Forca rebuild fresco no proximo Publish do Visual Studio.
+:: Apaga bin\Release\ inteiro (todos os 3 publishes: ClickOnce, Standalone,
+:: Portable usam pastas diferentes dentro de Release\). Preserva bin\Debug\
+:: para nao interferir com desenvolvimento normal (F5).
+:: Substitui o antigo "0- Delete garbage.cmd".
 echo.
-echo A limpar bin\Release anterior...
-set "BIN=C:\Users\nmend\OneDrive\My Code\LogViewer\LogViewer\bin\Release\net10.0-windows\win-x64"
+echo A limpar artefactos de build anteriores...
+set "BIN=%~dp0..\LogViewer\bin\Release"
+set "OBJ=%~dp0..\LogViewer\obj"
+
 if exist "%BIN%" (
     rmdir /s /q "%BIN%"
-    echo       OK
+    echo       Apagado: bin\Release\
 ) else (
-    echo       (nao existe - ignorado)
+    echo       (bin\Release nao existe - ignorado)
+)
+
+if exist "%OBJ%" (
+    rmdir /s /q "%OBJ%"
+    echo       Apagado: obj\
+) else (
+    echo       (obj\ nao existe - ignorado)
 )
 
 echo.
