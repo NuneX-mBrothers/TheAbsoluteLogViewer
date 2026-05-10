@@ -476,33 +476,46 @@
     .divider { border: none; border-top: 1px solid var(--border); }
 
     /* ── SCREENSHOT GALLERY ── */
+    /* Flexbox over Grid here: when the last row has fewer items than
+       the others, flexbox centers them automatically. CSS Grid does not
+       (its blank cells still take space on the right). */
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.5rem;
       margin-top: 2rem;
     }
     .gallery-item {
+      flex: 1 1 320px;
+      max-width: 380px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
       cursor: zoom-in;
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      display: flex;
+      flex-direction: column;
     }
     .gallery-item:hover {
       transform: translateY(-2px);
       border-color: var(--accent);
       box-shadow: 0 8px 24px rgba(0, 230, 118, .15);
     }
+    .gallery-item .img-wrap {
+      background: var(--surface2);
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
     .gallery-item img {
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
-      aspect-ratio: 16 / 11;
-      object-fit: cover;
-      object-position: top left;
-      background: #000;
+      object-fit: contain;
     }
     .gallery-caption {
       padding: .8rem 1rem;
@@ -510,6 +523,7 @@
       color: var(--text);
       border-top: 1px solid var(--border);
       line-height: 1.35;
+      flex: 1;
     }
 
     /* Lightbox */
@@ -598,7 +612,7 @@
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
       .lang-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid { grid-template-columns: 1fr; }
+      /* gallery-grid uses flexbox; cards naturally stack to 1 col when narrow */
     }
   </style>
 </head>
@@ -808,23 +822,23 @@
 
     <div class="gallery-grid">
       <div class="gallery-item" data-img="screenshot-1-split-view.png" data-caption-key="gallery.cap.split">
-        <img src="screenshot-1-split-view.png" alt="Split-pane view" loading="lazy">
+        <div class="img-wrap"><img src="screenshot-1-split-view.png" alt="Split-pane view" loading="lazy"></div>
         <div class="gallery-caption" data-i18n="gallery.cap.split">Split-pane view: compare two log files side-by-side</div>
       </div>
       <div class="gallery-item" data-img="screenshot-2-filter-preview.png" data-caption-key="gallery.cap.preview">
-        <img src="screenshot-2-filter-preview.png" alt="Filter Context Preview" loading="lazy">
+        <div class="img-wrap"><img src="screenshot-2-filter-preview.png" alt="Filter Context Preview" loading="lazy"></div>
         <div class="gallery-caption" data-i18n="gallery.cap.preview">Filter Context Preview: see surrounding lines on hover</div>
       </div>
       <div class="gallery-item" data-img="screenshot-3-copy-lines.png" data-caption-key="gallery.cap.copy">
-        <img src="screenshot-3-copy-lines.png" alt="Copy lines" loading="lazy">
+        <div class="img-wrap"><img src="screenshot-3-copy-lines.png" alt="Copy lines" loading="lazy"></div>
         <div class="gallery-caption" data-i18n="gallery.cap.copy">Smart context menu: copy selected lines to clipboard</div>
       </div>
       <div class="gallery-item" data-img="screenshot-4-highlight-rules.png" data-caption-key="gallery.cap.rules">
-        <img src="screenshot-4-highlight-rules.png" alt="Highlight rules" loading="lazy">
+        <div class="img-wrap"><img src="screenshot-4-highlight-rules.png" alt="Highlight rules" loading="lazy"></div>
         <div class="gallery-caption" data-i18n="gallery.cap.rules">Highlight rules editor with full color picker</div>
       </div>
       <div class="gallery-item" data-img="screenshot-5-toolbar.png" data-caption-key="gallery.cap.toolbar">
-        <img src="screenshot-5-toolbar.png" alt="Toolbar" loading="lazy">
+        <div class="img-wrap"><img src="screenshot-5-toolbar.png" alt="Toolbar" loading="lazy"></div>
         <div class="gallery-caption" data-i18n="gallery.cap.toolbar">Clean toolbar with tooltips and keyboard shortcuts</div>
       </div>
     </div>
