@@ -884,6 +884,10 @@
   <span data-i18n="footer.poweredBy">Powered by NuneX &amp; the mBrothers expertize</span>
   &nbsp;·&nbsp;
   <a href="#install" data-i18n="footer.install">Install</a>
+  <br>
+  <span class="footer-analytics" data-i18n="footer.analytics" style="font-size: 0.7rem; opacity: 0.55;">
+    Anonymous traffic analytics by Cloudflare · No cookies · No personal data
+  </span>
 </footer>
 
 <script>
@@ -987,7 +991,8 @@
       "req.anybrowser": "Any browser",
 
       "footer.poweredBy": "Powered by NuneX & the mBrothers expertize",
-      "footer.install": "Install"
+      "footer.install": "Install",
+      "footer.analytics": "Anonymous traffic analytics by Cloudflare · No cookies · No personal data"
     },
 
     pt: {
@@ -1081,7 +1086,8 @@
       "req.anybrowser": "Qualquer browser",
 
       "footer.poweredBy": "Desenvolvido por NuneX & a expertise dos mBrothers",
-      "footer.install": "Instalar"
+      "footer.install": "Instalar",
+      "footer.analytics": "Análise de tráfego anónima por Cloudflare · Sem cookies · Sem dados pessoais"
     },
 
     de: {
@@ -1175,7 +1181,8 @@
       "req.anybrowser": "Jeder Browser",
 
       "footer.poweredBy": "Powered by NuneX & die mBrothers-Expertise",
-      "footer.install": "Installieren"
+      "footer.install": "Installieren",
+      "footer.analytics": "Anonyme Traffic-Analyse durch Cloudflare · Keine Cookies · Keine personenbezogenen Daten"
     },
 
     zh: {
@@ -1269,7 +1276,8 @@
       "req.anybrowser": "任何浏览器",
 
       "footer.poweredBy": "由 NuneX 和 mBrothers 专业团队提供支持",
-      "footer.install": "安装"
+      "footer.install": "安装",
+      "footer.analytics": "由 Cloudflare 提供的匿名流量分析 · 无 Cookie · 无个人数据"
     }
   };
 
@@ -1342,6 +1350,13 @@
   // Apply on first load
   applyLang(detectLang());
 </script>
+
+<!-- ═══════════════════════ Cloudflare Web Analytics ═══════════════════════ -->
+<!-- Privacy-first, no cookies, no personal data. Uses 'defer' to avoid
+     blocking page render. Hostname-bound to nunex-mbrothers.github.io. -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "8b12570fbd604f28b4ba5a1957017888"}'></script>
+<!-- ═══════════════════════ End Cloudflare Web Analytics ═══════════════════ -->
 
 </body>
 </html>
