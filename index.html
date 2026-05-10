@@ -475,9 +475,130 @@
     /* ── DIVIDER ── */
     .divider { border: none; border-top: 1px solid var(--border); }
 
+    /* ── SCREENSHOT GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .gallery-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(0, 230, 118, .15);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 11;
+      object-fit: cover;
+      object-position: top left;
+      background: #000;
+    }
+    .gallery-caption {
+      padding: .8rem 1rem;
+      font-size: .82rem;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      line-height: 1.35;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 2rem;
+      cursor: zoom-out;
+      animation: lightbox-fade .15s ease;
+    }
+    .lightbox.is-open { display: flex; }
+    @keyframes lightbox-fade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 95vw;
+      max-height: 95vh;
+      cursor: default;
+    }
+    .lightbox-content img {
+      max-width: 95vw;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 12px 60px rgba(0, 230, 118, .2);
+    }
+    .lightbox-caption {
+      text-align: center;
+      color: var(--text);
+      font-size: .9rem;
+      margin-top: 1rem;
+      padding: 0 1rem;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -1.5rem;
+      right: -.5rem;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: .25rem .5rem;
+    }
+    .lightbox-close:hover { color: var(--accent); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, .6);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .lightbox-nav:hover {
+      background: var(--surface);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .lightbox-prev { left: -4rem; }
+    .lightbox-next { right: -4rem; }
+    @media (max-width: 900px) {
+      .lightbox-prev { left: .5rem; }
+      .lightbox-next { right: .5rem; }
+      .lightbox-close { top: -.25rem; right: .5rem; }
+    }
+
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
       .lang-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -677,6 +798,49 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════ SCREENSHOTS ═══════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="gallery.label">Screenshots</div>
+    <h2 class="section-title" data-i18n="gallery.title">See it in action</h2>
+    <p class="section-sub" data-i18n="gallery.sub">Click any screenshot to view it full size.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" data-img="screenshot-1-split-view.png" data-caption-key="gallery.cap.split">
+        <img src="screenshot-1-split-view.png" alt="Split-pane view" loading="lazy">
+        <div class="gallery-caption" data-i18n="gallery.cap.split">Split-pane view: compare two log files side-by-side</div>
+      </div>
+      <div class="gallery-item" data-img="screenshot-2-filter-preview.png" data-caption-key="gallery.cap.preview">
+        <img src="screenshot-2-filter-preview.png" alt="Filter Context Preview" loading="lazy">
+        <div class="gallery-caption" data-i18n="gallery.cap.preview">Filter Context Preview: see surrounding lines on hover</div>
+      </div>
+      <div class="gallery-item" data-img="screenshot-3-copy-lines.png" data-caption-key="gallery.cap.copy">
+        <img src="screenshot-3-copy-lines.png" alt="Copy lines" loading="lazy">
+        <div class="gallery-caption" data-i18n="gallery.cap.copy">Smart context menu: copy selected lines to clipboard</div>
+      </div>
+      <div class="gallery-item" data-img="screenshot-4-highlight-rules.png" data-caption-key="gallery.cap.rules">
+        <img src="screenshot-4-highlight-rules.png" alt="Highlight rules" loading="lazy">
+        <div class="gallery-caption" data-i18n="gallery.cap.rules">Highlight rules editor with full color picker</div>
+      </div>
+      <div class="gallery-item" data-img="screenshot-5-toolbar.png" data-caption-key="gallery.cap.toolbar">
+        <img src="screenshot-5-toolbar.png" alt="Toolbar" loading="lazy">
+        <div class="gallery-caption" data-i18n="gallery.cap.toolbar">Clean toolbar with tooltips and keyboard shortcuts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox modal (hidden by default) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════ LANGUAGES ═══════════════════════════ -->
 <section>
@@ -992,7 +1156,16 @@
 
       "footer.poweredBy": "Powered by NuneX & the mBrothers expertize",
       "footer.install": "Install",
-      "footer.analytics": "Anonymous traffic analytics by Cloudflare · No cookies · No personal data"
+      "footer.analytics": "Anonymous traffic analytics by Cloudflare · No cookies · No personal data",
+
+      "gallery.label": "Screenshots",
+      "gallery.title": "See it in action",
+      "gallery.sub": "Click any screenshot to view it full size.",
+      "gallery.cap.split":   "Split-pane view: compare two log files side-by-side",
+      "gallery.cap.preview": "Filter Context Preview: see surrounding lines on hover",
+      "gallery.cap.copy":    "Smart context menu: copy selected lines to clipboard",
+      "gallery.cap.rules":   "Highlight rules editor with full color picker",
+      "gallery.cap.toolbar": "Clean toolbar with tooltips and keyboard shortcuts"
     },
 
     pt: {
@@ -1087,7 +1260,16 @@
 
       "footer.poweredBy": "Desenvolvido por NuneX & a expertise dos mBrothers",
       "footer.install": "Instalar",
-      "footer.analytics": "Análise de tráfego anónima por Cloudflare · Sem cookies · Sem dados pessoais"
+      "footer.analytics": "Análise de tráfego anónima por Cloudflare · Sem cookies · Sem dados pessoais",
+
+      "gallery.label": "Capturas de ecrã",
+      "gallery.title": "Vê em acção",
+      "gallery.sub": "Clica em qualquer captura para a ver em tamanho real.",
+      "gallery.cap.split":   "Vista dividida: compara dois ficheiros de log lado a lado",
+      "gallery.cap.preview": "Pré-visualização de contexto: vê as linhas em volta ao passar com o rato",
+      "gallery.cap.copy":    "Menu contextual: copia as linhas selecionadas para a área de transferência",
+      "gallery.cap.rules":   "Editor de regras de realce com selector de cores completo",
+      "gallery.cap.toolbar": "Barra de ferramentas com tooltips e atalhos de teclado"
     },
 
     de: {
@@ -1182,7 +1364,16 @@
 
       "footer.poweredBy": "Powered by NuneX & die mBrothers-Expertise",
       "footer.install": "Installieren",
-      "footer.analytics": "Anonyme Traffic-Analyse durch Cloudflare · Keine Cookies · Keine personenbezogenen Daten"
+      "footer.analytics": "Anonyme Traffic-Analyse durch Cloudflare · Keine Cookies · Keine personenbezogenen Daten",
+
+      "gallery.label": "Screenshots",
+      "gallery.title": "In Aktion sehen",
+      "gallery.sub": "Klicke auf einen Screenshot, um ihn in voller Größe zu sehen.",
+      "gallery.cap.split":   "Geteilte Ansicht: zwei Logdateien nebeneinander vergleichen",
+      "gallery.cap.preview": "Filter-Kontextvorschau: umliegende Zeilen beim Hover anzeigen",
+      "gallery.cap.copy":    "Kontextmenü: ausgewählte Zeilen in die Zwischenablage kopieren",
+      "gallery.cap.rules":   "Editor für Hervorhebungsregeln mit vollständiger Farbauswahl",
+      "gallery.cap.toolbar": "Übersichtliche Symbolleiste mit Tooltips und Tastenkombinationen"
     },
 
     zh: {
@@ -1277,7 +1468,16 @@
 
       "footer.poweredBy": "由 NuneX 和 mBrothers 专业团队提供支持",
       "footer.install": "安装",
-      "footer.analytics": "由 Cloudflare 提供的匿名流量分析 · 无 Cookie · 无个人数据"
+      "footer.analytics": "由 Cloudflare 提供的匿名流量分析 · 无 Cookie · 无个人数据",
+
+      "gallery.label": "屏幕截图",
+      "gallery.title": "实际效果",
+      "gallery.sub": "点击任意截图以查看完整大小。",
+      "gallery.cap.split":   "分屏视图：并排比较两个日志文件",
+      "gallery.cap.preview": "过滤上下文预览：悬停时查看周围的行",
+      "gallery.cap.copy":    "智能上下文菜单：将选中的行复制到剪贴板",
+      "gallery.cap.rules":   "高亮规则编辑器，支持完整调色板",
+      "gallery.cap.toolbar": "简洁的工具栏，带工具提示和键盘快捷键"
     }
   };
 
@@ -1349,6 +1549,81 @@
 
   // Apply on first load
   applyLang(detectLang());
+</script>
+
+<!-- ═══════════════════════ Lightbox / Gallery JS ═══════════════════════ -->
+<script>
+  /* Vanilla JS lightbox for the screenshot gallery.
+     - Click thumbnail → open in modal
+     - ESC, click outside, or X to close
+     - Arrow keys / arrow buttons to navigate
+     - Captions are pulled from the active i18n dictionary so they switch
+       with the language flags. */
+  (function () {
+    const items   = Array.from(document.querySelectorAll('.gallery-item'));
+    if (items.length === 0) return;
+
+    const lb        = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lightboxImg');
+    const lbCap     = document.getElementById('lightboxCaption');
+    const btnClose  = document.getElementById('lightboxClose');
+    const btnPrev   = document.getElementById('lightboxPrev');
+    const btnNext   = document.getElementById('lightboxNext');
+
+    let current = 0;
+
+    function captionFor(item) {
+      // Prefer the live caption text (already translated by applyLang),
+      // falling back to the data-caption-key default.
+      const cap = item.querySelector('.gallery-caption');
+      return cap ? cap.textContent.trim() : '';
+    }
+
+    function show(idx) {
+      const item = items[idx];
+      if (!item) return;
+      current = idx;
+      lbImg.src = item.dataset.img;
+      lbImg.alt = item.querySelector('img')?.alt || '';
+      lbCap.textContent = captionFor(item);
+    }
+
+    function open(idx) {
+      show(idx);
+      lb.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.classList.remove('is-open');
+      document.body.style.overflow = '';
+      lbImg.src = '';  // free memory
+    }
+
+    function prev() { show((current - 1 + items.length) % items.length); }
+    function next() { show((current + 1) % items.length); }
+
+    items.forEach((item, idx) => {
+      item.addEventListener('click', () => open(idx));
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev .addEventListener('click', e => { e.stopPropagation(); prev(); });
+    btnNext .addEventListener('click', e => { e.stopPropagation(); next(); });
+
+    // Click outside content closes; clicks inside content do not.
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) close();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape')      close();
+      else if (e.key === 'ArrowLeft')  prev();
+      else if (e.key === 'ArrowRight') next();
+    });
+  })();
 </script>
 
 <!-- ═══════════════════════ Cloudflare Web Analytics ═══════════════════════ -->
