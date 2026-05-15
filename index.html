@@ -261,6 +261,37 @@
     }
     @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 
+    /* Downloads counter on the hero — social proof below CTA buttons.
+       Hidden by default (display:none in HTML); JS reveals when data loads.
+       Visually subtle so it doesn't compete with CTAs above. */
+    .hero-downloads {
+      position: relative; z-index: 1;
+      margin-top: 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+      letter-spacing: .02em;
+    }
+    .hero-downloads strong {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0 .15rem 0 .35rem;
+    }
+    .hero-downloads-icon {
+      color: var(--accent);
+      margin-right: .15rem;
+    }
+    .hero-downloads-sep {
+      margin: 0 .55rem;
+      opacity: .5;
+    }
+    .hero-downloads [id^="hero-dl-"]:not(#hero-dl-total) {
+      color: var(--text);
+      font-weight: 600;
+      margin-left: .25rem;
+    }
+
     /* ── SECTIONS ── */
     section { padding: 5rem 2rem; }
     .container { max-width: 1000px; margin: 0 auto; }
@@ -717,6 +748,21 @@
     </div>
   </div>
 
+  <!-- Downloads counter (filled by JS via GitHub API).
+       Hidden by default; revealed when fetch succeeds. Acts as social proof
+       on the hero without competing with the CTA buttons. -->
+  <div id="hero-downloads" class="hero-downloads" style="display: none;">
+    <span class="hero-downloads-icon">⬇</span>
+    <strong id="hero-dl-total">0</strong>
+    <span data-i18n="hero.downloads.label">downloads</span>
+    <span class="hero-downloads-sep">·</span>
+    <span data-i18n="hero.downloads.standalone">Standalone</span>
+    <span id="hero-dl-standalone">0</span>
+    <span class="hero-downloads-sep">·</span>
+    <span data-i18n="hero.downloads.portable">Portable</span>
+    <span id="hero-dl-portable">0</span>
+  </div>
+
   <div class="scroll-hint" data-i18n="hero.scrollHint">↓   learn more</div>
 </section>
 
@@ -1061,6 +1107,19 @@
   <span class="footer-analytics" data-i18n="footer.analytics" style="font-size: 0.7rem; opacity: 0.55;">
     Anonymous traffic analytics by Cloudflare · No cookies · No personal data
   </span>
+  <br>
+  <!-- Downloads counter: filled by JS via GitHub API.
+       Hidden by default; only revealed if the fetch succeeds. Falls back
+       silently to invisible on rate-limit, network errors, or empty data. -->
+  <span id="footer-downloads"
+        class="footer-downloads"
+        style="font-size: 0.7rem; opacity: 0.55; display: none;">
+    <span data-i18n="footer.downloads.label">Downloads</span> —
+    <span data-i18n="footer.downloads.standalone">Standalone</span>:
+    <span id="dl-standalone-count">0</span> ·
+    <span data-i18n="footer.downloads.portable">Portable</span>:
+    <span id="dl-portable-count">0</span>
+  </span>
 </footer>
 
 <script>
@@ -1088,6 +1147,9 @@
       "hero.cta.portable.tag": "No install · Self-contained",
       "hero.cta.portable.zip": "⬇ also as .zip",
       "hero.cta.portable.smartscreen": 'On first run, Windows may show a SmartScreen warning — click "More info" → "Run anyway".',
+      "hero.downloads.label": "downloads",
+      "hero.downloads.standalone": "Standalone",
+      "hero.downloads.portable": "Portable",
       "hero.chromeWarning": "<strong>⚠ Chrome is not supported for ClickOnce installation</strong>Please open this page in <strong>Microsoft Edge</strong> to install the application.",
       "hero.scrollHint": "↓   learn more",
 
@@ -1166,6 +1228,9 @@
       "footer.poweredBy": "Powered by NuneX & the mBrothers expertize",
       "footer.install": "Install",
       "footer.analytics": "Anonymous traffic analytics by Cloudflare · No cookies · No personal data",
+      "footer.downloads.label": "Downloads",
+      "footer.downloads.standalone": "Standalone",
+      "footer.downloads.portable": "Portable",
 
       "gallery.label": "Screenshots",
       "gallery.title": "See it in action",
@@ -1192,6 +1257,9 @@
       "hero.cta.portable.tag": "Sem instalação · Autocontido",
       "hero.cta.portable.zip": "⬇ também em .zip",
       "hero.cta.portable.smartscreen": 'No primeiro arranque, o Windows pode mostrar um aviso SmartScreen — clique em "Mais informações" → "Executar mesmo assim".',
+      "hero.downloads.label": "downloads",
+      "hero.downloads.standalone": "Standalone",
+      "hero.downloads.portable": "Portátil",
       "hero.chromeWarning": "<strong>⚠ O Chrome não suporta a instalação ClickOnce</strong>Abra esta página no <strong>Microsoft Edge</strong> para instalar a aplicação.",
       "hero.scrollHint": "↓   saber mais",
 
@@ -1270,6 +1338,9 @@
       "footer.poweredBy": "Desenvolvido por NuneX & a expertise dos mBrothers",
       "footer.install": "Instalar",
       "footer.analytics": "Análise de tráfego anónima por Cloudflare · Sem cookies · Sem dados pessoais",
+      "footer.downloads.label": "Downloads",
+      "footer.downloads.standalone": "Standalone",
+      "footer.downloads.portable": "Portátil",
 
       "gallery.label": "Capturas de ecrã",
       "gallery.title": "Vê em acção",
@@ -1296,6 +1367,9 @@
       "hero.cta.portable.tag": "Keine Installation · Eigenständig",
       "hero.cta.portable.zip": "⬇ auch als .zip",
       "hero.cta.portable.smartscreen": 'Beim ersten Start zeigt Windows ggf. eine SmartScreen-Warnung — auf "Weitere Informationen" → "Trotzdem ausführen" klicken.',
+      "hero.downloads.label": "Downloads",
+      "hero.downloads.standalone": "Standalone",
+      "hero.downloads.portable": "Portable",
       "hero.chromeWarning": "<strong>⚠ Chrome unterstützt die ClickOnce-Installation nicht</strong>Bitte öffnen Sie diese Seite in <strong>Microsoft Edge</strong>, um die Anwendung zu installieren.",
       "hero.scrollHint": "↓   mehr erfahren",
 
@@ -1374,6 +1448,9 @@
       "footer.poweredBy": "Powered by NuneX & die mBrothers-Expertise",
       "footer.install": "Installieren",
       "footer.analytics": "Anonyme Traffic-Analyse durch Cloudflare · Keine Cookies · Keine personenbezogenen Daten",
+      "footer.downloads.label": "Downloads",
+      "footer.downloads.standalone": "Standalone",
+      "footer.downloads.portable": "Portable",
 
       "gallery.label": "Screenshots",
       "gallery.title": "In Aktion sehen",
@@ -1400,6 +1477,9 @@
       "hero.cta.portable.tag": "无需安装 · 自包含",
       "hero.cta.portable.zip": "⬇ 也可下载 .zip",
       "hero.cta.portable.smartscreen": '首次运行时,Windows 可能显示 SmartScreen 警告 — 点击"更多信息"→"仍要运行"。',
+      "hero.downloads.label": "次下载",
+      "hero.downloads.standalone": "独立版",
+      "hero.downloads.portable": "便携版",
       "hero.chromeWarning": "<strong>⚠ Chrome 不支持 ClickOnce 安装</strong>请在 <strong>Microsoft Edge</strong> 中打开此页面以安装应用程序。",
       "hero.scrollHint": "↓   了解更多",
 
@@ -1478,6 +1558,9 @@
       "footer.poweredBy": "由 NuneX 和 mBrothers 专业团队提供支持",
       "footer.install": "安装",
       "footer.analytics": "由 Cloudflare 提供的匿名流量分析 · 无 Cookie · 无个人数据",
+      "footer.downloads.label": "下载",
+      "footer.downloads.standalone": "独立版",
+      "footer.downloads.portable": "便携版",
 
       "gallery.label": "屏幕截图",
       "gallery.title": "实际效果",
@@ -1639,6 +1722,109 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "8b12570fbd604f28b4ba5a1957017888"}'></script>
 <!-- ═══════════════════════ End Cloudflare Web Analytics ═══════════════════ -->
+
+<!-- ═══════════════════════ Downloads counter (GitHub API) ═══════════════════
+     Fetches release asset download counts from the GitHub Releases API and
+     shows aggregate per-edition counts in the footer.
+
+     Privacy:
+       • Unauthenticated public endpoint
+       • Browser → GitHub directly (no proxy)
+       • The user's browser metadata reaches GitHub but no personal info from us
+
+     Rate-limiting:
+       • GitHub limits 60 req/hour per IP (unauthenticated)
+       • We cache in sessionStorage for 5 minutes per browser tab to stay well
+         under the limit even with multiple page-loads per session
+
+     Failure behaviour:
+       • Network error, rate-limit, malformed response → footer line stays hidden
+       • No error UI, no console errors propagated to user
+═══════════════════════════════════════════════════════════════════════════ -->
+<script>
+  (function () {
+    const REPO = 'NuneX-mBrothers/TheAbsoluteLogViewer';
+    const CACHE_KEY = 'gh-downloads-cache';
+    const CACHE_TTL_MS = 5 * 60 * 1000;  // 5 minutes
+
+    // Mapping from asset filename pattern → edition bucket.
+    // Anything matching "Portable" goes to Portable; everything else
+    // (LogViewer.exe, LogViewer.zip) goes to Standalone.
+    function classifyAsset(name) {
+      return /portable/i.test(name) ? 'portable' : 'standalone';
+    }
+
+    async function fetchTotals() {
+      // Try cache first (per-tab persistence; survives reload but not new tab)
+      try {
+        const cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const obj = JSON.parse(cached);
+          if (Date.now() - obj.ts < CACHE_TTL_MS) return obj.totals;
+        }
+      } catch { /* sessionStorage may be unavailable in some embedded contexts */ }
+
+      // Fetch all releases (paginated; default 30 per page is enough for now)
+      const res = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100`);
+      if (!res.ok) throw new Error('GitHub API returned ' + res.status);
+      const releases = await res.json();
+
+      // Sum download_count across all releases, bucketed by edition
+      const totals = { standalone: 0, portable: 0 };
+      for (const r of releases) {
+        for (const a of (r.assets || [])) {
+          totals[classifyAsset(a.name)] += a.download_count || 0;
+        }
+      }
+
+      // Cache for the next page-load
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), totals }));
+      } catch { }
+      return totals;
+    }
+
+    function render(totals) {
+      // If both buckets are zero, treat as failure (something odd) and keep hidden
+      if (!totals || (totals.standalone === 0 && totals.portable === 0)) return;
+
+      const total = totals.standalone + totals.portable;
+
+      // ── Footer (compact, secondary) ────────────────────────────────────
+      const standaloneEl = document.getElementById('dl-standalone-count');
+      const portableEl   = document.getElementById('dl-portable-count');
+      const footerEl     = document.getElementById('footer-downloads');
+      if (standaloneEl && portableEl && footerEl) {
+        standaloneEl.textContent = totals.standalone.toLocaleString();
+        portableEl.textContent   = totals.portable.toLocaleString();
+        footerEl.style.display = 'inline';
+      }
+
+      // ── Hero (prominent, primary) ──────────────────────────────────────
+      // Total in bold accent; breakdown per edition shown beside it.
+      const heroTotalEl      = document.getElementById('hero-dl-total');
+      const heroStandaloneEl = document.getElementById('hero-dl-standalone');
+      const heroPortableEl   = document.getElementById('hero-dl-portable');
+      const heroEl           = document.getElementById('hero-downloads');
+      if (heroTotalEl && heroStandaloneEl && heroPortableEl && heroEl) {
+        heroTotalEl.textContent      = total.toLocaleString();
+        heroStandaloneEl.textContent = totals.standalone.toLocaleString();
+        heroPortableEl.textContent   = totals.portable.toLocaleString();
+        heroEl.style.display = 'block';
+      }
+    }
+
+    // Defer to idle time so it never blocks anything visible to the user.
+    // requestIdleCallback is preferred; setTimeout fallback for Safari.
+    const start = () => fetchTotals().then(render).catch(() => { /* silent */ });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(start, { timeout: 3000 });
+    } else {
+      setTimeout(start, 1500);
+    }
+  })();
+</script>
+<!-- ═══════════════════════ End Downloads counter ═══════════════════════════ -->
 
 </body>
 </html>
