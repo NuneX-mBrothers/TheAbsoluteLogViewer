@@ -83,13 +83,29 @@ if not exist "%VERSIONJSON_DIR%" (
     pause & exit /b 1
 )
 
-:: Skip se versao nao mudou e o ficheiro ja existe.
+:: Skip se versao no version.json ja for a desejada.
 :: Razao: o version.json grava a "released" date, que so deve mudar
-:: quando ha realmente uma nova versao. Re-correr o prepare para a
-:: mesma versao nao deveria alterar a data publicamente registada.
-if "%NEWVER%"=="%CURRENT%" (
-    if exist "%VERSIONJSON%" (
-        echo       Versao nao mudou e ficheiro existe - preservado.
+:: quando ha realmente uma nova versao publicada. Re-correr o prepare
+:: para a mesma versao nao deveria alterar a data publicamente registada.
+::
+:: CRITICO: comparar com a versao REAL no version.json (nao com %CURRENT%
+:: que vem do .csproj). Se o .csproj e o version.json estiverem fora de
+:: sync (ex: alguem edita o .csproj a mao primeiro), a comparacao com
+:: %CURRENT% leva a skip indevido e o version.json fica desactualizado
+:: -- causando "ja tens a ultima versao" para todos os utilizadores.
+if exist "%VERSIONJSON%" (
+    for /f "tokens=2 delims=:," %%v in ('findstr /c:"\"version\"" "%VERSIONJSON%"') do (
+        set "JSONVER=%%v"
+    )
+    set "JSONVER=!JSONVER: =!"
+    set "JSONVER=!JSONVER:"=!"
+    if "!JSONVER!"=="%NEWVER%" (
+        for /f "tokens=2 delims=:," %%r in ('findstr /c:"\"released\"" "%VERSIONJSON%"') do (
+            set "JSONDATE=%%r"
+        )
+        set "JSONDATE=!JSONDATE: =!"
+        set "JSONDATE=!JSONDATE:"=!"
+        echo       version.json ja esta em %NEWVER% ^(released=!JSONDATE!^) - preservado.
         echo       OK
         goto :version_json_done
     )
@@ -189,7 +205,16 @@ echo.
 echo ==========================================
 echo   Pronto para publicar!
 echo   Versao: %NEWVER%
-echo   Data:   %TODAY%
+if defined TODAY (
+    echo   Data:   %TODAY%
+) else (
+    echo   Data:   ^(version.json preservado - data nao alterada^)
+)
+echo.
+echo   --- version.json gerado ---
+type "%VERSIONJSON%"
+echo.
+echo   ---------------------------
 echo.
 echo   No Visual Studio, faz Publish dos 3
 echo   profiles (ClickOnce, Standalone, Portable).
