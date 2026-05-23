@@ -218,7 +218,7 @@ echo   ---------------------------
 echo.
 echo   No Visual Studio, faz Publish dos 3
 echo   profiles (ClickOnce, Standalone, Portable).
-echo   Depois corre o 2-publish.cmd
+echo   Depois corre o 2-publish_LogViewer.cmd
 echo ==========================================
 echo.
 pause
