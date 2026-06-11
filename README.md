@@ -20,8 +20,8 @@ This is the **public distribution repository** for *The Absolute LogViewer*, a m
 ├── setup.exe                   ClickOnce bootstrapper (installs .NET if missing)
 ├── StandAlone/
 │   └── version.json            Update metadata read by UpdateService
-├── 1-prepare.cmd               Bumps version + regenerates version.json + copies index.html
-├── 2-publish.cmd               Zips binaries + creates GitHub Release + git push
+├── 1-prepare_LogViewer.cmd     Bumps version + regenerates version.json + copies index.html + builds all 3 editions
+├── 2-publish_LogViewer.cmd     Zips binaries + creates GitHub Release + git push
 ├── .gitignore                  Excludes large binaries from the repo
 ├── .gitattributes              Forces binary mode for ClickOnce files (prevents CRLF corruption)
 ├── .nojekyll                   Disables Jekyll on GitHub Pages
@@ -49,33 +49,27 @@ ClickOnce uses Microsoft's native auto-update mechanism via the `.application` m
 ## Release workflow
 
 ```
-┌──────────────────────────────────┐
-│  Edit code in Visual Studio       │
-│  (separate private repository)    │
-└──────────────┬───────────────────┘
-               ▼
-┌──────────────────────────────────┐
-│  Run 1-prepare.cmd                │
-│  - Bumps version (csproj, pubxml) │
-│  - Regenerates version.json       │
-│  - Injects version into index.html│
-│  - Cleans bin/obj                 │
-└──────────────┬───────────────────┘
-               ▼
-┌──────────────────────────────────┐
-│  Visual Studio: Publish 3 times   │
-│  - ClickOnce profile              │
-│  - Standalone profile             │
-│  - Portable profile               │
-└──────────────┬───────────────────┘
-               ▼
-┌──────────────────────────────────┐
-│  Run 2-publish.cmd                │
-│  - Creates zips                   │
-│  - Renames Portable executable    │
-│  - gh release create v{version}   │
-│  - git commit + push              │
-└──────────────────────────────────┘
+1. Edit code  (separate private repository)
+        │
+        ▼
+2. Run 1-prepare_LogViewer.cmd
+     - Bumps version (csproj, pubxml)
+     - Regenerates version.json
+     - Injects version into index.html
+     - Cleans bin/obj
+     - Builds all 3 editions automatically:
+         • Standalone + Portable  →  dotnet publish
+         • ClickOnce              →  Visual Studio MSBuild
+        │
+        ▼
+3. Run 2-publish_LogViewer.cmd
+     - Creates zips
+     - Renames Portable executable
+     - gh release create v{version}
+     - git commit + push
+
+(Visual Studio is no longer required to publish — step 2 builds
+ all three editions on its own.)
 ```
 
 ---

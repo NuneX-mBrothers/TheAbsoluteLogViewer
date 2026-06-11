@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="The Absolute LogViewer">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00e676"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="27" fill="#0b1620" stroke="url(#lg)" stroke-width="2.4" stroke-dasharray="118 14 40 14" stroke-linecap="round"/>
+  <rect x="15" y="22" width="15" height="3" rx="1.5" fill="#3a6450"/>
+  <rect x="15" y="28" width="22" height="3" rx="1.5" fill="#4f8a66"/>
+  <rect x="15" y="34" width="11" height="3" rx="1.5" fill="#3a6450"/>
+  <path d="M30 40 L37 47 L44 40" fill="none" stroke="#00e676" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
