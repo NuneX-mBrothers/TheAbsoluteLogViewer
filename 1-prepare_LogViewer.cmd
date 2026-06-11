@@ -12,7 +12,7 @@ echo ==========================================
 echo.
 
 :: ── 1. Ler versao actual do .csproj ──────────────────────────
-echo [1/6] A ler versao actual...
+echo [1/8] A ler versao actual...
 if not exist "%CSPROJ%" (
     echo [ERRO] Nao encontrou: %CSPROJ%
     pause & exit /b 1
@@ -23,7 +23,7 @@ echo       Versao actual: %CURRENT%
 echo       OK
 
 :: ── 2. Pedir e validar nova versao ────────────────────────────
-echo [2/6] Nova versao (Enter para manter %CURRENT%):
+echo [2/8] Nova versao (Enter para manter %CURRENT%):
 set /p NEWVER=      Nova versao: 
 if "%NEWVER%"=="" set NEWVER=%CURRENT%
 
@@ -43,7 +43,7 @@ echo       Nova versao: %NEWVER%
 echo       OK
 
 :: ── 3. Actualizar .csproj ─────────────────────────────────────
-echo [3/6] A actualizar LogViewer.csproj...
+echo [3/8] A actualizar LogViewer.csproj...
 powershell -NoProfile -Command ^
     "$c = Get-Content '%CSPROJ%';" ^
     "$c = $c -replace '<Version>.*</Version>', '<Version>%NEWVER%</Version>';" ^
@@ -57,7 +57,7 @@ if %ERRORLEVEL% neq 0 (
 echo       OK
 
 :: ── 4. Actualizar .pubxml (ClickOnce) ─────────────────────────
-echo [4/6] A actualizar ClickOnceProfile.pubxml...
+echo [4/8] A actualizar ClickOnceProfile.pubxml...
 if not exist "%PUBXML%" (
     for /r "%~dp0..\LogViewer" %%f in (ClickOnceProfile.pubxml) do set "PUBXML=%%f"
 )
@@ -74,7 +74,7 @@ if %ERRORLEVEL% neq 0 (
 echo       OK
 
 :: ── 5. Actualizar version.json (gera do zero com schema novo) ─
-echo [5/6] A gerar version.json...
+echo [5/8] A gerar version.json...
 :: Extrair pasta do path do version.json para validacao
 for %%I in ("%VERSIONJSON%") do set "VERSIONJSON_DIR=%%~dpI"
 if not exist "%VERSIONJSON_DIR%" (
@@ -145,45 +145,41 @@ echo       OK
 
 :version_json_done
 
-:: ── 6. Copiar index.html + assets para LogViewer-dist\ ─────────
-echo [6/6] A copiar index.html e assets para LogViewer-dist\...
+:: ── 6. Copiar o SITE (docs\ inteiro) para LogViewer-dist\ ──────
+echo [6/8] A copiar o site ^(docs\^) para LogViewer-dist\...
 set "DOCS_DIR=%~dp0..\LogViewer\docs"
-set "DOCS_INDEX=%DOCS_DIR%\index.html"
 set "DIST_INDEX=%~dp0index.html"
 
-if not exist "%DOCS_INDEX%" (
-    echo       [AVISO] %DOCS_INDEX% nao encontrado - ignorado.
-) else (
-    rem Copiar substituindo __VERSION__ pela versao actual.
-    rem Usa PowerShell para replace fiavel (tolera UTF-8/BOM/qualquer charset).
-    powershell -NoProfile -Command "(Get-Content -Raw '%DOCS_INDEX%') -replace '__VERSION__', '%NEWVER%' | Set-Content -NoNewline '%DIST_INDEX%'"
-    if errorlevel 1 (
-        echo [ERRO] Falhou a copiar/substituir index.html.
-        pause & exit /b 1
-    )
-    echo       Copiado e versao injectada: index.html ^(v%NEWVER%^)
+if not exist "%DOCS_DIR%\index.html" (
+    echo [ERRO] %DOCS_DIR%\index.html nao encontrado.
+    pause & exit /b 1
 )
 
-:: Copiar assets graficos (jpg, png, ico, etc.) que o index.html possa
-:: referenciar. Mantem-se o docs\ como fonte unica de verdade.
-for %%E in (jpg jpeg png gif svg ico webp) do (
-    for %%F in ("%DOCS_DIR%\*.%%E") do (
-        if exist "%%~F" (
-            copy /Y "%%~F" "%~dp0" >nul
-            echo       Copiado: %%~nxF
-        )
-    )
+:: Copia recursiva da pasta docs\ (index.html + css\ js\ i18n\ assets\ +
+:: screenshots) para a raiz do dist, preservando a estrutura. /E inclui
+:: subpastas; SEM /MIR para nao apagar nada do que ja existe no dist (os
+:: ficheiros ClickOnce, StandAlone\, Portable\ ficam intactos). /XF exclui
+:: os backups __index*.html da pasta docs.
+robocopy "%DOCS_DIR%" "%~dp0." /E /XF "__*.html" /R:2 /W:1 /NFL /NDL /NJH /NJS /NP >nul
+:: robocopy: codigos de saida 0-7 = sucesso; >=8 = erro real.
+if errorlevel 8 (
+    echo [ERRO] robocopy falhou a copiar o site para o dist.
+    pause & exit /b 1
 )
+
+:: Injectar a versao no index.html copiado (substitui __VERSION__, incl. JSON-LD).
+powershell -NoProfile -Command "(Get-Content -Raw '%DIST_INDEX%') -replace '__VERSION__', '%NEWVER%' | Set-Content -NoNewline '%DIST_INDEX%'"
+if errorlevel 1 (
+    echo [ERRO] Falhou a injectar a versao no index.html.
+    pause & exit /b 1
+)
+echo       Site copiado ^(css/js/i18n/assets^) + versao injectada: v%NEWVER%
 echo       OK
 
-:: ── Limpeza: apagar artefactos de build anteriores ────────────
-:: Forca rebuild fresco no proximo Publish do Visual Studio.
-:: Apaga bin\Release\ inteiro (todos os 3 publishes: ClickOnce, Standalone,
-:: Portable usam pastas diferentes dentro de Release\). Preserva bin\Debug\
-:: para nao interferir com desenvolvimento normal (F5).
-:: Substitui o antigo "0- Delete garbage.cmd".
-echo.
-echo A limpar artefactos de build anteriores...
+:: ── 7. Limpeza: apagar artefactos de build anteriores ────────
+:: Forca rebuild fresco. Apaga bin\Release\ inteiro e obj\.
+:: Preserva bin\Debug\ para nao interferir com F5.
+echo [7/8] A limpar artefactos de build anteriores...
 set "BIN=%~dp0..\LogViewer\bin\Release"
 set "OBJ=%~dp0..\LogViewer\obj"
 
@@ -200,10 +196,95 @@ if exist "%OBJ%" (
 ) else (
     echo       (obj\ nao existe - ignorado)
 )
+echo       OK
+
+:: ── 8. Build das 3 edicoes (substitui o Publish manual no VS) ─
+:: StandAlone e Portable: dotnet publish com propriedades explicitas.
+:: ClickOnce: TEM de ser o MSBuild do Visual Studio (dotnet publish nao
+:: suporta o protocolo ClickOnce). Gera para app.publish e copia-se o
+:: deployment (LogViewer.application + setup.exe + Application Files\)
+:: para a raiz do repo dist, replicando o que a UI do VS faz.
+:: Ordem: StandAlone -> ClickOnce -> Portable. As duas primeiras sao
+:: framework-dependent; a Portable (self-contained) fica para o fim
+:: para nao contaminar o bin\ partilhado das outras.
+echo [8/8] A compilar as 3 edicoes...
+
+set "PROJ=%~dp0..\LogViewer\LogViewer.csproj"
+set "SA_DIR=%~dp0StandAlone"
+set "PT_DIR=%~dp0Portable"
+set "APPPUB=%~dp0..\LogViewer\bin\Release\net10.0-windows\win-x64\app.publish"
+
+:: Localizar o MSBuild.exe do Visual Studio (necessario para ClickOnce).
+:: vswhere e chamado DIRETAMENTE (chamar dentro de um for /f rebenta
+:: porque o caminho "C:\Program Files (x86)\..." tem espacos e o for /f
+:: retira as aspas exteriores). Saida -> ficheiro temp -> set /p.
+set "VSWHERE=%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe"
+set "MSBUILD="
+set "MSBTMP=%TEMP%\_lv_msbuild.txt"
+if exist "%VSWHERE%" (
+    "%VSWHERE%" -latest -prerelease -find "MSBuild\**\Bin\MSBuild.exe" > "%MSBTMP%" 2>nul
+    set /p MSBUILD=<"%MSBTMP%"
+    del "%MSBTMP%" 2>nul
+)
+if not defined MSBUILD (
+    echo [ERRO] MSBuild do Visual Studio nao encontrado.
+    echo        Necessario para publicar o ClickOnce.
+    pause & exit /b 1
+)
+
+echo       - restore...
+dotnet restore "%PROJ%" >nul
+if errorlevel 1 ( echo [ERRO] dotnet restore falhou. & pause & exit /b 1 )
+
+echo       - StandAlone ^(single-file, framework-dependent^)...
+dotnet publish "%PROJ%" -c Release -p:PublishSingleFile=true -p:SelfContained=false -p:RuntimeIdentifier=win-x64 -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -p:DebugType=none -p:DebugSymbols=false -p:PublishDir="%SA_DIR%\\" --nologo -v minimal
+if errorlevel 1 ( echo [ERRO] build StandAlone falhou. & pause & exit /b 1 )
+echo         OK: %SA_DIR%\LogViewer.exe
+
+echo       - ClickOnce ^(MSBuild^)...
+"%MSBUILD%" "%PROJ%" /t:Publish /p:PublishProfile=ClickOnceProfile /p:Configuration=Release /restore /v:minimal /nologo
+if errorlevel 1 ( echo [ERRO] build ClickOnce falhou. & pause & exit /b 1 )
+if not exist "%APPPUB%\LogViewer.application" (
+    echo [ERRO] ClickOnce: nao gerou app.publish em:
+    echo        %APPPUB%
+    pause & exit /b 1
+)
+echo         A copiar deployment ClickOnce para o repo dist...
+copy /Y "%APPPUB%\LogViewer.application" "%~dp0" >nul
+copy /Y "%APPPUB%\setup.exe" "%~dp0" >nul
+xcopy /E /I /Y "%APPPUB%\Application Files" "%~dp0Application Files" >nul
+if errorlevel 1 ( echo [ERRO] falhou a copiar os ficheiros ClickOnce. & pause & exit /b 1 )
+echo         OK: LogViewer.application + setup.exe + Application Files\
+
+echo       - Portable ^(single-file, self-contained, ReadyToRun - pode demorar 1-2 min^)...
+dotnet publish "%PROJ%" -c Release -p:PublishSingleFile=true -p:SelfContained=true -p:RuntimeIdentifier=win-x64 -p:IncludeNativeLibrariesForSelfExtract=true -p:PublishReadyToRun=true -p:DebugType=none -p:DebugSymbols=false -p:PublishDir="%PT_DIR%\\" --nologo -v minimal
+if errorlevel 1 ( echo [ERRO] build Portable falhou. & pause & exit /b 1 )
+echo         OK: %PT_DIR%\LogViewer.exe
+
+:: ── SHA-256 das edicoes -> version.json (integridade no auto-update) ──
+:: O UpdateService verifica este hash no .exe descarregado antes de instalar.
+:: Gera um .ps1 temporario (linhas via echo, sem bloco () para nao confundir o
+:: parser do cmd) e corre-o. Usa .NET (SHA256/WriteAllText) para nao depender de
+:: Get-FileHash e gravar sem BOM. Escreve os hashes no version.json do passo [5].
+echo       - SHA-256: a calcular e gravar no version.json...
+set "HASHPS=%TEMP%\logviewer-hash-version.ps1"
+echo param($vjson,$f1,$f2) > "%HASHPS%"
+echo $o = Get-Content $vjson -Raw ^| ConvertFrom-Json >> "%HASHPS%"
+echo $sha = [System.Security.Cryptography.SHA256]::Create() >> "%HASHPS%"
+echo $h1 = [BitConverter]::ToString($sha.ComputeHash([IO.File]::ReadAllBytes($f1))).Replace('-','') >> "%HASHPS%"
+echo $h2 = [BitConverter]::ToString($sha.ComputeHash([IO.File]::ReadAllBytes($f2))).Replace('-','') >> "%HASHPS%"
+echo $o ^| Add-Member -NotePropertyName sha256 -NotePropertyValue ([ordered]@{ Standalone = $h1; Portable = $h2 }) -Force >> "%HASHPS%"
+echo $json = $o ^| ConvertTo-Json -Depth 6 >> "%HASHPS%"
+echo [IO.File]::WriteAllText($vjson, $json, (New-Object Text.UTF8Encoding $false)) >> "%HASHPS%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%HASHPS%" "%VERSIONJSON%" "%SA_DIR%\LogViewer.exe" "%PT_DIR%\LogViewer.exe"
+if errorlevel 1 ( echo [ERRO] falhou a gravar SHA-256 no version.json. & del "%HASHPS%" 2^>nul & pause & exit /b 1 )
+del "%HASHPS%" 2>nul
+echo         OK: SHA-256 escrito no version.json
+echo       OK
 
 echo.
 echo ==========================================
-echo   Pronto para publicar!
+echo   Build completo das 3 edicoes!
 echo   Versao: %NEWVER%
 if defined TODAY (
     echo   Data:   %TODAY%
@@ -216,9 +297,13 @@ type "%VERSIONJSON%"
 echo.
 echo   ---------------------------
 echo.
-echo   No Visual Studio, faz Publish dos 3
-echo   profiles (ClickOnce, Standalone, Portable).
-echo   Depois corre o 2-publish_LogViewer.cmd
+echo   StandAlone: StandAlone\LogViewer.exe
+echo   Portable:   Portable\LogViewer.exe
+echo   ClickOnce:  LogViewer.application + Application Files\
+echo.
+echo   Ja NAO precisas do Visual Studio.
+echo   Agora corre o 2-publish_LogViewer.cmd
+echo   ^(zips + GitHub Release + git push^).
 echo ==========================================
 echo.
 pause
