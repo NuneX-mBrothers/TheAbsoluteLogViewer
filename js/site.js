@@ -189,4 +189,31 @@
     };
     if (window.requestIdleCallback) requestIdleCallback(run); else setTimeout(run, 1200);
   })();
+
+  /* ──────────────────────────────────────────────────────────
+     7) Download analytics (GoatCounter events, cookieless)
+        Conta cliques por tipo de edicao. O count.js e carregado no
+        fim do index.html e expoe window.goatcounter.count().
+        Paths prefixados com /logviewer/ porque a conta GoatCounter e
+        partilhada com os outros produtos mBrothers (evita colidir com
+        os /download/* deles). So aparece no dashboard; nao e mostrado.
+     ────────────────────────────────────────────────────────── */
+  (function () {
+    var MAP = [
+      { sel: 'a[href$="LogViewer.application"]', path: "/logviewer/download/clickonce",     title: "Download ClickOnce" },
+      { sel: 'a[href$="/LogViewer.exe"]',        path: "/logviewer/download/standalone",    title: "Download Standalone" },
+      { sel: 'a[href$="/LogViewer.zip"]',        path: "/logviewer/download/standalone-zip", title: "Download Standalone ZIP" },
+      { sel: 'a[href$="LogViewerPortable.exe"]', path: "/logviewer/download/portable",      title: "Download Portable" },
+      { sel: 'a[href$="LogViewerPortable.zip"]', path: "/logviewer/download/portable-zip",  title: "Download Portable ZIP" }
+    ];
+    MAP.forEach(function (m) {
+      document.querySelectorAll(m.sel).forEach(function (a) {
+        a.addEventListener("click", function () {
+          if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: m.path, title: m.title, event: true });
+          }
+        });
+      });
+    });
+  })();
 })();

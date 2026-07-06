@@ -72,6 +72,7 @@ window.I18N.de = {
   "ed.pt.h": "Portable",
   "ed.pt.lede": "Eigenständige ~160 MB .exe. Keine Runtime, keine Installation — läuft von überall.",
   "ed.pt.btn": "Portable herunterladen",
+  "ed.zip.alt": ".exe blockiert? Nimm die .zip",
   "install.smartscreen": "Beim ersten Start zeigt Windows SmartScreen eventuell „Unbekannter Herausgeber“ (die App ist noch nicht signiert). Auf Weitere Informationen → Trotzdem ausführen klicken. Bei Bedarf den SHA-256 prüfen — er wird mit jeder Version veröffentlicht.",
   "chrome.note": "<strong>Chrome unterstützt ClickOnce nicht</strong>Öffne diese Seite in Microsoft Edge für die ClickOnce-Installation, oder lade einfach die Standalone- oder Portable-Edition.",
 
@@ -95,5 +96,6 @@ window.I18N.de = {
   "foot.site": "Website",
   "foot.github": "GitHub",
   "foot.releases": "Releases",
-  "foot.mbrothers": "mBrothers"
+  "foot.mbrothers": "mBrothers",
+  "foot.privacy": "Datenschutz: cookiefreie, datenschutzfreundliche Analyse (GoatCounter) — keine Cookies, keine personenbezogenen Daten."
 };
