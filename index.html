@@ -283,9 +283,19 @@
 <!-- GoatCounter — analytics privacy-friendly (sem cookies, sem PII). Conta a
      visita a pagina e disponibiliza window.goatcounter.count() para os eventos
      de download (ver js/site.js seccao 7). Mesma conta partilhada dos outros
-     produtos mBrothers; o LogViewer distingue-se pelo path da pagina e pelo
-     prefixo /logviewer nos eventos. O count.js ignora localhost/file:// por
-     omissao, por isso os previews locais nao poluem as estatisticas. -->
+     produtos mBrothers; o LogViewer distingue-se pelo prefixo /logviewer. O
+     count.js ignora localhost/file:// por omissao, por isso os previews locais
+     nao poluem as estatisticas. -->
+<script>
+  // Reescreve o path da VISITA automatica de /TheAbsoluteLogViewer/ para
+  // /logviewer/, para que TODO o trafego do LogViewer (visita + eventos de
+  // download em /logviewer/download/*) fique sob /logviewer* no dashboard
+  // partilhado, isolavel com um unico filtro. So afeta a visita automatica;
+  // os count() dos downloads ja mandam o path explicito e nao passam por aqui.
+  window.goatcounter = {
+    path: function (p) { return p.replace(/^\/TheAbsoluteLogViewer/, "/logviewer") || "/logviewer"; }
+  };
+</script>
 <script data-goatcounter="https://nunex.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
