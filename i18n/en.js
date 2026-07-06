@@ -72,6 +72,7 @@ window.I18N.en = {
   "ed.pt.h": "Portable",
   "ed.pt.lede": "Self-contained ~160 MB .exe. No runtime, no install — runs from anywhere.",
   "ed.pt.btn": "Download portable",
+  "ed.zip.alt": "Blocked from .exe? Get the .zip",
   "install.smartscreen": "On first launch Windows SmartScreen may say “Unknown publisher” (the app isn’t code-signed yet). Click More info → Run anyway. Verify the SHA-256 if you like — it’s published with every release.",
   "chrome.note": "<strong>Chrome doesn’t support ClickOnce</strong>Open this page in Microsoft Edge to use the ClickOnce install, or just grab the Standalone or Portable build instead.",
 
@@ -95,5 +96,6 @@ window.I18N.en = {
   "foot.site": "Website",
   "foot.github": "GitHub",
   "foot.releases": "Releases",
-  "foot.mbrothers": "mBrothers"
+  "foot.mbrothers": "mBrothers",
+  "foot.privacy": "Privacy: cookieless, privacy-friendly analytics (GoatCounter) — no cookies, no personal data."
 };

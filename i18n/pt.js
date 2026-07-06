@@ -72,6 +72,7 @@ window.I18N.pt = {
   "ed.pt.h": "Portable",
   "ed.pt.lede": ".exe auto-contido de ~160 MB. Sem runtime, sem instalação — corre a partir de qualquer sítio.",
   "ed.pt.btn": "Descarregar portátil",
+  "ed.zip.alt": "Bloqueiam o .exe? Usa o .zip",
   "install.smartscreen": "No primeiro arranque, o Windows SmartScreen pode dizer “Editor desconhecido” (a app ainda não tem assinatura de código). Clica em Mais informações → Executar mesmo assim. Se quiseres, verifica o SHA-256 — é publicado em cada versão.",
   "chrome.note": "<strong>O Chrome não suporta ClickOnce</strong>Abre esta página no Microsoft Edge para usar a instalação ClickOnce, ou descarrega antes a edição Standalone ou Portable.",
 
@@ -95,5 +96,6 @@ window.I18N.pt = {
   "foot.site": "Site",
   "foot.github": "GitHub",
   "foot.releases": "Versões",
-  "foot.mbrothers": "mBrothers"
+  "foot.mbrothers": "mBrothers",
+  "foot.privacy": "Privacidade: analítica sem cookies (GoatCounter) — sem cookies, sem dados pessoais."
 };

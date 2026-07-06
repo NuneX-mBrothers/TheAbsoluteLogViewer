@@ -240,6 +240,12 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .foot-links a{color:var(--muted);transition:color .15s}
 .foot-links a:hover{color:var(--green)}
 .foot-copy{margin-top:22px;text-align:center;color:var(--dim);font-size:.78rem}
+.foot-privacy{margin-top:6px;font-size:.72rem;opacity:.72}
+
+/* Link secundario .zip nos cards (alternativa ao .exe) */
+.zip-alt{display:inline-block;margin-top:10px;font-size:.76rem;color:var(--muted);
+  text-decoration:underline;text-underline-offset:2px;transition:color .15s}
+.zip-alt:hover{color:var(--green)}
 
 /* ── Lightbox ─────────────────────────────────────────────── */
 .lightbox{position:fixed;inset:0;z-index:300;background:rgba(4,8,6,.9);display:none;

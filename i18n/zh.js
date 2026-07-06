@@ -72,6 +72,7 @@ window.I18N.zh = {
   "ed.pt.h": "Portable",
   "ed.pt.lede": "自包含的约 160 MB .exe。无需运行时、无需安装——随处可运行。",
   "ed.pt.btn": "下载便携版",
+  "ed.zip.alt": "无法下载 .exe？改用 .zip",
   "install.smartscreen": "首次启动时，Windows SmartScreen 可能显示“未知发布者”（应用尚未代码签名）。点击 更多信息 → 仍要运行。如需要可校验 SHA-256——每个版本都会公布。",
   "chrome.note": "<strong>Chrome 不支持 ClickOnce</strong>请在 Microsoft Edge 中打开此页面以使用 ClickOnce 安装，或直接下载 Standalone 或 Portable 版本。",
 
@@ -95,5 +96,6 @@ window.I18N.zh = {
   "foot.site": "网站",
   "foot.github": "GitHub",
   "foot.releases": "版本",
-  "foot.mbrothers": "mBrothers"
+  "foot.mbrothers": "mBrothers",
+  "foot.privacy": "隐私：无 Cookie、注重隐私的分析（GoatCounter）— 无 Cookie，无个人数据。"
 };
