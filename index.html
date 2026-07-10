@@ -12,10 +12,10 @@
   <meta name="theme-color" content="#070b0f" />
 
   <link rel="canonical" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
-  <link rel="alternate" hreflang="en" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
-  <link rel="alternate" hreflang="pt" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
-  <link rel="alternate" hreflang="de" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
-  <link rel="alternate" hreflang="zh" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <!-- Só x-default: a troca de língua é client-side, não há um URL por língua.
+       Quatro hreflang a apontar todos para o mesmo URL não dizem nada ao Google
+       (e podem ser assinalados como alternates inválidos). Se um dia existirem
+       /pt/, /de/, /zh/, repor os alternates a apontar para esses URLs. -->
   <link rel="alternate" hreflang="x-default" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -49,7 +49,7 @@
     "name": "The Absolute LogViewer",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "DeveloperApplication",
-    "softwareVersion": "1.5.1.6",
+    "softwareVersion": "1.5.1.7",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "downloadUrl": "https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest",
     "url": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/",
@@ -59,6 +59,12 @@
     "description": "Free .NET 10 / WPF log viewer for Windows with real-time tailing, regex highlight rules, split-pane comparison and context preview."
   }
   </script>
+
+  <noscript>
+    <!-- Sem JS o IntersectionObserver nunca acrescenta .in, e todo o conteúdo
+         .reveal ficaria em opacity:0 — ou seja, uma página em branco. -->
+    <style>.reveal{opacity:1 !important;transform:none !important}</style>
+  </noscript>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -74,14 +80,15 @@
     <div class="nav-right">
       <a class="nav-link" href="#features" data-i18n="nav.features">Features</a>
       <a class="nav-link" href="#install" data-i18n="nav.install">Download</a>
-      <a class="nav-link" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+      <!-- nav-keep: sobrevive ao breakpoint mobile (ver .nav-link{display:none}) -->
+      <a class="nav-link nav-keep" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
       <div class="lang-picker" role="group" aria-label="Language">
         <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
         <button class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
         <button class="lang-btn" data-lang="de" aria-pressed="false">DE</button>
         <button class="lang-btn" data-lang="zh" aria-pressed="false">中文</button>
       </div>
-      <span class="ver-badge">v1.5.1.6</span>
+      <span class="ver-badge">v1.5.1.7</span>
     </div>
   </nav>
 

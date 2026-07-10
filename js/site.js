@@ -173,7 +173,9 @@
       if (c && typeof c.sa === "number" && now - c.ts < 300000) { show(c.tot, c.sa, c.por); return; }
     } catch (e) {}
     var run = function () {
-      fetch("https://api.github.com/repos/NuneX-mBrothers/TheAbsoluteLogViewer/releases")
+      // per_page=100: por omissão a API devolve só 30 releases, e a partir daí o
+      // total de downloads ficaria subcontado sem qualquer aviso.
+      fetch("https://api.github.com/repos/NuneX-mBrothers/TheAbsoluteLogViewer/releases?per_page=100")
         .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
         .then(function (rel) {
           var t = 0, s = 0, p = 0;
