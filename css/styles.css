@@ -257,6 +257,8 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .lb-close:hover{border-color:var(--green);color:var(--green)}
 
 /* ── Reveal on scroll ─────────────────────────────────────── */
+/* O .in é posto pelo IntersectionObserver. Sem JS, tudo o que é .reveal ficava
+   invisível para sempre — daí o <noscript> no index.html que repõe opacity:1. */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
@@ -264,7 +266,9 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;gap:30px;padding-top:26px;min-height:0}
   .term-body{height:282px}
-  .nav-link{display:none}
+  /* Os links de secção escondem-se (o conteúdo alcança-se por scroll), mas o
+     GitHub não tem equivalente na página — fica sempre visível. */
+  .nav-link:not(.nav-keep){display:none}
   section{padding:60px 0}
 }
 @media(max-width:560px){
