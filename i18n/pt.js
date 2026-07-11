@@ -9,7 +9,7 @@ window.I18N.pt = {
 
   "hero.eyebrow": "Logs em tempo real",
   "hero.h1": 'Vê os teus logs <span class="g">no instante</span> em que acontecem.',
-  "hero.sub": 'Um visualizador de logs para Windows rápido e moderno, em .NET&nbsp;10 / WPF. Tail ao vivo, regras de highlight com regex, comparação em painel duplo e preview de contexto — <b>em 12 línguas</b>.',
+  "hero.sub": 'Um visualizador de logs para Windows rápido e moderno, em .NET&nbsp;10 / WPF. Tail ao vivo, abas independentes, regras de highlight com regex, comparação em painel duplo e preview de contexto — <b>em 12 línguas</b>.',
   "hero.cta.install": "Instalar via ClickOnce",
   "hero.cta.standalone": ".exe Standalone",
   "hero.cta.portable": ".exe portátil",
@@ -24,6 +24,8 @@ window.I18N.pt = {
   "feat.title": "Tudo o que gostavas que o tail -f tivesse.",
   "feat.tail.t": "Tail em tempo real",
   "feat.tail.d": "As novas linhas chegam ao instante. Faz scroll para cima para pausar, vai ao fim para retomar.",
+  "feat.tabs.t": "Abas independentes",
+  "feat.tabs.d": "Cada aba é um ambiente próprio — o seu conjunto de logs, split, pesquisa e ordenação. Vigia projetos distintos ao mesmo tempo sem os misturar.",
   "feat.split.t": "Comparação em painel duplo",
   "feat.split.d": "Dois painéis independentes, dois ficheiros lado a lado — cada um com a sua pesquisa e tail.",
   "feat.rules.t": "Regras de highlight com regex",
@@ -33,7 +35,7 @@ window.I18N.pt = {
   "feat.update.t": "Auto-atualização integrada",
   "feat.update.d": "As edições Standalone e Portable atualizam-se sozinhas — com verificação de integridade por HTTPS.",
   "feat.lang.t": "12 línguas",
-  "feat.lang.d": "Interface totalmente localizada, com troca instantânea. Tema escuro por omissão.",
+  "feat.lang.d": "Interface totalmente localizada, com troca instantânea, sem reiniciar.",
 
   "shots.label": "Por dentro",
   "shots.title": "Limpo, denso e amigo do teclado.",

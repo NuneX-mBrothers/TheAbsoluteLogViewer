@@ -9,7 +9,7 @@ window.I18N.de = {
 
   "hero.eyebrow": "Echtzeit-Log-Tailing",
   "hero.h1": 'Sieh deine Logs <span class="g">im selben Moment</span>, in dem sie entstehen.',
-  "hero.sub": 'Ein schneller, moderner Log-Viewer für Windows auf Basis von .NET&nbsp;10 / WPF. Live-Tail, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau — <b>in 12 Sprachen</b>.',
+  "hero.sub": 'Ein schneller, moderner Log-Viewer für Windows auf Basis von .NET&nbsp;10 / WPF. Live-Tail, unabhängige Tabs, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau — <b>in 12 Sprachen</b>.',
   "hero.cta.install": "Per ClickOnce installieren",
   "hero.cta.standalone": "Standalone .exe",
   "hero.cta.portable": "Portable .exe",
@@ -24,6 +24,8 @@ window.I18N.de = {
   "feat.title": "Alles, was du dir von tail -f gewünscht hast.",
   "feat.tail.t": "Echtzeit-Tail",
   "feat.tail.d": "Neue Zeilen erscheinen sofort. Nach oben scrollen pausiert, am Ende geht es weiter.",
+  "feat.tabs.t": "Unabhängige Tabs",
+  "feat.tabs.d": "Jeder Tab ist eine eigene Umgebung – mit eigenem Log-Satz, Split, Suche und Sortierung. Überwache getrennte Projekte gleichzeitig, ohne sie zu vermischen.",
   "feat.split.t": "Geteilter Vergleich",
   "feat.split.d": "Zwei unabhängige Fenster, zwei Dateien nebeneinander — jeweils mit eigener Suche und eigenem Tail.",
   "feat.rules.t": "Regex-Hervorhebung",
@@ -33,7 +35,7 @@ window.I18N.de = {
   "feat.update.t": "Integriertes Auto-Update",
   "feat.update.d": "Standalone und Portable aktualisieren sich selbst — integritätsgeprüft über HTTPS.",
   "feat.lang.t": "12 Sprachen",
-  "feat.lang.d": "Vollständig lokalisierte Oberfläche mit sofortigem Wechsel. Dunkles Design als Standard.",
+  "feat.lang.d": "Vollständig lokalisierte Oberfläche mit sofortigem Wechsel – ohne Neustart.",
 
   "shots.label": "Ein Blick hinein",
   "shots.title": "Klar, dicht und tastaturfreundlich.",
