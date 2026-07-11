@@ -9,7 +9,7 @@ window.I18N.zh = {
 
   "hero.eyebrow": "实时日志 tail",
   "hero.h1": '在日志<span class="g">产生的瞬间</span>就看到它们。',
-  "hero.sub": '一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、正则高亮规则、分屏对比与上下文预览 — <b>支持 12 种语言</b>。',
+  "hero.sub": '一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、独立标签页、正则高亮规则、分屏对比与上下文预览 — <b>支持 12 种语言</b>。',
   "hero.cta.install": "通过 ClickOnce 安装",
   "hero.cta.standalone": "Standalone .exe",
   "hero.cta.portable": "便携版 .exe",
@@ -24,6 +24,8 @@ window.I18N.zh = {
   "feat.title": "tail -f 该有的一切。",
   "feat.tail.t": "实时 tail",
   "feat.tail.d": "新行即时滚入。向上滚动暂停，回到底部继续。",
+  "feat.tabs.t": "独立标签页",
+  "feat.tabs.d": "每个标签页都是独立的工作区——拥有各自的日志集、分栏、搜索与排序。同时监视不同项目而互不混淆。",
   "feat.split.t": "分屏对比",
   "feat.split.d": "两个独立窗格、两个文件并排显示——各自拥有独立的搜索与 tail。",
   "feat.rules.t": "正则高亮规则",
@@ -33,7 +35,7 @@ window.I18N.zh = {
   "feat.update.t": "内置自动更新",
   "feat.update.d": "Standalone 与 Portable 会自动更新——通过 HTTPS 进行完整性校验。",
   "feat.lang.t": "12 种语言",
-  "feat.lang.d": "界面完全本地化，可即时切换。默认深色主题。",
+  "feat.lang.d": "界面完全本地化，可即时切换，无需重启。",
 
   "shots.label": "内部一览",
   "shots.title": "简洁、紧凑、键盘友好。",

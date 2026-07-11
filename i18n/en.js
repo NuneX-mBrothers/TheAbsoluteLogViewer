@@ -9,7 +9,7 @@ window.I18N.en = {
 
   "hero.eyebrow": "Real-time log tailing",
   "hero.h1": 'See your logs <span class="g">the instant</span> they happen.',
-  "hero.sub": 'A fast, modern Windows log viewer built on .NET&nbsp;10 / WPF. Live tail, regex highlight rules, split-pane comparison and context preview — <b>in 12 languages</b>.',
+  "hero.sub": 'A fast, modern Windows log viewer built on .NET&nbsp;10 / WPF. Live tail, independent tabs, regex highlight rules, split-pane comparison and context preview — <b>in 12 languages</b>.',
   "hero.cta.install": "Install via ClickOnce",
   "hero.cta.standalone": "Standalone .exe",
   "hero.cta.portable": "Portable .exe",
@@ -24,6 +24,8 @@ window.I18N.en = {
   "feat.title": "Everything you wish tail -f had.",
   "feat.tail.t": "Real-time tail",
   "feat.tail.d": "New lines stream in instantly. Scroll up to pause, hit the bottom to resume.",
+  "feat.tabs.t": "Independent tabs",
+  "feat.tabs.d": "Each tab is its own workspace — its own set of logs, split, search and ordering. Watch separate projects at once without mixing them.",
   "feat.split.t": "Split-pane compare",
   "feat.split.d": "Two independent panes, two files side by side — each with its own search and tail.",
   "feat.rules.t": "Regex highlight rules",
@@ -33,7 +35,7 @@ window.I18N.en = {
   "feat.update.t": "Built-in auto-update",
   "feat.update.d": "Standalone & Portable update themselves — integrity-checked over HTTPS.",
   "feat.lang.t": "12 languages",
-  "feat.lang.d": "Fully localised UI with instant switching. Dark theme by default.",
+  "feat.lang.d": "Fully localised UI with instant switching — no restart needed.",
 
   "shots.label": "A look inside",
   "shots.title": "Clean, dense, keyboard-friendly.",
