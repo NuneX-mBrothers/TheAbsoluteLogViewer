@@ -15,7 +15,7 @@ window.I18N.zh = {
   "hero.cta.portable": "便携版 .exe",
   "trust.verify": "SHA-256 校验下载",
   "trust.free": "100% 免费",
-  "trust.notrack": "无遥测 · 无 Cookie",
+  "trust.notrack": "匿名 · 无 Cookie",
 
   "band.title": "每个下载都可校验",
   "band.text": '尚未进行代码签名，因此 Windows 可能显示“未知发布者”——但每个版本都会在 <code>version.json</code> 中公布 <code>SHA-256</code>，应用在通过 HTTPS 安装任何更新前都会进行校验。被篡改的文件会被自动拒绝。',
@@ -81,7 +81,7 @@ window.I18N.zh = {
   "faq.label": "须知",
   "faq.title": "常见问题",
   "faq.q1": "真的免费吗？",
-  "faq.a1": "是的——免费软件，可用于个人和商业用途。无需账户、无遥测、无 Cookie。",
+  "faq.a1": "是的——免费软件，可用于个人和商业用途。无需账户、无 Cookie；应用仅发送匿名的安装和更新统计，且可关闭。",
   "faq.q2": "为什么 Windows 显示“未知发布者”？",
   "faq.a2": '二进制文件尚未代码签名。每个版本都会公布可校验的 <code>SHA-256</code> 哈希，应用的更新程序在安装前会自动校验。',
   "faq.q3": "我该选哪个版本？",
@@ -99,5 +99,5 @@ window.I18N.zh = {
   "foot.github": "GitHub",
   "foot.releases": "版本",
   "foot.mbrothers": "mBrothers",
-  "foot.privacy": "隐私：无 Cookie、注重隐私的分析（GoatCounter）— 无 Cookie，无个人数据。"
+  "foot.privacy": "隐私：无 Cookie 的分析（GoatCounter）以及应用内匿名的安装/更新统计（可关闭）— 无 Cookie，无个人数据。"
 };

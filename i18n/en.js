@@ -15,7 +15,7 @@ window.I18N.en = {
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "SHA-256 verified downloads",
   "trust.free": "100% free",
-  "trust.notrack": "No telemetry · no cookies",
+  "trust.notrack": "Anonymous · no cookies",
 
   "band.title": "Every download is verifiable",
   "band.text": 'Not code-signed yet, so Windows may show “Unknown publisher” — but each release publishes a <code>SHA-256</code> in <code>version.json</code>, and the app checks it before installing any update over HTTPS. Tampered binaries are rejected automatically.',
@@ -81,7 +81,7 @@ window.I18N.en = {
   "faq.label": "Good to know",
   "faq.title": "Questions",
   "faq.q1": "Is it really free?",
-  "faq.a1": "Yes — freeware, for personal and commercial use. No account, no telemetry, no cookies.",
+  "faq.a1": "Yes — freeware, for personal and commercial use. No account and no cookies; the app only sends anonymous install and update stats, which you can turn off.",
   "faq.q2": "Why does Windows say “Unknown publisher”?",
   "faq.a2": 'The binaries aren’t code-signed yet. Every release publishes a <code>SHA-256</code> hash you can verify, and the in-app updater checks it automatically before installing.',
   "faq.q3": "Which edition should I pick?",
@@ -99,5 +99,5 @@ window.I18N.en = {
   "foot.github": "GitHub",
   "foot.releases": "Releases",
   "foot.mbrothers": "mBrothers",
-  "foot.privacy": "Privacy: cookieless, privacy-friendly analytics (GoatCounter) — no cookies, no personal data."
+  "foot.privacy": "Privacy: cookieless analytics (GoatCounter) plus anonymous in-app install/update stats (which you can turn off) — no cookies, no personal data."
 };

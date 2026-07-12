@@ -15,7 +15,7 @@ window.I18N.es = {
   "hero.cta.portable": ".exe portable",
   "trust.verify": "Descargas verificadas con SHA-256",
   "trust.free": "100% gratis",
-  "trust.notrack": "Sin telemetría · sin cookies",
+  "trust.notrack": "Anónimo · sin cookies",
 
   "band.title": "Cada descarga es verificable",
   "band.text": 'Aún no tiene firma de código, así que Windows puede mostrar “Editor desconocido” — pero cada versión publica un <code>SHA-256</code> en <code>version.json</code>, y la app lo comprueba antes de instalar cualquier actualización por HTTPS. Los binarios manipulados se rechazan automáticamente.',
@@ -81,7 +81,7 @@ window.I18N.es = {
   "faq.label": "Bueno saberlo",
   "faq.title": "Preguntas",
   "faq.q1": "¿Es realmente gratis?",
-  "faq.a1": "Sí — freeware, para uso personal y comercial. Sin cuenta, sin telemetría, sin cookies.",
+  "faq.a1": "Sí — freeware, para uso personal y comercial. Sin cuenta y sin cookies; la app solo envía estadísticas anónimas de instalación y actualización, que puedes desactivar.",
   "faq.q2": "¿Por qué dice Windows “Editor desconocido”?",
   "faq.a2": 'Los binarios aún no tienen firma de código. Cada versión publica un hash <code>SHA-256</code> que puedes verificar, y el actualizador de la app lo comprueba automáticamente antes de instalar.',
   "faq.q3": "¿Qué edición debo elegir?",
@@ -99,5 +99,5 @@ window.I18N.es = {
   "foot.github": "GitHub",
   "foot.releases": "Versiones",
   "foot.mbrothers": "mBrothers",
-  "foot.privacy": "Privacidad: analítica sin cookies y respetuosa con la privacidad (GoatCounter) — sin cookies, sin datos personales."
+  "foot.privacy": "Privacidad: analítica sin cookies (GoatCounter) y estadísticas anónimas de instalación/actualización en la app (desactivables) — sin cookies, sin datos personales."
 };

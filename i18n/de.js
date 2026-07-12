@@ -15,7 +15,7 @@ window.I18N.de = {
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "SHA-256-geprüfte Downloads",
   "trust.free": "100% kostenlos",
-  "trust.notrack": "Keine Telemetrie · keine Cookies",
+  "trust.notrack": "Anonym · keine Cookies",
 
   "band.title": "Jeder Download ist überprüfbar",
   "band.text": 'Noch nicht code-signiert, daher zeigt Windows eventuell „Unbekannter Herausgeber“ — aber jede Version veröffentlicht einen <code>SHA-256</code> in <code>version.json</code>, und die App prüft ihn vor jeder Aktualisierung über HTTPS. Manipulierte Dateien werden automatisch abgelehnt.',
@@ -81,7 +81,7 @@ window.I18N.de = {
   "faq.label": "Gut zu wissen",
   "faq.title": "Fragen",
   "faq.q1": "Ist es wirklich kostenlos?",
-  "faq.a1": "Ja — Freeware, für private und kommerzielle Nutzung. Kein Konto, keine Telemetrie, keine Cookies.",
+  "faq.a1": "Ja — Freeware, für private und kommerzielle Nutzung. Kein Konto und keine Cookies; die App sendet nur anonyme Installations- und Update-Statistiken, die sich abschalten lassen.",
   "faq.q2": "Warum sagt Windows „Unbekannter Herausgeber“?",
   "faq.a2": 'Die Dateien sind noch nicht code-signiert. Jede Version veröffentlicht einen <code>SHA-256</code>-Hash zum Prüfen, und der Updater der App prüft ihn vor der Installation automatisch.',
   "faq.q3": "Welche Edition soll ich wählen?",
@@ -99,5 +99,5 @@ window.I18N.de = {
   "foot.github": "GitHub",
   "foot.releases": "Releases",
   "foot.mbrothers": "mBrothers",
-  "foot.privacy": "Datenschutz: cookiefreie, datenschutzfreundliche Analyse (GoatCounter) — keine Cookies, keine personenbezogenen Daten."
+  "foot.privacy": "Datenschutz: cookiefreie Analyse (GoatCounter) und anonyme Installations-/Update-Statistiken in der App (abschaltbar) — keine Cookies, keine personenbezogenen Daten."
 };
