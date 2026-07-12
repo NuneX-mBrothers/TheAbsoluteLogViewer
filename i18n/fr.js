@@ -15,7 +15,7 @@ window.I18N.fr = {
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "Téléchargements vérifiés par SHA-256",
   "trust.free": "100 % gratuit",
-  "trust.notrack": "Aucune télémétrie · aucun cookie",
+  "trust.notrack": "Anonyme · aucun cookie",
 
   "band.title": "Chaque téléchargement est vérifiable",
   "band.text": 'L’application n’est pas encore signée numériquement ; Windows peut donc afficher « Éditeur inconnu » — mais chaque version publie un <code>SHA-256</code> dans <code>version.json</code>, et l’application le vérifie avant d’installer toute mise à jour via HTTPS. Les binaires falsifiés sont automatiquement rejetés.',
@@ -81,7 +81,7 @@ window.I18N.fr = {
   "faq.label": "Bon à savoir",
   "faq.title": "Questions",
   "faq.q1": "Est-ce vraiment gratuit ?",
-  "faq.a1": "Oui — un freeware, pour un usage personnel et commercial. Aucun compte, aucune télémétrie, aucun cookie.",
+  "faq.a1": "Oui — un freeware, pour un usage personnel et commercial. Aucun compte et aucun cookie ; l’application envoie seulement des statistiques anonymes d’installation et de mise à jour, que vous pouvez désactiver.",
   "faq.q2": "Pourquoi Windows affiche-t-il « Éditeur inconnu » ?",
   "faq.a2": 'Les binaires ne sont pas encore signés numériquement. Chaque version publie un hash <code>SHA-256</code> que vous pouvez vérifier, et le programme de mise à jour intégré le contrôle automatiquement avant l’installation.',
   "faq.q3": "Quelle édition choisir ?",
@@ -99,5 +99,5 @@ window.I18N.fr = {
   "foot.github": "GitHub",
   "foot.releases": "Versions",
   "foot.mbrothers": "mBrothers",
-  "foot.privacy": "Confidentialité : statistiques sans cookies et respectueuses de la vie privée (GoatCounter) — aucun cookie, aucune donnée personnelle."
+  "foot.privacy": "Confidentialité : analyse sans cookies (GoatCounter) et statistiques anonymes d’installation/mise à jour dans l’application (désactivables) — aucun cookie, aucune donnée personnelle."
 };
