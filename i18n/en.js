@@ -28,6 +28,8 @@ window.I18N.en = {
   "feat.tabs.d": "Each tab is its own workspace — its own set of logs, split, search and ordering. Watch separate projects at once without mixing them.",
   "feat.split.t": "Split-pane compare",
   "feat.split.d": "Two independent panes, two files side by side — each with its own search and tail.",
+  "feat.csv.t": "CSV in columns",
+  "feat.csv.d": "Open .csv/.tsv files as a table — the file's header row becomes the column titles. Comma, semicolon or tab, auto-detected.",
   "feat.rules.t": "Regex highlight rules",
   "feat.rules.d": "Colour whole lines or single words. Word-boundary helpers and a live preview.",
   "feat.preview.t": "Context preview",

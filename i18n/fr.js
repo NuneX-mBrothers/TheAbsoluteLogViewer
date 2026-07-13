@@ -28,6 +28,8 @@ window.I18N.fr = {
   "feat.tabs.d": "Chaque onglet est son propre espace de travail — son propre jeu de logs, sa division, sa recherche et son tri. Surveillez plusieurs projets à la fois sans les mélanger.",
   "feat.split.t": "Comparaison en volet partagé",
   "feat.split.d": "Deux volets indépendants, deux fichiers côte à côte — chacun avec sa propre recherche et son propre suivi.",
+  "feat.csv.t": "CSV en colonnes",
+  "feat.csv.d": "Ouvre les fichiers .csv/.tsv comme un tableau — l’en-tête du fichier devient les titres des colonnes. Virgule, point-virgule ou tabulation, détectés automatiquement.",
   "feat.rules.t": "Règles de coloration regex",
   "feat.rules.d": "Colorez des lignes entières ou des mots isolés. Assistants de limite de mot et aperçu en direct.",
   "feat.preview.t": "Aperçu du contexte",

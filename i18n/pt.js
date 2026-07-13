@@ -28,6 +28,8 @@ window.I18N.pt = {
   "feat.tabs.d": "Cada aba é um ambiente próprio — o seu conjunto de logs, split, pesquisa e ordenação. Vigia projetos distintos ao mesmo tempo sem os misturar.",
   "feat.split.t": "Comparação em painel duplo",
   "feat.split.d": "Dois painéis independentes, dois ficheiros lado a lado — cada um com a sua pesquisa e tail.",
+  "feat.csv.t": "CSV em colunas",
+  "feat.csv.d": "Abre ficheiros .csv/.tsv como tabela — o cabeçalho do ficheiro vira os títulos das colunas. Vírgula, ponto-e-vírgula ou tab, detetados automaticamente.",
   "feat.rules.t": "Regras de highlight com regex",
   "feat.rules.d": "Colore linhas inteiras ou palavras isoladas. Ajudas de fronteira de palavra e preview ao vivo.",
   "feat.preview.t": "Preview de contexto",
