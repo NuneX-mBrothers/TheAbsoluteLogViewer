@@ -28,6 +28,8 @@ window.I18N.es = {
   "feat.tabs.d": "Cada pestaña es su propio espacio de trabajo — con su conjunto de logs, división, búsqueda y orden. Vigila proyectos distintos a la vez sin mezclarlos.",
   "feat.split.t": "Comparación en panel dividido",
   "feat.split.d": "Dos paneles independientes, dos archivos lado a lado — cada uno con su búsqueda y su tail.",
+  "feat.csv.t": "CSV en columnas",
+  "feat.csv.d": "Abre ficheros .csv/.tsv como una tabla — la cabecera del fichero se convierte en los títulos de las columnas. Coma, punto y coma o tabulación, detectados automáticamente.",
   "feat.rules.t": "Reglas de resaltado con regex",
   "feat.rules.d": "Colorea líneas enteras o palabras sueltas. Ayudas para límites de palabra y vista previa en directo.",
   "feat.preview.t": "Vista previa de contexto",

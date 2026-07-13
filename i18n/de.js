@@ -28,6 +28,8 @@ window.I18N.de = {
   "feat.tabs.d": "Jeder Tab ist eine eigene Umgebung – mit eigenem Log-Satz, Split, Suche und Sortierung. Überwache getrennte Projekte gleichzeitig, ohne sie zu vermischen.",
   "feat.split.t": "Geteilter Vergleich",
   "feat.split.d": "Zwei unabhängige Fenster, zwei Dateien nebeneinander — jeweils mit eigener Suche und eigenem Tail.",
+  "feat.csv.t": "CSV in Spalten",
+  "feat.csv.d": "Öffnet .csv/.tsv-Dateien als Tabelle — die Kopfzeile der Datei wird zu den Spaltentiteln. Komma, Semikolon oder Tab, automatisch erkannt.",
   "feat.rules.t": "Regex-Hervorhebung",
   "feat.rules.d": "Ganze Zeilen oder einzelne Wörter einfärben. Wortgrenzen-Helfer und Live-Vorschau.",
   "feat.preview.t": "Kontextvorschau",
