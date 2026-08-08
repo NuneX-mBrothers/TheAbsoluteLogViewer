@@ -17,9 +17,11 @@ window.I18N.zh = {
   "trust.free": "100% 免费",
   "trust.notrack": "匿名 · 无 Cookie",
 
+  "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "每个下载都可校验",
   "band.text": '尚未进行代码签名，因此 Windows 可能显示“未知发布者”——但每个版本都会在 <code>version.json</code> 中公布 <code>SHA-256</code>，应用在通过 HTTPS 安装任何更新前都会进行校验。被篡改的文件会被自动拒绝。',
 
+  "band.softpedia": '不必只听我们说：<strong>Softpedia Labs</strong> 独立测试后授予其 <strong>100% Clean</strong> 认证 — 无间谍软件、无广告软件、无病毒。',
   "feat.label": "为离不开日志的人打造",
   "feat.title": "tail -f 该有的一切。",
   "feat.tail.t": ".log 实时跟踪",

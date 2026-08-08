@@ -17,9 +17,11 @@ window.I18N.pt = {
   "trust.free": "100% grátis",
   "trust.notrack": "Anónimo · sem cookies",
 
+  "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Cada download é verificável",
   "band.text": 'Ainda não tem assinatura de código, por isso o Windows pode mostrar “Editor desconhecido” — mas cada versão publica um <code>SHA-256</code> no <code>version.json</code>, e a app confirma-o antes de instalar qualquer atualização por HTTPS. Binários adulterados são rejeitados automaticamente.',
 
+  "band.softpedia": 'E não tem de acreditar só na nossa palavra: os <strong>Softpedia Labs</strong> testaram-no de forma independente e atribuíram-lhe o selo <strong>100% Clean</strong> — sem spyware, adware nem vírus.',
   "feat.label": "Feito para quem vive nos logs",
   "feat.title": "Tudo o que gostavas que o tail -f tivesse.",
   "feat.tail.t": "Tail de .log em tempo real",
