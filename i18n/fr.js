@@ -17,9 +17,11 @@ window.I18N.fr = {
   "trust.free": "100 % gratuit",
   "trust.notrack": "Anonyme · aucun cookie",
 
+  "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Chaque téléchargement est vérifiable",
   "band.text": 'L’application n’est pas encore signée numériquement ; Windows peut donc afficher « Éditeur inconnu » — mais chaque version publie un <code>SHA-256</code> dans <code>version.json</code>, et l’application le vérifie avant d’installer toute mise à jour via HTTPS. Les binaires falsifiés sont automatiquement rejetés.',
 
+  "band.softpedia": 'Et vous n\'avez pas à nous croire sur parole : les <strong>Softpedia Labs</strong> l\'ont testé de façon indépendante et lui ont décerné le label <strong>100% Clean</strong> — sans spyware, adware ni virus.',
   "feat.label": "Conçu pour ceux qui vivent dans les logs",
   "feat.title": "Tout ce que vous auriez aimé trouver dans tail -f.",
   "feat.tail.t": "Tail de .log en temps réel",

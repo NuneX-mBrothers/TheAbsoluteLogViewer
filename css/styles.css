@@ -282,3 +282,15 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
   *{animation:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none;transition:none}
 }
+}
+
+/* ── Prémio Softpedia 100% Clean ──────────────────────────── */
+.pill-link{text-decoration:none;transition:border-color .15s,color .15s}
+.pill-link:hover{color:var(--green2);border-color:rgba(0,230,118,.35)}
+.sp-award{display:flex;align-items:center;gap:14px;margin-top:14px;padding-top:14px;
+  border-top:1px solid var(--line);text-decoration:none;max-width:70ch}
+.sp-award img{flex:none;border-radius:6px}
+.sp-award span{font-size:.85rem;color:var(--muted);line-height:1.55}
+.sp-award strong{color:#dfede2;font-weight:700}
+.sp-award:hover span{color:#c6d4cb}
+@media (max-width:560px){.sp-award{gap:11px}.sp-award img{width:60px;height:48px}}

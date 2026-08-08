@@ -17,9 +17,11 @@ window.I18N.en = {
   "trust.free": "100% free",
   "trust.notrack": "Anonymous · no cookies",
 
+  "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Every download is verifiable",
   "band.text": 'Not code-signed yet, so Windows may show “Unknown publisher” — but each release publishes a <code>SHA-256</code> in <code>version.json</code>, and the app checks it before installing any update over HTTPS. Tampered binaries are rejected automatically.',
 
+  "band.softpedia": 'And you don\'t have to take our word for it: <strong>Softpedia Labs</strong> tested it independently and awarded it <strong>100% Clean</strong> — no spyware, adware or viruses.',
   "feat.label": "Built for people who live in logs",
   "feat.title": "Everything you wish tail -f had.",
   "feat.tail.t": "Real-time .log tailing",

@@ -17,9 +17,11 @@ window.I18N.de = {
   "trust.free": "100% kostenlos",
   "trust.notrack": "Anonym · keine Cookies",
 
+  "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Jeder Download ist überprüfbar",
   "band.text": 'Noch nicht code-signiert, daher zeigt Windows eventuell „Unbekannter Herausgeber“ — aber jede Version veröffentlicht einen <code>SHA-256</code> in <code>version.json</code>, und die App prüft ihn vor jeder Aktualisierung über HTTPS. Manipulierte Dateien werden automatisch abgelehnt.',
 
+  "band.softpedia": 'Und Sie müssen uns nicht einfach glauben: <strong>Softpedia Labs</strong> hat es unabhängig getestet und mit <strong>100% Clean</strong> ausgezeichnet — keine Spyware, Adware oder Viren.',
   "feat.label": "Für alle, die in Logs leben",
   "feat.title": "Alles, was du dir von tail -f gewünscht hast.",
   "feat.tail.t": "Echtzeit-Tail von .log",
