@@ -87,7 +87,7 @@ cd /d "%DIST_DIR%"
 :: raiz sao listados um a um.
 :: NOTA: se um dia adicionares um ficheiro de site NOVO na raiz de docs\
 :: (ex: robots.txt, sitemap.xml), acrescenta-o tambem a esta lista.
-git add index.html assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg
+git add index.html README.md assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg
 if errorlevel 1 (
     echo [ERRO] git add falhou. Estas no repo dist certo?
     pause & exit /b 1
