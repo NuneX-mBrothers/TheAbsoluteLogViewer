@@ -104,5 +104,5 @@ window.I18N.de = {
   "foot.releases": "Releases",
   "foot.mbrothers": "mBrothers",
   "foot.privacy": "Datenschutz: cookiefreie Analyse (GoatCounter) und anonyme Installations-/Update-Statistiken in der App (abschaltbar) — keine Cookies, keine personenbezogenen Daten.",
-  "foot.mbcredit": "Ein <a href=\"https://nunex-mbrothers.github.io/mBrothers/#products\" target=\"_blank\" rel=\"noopener\">mBrothers</a>-Produkt<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
+  "foot.mbcredit": "Ein <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a>-Produkt<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

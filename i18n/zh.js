@@ -104,5 +104,5 @@ window.I18N.zh = {
   "foot.releases": "版本",
   "foot.mbrothers": "mBrothers",
   "foot.privacy": "隐私：无 Cookie 的分析（GoatCounter）以及应用内匿名的安装/更新统计（可关闭）— 无 Cookie，无个人数据。",
-  "foot.mbcredit": "一款 <a href=\"https://nunex-mbrothers.github.io/mBrothers/#products\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 产品<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
+  "foot.mbcredit": "一款 <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 产品<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };
