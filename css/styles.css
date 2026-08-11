@@ -243,7 +243,9 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .foot-privacy{margin-top:6px;font-size:.72rem;opacity:.72}
 /* Assinatura mBrothers -- igual a' do ExplorerFocus (mesma frase, mesmo link) */
 .mb-credit{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);text-align:center;color:var(--dim);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
-.mb-credit a{color:var(--green);border-bottom:1px dotted rgba(0,230,118,.35);padding-bottom:1px;transition:color .15s,border-color .15s}
+/* A marca escreve-se SEMPRE "mBrothers" -- nunca em maiusculas */
+.brand-mb{text-transform:none}
+.mb-credit a{color:var(--green);border-bottom:1px dotted rgba(0,230,118,.35);padding-bottom:1px;transition:color .15s,border-color .15s;text-transform:none}
 .mb-credit a:hover{color:#cdd6e0;border-bottom-color:#cdd6e0}
 .mb-credit .sep{display:inline-block;width:5px;height:5px;border-radius:50%;background:rgba(0,230,118,.45);margin:0 10px;vertical-align:middle}
 
