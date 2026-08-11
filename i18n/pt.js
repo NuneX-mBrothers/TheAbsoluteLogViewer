@@ -103,5 +103,6 @@ window.I18N.pt = {
   "foot.github": "GitHub",
   "foot.releases": "Versões",
   "foot.mbrothers": "mBrothers",
-  "foot.privacy": "Privacidade: analítica sem cookies (GoatCounter) e estatísticas anónimas de instalação/atualização na app (desligáveis) — sem cookies, sem dados pessoais."
+  "foot.privacy": "Privacidade: analítica sem cookies (GoatCounter) e estatísticas anónimas de instalação/atualização na app (desligáveis) — sem cookies, sem dados pessoais.",
+  "foot.mbcredit": "Um produto <a href=\"https://nunex-mbrothers.github.io/mBrothers/#products\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

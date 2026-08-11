@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /Application Files/
+Disallow: /Application%20Files/
 Disallow: /StandAlone/
 
 Sitemap: https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/sitemap.xml
