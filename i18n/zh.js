@@ -78,7 +78,7 @@ window.I18N.zh = {
   "ed.pt.lede": "自包含的约 160 MB .exe。无需运行时、无需安装——随处可运行。",
   "ed.pt.btn": "下载便携版",
   "ed.zip.alt": "无法下载 .exe？改用 .zip",
-  "install.smartscreen": "下载文件已签名，但 SmartScreen 依据信誉判断，而新证书的信誉从零开始。因此首次运行时仍可能出现提示，只是现在会显示发布者姓名，而不是“未知发布者”。点击“更多信息”→“仍要运行”。如果愿意，可以核对 SHA-256——每个版本都会公布。",
+  "install.smartscreen": "下载文件已签名，但 SmartScreen 依据信誉判断，而新证书的信誉从零开始。因此首次运行时仍可能出现提示，只是现在会显示发布者姓名，而不是“未知发布者”。点击“更多信息”→“仍要运行”。如果愿意，可以核对 SHA-256——每个版本都会公布。 在此之前，下载时浏览器可能提示该文件“不常被下载”——这只与下载次数有关，并不表示文件有问题。",
   "chrome.note": "<strong>Chrome 不支持 ClickOnce</strong>请在 Microsoft Edge 中打开此页面以使用 ClickOnce 安装，或直接下载 Standalone 或 Portable 版本。",
 
   "faq.label": "须知",
