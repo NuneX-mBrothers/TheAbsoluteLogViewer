@@ -19,8 +19,7 @@ window.I18N.pt = {
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Cada download é verificável",
-  "band.text": 'Ainda não tem assinatura de código, por isso o Windows pode mostrar “Editor desconhecido” — mas cada versão publica um <code>SHA-256</code> no <code>version.json</code>, e a app confirma-o antes de instalar qualquer atualização por HTTPS. Binários adulterados são rejeitados automaticamente.',
-
+  "band.text": 'As descargas Standalone e Portable são assinadas digitalmente e carimbadas no tempo. Cada versão publica também um <code>SHA-256</code> no <code>version.json</code>, e a app confirma-o antes de instalar qualquer atualização por HTTPS. Binários adulterados são rejeitados automaticamente.',
   "band.softpedia": 'E não tem de acreditar só na nossa palavra: os <strong>Softpedia Labs</strong> testaram-no de forma independente e atribuíram-lhe o selo <strong>100% Clean</strong> — sem spyware, adware nem vírus.',
   "feat.label": "Feito para quem vive nos logs",
   "feat.title": "Tudo o que gostavas que o tail -f tivesse.",
@@ -79,15 +78,15 @@ window.I18N.pt = {
   "ed.pt.lede": ".exe auto-contido de ~160 MB. Sem runtime, sem instalação — corre a partir de qualquer sítio.",
   "ed.pt.btn": "Descarregar portátil",
   "ed.zip.alt": "Bloqueiam o .exe? Usa o .zip",
-  "install.smartscreen": "No primeiro arranque, o Windows SmartScreen pode dizer “Editor desconhecido” (a app ainda não tem assinatura de código). Clica em Mais informações → Executar mesmo assim. Se quiseres, verifica o SHA-256 — é publicado em cada versão.",
+  "install.smartscreen": "As descargas são assinadas, mas o SmartScreen decide por reputação — e a de um certificado novo começa do zero. Por isso o aviso ainda pode aparecer no primeiro arranque, agora já com o nome do editor em vez de “Editor desconhecido”. Clica em Mais informações → Executar mesmo assim. Se quiseres, verifica o SHA-256 — é publicado em cada versão.",
   "chrome.note": "<strong>O Chrome não suporta ClickOnce</strong>Abre esta página no Microsoft Edge para usar a instalação ClickOnce, ou descarrega antes a edição Standalone ou Portable.",
 
   "faq.label": "Bom saber",
   "faq.title": "Perguntas",
   "faq.q1": "É mesmo grátis?",
   "faq.a1": "Sim — freeware, para uso pessoal e comercial. Sem conta e sem cookies; a app só envia estatísticas anónimas de instalação e atualização, que podes desligar.",
-  "faq.q2": "Porque diz o Windows “Editor desconhecido”?",
-  "faq.a2": 'Os binários ainda não têm assinatura de código. Cada versão publica um hash <code>SHA-256</code> que podes verificar, e o atualizador da app confirma-o automaticamente antes de instalar.',
+  "faq.q2": "O Windows ainda avisa no primeiro arranque. Porquê?",
+  "faq.a2": 'As edições Standalone e Portable são assinadas, mas o SmartScreen decide por <strong>reputação</strong>, e a de um certificado novo começa do zero — cresce com as descargas. Por isso o aviso pode continuar a aparecer, já com o nome do editor. A instalação por ClickOnce mantém a assinatura própria e ainda pode dizer “Editor desconhecido”. Cada versão publica um <code>SHA-256</code> que podes verificar, e o atualizador confirma-o automaticamente.',
   "faq.q3": "Que edição devo escolher?",
   "faq.a3": "ClickOnce se quiseres auto-atualizações sem esforço (precisa do Microsoft Edge). Standalone se já tens o runtime .NET 10. Portable se quiseres zero instalação.",
   "faq.q4": "Onde está o código-fonte?",

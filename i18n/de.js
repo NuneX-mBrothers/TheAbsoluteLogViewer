@@ -19,8 +19,7 @@ window.I18N.de = {
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Jeder Download ist überprüfbar",
-  "band.text": 'Noch nicht code-signiert, daher zeigt Windows eventuell „Unbekannter Herausgeber“ — aber jede Version veröffentlicht einen <code>SHA-256</code> in <code>version.json</code>, und die App prüft ihn vor jeder Aktualisierung über HTTPS. Manipulierte Dateien werden automatisch abgelehnt.',
-
+  "band.text": 'Die Downloads Standalone und Portable sind digital signiert und mit Zeitstempel versehen. Jede Version veröffentlicht außerdem einen <code>SHA-256</code> in <code>version.json</code>, den die App vor jeder Aktualisierung über HTTPS prüft. Manipulierte Binärdateien werden automatisch abgelehnt.',
   "band.softpedia": 'Und Sie müssen uns nicht einfach glauben: <strong>Softpedia Labs</strong> hat es unabhängig getestet und mit <strong>100% Clean</strong> ausgezeichnet — keine Spyware, Adware oder Viren.',
   "feat.label": "Für alle, die in Logs leben",
   "feat.title": "Alles, was du dir von tail -f gewünscht hast.",
@@ -79,15 +78,15 @@ window.I18N.de = {
   "ed.pt.lede": "Eigenständige ~160 MB .exe. Keine Runtime, keine Installation — läuft von überall.",
   "ed.pt.btn": "Portable herunterladen",
   "ed.zip.alt": ".exe blockiert? Nimm die .zip",
-  "install.smartscreen": "Beim ersten Start zeigt Windows SmartScreen eventuell „Unbekannter Herausgeber“ (die App ist noch nicht signiert). Auf Weitere Informationen → Trotzdem ausführen klicken. Bei Bedarf den SHA-256 prüfen — er wird mit jeder Version veröffentlicht.",
+  "install.smartscreen": "Die Downloads sind signiert, doch SmartScreen entscheidet nach Reputation — und die eines neuen Zertifikats beginnt bei null. Die Warnung kann daher beim ersten Start weiterhin erscheinen, nun mit dem Namen des Herausgebers statt „Unbekannter Herausgeber“. Klicken Sie auf Weitere Informationen → Trotzdem ausführen. Prüfen Sie bei Bedarf den SHA-256 — er wird mit jeder Version veröffentlicht.",
   "chrome.note": "<strong>Chrome unterstützt ClickOnce nicht</strong>Öffne diese Seite in Microsoft Edge für die ClickOnce-Installation, oder lade einfach die Standalone- oder Portable-Edition.",
 
   "faq.label": "Gut zu wissen",
   "faq.title": "Fragen",
   "faq.q1": "Ist es wirklich kostenlos?",
   "faq.a1": "Ja — Freeware, für private und kommerzielle Nutzung. Kein Konto und keine Cookies; die App sendet nur anonyme Installations- und Update-Statistiken, die sich abschalten lassen.",
-  "faq.q2": "Warum sagt Windows „Unbekannter Herausgeber“?",
-  "faq.a2": 'Die Dateien sind noch nicht code-signiert. Jede Version veröffentlicht einen <code>SHA-256</code>-Hash zum Prüfen, und der Updater der App prüft ihn vor der Installation automatisch.',
+  "faq.q2": "Windows warnt beim ersten Start immer noch — warum?",
+  "faq.a2": 'Die Editionen Standalone und Portable sind signiert, aber SmartScreen entscheidet nach <strong>Reputation</strong>, und die eines neuen Zertifikats beginnt bei null — sie wächst mit den Downloads. Die Warnung kann also bestehen bleiben, nun mit dem Namen des Herausgebers. Die ClickOnce-Installation behält ihre eigene Signatur und kann weiterhin „Unbekannter Herausgeber“ anzeigen. Jede Version veröffentlicht einen prüfbaren <code>SHA-256</code>, den der Updater automatisch kontrolliert.',
   "faq.q3": "Welche Edition soll ich wählen?",
   "faq.a3": "ClickOnce für mühelose Auto-Updates (benötigt Microsoft Edge). Standalone, wenn du die .NET-10-Runtime schon hast. Portable, wenn du gar nichts installieren willst.",
   "faq.q4": "Wo ist der Quellcode?",

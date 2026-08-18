@@ -3,10 +3,12 @@
 (function () {
   "use strict";
 
-  // Version badge: on the built site the build replaces __VERSION__; in a local
-  // file:// preview it is still the placeholder, so show a friendly fallback.
-  var _vb = document.querySelector(".ver-badge");
-  if (_vb && _vb.textContent.indexOf("__VERSION__") >= 0) _vb.textContent = "v1.5.1.6";
+  // NOTA (2026-08-18): o site deixou de ser gerado a partir de uma cópia em
+  // docs/ — esta pasta É a fonte e o que fica publicado, como no ExplorerFocus.
+  // Por isso o index.html já traz a versão real escrita, e o publish limita-se a
+  // reescrever a anterior. Não voltar a pôr aqui um fallback para "__VERSION__":
+  // o marcador deixou de existir, e um fallback escondia um publish que falhasse
+  // a reescrita, deixando o número errado no site sem ninguém dar por isso.
 
   /* ──────────────────────────────────────────────────────────
      1) Live-tail terminal demo (mirrors what the app does)

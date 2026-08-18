@@ -13,10 +13,11 @@ setlocal EnableDelayedExpansion
 ::   2) le a versao atual e pede a nova (N.N.N.N)
 ::   3) confirma que a tag ainda nao existe (falha em 5s, nao em 5min)
 ::   4) atualiza o .csproj e o ClickOnceProfile.pubxml
-::   5) copia o site (docs\) e injeta a versao no index.html
+::   5) escreve a versao no index.html (o site E esta pasta -- nao ha copia)
 ::   6) para a app, limpa bin\Release + obj
 ::   7) compila as 3 edicoes: StandAlone -> ClickOnce -> Portable
-::   8) renomeia o Portable e cria os .zip
+::   8) renomeia o Portable, ASSINA os 2 exes e cria os .zip
+::      (assinar altera os bytes: tem de ser antes dos .zip e dos hashes)
 ::   9) gera o version.json (versao + data + SHA-256) p/ o auto-update
 ::  10) cria a GitHub Release com os 4 ficheiros
 ::  11) commit + push do repo dist (site + ClickOnce + version.json)
@@ -31,7 +32,6 @@ set "DIST_DIR=%~dp0"
 set "PROJ_DIR=%~dp0..\LogViewer"
 set "PROJ=%PROJ_DIR%\LogViewer.csproj"
 set "PUBXML=%PROJ_DIR%\Properties\PublishProfiles\ClickOnceProfile.pubxml"
-set "DOCS_DIR=%PROJ_DIR%\docs"
 set "BIN=%PROJ_DIR%\bin\Release"
 set "OBJ=%PROJ_DIR%\obj"
 set "APPPUB=%PROJ_DIR%\bin\Release\net10.0-windows\win-x64\app.publish"
@@ -50,6 +50,32 @@ set "PT_PDB=%PT_DIR%\LogViewer.pdb"
 set "PT_ZIP=%PT_DIR%\LogViewerPortable.zip"
 
 set "REPO=NuneX-mBrothers/TheAbsoluteLogViewer"
+
+:: ── Assinatura de codigo (Authenticode) ──────────────────────
+:: O certificado e o MESMO do ExplorerFocus -- um certificado assina quantos
+:: produtos se quiser. Escolhe-se pela IMPRESSAO DIGITAL e nunca pelo nome: o
+:: /n do signtool casa por TEXTO, e um certificado parecido na loja da-lhe
+:: "nao encontrado" ou, pior, assina com o errado.
+::
+:: O INTERRUPTOR: com LV_SIGN_SHA1 vazio o passo nao faz nada e a publicacao
+:: corre como antes. Para publicar sem assinar, APAGA-SE o valor -- nao se
+:: comenta a linha, para nao ficar meio-ligado.
+::
+:: NAO ha assinatura desassistida: a chave vive num cartao virtual servido
+:: pelo SimplySign Desktop, que tem de estar A CORRER e com sessao aberta. O
+:: signtool PARA a pedir o PIN. E desenho da Certum, nao defeito do script.
+::
+:: O que NAO e assinado, e porque: o ClickOnce fica de fora por decisao do
+:: autor (2026-08-18) -- "se esta a funcionar, ninguem lhe mexe". Trocar-lhe o
+:: certificado dos manifestos mudaria a IDENTIDADE da aplicacao e deixaria
+:: quem ja a tem instalada sem actualizacoes, obrigando a reinstalar.
+set "LV_SIGN_SHA1=7B04B8346ED85BF3D3D40D0791083233C9FFB4EF"
+set "LV_SIGN_TS=http://time.certum.pl"
+
+:: Como o VSWHERE acima: expandido AQUI, fora de qualquer bloco ( ... ), porque
+:: o ")" de "(x86)" fecharia o bloco e o cmd rebentava.
+set "WK10BIN=%ProgramFiles(x86)%\Windows Kits\10\bin"
+set "SIGNTOOL=%WK10BIN%\10.0.26100.0\x64\signtool.exe"
 
 :: %ProgramFiles(x86)% tem parentesis: TEM de ser expandido fora de qualquer
 :: bloco ( ... ), senao o ")" fecha o bloco e o cmd rebenta.
@@ -72,7 +98,7 @@ if not exist "%PUBXML%" (
     for /r "%PROJ_DIR%" %%f in (ClickOnceProfile.pubxml) do set "PUBXML=%%f"
 )
 if not exist "%PUBXML%" ( echo [ERRO] ClickOnceProfile.pubxml nao encontrado. & pause & exit /b 1 )
-if not exist "%DOCS_DIR%\index.html" ( echo [ERRO] Nao encontrou: %DOCS_DIR%\index.html & pause & exit /b 1 )
+if not exist "%DIST_INDEX%" ( echo [ERRO] Nao encontrou o site: %DIST_INDEX% & pause & exit /b 1 )
 if not exist "%SA_DIR%" ( echo [ERRO] Falta a pasta StandAlone\ em %DIST_DIR% & pause & exit /b 1 )
 
 where dotnet >nul 2>&1
@@ -83,6 +109,42 @@ if errorlevel 1 ( echo [ERRO] 'gh' nao esta no PATH. Instala o GitHub CLI. & pau
 
 gh auth status >nul 2>&1
 if errorlevel 1 ( echo [ERRO] 'gh' sem login. Corre 'gh auth login'. & pause & exit /b 1 )
+
+:: Assinatura: verificar AGORA que o signtool existe. Descobri-lo so no passo
+:: [8], ja depois de compiladas as tres edicoes, seria descobri-lo tarde.
+::
+:: Escrito com GOTO e sem blocos ( ... ) de proposito: o caminho contem
+:: %ProgramFiles(x86)%, e o ")" desse nome fecha qualquer bloco onde apareca --
+:: e a armadilha que ja esta documentada no cabecalho deste ficheiro.
+if not defined LV_SIGN_SHA1 goto :sign_off
+if exist "%SIGNTOOL%" goto :sign_ok
+
+echo        signtool nao esta no caminho previsto; a procurar no Windows Kits...
+set "SIGNTOOL="
+for /f "delims=" %%s in ('dir /b /s "%WK10BIN%\signtool.exe" 2^>nul ^| findstr /i "\\x64\\"') do set "SIGNTOOL=%%s"
+if not defined SIGNTOOL goto :sign_sem_signtool
+if not exist "!SIGNTOOL!" goto :sign_sem_signtool
+set "SIGNTOOL=!SIGNTOOL!"
+
+:sign_ok
+echo        Assinatura: ON  ^(cert %LV_SIGN_SHA1:~0,8%...^)
+echo        signtool: %SIGNTOOL%
+:: NAO usar ">" aqui: mesmo escapado, o cmd trata-o como redireccao e cria um
+:: ficheiro com o nome da palavra seguinte. Ja aconteceu neste ficheiro.
+echo        ** O SimplySign Desktop tem de estar ABERTO e com sessao iniciada,
+echo           senao a assinatura para a pedir credenciais.
+goto :sign_check_fim
+
+:sign_sem_signtool
+echo [ERRO] LV_SIGN_SHA1 esta definido mas nao ha signtool.exe nesta maquina.
+echo        Instala o Windows SDK, ou apaga o valor de LV_SIGN_SHA1 para
+echo        publicar sem assinar.
+pause & exit /b 1
+
+:sign_off
+echo        Assinatura: OFF ^(LV_SIGN_SHA1 vazio^)
+
+:sign_check_fim
 
 :: ClickOnce so se publica com o MSBuild do Visual Studio -- o dotnet publish
 :: nao suporta o protocolo. Localizar agora, nao daqui a 3 minutos.
@@ -151,20 +213,34 @@ powershell -NoProfile -Command "$p='%PUBXML%'; $c=[IO.File]::ReadAllText($p); $c
 if errorlevel 1 ( echo [ERRO] Falhou a atualizar o pubxml. & pause & exit /b 1 )
 echo        OK: csproj + pubxml -^> %NEWVER%
 
-:: ── 5. Copiar o site (docs\ inteiro) + injetar a versao ──────
-echo [5/11] A copiar o site ^(docs\^) e a injetar a versao...
-:: /E inclui subpastas; SEM /MIR para nao apagar o que ja existe no dist
-:: (ClickOnce, StandAlone\, Portable\). /XF exclui os backups __index*.html.
-robocopy "%DOCS_DIR%" "%~dp0." /E /XF "__*.html" /R:2 /W:1 /NFL /NDL /NJH /NJS /NP >nul
-:: robocopy: 0-7 = sucesso; >=8 = erro real.
-if errorlevel 8 ( echo [ERRO] robocopy falhou a copiar o site. & pause & exit /b 1 )
-
-:: Ler e escrever em UTF-8 SEM BOM. O Windows PowerShell 5.1 usa ANSI por
-:: omissao e o index.html tem caracteres nao-ASCII (aspas curvas, seta ->).
-:: Nao usar "Set-Content -Encoding UTF8": no 5.1 isso escreve COM BOM.
-powershell -NoProfile -Command "$p='%DIST_INDEX%'; $c=[IO.File]::ReadAllText($p,[Text.Encoding]::UTF8) -replace '__VERSION__','%NEWVER%'; [IO.File]::WriteAllText($p,$c,(New-Object Text.UTF8Encoding($false)))"
-if errorlevel 1 ( echo [ERRO] Falhou a injetar a versao no index.html. & pause & exit /b 1 )
-echo        Site copiado ^(css/js/i18n/assets^) + versao injetada: v%NEWVER%
+:: ── 5. Escrever a versao no site ─────────────────────────────
+:: ESTA PASTA E A FONTE DO SITE. Nao ha copia de lado nenhum: edita-se aqui e
+:: e daqui que se publica, igual ao ExplorerFocus. Ate 2026-08-18 a fonte vivia
+:: em ..\LogViewer\docs\ e era copiada para ca por robocopy -- duas copias, e
+:: editar a errada custava o trabalho todo.
+::
+:: CONSEQUENCIA DIRECTA disso: NAO se pode usar um marcador tipo "__VERSION__",
+:: porque o ficheiro escrito e o mesmo que se volta a ler no publish seguinte --
+:: o marcador era gasto a primeira vez e nunca mais havia o que substituir, com
+:: o numero do site a congelar em silencio. Reescreve-se a versao ANTERIOR, como
+:: o EF faz.
+::
+:: E por isso que se CONTA antes de substituir: se o padrao deixar de casar (por
+:: alguem ter mexido no HTML), isto tem de FALHAR e nao passar em claro.
+::
+:: Ler/escrever em UTF-8 SEM BOM: o PowerShell 5.1 usa ANSI por omissao e o
+:: index.html tem caracteres nao-ASCII. Nao usar "Set-Content -Encoding UTF8",
+:: que no 5.1 escreve COM BOM.
+:: O ">" do HTML vai como \x3E no regex, para o cmd nao o ler como redireccao.
+echo [5/11] A escrever a versao no site...
+powershell -NoProfile -Command "$q=[char]34; $p='%DIST_INDEX%'; $v='%NEWVER%'; $c=[IO.File]::ReadAllText($p,[Text.Encoding]::UTF8); $p1='(softwareVersion'+$q+'\s*:\s*'+$q+')[\d.]+'; $p2='(class='+$q+'ver-badge'+$q+'\x3Ev)[\d.]+'; if (([regex]::Matches($c,$p1)).Count -lt 1) { exit 2 }; if (([regex]::Matches($c,$p2)).Count -lt 1) { exit 3 }; $c=[regex]::Replace($c,$p1,('${1}'+$v)); $c=[regex]::Replace($c,$p2,('${1}'+$v)); [IO.File]::WriteAllText($p,$c,(New-Object Text.UTF8Encoding($false)))"
+if errorlevel 1 (
+    echo [ERRO] Nao consegui escrever a versao no index.html.
+    echo        Codigo 2 = nao encontrou o "softwareVersion"; 3 = nao encontrou o "ver-badge".
+    echo        Alguem mexeu na marcacao do index.html: corrige o padrao neste passo.
+    pause & exit /b 1
+)
+echo        Versao escrita no index.html: v%NEWVER%
 echo        OK
 
 :: ── 6. Parar a app + limpar artefactos ───────────────────────
@@ -236,7 +312,7 @@ echo        OK
 
 :: ── 8. Renomear o Portable + criar os .zip ───────────────────
 :: Os .zip existem para PCs/organizacoes que bloqueiam downloads de .exe.
-echo [8/11] A renomear o Portable e a criar os .zip...
+echo [8/11] A renomear o Portable, ASSINAR e criar os .zip...
 
 if exist "%PT_PDB%" ( del "%PT_PDB%" & echo        Apagado: LogViewer.pdb )
 if exist "%SA_ZIP%" ( del "%SA_ZIP%" )
@@ -248,6 +324,51 @@ if exist "%PT_RAW%" (
     echo        Renomeado: LogViewer.exe -^> LogViewerPortable.exe
 )
 if not exist "%PT_EXE%" ( echo [ERRO] LogViewerPortable.exe nao existe apos o rename. & pause & exit /b 1 )
+
+:: ── 8b. ASSINAR ──────────────────────────────────────────────
+:: ⛔ A ORDEM NAO E ARBITRARIA, E E O UNICO ERRO DESTE ASSUNTO QUE PARTE TUDO
+::    EM SILENCIO. Assinar ALTERA OS BYTES do ficheiro, logo tudo o que o
+::    descreve tem de vir DEPOIS:
+::
+::      compilar -> renomear -> ASSINAR -> .zip -> version.json -> publicar
+::                              ^^^^^^^
+::                          aqui, e so aqui
+::
+::    Se o SHA-256 do [9] fosse calculado antes da assinatura, o version.json
+::    publicado descrevia um ficheiro que ja nao existe: o auto-updater
+::    descarregava, comparava, NAO BATIA, apagava e desistia -- e o auto-update
+::    de toda a gente ficava partido ate uma release seguinte o corrigir, sem
+::    erro visivel e sem ninguem dar por isso.
+::
+:: Assina-se DEPOIS do rename, e nao antes, para se assinar exactamente os
+:: ficheiros que vao ser publicados, com o nome final. Os dois numa so chamada:
+:: o signtool aceita varios ficheiros e assim pede o PIN UMA vez em vez de duas.
+if not defined LV_SIGN_SHA1 goto :sign_saltar
+
+echo        A assinar ^(pode pedir o PIN do SimplySign^)...
+"%SIGNTOOL%" sign /fd sha256 /tr "%LV_SIGN_TS%" /td sha256 /sha1 "%LV_SIGN_SHA1%" /v "%SA_EXE%" "%PT_EXE%"
+if errorlevel 1 (
+    echo [ERRO] A ASSINATURA FALHOU. A publicacao PARA aqui, de proposito.
+    echo        Nada foi enviado, por isso nada ficou inconsistente.
+    echo        Causas mais provaveis: SimplySign fechado/sem sessao, ou sem
+    echo        internet ^(o carimbo temporal e um servico remoto^).
+    pause & exit /b 1
+)
+
+:: O verify /pa nao e decoracao: usa a politica de ASSINATURA DE CODIGO, a
+:: mesma que o Windows aplica a serio. Um .exe que nao passa aqui tambem nao
+:: passa na maquina de quem o descarrega -- mais vale saber agora.
+"%SIGNTOOL%" verify /pa /v "%SA_EXE%"
+if errorlevel 1 ( echo [ERRO] StandAlone assinado mas NAO verifica. NAO publicar. & pause & exit /b 1 )
+"%SIGNTOOL%" verify /pa /v "%PT_EXE%"
+if errorlevel 1 ( echo [ERRO] Portable assinado mas NAO verifica. NAO publicar. & pause & exit /b 1 )
+echo        Assinados e verificados: LogViewer.exe + LogViewerPortable.exe
+goto :sign_feito
+
+:sign_saltar
+echo        [aviso] LV_SIGN_SHA1 vazio: os executaveis NAO vao assinados.
+
+:sign_feito
 
 powershell -NoProfile -Command "Compress-Archive -Path '%SA_EXE%' -DestinationPath '%SA_ZIP%' -Force"
 if errorlevel 1 ( echo [ERRO] Falhou a criar o LogViewer.zip. & pause & exit /b 1 )

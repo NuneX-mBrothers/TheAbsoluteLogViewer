@@ -17,7 +17,6 @@ setlocal EnableDelayedExpansion
 
 set "DIST_DIR=%~dp0"
 set "CSPROJ=%~dp0..\LogViewer\LogViewer.csproj"
-set "DOCS_DIR=%~dp0..\LogViewer\docs"
 set "DIST_INDEX=%~dp0index.html"
 
 echo.
@@ -27,7 +26,7 @@ echo ==========================================
 echo.
 
 :: ── 1. Ler versao ATUAL do .csproj (sem bump) ─────────────────
-echo [1/5] A ler versao atual do .csproj...
+echo [1/4] A ler versao atual do .csproj...
 if not exist "%CSPROJ%" (
     echo [ERRO] Nao encontrou: %CSPROJ%
     pause & exit /b 1
@@ -42,34 +41,30 @@ if "%VERSION%"=="" (
 echo       Versao: %VERSION%  ^(sem bump^)
 echo       OK
 
-:: ── 2. Validar a origem do site ───────────────────────────────
-echo [2/5] A validar docs\index.html...
-if not exist "%DOCS_DIR%\index.html" (
-    echo [ERRO] %DOCS_DIR%\index.html nao encontrado.
+:: -- 2. Validar o site ---------------------------------------
+:: ESTA PASTA E A FONTE DO SITE. Edita-se aqui e publica-se daqui, igual ao
+:: ExplorerFocus. Ate 2026-08-18 a fonte vivia em ..\LogViewer\docs\ e era
+:: copiada para ca por robocopy; havia duas copias e editar a errada perdia
+:: o trabalho todo. Deixou de haver copia: nao ha robocopy nenhum.
+echo [2/4] A validar o site...
+if not exist "%DIST_INDEX%" (
+    echo [ERRO] Nao encontrou o site: %DIST_INDEX%
     pause & exit /b 1
 )
 echo       OK
 
-:: ── 3. Copiar o SITE (docs\ inteiro) para o repo dist ─────────
-echo [3/5] A copiar o site ^(docs\^) para o dist...
-:: Igual ao passo [5] do publicar_LogViewer.cmd: copia recursiva preservando
-:: estrutura (css\ js\ i18n\ assets\ + screenshots + app-icons).
-:: SEM /MIR (nao apaga ClickOnce / StandAlone\ / Portable\). /XF
-:: exclui os backups __index*.html da pasta docs.
-robocopy "%DOCS_DIR%" "%~dp0." /E /XF "__*.html" /R:2 /W:1 /NFL /NDL /NJH /NJS /NP >nul
-:: robocopy: codigos 0-7 = sucesso; >=8 = erro real.
-if errorlevel 8 (
-    echo [ERRO] robocopy falhou a copiar o site.
-    pause & exit /b 1
-)
-echo       Site copiado ^(css/js/i18n/assets + imagens^).
-echo       OK
-
-:: ── 4. Injetar a versao no index.html copiado ─────────────────
-echo [4/5] A injetar a versao no index.html...
-:: Ler e escrever explicitamente em UTF-8 SEM BOM (o PowerShell 5.1 usa ANSI por
-:: omissao, e "Set-Content -Encoding UTF8" escreveria COM BOM).
-powershell -NoProfile -Command "$p='%DIST_INDEX%'; $c=[System.IO.File]::ReadAllText($p,[System.Text.Encoding]::UTF8) -replace '__VERSION__','%VERSION%'; [System.IO.File]::WriteAllText($p,$c,(New-Object System.Text.UTF8Encoding($false)))"
+:: -- 3. Escrever a versao no index.html ----------------------
+echo [3/4] A escrever a versao no site...
+:: Nao ha marcador "__VERSION__": como o ficheiro escrito e o MESMO que se
+:: volta a ler no publish seguinte, um marcador era gasto a primeira vez e
+:: nunca mais havia o que substituir -- o numero congelava em silencio.
+:: Reescreve-se a versao ANTERIOR, e CONTA-SE antes: se o padrao deixar de
+:: casar (alguem mexeu no HTML), isto FALHA em vez de passar em claro.
+:: UTF-8 SEM BOM: o PowerShell 5.1 usa ANSI por omissao e ha acentuacao.
+:: O ">" do HTML vai como \x3E no regex: assim nao ha um ">" literal na linha
+:: e nao ha duvida nenhuma sobre o cmd o ler como redireccao. IDENTICA a do
+:: publicar_LogViewer.cmd -- se mexeres numa, mexe na outra.
+powershell -NoProfile -Command "$q=[char]34; $p='%DIST_INDEX%'; $v='%VERSION%'; $c=[IO.File]::ReadAllText($p,[Text.Encoding]::UTF8); $p1='(softwareVersion'+$q+'\s*:\s*'+$q+')[\d.]+'; $p2='(class='+$q+'ver-badge'+$q+'\x3Ev)[\d.]+'; if (([regex]::Matches($c,$p1)).Count -lt 1) { exit 2 }; if (([regex]::Matches($c,$p2)).Count -lt 1) { exit 3 }; $c=[regex]::Replace($c,$p1,('${1}'+$v)); $c=[regex]::Replace($c,$p2,('${1}'+$v)); [IO.File]::WriteAllText($p,$c,(New-Object Text.UTF8Encoding($false)))"
 if errorlevel 1 (
     echo [ERRO] Falhou a injetar a versao no index.html.
     pause & exit /b 1
@@ -77,8 +72,8 @@ if errorlevel 1 (
 echo       Versao injetada: v%VERSION%
 echo       OK
 
-:: ── 5. git add (so do site) + commit + push ───────────────────
-echo [5/5] git add ^(so site^) + commit + push...
+:: -- 4. git add (so do site) + commit + push -----------------
+echo [4/4] git add ^(so site^) + commit + push...
 cd /d "%DIST_DIR%"
 
 :: Stage EXPLICITO dos ficheiros do site, para um run so-site nunca
@@ -87,7 +82,7 @@ cd /d "%DIST_DIR%"
 :: raiz sao listados um a um.
 :: NOTA: se um dia adicionares um ficheiro de site NOVO na raiz de docs\
 :: (ex: robots.txt, sitemap.xml), acrescenta-o tambem a esta lista.
-git add index.html README.md assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg
+git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg
 if errorlevel 1 (
     echo [ERRO] git add falhou. Estas no repo dist certo?
     pause & exit /b 1

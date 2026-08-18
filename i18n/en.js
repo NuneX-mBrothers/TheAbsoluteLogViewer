@@ -19,8 +19,7 @@ window.I18N.en = {
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Every download is verifiable",
-  "band.text": 'Not code-signed yet, so Windows may show “Unknown publisher” — but each release publishes a <code>SHA-256</code> in <code>version.json</code>, and the app checks it before installing any update over HTTPS. Tampered binaries are rejected automatically.',
-
+  "band.text": 'The Standalone and Portable downloads are digitally signed and timestamped. Every release also publishes a <code>SHA-256</code> in <code>version.json</code>, and the app checks it before installing any update over HTTPS. Tampered binaries are rejected automatically.',
   "band.softpedia": 'And you don\'t have to take our word for it: <strong>Softpedia Labs</strong> tested it independently and awarded it <strong>100% Clean</strong> — no spyware, adware or viruses.',
   "feat.label": "Built for people who live in logs",
   "feat.title": "Everything you wish tail -f had.",
@@ -79,15 +78,15 @@ window.I18N.en = {
   "ed.pt.lede": "Self-contained ~160 MB .exe. No runtime, no install — runs from anywhere.",
   "ed.pt.btn": "Download portable",
   "ed.zip.alt": "Blocked from .exe? Get the .zip",
-  "install.smartscreen": "On first launch Windows SmartScreen may say “Unknown publisher” (the app isn’t code-signed yet). Click More info → Run anyway. Verify the SHA-256 if you like — it’s published with every release.",
+  "install.smartscreen": "The downloads are signed, but SmartScreen decides by reputation — and a new certificate starts at zero. So the warning may still appear on first launch, now showing the publisher's name instead of “Unknown publisher”. Click More info → Run anyway. Verify the SHA-256 if you like — it's published with every release.",
   "chrome.note": "<strong>Chrome doesn’t support ClickOnce</strong>Open this page in Microsoft Edge to use the ClickOnce install, or just grab the Standalone or Portable build instead.",
 
   "faq.label": "Good to know",
   "faq.title": "Questions",
   "faq.q1": "Is it really free?",
   "faq.a1": "Yes — freeware, for personal and commercial use. No account and no cookies; the app only sends anonymous install and update stats, which you can turn off.",
-  "faq.q2": "Why does Windows say “Unknown publisher”?",
-  "faq.a2": 'The binaries aren’t code-signed yet. Every release publishes a <code>SHA-256</code> hash you can verify, and the in-app updater checks it automatically before installing.',
+  "faq.q2": "Windows still warns on first launch — why?",
+  "faq.a2": 'The Standalone and Portable editions are signed, but SmartScreen decides by <strong>reputation</strong>, and a new certificate starts at zero — it grows with downloads. So the warning can still appear, now with the publisher's name. The ClickOnce install keeps its own signature and may still say “Unknown publisher”. Every release publishes a <code>SHA-256</code> you can verify, and the updater checks it automatically.',
   "faq.q3": "Which edition should I pick?",
   "faq.a3": "ClickOnce if you want effortless auto-updates (needs Microsoft Edge). Standalone if you already have the .NET 10 runtime. Portable if you want zero install.",
   "faq.q4": "Where’s the source code?",

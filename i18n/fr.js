@@ -19,8 +19,7 @@ window.I18N.fr = {
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Chaque téléchargement est vérifiable",
-  "band.text": 'L’application n’est pas encore signée numériquement ; Windows peut donc afficher « Éditeur inconnu » — mais chaque version publie un <code>SHA-256</code> dans <code>version.json</code>, et l’application le vérifie avant d’installer toute mise à jour via HTTPS. Les binaires falsifiés sont automatiquement rejetés.',
-
+  "band.text": 'Les téléchargements Standalone et Portable sont signés numériquement et horodatés. Chaque version publie aussi un <code>SHA-256</code> dans <code>version.json</code>, et l’app le vérifie avant d’installer toute mise à jour via HTTPS. Les binaires altérés sont rejetés automatiquement.',
   "band.softpedia": 'Et vous n\'avez pas à nous croire sur parole : les <strong>Softpedia Labs</strong> l\'ont testé de façon indépendante et lui ont décerné le label <strong>100% Clean</strong> — sans spyware, adware ni virus.',
   "feat.label": "Conçu pour ceux qui vivent dans les logs",
   "feat.title": "Tout ce que vous auriez aimé trouver dans tail -f.",
@@ -79,15 +78,15 @@ window.I18N.fr = {
   "ed.pt.lede": ".exe autonome d’environ 160 MB. Sans runtime, sans installation — s’exécute depuis n’importe où.",
   "ed.pt.btn": "Télécharger la version portable",
   "ed.zip.alt": "Le .exe est bloqué ? Prenez le .zip",
-  "install.smartscreen": "Au premier lancement, Windows SmartScreen peut afficher « Éditeur inconnu » (l’application n’est pas encore signée numériquement). Cliquez sur Informations complémentaires → Exécuter quand même. Vérifiez le SHA-256 si vous le souhaitez — il est publié à chaque version.",
+  "install.smartscreen": "Les téléchargements sont signés, mais SmartScreen décide selon la réputation — et celle d’un certificat neuf part de zéro. L’avertissement peut donc encore apparaître au premier lancement, désormais avec le nom de l’éditeur au lieu de « Éditeur inconnu ». Cliquez sur Informations complémentaires → Exécuter quand même. Vérifiez le SHA-256 si vous le souhaitez : il est publié à chaque version.",
   "chrome.note": "<strong>Chrome ne prend pas en charge ClickOnce</strong>Ouvrez cette page dans Microsoft Edge pour utiliser l’installation ClickOnce, ou récupérez plutôt l’édition Standalone ou Portable.",
 
   "faq.label": "Bon à savoir",
   "faq.title": "Questions",
   "faq.q1": "Est-ce vraiment gratuit ?",
   "faq.a1": "Oui — un freeware, pour un usage personnel et commercial. Aucun compte et aucun cookie ; l’application envoie seulement des statistiques anonymes d’installation et de mise à jour, que vous pouvez désactiver.",
-  "faq.q2": "Pourquoi Windows affiche-t-il « Éditeur inconnu » ?",
-  "faq.a2": 'Les binaires ne sont pas encore signés numériquement. Chaque version publie un hash <code>SHA-256</code> que vous pouvez vérifier, et le programme de mise à jour intégré le contrôle automatiquement avant l’installation.',
+  "faq.q2": "Windows avertit encore au premier lancement — pourquoi ?",
+  "faq.a2": 'Les éditions Standalone et Portable sont signées, mais SmartScreen décide selon la <strong>réputation</strong>, et celle d’un certificat neuf part de zéro : elle grandit avec les téléchargements. L’avertissement peut donc persister, désormais avec le nom de l’éditeur. L’installation ClickOnce conserve sa propre signature et peut encore afficher « Éditeur inconnu ». Chaque version publie un <code>SHA-256</code> vérifiable, et le programme de mise à jour le contrôle automatiquement.',
   "faq.q3": "Quelle édition choisir ?",
   "faq.a3": "ClickOnce pour des mises à jour automatiques sans effort (nécessite Microsoft Edge). Standalone si vous avez déjà le runtime .NET 10. Portable si vous ne voulez rien installer.",
   "faq.q4": "Où est le code source ?",
