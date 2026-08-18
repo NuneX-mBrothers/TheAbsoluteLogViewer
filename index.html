@@ -247,7 +247,7 @@
       <div class="req-list reveal">
         <span class="req">Windows 10 / 11</span><span class="req">x64</span><span class="req">SHA-256 verified</span>
       </div>
-      <p class="smartscreen reveal" data-i18n="install.smartscreen">The downloads are signed, but SmartScreen decides by reputation — and a new certificate starts at zero. So the warning may still appear on first launch, now showing the publisher’s name instead of “Unknown publisher”. Click More info → Run anyway. Verify the SHA-256 if you like — it’s published with every release. Before that, when downloading, your browser may say the file “isn’t commonly downloaded” — that is only about download numbers, not about anything wrong with the file.</p>
+      <p class="smartscreen reveal" data-i18n="install.smartscreen">The Standalone and Portable downloads are digitally signed — Windows shows the publisher’s name. The signature is recent, so your browser or Windows may still ask you to confirm: click More info → Run anyway. If you like, check the SHA-256 published with every release.</p>
     </section>
 
     <hr class="divider" />
@@ -257,7 +257,7 @@
       <h2 class="sec-title reveal" data-i18n="faq.title">Questions</h2>
       <div class="faq reveal">
         <details><summary data-i18n="faq.q1">Is it really free?</summary><p data-i18n="faq.a1">Yes — freeware, for personal and commercial use. No account and no cookies; the app only sends anonymous install and update stats, which you can turn off.</p></details>
-        <details><summary data-i18n="faq.q2">Windows still warns on first launch — why?</summary><p data-i18n-html="faq.a2">The Standalone and Portable editions are signed, but SmartScreen decides by <strong>reputation</strong>, and a new certificate starts at zero — it grows with downloads. So the warning can still appear, now with the publisher’s name. The ClickOnce install keeps its own signature and may still say “Unknown publisher”. Every release publishes a <code>SHA-256</code> you can verify, and the updater checks it automatically.</p></details>
+        <details><summary data-i18n="faq.q2">Windows asks me to confirm when opening. Why?</summary><p data-i18n-html="faq.a2">The signature is recent, and Windows takes a while to recognise a new publisher — it is not a problem with the file. Click More info → Run anyway. The ClickOnce install keeps its own signature and may still show “Unknown publisher”. Every release publishes a <code>SHA-256</code> you can verify.</p></details>
         <details><summary data-i18n="faq.q3">Which edition should I pick?</summary><p data-i18n="faq.a3">ClickOnce if you want effortless auto-updates (needs Microsoft Edge). Standalone if you already have the .NET 10 runtime. Portable if you want zero install.</p></details>
         <details><summary data-i18n="faq.q4">Where’s the source code?</summary><p data-i18n="faq.a4">The app is freeware and the source is private, but bug reports and feature requests are welcome on GitHub.</p></details>
       </div>
