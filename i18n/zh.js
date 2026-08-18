@@ -19,8 +19,7 @@ window.I18N.zh = {
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "每个下载都可校验",
-  "band.text": '尚未进行代码签名，因此 Windows 可能显示“未知发布者”——但每个版本都会在 <code>version.json</code> 中公布 <code>SHA-256</code>，应用在通过 HTTPS 安装任何更新前都会进行校验。被篡改的文件会被自动拒绝。',
-
+  "band.text": 'Standalone 与 Portable 下载均已进行数字签名并加盖时间戳。每个版本还会在 <code>version.json</code> 中发布 <code>SHA-256</code>，应用在通过 HTTPS 安装任何更新前都会核对。被篡改的文件会自动拒绝。',
   "band.softpedia": '不必只听我们说：<strong>Softpedia Labs</strong> 独立测试后授予其 <strong>100% Clean</strong> 认证 — 无间谍软件、无广告软件、无病毒。',
   "feat.label": "为离不开日志的人打造",
   "feat.title": "tail -f 该有的一切。",
@@ -79,15 +78,15 @@ window.I18N.zh = {
   "ed.pt.lede": "自包含的约 160 MB .exe。无需运行时、无需安装——随处可运行。",
   "ed.pt.btn": "下载便携版",
   "ed.zip.alt": "无法下载 .exe？改用 .zip",
-  "install.smartscreen": "首次启动时，Windows SmartScreen 可能显示“未知发布者”（应用尚未代码签名）。点击 更多信息 → 仍要运行。如需要可校验 SHA-256——每个版本都会公布。",
+  "install.smartscreen": "下载文件已签名，但 SmartScreen 依据信誉判断，而新证书的信誉从零开始。因此首次运行时仍可能出现提示，只是现在会显示发布者姓名，而不是“未知发布者”。点击“更多信息”→“仍要运行”。如果愿意，可以核对 SHA-256——每个版本都会公布。",
   "chrome.note": "<strong>Chrome 不支持 ClickOnce</strong>请在 Microsoft Edge 中打开此页面以使用 ClickOnce 安装，或直接下载 Standalone 或 Portable 版本。",
 
   "faq.label": "须知",
   "faq.title": "常见问题",
   "faq.q1": "真的免费吗？",
   "faq.a1": "是的——免费软件，可用于个人和商业用途。无需账户、无 Cookie；应用仅发送匿名的安装和更新统计，且可关闭。",
-  "faq.q2": "为什么 Windows 显示“未知发布者”？",
-  "faq.a2": '二进制文件尚未代码签名。每个版本都会公布可校验的 <code>SHA-256</code> 哈希，应用的更新程序在安装前会自动校验。',
+  "faq.q2": "首次运行时 Windows 仍然提示，为什么？",
+  "faq.a2": 'Standalone 与 Portable 版本已签名，但 SmartScreen 依据<strong>信誉</strong>判断，新证书的信誉从零开始，随下载量增长。因此提示仍可能出现，只是会显示发布者姓名。ClickOnce 安装保留自己的签名，仍可能显示“未知发布者”。每个版本都会公布可核对的 <code>SHA-256</code>，更新程序会自动检查。',
   "faq.q3": "我该选哪个版本？",
   "faq.a3": "想要轻松自动更新就选 ClickOnce（需要 Microsoft Edge）。已装 .NET 10 运行时就选 Standalone。想要免安装就选 Portable。",
   "faq.q4": "源代码在哪里？",
