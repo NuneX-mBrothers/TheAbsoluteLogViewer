@@ -78,7 +78,7 @@ window.I18N.es = {
   "ed.pt.lede": ".exe autónomo de ~160 MB. Sin runtime, sin instalación — se ejecuta desde cualquier sitio.",
   "ed.pt.btn": "Descargar portable",
   "ed.zip.alt": "¿Te bloquean el .exe? Usa el .zip",
-  "install.smartscreen": "Las descargas están firmadas, pero SmartScreen decide por reputación — y la de un certificado nuevo empieza de cero. Por eso el aviso aún puede aparecer en el primer arranque, ahora con el nombre del editor en lugar de “Editor desconocido”. Haz clic en Más información → Ejecutar de todas formas. Si quieres, verifica el SHA-256: se publica en cada versión.",
+  "install.smartscreen": "Las descargas están firmadas, pero SmartScreen decide por reputación — y la de un certificado nuevo empieza de cero. Por eso el aviso aún puede aparecer en el primer arranque, ahora con el nombre del editor en lugar de “Editor desconocido”. Haz clic en Más información → Ejecutar de todas formas. Si quieres, verifica el SHA-256: se publica en cada versión. Antes de eso, al descargar, el navegador puede decir que el archivo “no se descarga con frecuencia”: se refiere solo al número de descargas, no a un problema con el archivo.",
   "chrome.note": "<strong>Chrome no admite ClickOnce</strong>Abre esta página en Microsoft Edge para usar la instalación ClickOnce, o descarga mejor la edición Standalone o Portable.",
 
   "faq.label": "Bueno saberlo",

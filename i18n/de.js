@@ -78,7 +78,7 @@ window.I18N.de = {
   "ed.pt.lede": "Eigenständige ~160 MB .exe. Keine Runtime, keine Installation — läuft von überall.",
   "ed.pt.btn": "Portable herunterladen",
   "ed.zip.alt": ".exe blockiert? Nimm die .zip",
-  "install.smartscreen": "Die Downloads sind signiert, doch SmartScreen entscheidet nach Reputation — und die eines neuen Zertifikats beginnt bei null. Die Warnung kann daher beim ersten Start weiterhin erscheinen, nun mit dem Namen des Herausgebers statt „Unbekannter Herausgeber“. Klicken Sie auf Weitere Informationen → Trotzdem ausführen. Prüfen Sie bei Bedarf den SHA-256 — er wird mit jeder Version veröffentlicht.",
+  "install.smartscreen": "Die Downloads sind signiert, doch SmartScreen entscheidet nach Reputation — und die eines neuen Zertifikats beginnt bei null. Die Warnung kann daher beim ersten Start weiterhin erscheinen, nun mit dem Namen des Herausgebers statt „Unbekannter Herausgeber“. Klicken Sie auf Weitere Informationen → Trotzdem ausführen. Prüfen Sie bei Bedarf den SHA-256 — er wird mit jeder Version veröffentlicht. Davor kann Ihr Browser beim Herunterladen melden, die Datei werde „nicht häufig heruntergeladen“ — das betrifft nur die Zahl der Downloads, nicht die Datei selbst.",
   "chrome.note": "<strong>Chrome unterstützt ClickOnce nicht</strong>Öffne diese Seite in Microsoft Edge für die ClickOnce-Installation, oder lade einfach die Standalone- oder Portable-Edition.",
 
   "faq.label": "Gut zu wissen",

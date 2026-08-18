@@ -78,7 +78,7 @@ window.I18N.fr = {
   "ed.pt.lede": ".exe autonome d’environ 160 MB. Sans runtime, sans installation — s’exécute depuis n’importe où.",
   "ed.pt.btn": "Télécharger la version portable",
   "ed.zip.alt": "Le .exe est bloqué ? Prenez le .zip",
-  "install.smartscreen": "Les téléchargements sont signés, mais SmartScreen décide selon la réputation — et celle d’un certificat neuf part de zéro. L’avertissement peut donc encore apparaître au premier lancement, désormais avec le nom de l’éditeur au lieu de « Éditeur inconnu ». Cliquez sur Informations complémentaires → Exécuter quand même. Vérifiez le SHA-256 si vous le souhaitez : il est publié à chaque version.",
+  "install.smartscreen": "Les téléchargements sont signés, mais SmartScreen décide selon la réputation — et celle d’un certificat neuf part de zéro. L’avertissement peut donc encore apparaître au premier lancement, désormais avec le nom de l’éditeur au lieu de « Éditeur inconnu ». Cliquez sur Informations complémentaires → Exécuter quand même. Vérifiez le SHA-256 si vous le souhaitez : il est publié à chaque version. Avant cela, au téléchargement, votre navigateur peut indiquer que le fichier « n’est pas téléchargé couramment » — cela ne concerne que le nombre de téléchargements, pas un problème du fichier.",
   "chrome.note": "<strong>Chrome ne prend pas en charge ClickOnce</strong>Ouvrez cette page dans Microsoft Edge pour utiliser l’installation ClickOnce, ou récupérez plutôt l’édition Standalone ou Portable.",
 
   "faq.label": "Bon à savoir",

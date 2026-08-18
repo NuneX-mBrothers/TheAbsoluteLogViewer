@@ -78,7 +78,7 @@ window.I18N.en = {
   "ed.pt.lede": "Self-contained ~160 MB .exe. No runtime, no install — runs from anywhere.",
   "ed.pt.btn": "Download portable",
   "ed.zip.alt": "Blocked from .exe? Get the .zip",
-  "install.smartscreen": "The downloads are signed, but SmartScreen decides by reputation — and a new certificate starts at zero. So the warning may still appear on first launch, now showing the publisher's name instead of “Unknown publisher”. Click More info → Run anyway. Verify the SHA-256 if you like — it's published with every release.",
+  "install.smartscreen": "The downloads are signed, but SmartScreen decides by reputation — and a new certificate starts at zero. So the warning may still appear on first launch, now showing the publisher's name instead of “Unknown publisher”. Click More info → Run anyway. Verify the SHA-256 if you like — it's published with every release. Before that, when downloading, your browser may say the file “isn’t commonly downloaded” — that is only about download numbers, not about anything wrong with the file.",
   "chrome.note": "<strong>Chrome doesn’t support ClickOnce</strong>Open this page in Microsoft Edge to use the ClickOnce install, or just grab the Standalone or Portable build instead.",
 
   "faq.label": "Good to know",
