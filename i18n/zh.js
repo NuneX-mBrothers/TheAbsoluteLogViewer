@@ -12,6 +12,7 @@ window.I18N.zh = {
   "hero.sub": '一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、独立标签页、正则高亮规则、分屏对比与上下文预览 — <b>支持 12 种语言</b>。',
   "hero.cta.install": "通过 ClickOnce 安装",
   "hero.cta.standalone": "Standalone .exe",
+  "hero.zip.lead": "也提供 .zip：",
   "hero.cta.portable": "便携版 .exe",
   "trust.verify": "SHA-256 校验下载",
   "trust.free": "100% 免费",

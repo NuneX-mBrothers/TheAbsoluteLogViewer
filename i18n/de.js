@@ -12,6 +12,7 @@ window.I18N.de = {
   "hero.sub": 'Ein schneller, moderner Log-Viewer für Windows auf Basis von .NET&nbsp;10 / WPF. Live-Tail, unabhängige Tabs, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau — <b>in 12 Sprachen</b>.',
   "hero.cta.install": "Per ClickOnce installieren",
   "hero.cta.standalone": "Standalone .exe",
+  "hero.zip.lead": "Auch als .zip:",
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "SHA-256-geprüfte Downloads",
   "trust.free": "100% kostenlos",
