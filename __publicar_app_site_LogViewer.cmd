@@ -25,7 +25,7 @@ setlocal EnableDelayedExpansion
 ::  O codigo e PRIVADO (repo LogViewer) e NAO e tocado por este script
 ::  alem do bump de versao -- esse commit e teu, ver o lembrete no fim.
 ::  Os binarios grandes vivem nas Releases, nunca no repo.
-::  Para mudar SO o site (textos/traducoes), usa publicar-site_LogViewer.cmd.
+::  Para mudar SO o site (textos/traducoes), usa __publicar_site_LogViewer.cmd.
 :: ════════════════════════════════════════════════════════════════════
 
 set "DIST_DIR=%~dp0"
@@ -266,7 +266,17 @@ echo        - StandAlone ^(single-file, framework-dependent^)...
 :: Nao passar PublishProfile: a condicao "$(PublishProfile)==''" do csproj
 :: e o que da o single-file. EnableCompressionInSingleFile fica DESLIGADO
 :: (incompativel com SelfContained=false).
-dotnet publish "%PROJ%" -c Release -p:PublishSingleFile=true -p:SelfContained=false -p:RuntimeIdentifier=win-x64 -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -p:DebugType=none -p:DebugSymbols=false -p:PublishDir="%SA_DIR%\\" --nologo -v minimal
+::
+:: NAO REPOR o -p:IncludeAllContentForSelfExtract=true (removido 2026-09-10).
+:: Com essa flag o exe desdobrava o LogViewer.dll para %TEMP%\.net\LogViewer\
+:: no arranque. Esse DLL fica FORA da assinatura, e o ESET apagava-o como
+:: "@Object.Suspicious" -- um exe pequeno que escreve codigo em %TEMP% e o
+:: carrega e, para a heuristica, um dropper. Assinar o exe nao resolvia,
+:: porque o objecto acusado era o DLL solto e nao o exe.
+:: Sem a flag o DLL viaja DENTRO do exe assinado e nada e escrito em disco.
+:: Era precisa no .NET 5/6 (o WPF nao encontrava os resources); testado no
+:: .NET 10 em 2026-09-10: arranca bem e nao extrai nada.
+dotnet publish "%PROJ%" -c Release -p:PublishSingleFile=true -p:SelfContained=false -p:RuntimeIdentifier=win-x64 -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=none -p:DebugSymbols=false -p:PublishDir="%SA_DIR%\\" --nologo -v minimal
 if errorlevel 1 ( echo [ERRO] build StandAlone falhou. & pause & exit /b 1 )
 if not exist "%SA_EXE%" ( echo [ERRO] Nao gerou %SA_EXE% & pause & exit /b 1 )
 echo          OK: %SA_EXE%

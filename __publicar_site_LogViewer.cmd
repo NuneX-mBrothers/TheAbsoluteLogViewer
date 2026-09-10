@@ -12,7 +12,8 @@ setlocal EnableDelayedExpansion
 ::  imagens, links (ex: o link do mBrothers). Atualiza o GitHub Pages
 ::  em ~1 min sem o upload de ~225 MB das Releases.
 ::
-::  Para uma NOVA VERSAO da app usa-se o publicar_LogViewer.cmd (faz tudo).
+::  Para uma NOVA VERSAO da app usa-se o __publicar_app_site_LogViewer.cmd
+::  (faz tudo: app + site).
 :: ════════════════════════════════════════════════════════════════════
 
 set "DIST_DIR=%~dp0"
@@ -63,7 +64,7 @@ echo [3/4] A escrever a versao no site...
 :: UTF-8 SEM BOM: o PowerShell 5.1 usa ANSI por omissao e ha acentuacao.
 :: O ">" do HTML vai como \x3E no regex: assim nao ha um ">" literal na linha
 :: e nao ha duvida nenhuma sobre o cmd o ler como redireccao. IDENTICA a do
-:: publicar_LogViewer.cmd -- se mexeres numa, mexe na outra.
+:: __publicar_app_site_LogViewer.cmd -- se mexeres numa, mexe na outra.
 powershell -NoProfile -Command "$q=[char]34; $p='%DIST_INDEX%'; $v='%VERSION%'; $c=[IO.File]::ReadAllText($p,[Text.Encoding]::UTF8); $p1='(softwareVersion'+$q+'\s*:\s*'+$q+')[\d.]+'; $p2='(class='+$q+'ver-badge'+$q+'\x3Ev)[\d.]+'; if (([regex]::Matches($c,$p1)).Count -lt 1) { exit 2 }; if (([regex]::Matches($c,$p2)).Count -lt 1) { exit 3 }; $c=[regex]::Replace($c,$p1,('${1}'+$v)); $c=[regex]::Replace($c,$p2,('${1}'+$v)); [IO.File]::WriteAllText($p,$c,(New-Object Text.UTF8Encoding($false)))"
 if errorlevel 1 (
     echo [ERRO] Falhou a injetar a versao no index.html.
