@@ -12,6 +12,7 @@ window.I18N.fr = {
   "hero.sub": 'Un visualiseur de logs pour Windows rapide et moderne, bâti sur .NET&nbsp;10 / WPF. Suivi en direct, onglets indépendants, règles de coloration regex, comparaison en volet partagé et aperçu du contexte — <b>en 12 langues</b>.',
   "hero.cta.install": "Installer via ClickOnce",
   "hero.cta.standalone": "Standalone .exe",
+  "hero.zip.lead": "Aussi en .zip :",
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "Téléchargements vérifiés par SHA-256",
   "trust.free": "100 % gratuit",
