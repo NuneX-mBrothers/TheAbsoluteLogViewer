@@ -1,0 +1,196 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0/win-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {},
+    ".NETCoreApp,Version=v10.0/win-x64": {
+      "LogViewer/1.5.3.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.12",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.12",
+          "Microsoft.Extensions.Configuration.Json": "10.0.12"
+        },
+        "runtime": {
+          "LogViewer.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.12",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.12",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12",
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.12",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.12",
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.12",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.12",
+          "Microsoft.Extensions.Configuration.FileExtensions": "10.0.12",
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Json.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/10.0.12": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.12",
+          "Microsoft.Extensions.FileSystemGlobbing": "10.0.12",
+          "Microsoft.Extensions.Primitives": "10.0.12"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileProviders.Physical.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/10.0.12": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/10.0.12": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LogViewer/1.5.3.3": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Configuration/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e3IPP32CRNL031VZJAUTlCTG0YN7WFh4mN3fsSHTDQCJB+3+f0jGycv4fXk3rrftaY3B85XrQaj7sRthrOsavg==",
+      "path": "microsoft.extensions.configuration/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8xaGcvS/qZ1otoxPQCEJkNva389CVL/plNcvIETZhQTETYdRkYDPEYhUMoAGONo4FU45ufdfE0j29AfWVVj0wA==",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Binder/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dAgIf1TOr8KLs+aBRIbXUZBjHoSH4rDG8+XkX/Q6AZwkQdMA0+yPDKTHsieeXdZDfpOpZVHzOnuAb5Z2nX3KsA==",
+      "path": "microsoft.extensions.configuration.binder/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.binder.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.FileExtensions/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PNPS7yYH9U2M0dExn0tMkQFVtE53xTlCs/dgTfsWTTFyCF6qwGT3VrTgm2nnnkSRlSmvM9/J+n9xCpyzd9xTpQ==",
+      "path": "microsoft.extensions.configuration.fileextensions/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.fileextensions.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Json/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H4u2ZeIhjmRQvbHj7S7U4MK1kXb0khx3UtOWcir32VHczdFyIVF0lvHew/VVHmCF7Uk0QseAUaO7HyFKOCSiKA==",
+      "path": "microsoft.extensions.configuration.json/10.0.12",
+      "hashPath": "microsoft.extensions.configuration.json.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iQseV6HixWzEYQH4i++84ToIroXnM5jC1TJF4EqBz3lWNG1HBTMYDLkRb6Wm3wk5V6WqSfl7NukO/LYsloGyfg==",
+      "path": "microsoft.extensions.fileproviders.abstractions/10.0.12",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Physical/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3cY+wo2+Qe65BVwShhr2fFqZv5Ns73h3kX4mpW3WvSgfT3AWCk0hKArKW4TF7Dg3mvbJdA6RhWPW7FR+PS5/1w==",
+      "path": "microsoft.extensions.fileproviders.physical/10.0.12",
+      "hashPath": "microsoft.extensions.fileproviders.physical.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-45cV+UeI0chPAIXrx9Wv7K4PJXuuIR2pnOur5MOAo6kOFclBHSLLDrvGAxMfWRMtUvpv/kQZkxlgaUN56jwzSQ==",
+      "path": "microsoft.extensions.filesystemglobbing/10.0.12",
+      "hashPath": "microsoft.extensions.filesystemglobbing.10.0.12.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dYfCLR52UA+3DL7C4I/pvSaRPkNqxrUAQmbFL2u0zvYKKzqgrFCJl08Df+F1aYc8leu9JvpC9bsURUdpExcBXQ==",
+      "path": "microsoft.extensions.primitives/10.0.12",
+      "hashPath": "microsoft.extensions.primitives.10.0.12.nupkg.sha512"
+    }
+  }
+}
