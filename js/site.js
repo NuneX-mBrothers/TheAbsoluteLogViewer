@@ -65,7 +65,7 @@
         plain <script> so it also works from file:// previews)
      ────────────────────────────────────────────────────────── */
   var DICT = window.I18N || {};
-  var SUPPORTED = ["en", "pt", "de", "zh"];
+  var SUPPORTED = ["en", "pt", "fr", "es", "de", "zh"];
   var KEY = "talv.lang";
 
   function pickLang() {
