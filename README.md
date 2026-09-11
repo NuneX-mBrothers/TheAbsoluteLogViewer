@@ -36,7 +36,7 @@ Free · .NET 10 / WPF · 16 languages · SHA-256 verified downloads
 | Edition | Install | Size | Requirements |
 |---|---|---|---|
 | **ClickOnce** | from the [website](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/) | ~5 MB | Microsoft Edge · auto-updates via Windows |
-| **Standalone** | [`LogViewer.exe`](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe) | ~1.3 MB | [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0/runtime) |
+| **Standalone** | [`LogViewer.exe`](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe) | ~2.5 MB | [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0/runtime) |
 | **Portable** | [`LogViewerPortable.exe`](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe) | ~158 MB | none — self-contained |
 
 Blocked from downloading `.exe` files? Each edition also ships as a `.zip` in the same release.

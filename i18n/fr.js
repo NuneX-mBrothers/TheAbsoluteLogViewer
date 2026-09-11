@@ -73,7 +73,7 @@ window.I18N.fr = {
   "ed.co.btn": "Installer via ClickOnce",
   "ed.sa.tag": "Le plus léger",
   "ed.sa.h": "Standalone",
-  "ed.sa.lede": "Un seul .exe d’environ 1,3 MB. Nécessite le .NET 10 Desktop Runtime installé.",
+  "ed.sa.lede": "Un seul .exe d’environ 2,5 MB. Nécessite le .NET 10 Desktop Runtime installé.",
   "ed.sa.btn": "Télécharger le .exe",
   "ed.sa.note": 'Nécessite le <a href="https://dotnet.microsoft.com/download/dotnet/10.0/runtime" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>.',
   "ed.pt.tag": "Zéro installation",
