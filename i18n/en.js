@@ -9,7 +9,7 @@ window.I18N.en = {
 
   "hero.eyebrow": "Real-time log tailing",
   "hero.h1": 'See your logs <span class="g">the instant</span> they happen.',
-  "hero.sub": 'A fast, modern Windows log viewer built on .NET&nbsp;10 / WPF. Live tail, independent tabs, regex highlight rules, split-pane comparison and context preview — <b>in 12 languages</b>.',
+  "hero.sub": 'A fast, modern Windows log viewer built on .NET&nbsp;10 / WPF. Live tail, independent tabs, regex highlight rules, split-pane comparison and context preview — <b>in 16 languages</b>.',
   "hero.cta.install": "Install via ClickOnce",
   "hero.cta.standalone": "Standalone .exe",
   "hero.zip.lead": "Also as .zip:",
@@ -38,7 +38,7 @@ window.I18N.en = {
   "feat.preview.d": "Hover a filtered line to peek the surrounding lines from the full, unfiltered file.",
   "feat.update.t": "Built-in auto-update",
   "feat.update.d": "Standalone & Portable update themselves — integrity-checked over HTTPS.",
-  "feat.lang.t": "12 languages",
+  "feat.lang.t": "16 languages",
   "feat.lang.d": "Fully localised UI with instant switching — no restart needed.",
 
   "shots.label": "A look inside",
@@ -50,7 +50,7 @@ window.I18N.en = {
   "shot.5": "Compact toolbar & file panel",
 
   "langs.label": "Speaks your language",
-  "langs.title": "12 languages, switched live.",
+  "langs.title": "16 languages, switched live.",
   "langs.sub": "The whole interface, not just a few strings — change language any time without restarting.",
 
   "how.label": "Up and running in a minute",

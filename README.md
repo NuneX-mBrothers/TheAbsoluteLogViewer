@@ -9,7 +9,7 @@ Real-time tailing, independent tabs, split-pane compare, regex highlight rules a
 
 [**⬇ Install (ClickOnce)**](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/) · [**Standalone .exe**](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe) · [**Portable .exe**](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe) · [**Website**](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/)
 
-Free · .NET 10 / WPF · 12 languages · SHA-256 verified downloads
+Free · .NET 10 / WPF · 16 languages · SHA-256 verified downloads
 
 [![Softpedia 100% Clean](https://img.shields.io/badge/Softpedia-100%25%20Clean-2d6cb5)](https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status)
 
@@ -28,7 +28,7 @@ Free · .NET 10 / WPF · 12 languages · SHA-256 verified downloads
 - **Regex highlight rules** — colour whole lines or single words, with word-boundary helpers and a live preview.
 - **Context preview** — hover a filtered line to peek at the surrounding lines from the full, unfiltered file.
 - **Built-in auto-update** — Standalone and Portable update themselves, integrity-checked over HTTPS.
-- **12 languages**, switched instantly, no restart.
+- **16 languages**, switched instantly, no restart.
 
 ## Editions
 

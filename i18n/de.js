@@ -9,7 +9,7 @@ window.I18N.de = {
 
   "hero.eyebrow": "Echtzeit-Log-Tailing",
   "hero.h1": 'Sieh deine Logs <span class="g">im selben Moment</span>, in dem sie entstehen.',
-  "hero.sub": 'Ein schneller, moderner Log-Viewer für Windows auf Basis von .NET&nbsp;10 / WPF. Live-Tail, unabhängige Tabs, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau — <b>in 12 Sprachen</b>.',
+  "hero.sub": 'Ein schneller, moderner Log-Viewer für Windows auf Basis von .NET&nbsp;10 / WPF. Live-Tail, unabhängige Tabs, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau — <b>in 16 Sprachen</b>.',
   "hero.cta.install": "Per ClickOnce installieren",
   "hero.cta.standalone": "Standalone .exe",
   "hero.zip.lead": "Auch als .zip:",
@@ -38,7 +38,7 @@ window.I18N.de = {
   "feat.preview.d": "Über eine gefilterte Zeile fahren, um die umliegenden Zeilen der vollständigen Datei zu sehen.",
   "feat.update.t": "Integriertes Auto-Update",
   "feat.update.d": "Standalone und Portable aktualisieren sich selbst — integritätsgeprüft über HTTPS.",
-  "feat.lang.t": "12 Sprachen",
+  "feat.lang.t": "16 Sprachen",
   "feat.lang.d": "Vollständig lokalisierte Oberfläche mit sofortigem Wechsel – ohne Neustart.",
 
   "shots.label": "Ein Blick hinein",
@@ -50,7 +50,7 @@ window.I18N.de = {
   "shot.5": "Kompakte Symbolleiste & Dateibereich",
 
   "langs.label": "Spricht deine Sprache",
-  "langs.title": "12 Sprachen, live umgeschaltet.",
+  "langs.title": "16 Sprachen, live umgeschaltet.",
   "langs.sub": "Die gesamte Oberfläche, nicht nur ein paar Texte — jederzeit ohne Neustart wechseln.",
 
   "how.label": "In einer Minute einsatzbereit",
