@@ -73,7 +73,7 @@ window.I18N.zh = {
   "ed.co.btn": "通过 ClickOnce 安装",
   "ed.sa.tag": "最小",
   "ed.sa.h": "Standalone",
-  "ed.sa.lede": "单个约 1.3 MB 的 .exe。需要已安装 .NET 10 桌面运行时。",
+  "ed.sa.lede": "单个约 2.5 MB 的 .exe。需要已安装 .NET 10 桌面运行时。",
   "ed.sa.btn": "下载 .exe",
   "ed.sa.note": '需要 <a href="https://dotnet.microsoft.com/download/dotnet/10.0/runtime" target="_blank" rel="noopener">.NET 10 桌面运行时</a>。',
   "ed.pt.tag": "免安装",
