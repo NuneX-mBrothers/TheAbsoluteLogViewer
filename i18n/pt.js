@@ -1,7 +1,7 @@
 window.I18N = window.I18N || {};
 window.I18N.pt = {
   "meta.title": "The Absolute LogViewer — visualizador de logs para Windows em tempo real",
-  "meta.desc": "Visualizador de ficheiros .log para Windows, grátis, em .NET 10 / WPF. Tail em tempo real, regras de highlight com regex, vista em painel duplo e preview de contexto. Instalação ClickOnce ou .exe portátil.",
+  "meta.desc": "Visualizador de logs para Windows, grátis, em .NET 10 / WPF. Tail em tempo real, regras de highlight com regex, vista em painel duplo e preview de contexto. Instalação ClickOnce ou .exe portátil.",
 
   "nav.features": "Funcionalidades",
   "nav.install": "Descarregar",
@@ -24,8 +24,10 @@ window.I18N.pt = {
   "band.softpedia": 'E não tem de acreditar só na nossa palavra: os <strong>Softpedia Labs</strong> testaram-no de forma independente e atribuíram-lhe o selo <strong>100% Clean</strong> — sem spyware, adware nem vírus.',
   "feat.label": "Feito para quem vive nos logs",
   "feat.title": "Tudo o que gostavas que o tail -f tivesse.",
-  "feat.tail.t": "Tail de .log em tempo real",
-  "feat.tail.d": "Segue ficheiros .log ao vivo — as novas linhas chegam ao instante. Faz scroll para cima para pausar, vai ao fim para retomar.",
+  "feat.text.t": "Não só .log — qualquer log de texto",
+  "feat.text.d": "Os logs de Linux e Unix vêm em todas as formas: syslog, messages, o auth.log.1 de uma rotação, ficheiros sem extensão nenhuma. Dá-lhe padrões de ficheiros e segue todos os ficheiros de texto que correspondam — os binários ficam de fora automaticamente.",
+  "feat.tail.t": "Tail de logs em tempo real",
+  "feat.tail.d": "Segue ficheiros de log ao vivo — as novas linhas chegam ao instante. Faz scroll para cima para pausar, vai ao fim para retomar.",
   "feat.tabs.t": "Abas independentes",
   "feat.tabs.d": "Cada aba é um ambiente próprio — o seu conjunto de logs, split, pesquisa e ordenação. Vigia projetos distintos ao mesmo tempo sem os misturar.",
   "feat.split.t": "Comparação em painel duplo",
@@ -58,7 +60,7 @@ window.I18N.pt = {
   "how.1.t": "Instala ou descompacta",
   "how.1.d": "ClickOnce com um clique, um .exe standalone minúsculo, ou uma build portátil auto-contida.",
   "how.2.t": "Aponta-o aos teus logs",
-  "how.2.d": "Adiciona pastas ou ficheiros. Descobre os .log automaticamente e fica a vigiá-los.",
+  "how.2.d": "Adiciona pastas ou ficheiros. Apanha os logs que correspondem aos teus padrões, deixa os binários de fora e fica a vigiá-los.",
   "how.3.t": "Vê-os ao vivo",
   "how.3.d": "As linhas fazem tail em tempo real com as tuas regras aplicadas. Divide, pesquisa, filtra.",
 
