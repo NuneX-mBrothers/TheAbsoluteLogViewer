@@ -43,9 +43,11 @@ Blocked from downloading `.exe` files? Each edition also ships as a `.zip` in th
 
 ## First run
 
-The executable isn't code-signed yet, so Windows SmartScreen may warn on first launch.
-Click **More info → Run anyway**. Every release publishes its **SHA-256**, and the app verifies it
-before installing any update over HTTPS — tampered binaries are rejected automatically.
+The Standalone and Portable downloads are **digitally signed** — Windows shows the publisher's name.
+The signature is recent, so Windows or your browser may still ask you to confirm on first launch:
+click **More info → Run anyway**. The ClickOnce install keeps its own signature and may still show
+“Unknown publisher”. Every release publishes its **SHA-256**, and the app verifies it before
+installing any update over HTTPS — tampered binaries are rejected automatically.
 
 Independently verified: tested in **Softpedia Labs** and awarded
 [**100% Clean**](https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status)
