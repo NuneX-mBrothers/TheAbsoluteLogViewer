@@ -9,7 +9,7 @@ window.I18N.fr = {
 
   "hero.eyebrow": "Suivi de logs en temps réel",
   "hero.h1": 'Voyez vos logs <span class="g">à l’instant même</span> où ils surviennent.',
-  "hero.sub": 'Un visualiseur de logs pour Windows rapide et moderne, bâti sur .NET&nbsp;10 / WPF. Suivi en direct, onglets indépendants, règles de coloration regex, comparaison en volet partagé et aperçu du contexte — <b>en 12 langues</b>.',
+  "hero.sub": 'Un visualiseur de logs pour Windows rapide et moderne, bâti sur .NET&nbsp;10 / WPF. Suivi en direct, onglets indépendants, règles de coloration regex, comparaison en volet partagé et aperçu du contexte — <b>en 16 langues</b>.',
   "hero.cta.install": "Installer via ClickOnce",
   "hero.cta.standalone": "Standalone .exe",
   "hero.zip.lead": "Aussi en .zip :",
@@ -38,7 +38,7 @@ window.I18N.fr = {
   "feat.preview.d": "Survolez une ligne filtrée pour entrevoir les lignes environnantes du fichier complet, non filtré.",
   "feat.update.t": "Mise à jour automatique intégrée",
   "feat.update.d": "Les éditions Standalone et Portable se mettent à jour elles-mêmes — avec vérification d’intégrité via HTTPS.",
-  "feat.lang.t": "12 langues",
+  "feat.lang.t": "16 langues",
   "feat.lang.d": "Interface entièrement localisée, avec changement instantané — sans redémarrage.",
 
   "shots.label": "Un aperçu de l’intérieur",
@@ -50,7 +50,7 @@ window.I18N.fr = {
   "shot.5": "Barre d’outils et panneau de fichiers compacts",
 
   "langs.label": "Parle votre langue",
-  "langs.title": "12 langues, changées en direct.",
+  "langs.title": "16 langues, changées en direct.",
   "langs.sub": "Toute l’interface, pas seulement quelques textes — changez de langue à tout moment, sans redémarrer.",
 
   "how.label": "Opérationnel en une minute",

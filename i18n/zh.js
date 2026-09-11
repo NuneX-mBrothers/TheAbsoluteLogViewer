@@ -9,7 +9,7 @@ window.I18N.zh = {
 
   "hero.eyebrow": "实时日志 tail",
   "hero.h1": '在日志<span class="g">产生的瞬间</span>就看到它们。',
-  "hero.sub": '一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、独立标签页、正则高亮规则、分屏对比与上下文预览 — <b>支持 12 种语言</b>。',
+  "hero.sub": '一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、独立标签页、正则高亮规则、分屏对比与上下文预览 — <b>支持 16 种语言</b>。',
   "hero.cta.install": "通过 ClickOnce 安装",
   "hero.cta.standalone": "Standalone .exe",
   "hero.zip.lead": "也提供 .zip：",
@@ -38,7 +38,7 @@ window.I18N.zh = {
   "feat.preview.d": "将鼠标悬停在已过滤的行上，即可窥见完整文件中其周围的行。",
   "feat.update.t": "内置自动更新",
   "feat.update.d": "Standalone 与 Portable 会自动更新——通过 HTTPS 进行完整性校验。",
-  "feat.lang.t": "12 种语言",
+  "feat.lang.t": "16 种语言",
   "feat.lang.d": "界面完全本地化，可即时切换，无需重启。",
 
   "shots.label": "内部一览",
@@ -50,7 +50,7 @@ window.I18N.zh = {
   "shot.5": "紧凑的工具栏与文件面板",
 
   "langs.label": "说你的语言",
-  "langs.title": "12 种语言，实时切换。",
+  "langs.title": "16 种语言，实时切换。",
   "langs.sub": "整个界面，而不仅是几句话——随时切换语言，无需重启。",
 
   "how.label": "一分钟即可上手",
