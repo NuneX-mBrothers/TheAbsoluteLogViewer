@@ -21,7 +21,8 @@ Free · .NET 10 / WPF · 16 languages · SHA-256 verified downloads
 
 ## What it does
 
-- **Real-time tailing** — follow `.log` files live; new lines stream in instantly. Scroll up to pause, hit the bottom to resume.
+- **Real-time tailing** — follow log files live; new lines stream in instantly. Scroll up to pause, hit the bottom to resume.
+- **Not just `.log`** — give it file patterns and it follows any text log, Linux and Unix included: `syslog`, `messages`, a rotated `auth.log.1`, files with no extension at all. Binary files are skipped automatically.
 - **Independent tabs** — each tab is its own workspace, with its own logs, split, search and ordering. Watch separate projects at once.
 - **Split-pane compare** — two files side by side, each with its own search and tail.
 - **Tail `.csv` in columns** — `.csv`/`.tsv` render as a table; the header becomes the column titles and new rows appear live.

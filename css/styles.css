@@ -159,6 +159,11 @@ section{padding:78px 0;position:relative;z-index:2}
 .feat .fi svg{width:22px;height:22px}
 .feat h3{font-size:1.02rem;font-weight:800;color:#e3eee3;margin-bottom:6px}
 .feat p{font-size:.86rem;color:var(--muted)}
+/* O cartao largo ocupa a fila inteira com qualquer numero de colunas (4, 3, 2
+   ou 1), por isso nunca deixa um orfao. O texto nao passa de ~72 caracteres
+   por linha, para se ler de uma ponta a outra. */
+.feat.wide{grid-column:1/-1}
+.feat.wide p{max-width:72ch}
 
 /* ── Screenshot gallery ───────────────────────────────────── */
 .shots{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
