@@ -11,11 +11,18 @@
   <meta name="theme-color" content="#070b0f" />
 
   <link rel="canonical" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
-  <!-- Só x-default: a troca de língua é client-side, não há um URL por língua.
-       Quatro hreflang a apontar todos para o mesmo URL não dizem nada ao Google
-       (e podem ser assinalados como alternates inválidos). Se um dia existirem
-       /pt/, /de/, /zh/, repor os alternates a apontar para esses URLs. -->
+  <!-- Uma porta por lingua (fase A, 2026-09-12). Cada pagina tem canonical
+       propria e hreflang reciproco; o texto vai JA TRADUZIDO no HTML.
+       As paginas /pt/ /fr/ /es/ /de/ /zh/ sao GERADAS por tools/gerar-linguas.py
+       -- mexer no texto do site obriga a correr o gerador outra vez.
+       Regresso: etiqueta antes-das-urls-por-idioma. -->
   <link rel="alternate" hreflang="x-default" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="en" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="pt" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/" />
+  <link rel="alternate" hreflang="fr" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/fr/" />
+  <link rel="alternate" hreflang="es" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/es/" />
+  <link rel="alternate" hreflang="de" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
+  <link rel="alternate" hreflang="zh" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="alternate icon" href="social-preview.jpg" />
@@ -83,12 +90,12 @@
       <!-- nav-keep: sobrevive ao breakpoint mobile (ver .nav-link{display:none}) -->
       <a class="nav-link nav-keep" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
       <div class="lang-picker" role="group" aria-label="Language">
-        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
-        <button class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
-        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
-        <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
-        <button class="lang-btn" data-lang="de" aria-pressed="false">DE</button>
-        <button class="lang-btn" data-lang="zh" aria-pressed="false">中文</button>
+        <a class="lang-btn" href="./" hreflang="en" lang="en" aria-current="true">EN</a>
+        <a class="lang-btn" href="pt/" hreflang="pt" lang="pt">PT</a>
+        <a class="lang-btn" href="fr/" hreflang="fr" lang="fr">FR</a>
+        <a class="lang-btn" href="es/" hreflang="es" lang="es">ES</a>
+        <a class="lang-btn" href="de/" hreflang="de" lang="de">DE</a>
+        <a class="lang-btn" href="zh/" hreflang="zh" lang="zh">中文</a>
       </div>
       <span class="ver-badge">v1.5.3.4</span>
     </div>

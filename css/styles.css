@@ -59,8 +59,10 @@ img{max-width:100%;display:block}
   padding:5px 7px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .lang-btn{all:unset;cursor:pointer;font-size:.71rem;font-weight:700;color:var(--muted);
   padding:3px 8px;border-radius:999px;transition:.15s;line-height:1}
-.lang-btn[aria-pressed="true"]{color:#04210f;background:var(--green)}
-.lang-btn:hover:not([aria-pressed="true"]){color:var(--txt)}
+/* o selector passou a ligacoes: a lingua actual marca-se com aria-current.
+   O aria-pressed fica aceite para nao partir nada durante a transicao. */
+.lang-btn[aria-pressed="true"],.lang-btn[aria-current="true"]{color:#04210f;background:var(--green)}
+.lang-btn:hover:not([aria-pressed="true"]):not([aria-current="true"]){color:var(--txt)}
 .lang-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .ver-badge{font-size:.71rem;color:var(--green);border:1px solid rgba(0,230,118,.3);
   background:rgba(0,230,118,.06);padding:3px 10px;border-radius:999px;font-weight:700;white-space:nowrap}

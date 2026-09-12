@@ -243,6 +243,19 @@ if errorlevel 1 (
 echo        Versao escrita no index.html: v%NEWVER%
 echo        OK
 
+:: ── 5b. Gerar as paginas por idioma ──────────────────────────
+:: Tem de ser DEPOIS da injecao da versao: /pt/ /fr/ /es/ /de/ /zh/ sao
+:: copias do index.html e, geradas antes, ficavam a anunciar a versao
+:: anterior no cartao e no JSON-LD.
+echo [5b/11] A gerar as paginas por idioma...
+python "%DIST_DIR%tools\gerar-linguas.py"
+if errorlevel 1 (
+    echo [ERRO] O gerador das paginas por idioma falhou.
+    echo        Sem ele, /pt/ /fr/ /es/ /de/ /zh/ ficam desactualizadas.
+    pause & exit /b 1
+)
+echo        OK
+
 :: ── 6. Parar a app + limpar artefactos ───────────────────────
 :: Se o LogViewer estiver aberto a partir do bin\Release, o rmdir falha.
 :: bin\Debug e preservado para nao estragar o F5 / o build manual.

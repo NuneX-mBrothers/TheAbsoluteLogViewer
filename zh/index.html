@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang-fixa="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Absolute LogViewer — 免费的 Windows 实时日志查看器</title>
+  <meta name="description" content="基于 .NET 10 / WPF 的免费 Windows 日志查看器。实时 tail、正则高亮规则、分屏对比与上下文预览。支持 ClickOnce 安装或便携版 .exe。" />
+  <meta name="author" content="mBrothers" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" content="#070b0f" />
+
+  <link rel="canonical" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+  <!-- Uma porta por lingua (fase A, 2026-09-12). Cada pagina tem canonical
+       propria e hreflang reciproco; o texto vai JA TRADUZIDO no HTML.
+       As paginas /pt/ /fr/ /es/ /de/ /zh/ sao GERADAS por tools/gerar-linguas.py
+       -- mexer no texto do site obriga a correr o gerador outra vez.
+       Regresso: etiqueta antes-das-urls-por-idioma. -->
+  <link rel="alternate" hreflang="x-default" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="en" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="pt" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/" />
+  <link rel="alternate" hreflang="fr" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/fr/" />
+  <link rel="alternate" hreflang="es" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/es/" />
+  <link rel="alternate" hreflang="de" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
+  <link rel="alternate" hreflang="zh" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="alternate icon" href="../social-preview.jpg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Absolute LogViewer" />
+  <meta property="og:title" content="The Absolute LogViewer — 免费的 Windows 实时日志查看器" />
+  <meta property="og:description" content="基于 .NET 10 / WPF 的免费 Windows 日志查看器。实时 tail、正则高亮规则、分屏对比与上下文预览。支持 ClickOnce 安装或便携版 .exe。" />
+  <meta property="og:url" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+  <meta property="og:image" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Absolute LogViewer — real-time Windows log viewer" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Absolute LogViewer — 免费的 Windows 实时日志查看器" />
+  <meta name="twitter:description" content="基于 .NET 10 / WPF 的免费 Windows 日志查看器。实时 tail、正则高亮规则、分屏对比与上下文预览。支持 ClickOnce 安装或便携版 .exe。" />
+  <meta name="twitter:image" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "The Absolute LogViewer",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "DeveloperApplication",
+    "softwareVersion": "1.5.3.4",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "downloadUrl": "https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest",
+    "url": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/",
+    "image": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png",
+    "screenshot": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/screenshot-1-split-view.png",
+    "author": { "@type": "Organization", "name": "mBrothers", "url": "https://nunex-mbrothers.github.io/mBrothers/" },
+    "publisher": { "@type": "Organization", "name": "mBrothers", "url": "https://nunex-mbrothers.github.io/mBrothers/" },
+    "description": "Free .NET 10 / WPF log viewer for Windows with real-time tailing, regex highlight rules, split-pane comparison and context preview."
+  }
+  </script>
+
+  <noscript>
+    <!-- Sem JS o IntersectionObserver nunca acrescenta .in, e todo o conteúdo
+         .reveal ficaria em opacity:0 — ou seja, uma página em branco. -->
+    <style>.reveal{opacity:1 !important;transform:none !important}</style>
+  </noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#" aria-label="The Absolute LogViewer">
+      <img src="../assets/logo.svg" alt="" aria-hidden="true" />
+      <span class="wm">The Absolute Log<span>Viewer</span><small data-i18n="foot.made">免费软件 · 使用 .NET 10 与 WPF 构建</small></span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-link" href="#features" data-i18n="nav.features">功能</a>
+      <a class="nav-link" href="#install" data-i18n="nav.install">下载</a>
+      <!-- nav-keep: sobrevive ao breakpoint mobile (ver .nav-link{display:none}) -->
+      <a class="nav-link nav-keep" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+      <div class="lang-picker" role="group" aria-label="Language">
+        <a class="lang-btn" href="../" hreflang="en" lang="en">EN</a>
+        <a class="lang-btn" href="../pt/" hreflang="pt" lang="pt">PT</a>
+        <a class="lang-btn" href="../fr/" hreflang="fr" lang="fr">FR</a>
+        <a class="lang-btn" href="../es/" hreflang="es" lang="es">ES</a>
+        <a class="lang-btn" href="../de/" hreflang="de" lang="de">DE</a>
+        <a class="lang-btn" href="../zh/" hreflang="zh" lang="zh" aria-current="true">中文</a>
+      </div>
+      <span class="ver-badge">v1.5.3.4</span>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-text reveal">
+        <img class="hero-emblem" src="../assets/logo-emblem.png" alt="The Absolute LogViewer" width="92" height="92" />
+        <span class="eyebrow"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">实时日志 tail</span></span>
+        <h1 data-i18n-html="hero.h1">在日志<span class="g">产生的瞬间</span>就看到它们。</h1>
+        <p class="sub" data-i18n-html="hero.sub">一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、独立标签页、正则高亮规则、分屏对比与上下文预览 — <b>支持 16 种语言</b>。</p>
+      </div>
+
+      <div class="term reveal" aria-hidden="true">
+        <div class="term-bar">
+          <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+          <span class="term-name">app_2026-06-11.log</span>
+          <span class="live"><span class="d"></span>Live</span>
+        </div>
+        <div class="term-body" id="term"></div>
+      </div>
+    </section>
+
+    <div class="hero-downloads reveal">
+      <div class="cta">
+        <a class="btn btn-primary" href="../LogViewer.application"><span aria-hidden="true">⬇</span> <span data-i18n="hero.cta.install">通过 ClickOnce 安装</span></a>
+        <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe"><span aria-hidden="true">⬇</span> <span data-i18n="hero.cta.standalone">Standalone .exe</span></a>
+        <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe"><span aria-hidden="true">▣</span> <span data-i18n="hero.cta.portable">便携版 .exe</span></a>
+      </div>
+      <div class="cta-zip">
+        <span data-i18n="hero.zip.lead">也提供 .zip：</span>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.zip">Standalone</a>
+        <span class="cta-zip-sep" aria-hidden="true">·</span>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.zip">Portable</a>
+      </div>
+      <div class="trust">
+        <span class="pill verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="trust.verify">SHA-256 校验下载</span></span>
+        <a class="pill pill-link" href="https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="trust.softpedia">Softpedia 100% Clean</span></a>
+        <span class="pill" data-i18n="trust.free">100% 免费</span>
+        <span class="pill" data-i18n="trust.notrack">匿名 · 无 Cookie</span>
+      </div>
+      <div class="dl-counter" id="dl-counter">
+        <span class="dl-stat"><span class="dl-arrow" aria-hidden="true">↓</span><strong id="dl-total">—</strong> <span data-i18n="dl.downloads">次下载</span></span>
+        <span class="dl-sep" aria-hidden="true">·</span>
+        <span class="dl-stat"><span data-i18n="dl.standalone">Standalone</span> <strong id="dl-standalone">—</strong></span>
+        <span class="dl-sep" aria-hidden="true">·</span>
+        <span class="dl-stat"><span data-i18n="dl.portable">便携版</span> <strong id="dl-portable">—</strong></span>
+      </div>
+    </div>
+
+    <section style="padding-top:10px">
+      <div class="band reveal">
+        <div class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div>
+          <h3 data-i18n="band.title">每个下载都可校验</h3>
+          <p data-i18n-html="band.text">Standalone 与 Portable 下载均已进行数字签名并加盖时间戳。每个版本还会在 <code>version.json</code> 中发布 <code>SHA-256</code>，应用在通过 HTTPS 安装任何更新前都会核对。被篡改的文件会自动拒绝。</p>
+          <a class="sp-award" href="https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status" target="_blank" rel="noopener">
+            <img src="../assets/softpedia-100-clean.webp" width="76" height="61" alt="Softpedia 100% Clean award" loading="lazy" />
+            <span data-i18n-html="band.softpedia">不必只听我们说：<strong>Softpedia Labs</strong> 独立测试后授予其 <strong>100% Clean</strong> 认证 — 无间谍软件、无广告软件、无病毒。</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="sec-label reveal" data-i18n="feat.label">为离不开日志的人打造</div>
+      <h2 class="sec-title reveal" data-i18n="feat.title">tail -f 该有的一切。</h2>
+      <div class="feats reveal">
+        <!-- Cartao largo (fila inteira): com auto-fill um 9.o cartao normal ficava orfao.
+             Entra primeiro porque diz o que o LogViewer le -- e ja nao e so .log. -->
+        <div class="feat wide"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3"/><path d="M13 15h4"/></svg></div><h3 data-i18n="feat.text.t">不只是 .log——任何文本日志</h3><p data-i18n="feat.text.d">Linux 和 Unix 日志形式各异：syslog、messages、轮转后的 auth.log.1，甚至没有扩展名的文件。设置文件匹配模式，即可跟踪所有匹配的文本文件——二进制文件会被自动排除。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l3 3-3 3"/></svg></div><h3 data-i18n="feat.tail.t">日志实时跟踪</h3><p data-i18n="feat.tail.d">实时跟踪日志文件——新行即时滚入。向上滚动暂停，回到底部继续。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M6 8V6a1 1 0 0 1 1-1h3v3"/><path d="M13 8V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/></svg></div><h3 data-i18n="feat.tabs.t">独立标签页</h3><p data-i18n="feat.tabs.d">每个标签页都是独立的工作区——拥有各自的日志集、分栏、搜索与排序。同时监视不同项目而互不混淆。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg></div><h3 data-i18n="feat.split.t">分屏对比</h3><p data-i18n="feat.split.d">两个独立窗格、两个文件并排显示——各自拥有独立的搜索与 tail。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M15 9v11"/></svg></div><h3 data-i18n="feat.csv.t">.csv 分列跟踪</h3><p data-i18n="feat.csv.d">也支持 .csv/.tsv，但以表格显示——文件标题行成为列标题，新行实时出现。自动识别逗号、分号或制表符。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l14 10M19 7L5 17"/></svg></div><h3 data-i18n="feat.rules.t">正则高亮规则</h3><p data-i18n="feat.rules.d">为整行或单个词上色。提供单词边界辅助与实时预览。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 14h6"/></svg></div><h3 data-i18n="feat.preview.t">上下文预览</h3><p data-i18n="feat.preview.d">将鼠标悬停在已过滤的行上，即可窥见完整文件中其周围的行。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></div><h3 data-i18n="feat.update.t">内置自动更新</h3><p data-i18n="feat.update.d">Standalone 与 Portable 会自动更新——通过 HTTPS 进行完整性校验。</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3 data-i18n="feat.lang.t">16 种语言</h3><p data-i18n="feat.lang.d">界面完全本地化，可即时切换，无需重启。</p></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="screenshots">
+      <div class="sec-label reveal" data-i18n="shots.label">内部一览</div>
+      <h2 class="sec-title reveal" data-i18n="shots.title">简洁、紧凑、键盘友好。</h2>
+      <div class="shots reveal">
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-1-split-view.png" data-full="../screenshot-1-split-view.png" alt="Split-pane view comparing two logs" /></div><div class="cap" data-i18n="shot.1">分屏视图——同时对比两个日志</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-2-filter-preview.png" data-full="../screenshot-2-filter-preview.png" alt="Filter with floating context preview" /></div><div class="cap" data-i18n="shot.2">带浮动上下文预览的过滤</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-3-copy-lines.png" data-full="../screenshot-3-copy-lines.png" alt="Select and copy lines" /></div><div class="cap" data-i18n="shot.3">选择并复制行</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-4-highlight-rules.png" data-full="../screenshot-4-highlight-rules.png" alt="Visual highlight-rule editor" /></div><div class="cap" data-i18n="shot.4">可视化高亮规则编辑器</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-5-toolbar.png" data-full="../screenshot-5-toolbar.png" alt="Compact toolbar and file panel" /></div><div class="cap" data-i18n="shot.5">紧凑的工具栏与文件面板</div></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="languages">
+      <div class="sec-label reveal" data-i18n="langs.label">说你的语言</div>
+      <h2 class="sec-title reveal" data-i18n="langs.title">16 种语言，实时切换。</h2>
+      <p class="sec-sub reveal" data-i18n="langs.sub">整个界面，而不仅是几句话——随时切换语言，无需重启。</p>
+      <!-- 16 línguas DENTRO DA APP desde 2026-09-11, as mesmas do ExplorerFocus.
+           Nomes no próprio idioma: iguais nas 6 línguas do site, sem data-i18n.
+           O chinês leva (简体)/(繁體) porque aí muda a ESCRITA, e isso a
+           bandeira não diz a quem não a lê. -->
+      <div class="langs reveal">
+        <div class="lang-card"><span class="flag">🇵🇹</span>Português</div>
+        <div class="lang-card"><span class="flag">🇬🇧</span>English (UK)</div>
+        <div class="lang-card"><span class="flag">🇺🇸</span>English (US)</div>
+        <div class="lang-card"><span class="flag">🇪🇸</span>Español</div>
+        <div class="lang-card"><span class="flag">🇫🇷</span>Français</div>
+        <div class="lang-card"><span class="flag">🇮🇹</span>Italiano</div>
+        <div class="lang-card"><span class="flag">🇩🇪</span>Deutsch</div>
+        <div class="lang-card"><span class="flag">🇧🇷</span>Português (BR)</div>
+        <div class="lang-card"><span class="flag">🇮🇳</span>हिन्दी</div>
+        <div class="lang-card"><span class="flag">🇸🇦</span>العربية</div>
+        <div class="lang-card"><span class="flag">🇨🇳</span>中文 (简体)</div>
+        <div class="lang-card"><span class="flag">🇹🇼</span>中文 (繁體)</div>
+        <div class="lang-card"><span class="flag">🇷🇺</span>Русский</div>
+        <div class="lang-card"><span class="flag">🇵🇱</span>Polski</div>
+        <div class="lang-card"><span class="flag">🇯🇵</span>日本語</div>
+        <div class="lang-card"><span class="flag">🇰🇷</span>한국어</div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="how">
+      <div class="sec-label reveal" data-i18n="how.label">一分钟即可上手</div>
+      <h2 class="sec-title reveal" data-i18n="how.title">如何使用</h2>
+      <div class="steps reveal">
+        <div class="step"><div class="step-num">1</div><div><h3 data-i18n="how.1.t">安装或解压</h3><p data-i18n="how.1.d">一键 ClickOnce、小巧的 Standalone .exe，或自包含的便携版。</p></div></div>
+        <div class="step"><div class="step-num">2</div><div><h3 data-i18n="how.2.t">指向你的日志</h3><p data-i18n="how.2.d">添加文件夹或单个文件。按你的文件匹配模式找出日志，自动排除二进制文件，并持续监视。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div><h3 data-i18n="how.3.t">实时查看</h3><p data-i18n="how.3.d">日志按你的规则实时 tail。分屏、搜索、过滤。</p></div></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="install">
+      <div class="sec-label reveal" data-i18n="install.label">下载</div>
+      <h2 class="sec-title reveal" data-i18n="install.title">选择你的版本</h2>
+      <p class="sec-sub reveal" data-i18n="install.sub">三种运行方式——都免费，都是同一个应用。</p>
+      <div class="editions reveal">
+        <div class="edition featured">
+          <span class="edition-tag tag-rec" data-i18n="ed.co.tag">★ 推荐</span>
+          <h3 data-i18n="ed.co.h">ClickOnce</h3>
+          <p class="lede" data-i18n="ed.co.lede">一键安装并自动保持更新。适合大多数人。</p>
+          <div class="size">≈ 5 MB · auto-update</div>
+          <a class="btn btn-primary" href="../LogViewer.application" data-i18n="ed.co.btn">通过 ClickOnce 安装</a>
+          <div class="chrome-note" id="chromeNote" data-i18n-html="chrome.note"><strong>Chrome 不支持 ClickOnce</strong>请在 Microsoft Edge 中打开此页面以使用 ClickOnce 安装，或直接下载 Standalone 或 Portable 版本。</div>
+        </div>
+        <div class="edition">
+          <span class="edition-tag tag-alt" data-i18n="ed.sa.tag">最小</span>
+          <h3 data-i18n="ed.sa.h">Standalone</h3>
+          <p class="lede" data-i18n="ed.sa.lede">单个约 2.5 MB 的 .exe。需要已安装 .NET 10 桌面运行时。</p>
+          <div class="size">≈ 2.5 MB</div>
+          <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe" data-i18n="ed.sa.btn">下载 .exe</a>
+          <div class="note" data-i18n-html="ed.sa.note">需要 <a href="https://dotnet.microsoft.com/download/dotnet/10.0/runtime" target="_blank" rel="noopener">.NET 10 桌面运行时</a>。</div>
+          <a class="zip-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.zip" data-i18n="ed.zip.alt">无法下载 .exe？改用 .zip</a>
+        </div>
+        <div class="edition">
+          <span class="edition-tag tag-port" data-i18n="ed.pt.tag">免安装</span>
+          <h3 data-i18n="ed.pt.h">Portable</h3>
+          <p class="lede" data-i18n="ed.pt.lede">自包含的约 160 MB .exe。无需运行时、无需安装——随处可运行。</p>
+          <div class="size">≈ 160 MB · self-contained</div>
+          <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe" data-i18n="ed.pt.btn">下载便携版</a>
+          <a class="zip-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.zip" data-i18n="ed.zip.alt">无法下载 .exe？改用 .zip</a>
+        </div>
+      </div>
+      <div class="req-list reveal">
+        <span class="req">Windows 10 / 11</span><span class="req">x64</span><span class="req">SHA-256 verified</span>
+      </div>
+      <p class="smartscreen reveal" data-i18n="install.smartscreen">Standalone 与 Portable 下载均已数字签名——Windows 会显示发布者姓名。由于签名较新，浏览器或 Windows 可能仍会请你确认：点击“更多信息”→“仍要运行”。如需核对，每个版本都会公布 SHA-256。</p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="faq">
+      <div class="sec-label reveal" data-i18n="faq.label">须知</div>
+      <h2 class="sec-title reveal" data-i18n="faq.title">常见问题</h2>
+      <div class="faq reveal">
+        <details><summary data-i18n="faq.q1">真的免费吗？</summary><p data-i18n="faq.a1">是的——免费软件，可用于个人和商业用途。无需账户、无 Cookie；应用仅发送匿名的安装和更新统计，且可关闭。</p></details>
+        <details><summary data-i18n="faq.q2">打开时 Windows 要求确认，为什么？</summary><p data-i18n-html="faq.a2">签名较新，Windows 需要一段时间才会认识新的发布者——这与文件本身无关。点击“更多信息”→“仍要运行”。ClickOnce 安装保留自己的签名，仍可能显示“未知发布者”。每个版本都会公布可核对的 <code>SHA-256</code>。</p></details>
+        <details><summary data-i18n="faq.q3">我该选哪个版本？</summary><p data-i18n="faq.a3">想要轻松自动更新就选 ClickOnce（需要 Microsoft Edge）。已装 .NET 10 运行时就选 Standalone。想要免安装就选 Portable。</p></details>
+        <details><summary data-i18n="faq.q4">源代码在哪里？</summary><p data-i18n="faq.a4">应用为免费软件，源代码不公开，但欢迎在 GitHub 提交错误报告和功能请求。</p></details>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../assets/logo-emblem.png" alt="The Absolute LogViewer" width="46" height="46" />
+        <div><b>The Absolute LogViewer</b><small data-i18n="foot.tagline">面向 Windows 的现代日志查看器。</small></div>
+      </div>
+      <div class="foot-links">
+        <a href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" data-i18n="foot.site">网站</a>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="foot.github">GitHub</a>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases" target="_blank" rel="noopener" data-i18n="foot.releases">版本</a>
+        <a href="https://nunex-mbrothers.github.io/mBrothers/" target="_blank" rel="noopener" data-i18n="foot.mbrothers">mBrothers</a>
+      </div>
+    </div>
+    <p class="foot-copy">© 2026 mBrothers · <span data-i18n="foot.made">免费软件 · 使用 .NET 10 与 WPF 构建</span></p>
+    <p class="foot-copy foot-privacy" data-i18n="foot.privacy">隐私：无 Cookie 的分析（GoatCounter）以及应用内匿名的安装/更新统计（可关闭）— 无 Cookie，无个人数据。</p>
+    <p class="mb-credit" data-i18n-html="foot.mbcredit">一款 <a href="https://nunex-mbrothers.github.io/mBrothers/" target="_blank" rel="noopener">mBrothers</a> 产品<span class="sep" aria-hidden="true"></span>developing practical solutions for small planetary systems</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <img src="" alt="" />
+</div>
+
+<script src="../js/particles.js"></script>
+<script src="../js/site.js"></script>
+
+<!-- GoatCounter — analytics privacy-friendly (sem cookies, sem PII). Conta a
+     visita a pagina e disponibiliza window.goatcounter.count() para os eventos
+     de download (ver js/site.js seccao 7). Mesma conta partilhada dos outros
+     produtos mBrothers; o LogViewer distingue-se pelo prefixo /logviewer. O
+     count.js ignora localhost/file:// por omissao, por isso os previews locais
+     nao poluem as estatisticas. -->
+<script>
+  // Reescreve o path da VISITA automatica de /TheAbsoluteLogViewer/ para
+  // /logviewer/, para que TODO o trafego do LogViewer (visita + eventos de
+  // download em /logviewer/download/*) fique sob /logviewer* no dashboard
+  // partilhado, isolavel com um unico filtro. So afeta a visita automatica;
+  // os count() dos downloads ja mandam o path explicito e nao passam por aqui.
+  window.goatcounter = {
+    path: function (p) { return p.replace(/^\/TheAbsoluteLogViewer/, "/logviewer") || "/logviewer"; }
+  };
+</script>
+<script data-goatcounter="https://nunex.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

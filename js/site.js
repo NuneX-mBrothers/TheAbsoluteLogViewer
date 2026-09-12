@@ -93,15 +93,20 @@
     }
     document.documentElement.lang = lang;
     document.querySelectorAll(".lang-btn").forEach(function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+      b.setAttribute("aria-current", b.getAttribute("hreflang") === lang ? "true" : "false");
     });
     try { localStorage.setItem(KEY, lang); } catch (e) {}
   }
 
-  document.querySelectorAll(".lang-btn").forEach(function (b) {
-    b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
-  });
-  applyLang(pickLang());
+  /* Uma porta por lingua (2026-09-12): o selector passou a LIGACOES para
+     /pt/, /de/, ... e ja nao troca o texto no lugar -- por isso nao ha
+     ouvintes de clique nenhuns. Nas paginas geradas o texto ja vem
+     traduzido no HTML e o <html> traz data-lang-fixa: ai o i18n do lado do
+     cliente NAO corre, senao punha por cima a lingua do navegador. Na raiz
+     corre, e e o que da o ingles e a deteccao automatica de sempre. */
+  if (!document.documentElement.hasAttribute("data-lang-fixa")) {
+    applyLang(pickLang());
+  }
 
   /* ──────────────────────────────────────────────────────────
      3) Scroll reveal
