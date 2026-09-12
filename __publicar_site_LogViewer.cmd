@@ -100,7 +100,10 @@ cd /d "%DIST_DIR%"
 ::   tools\gerar-linguas.py a partir do index.html e dos dicionarios.
 ::   ATENCAO: se mexeres no TEXTO do site, corre o gerador ANTES de publicar
 ::   -- senao as paginas por idioma ficam a dizer o texto antigo.
-git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt fr es de zh tools
+:: "google*.html" = o ficheiro de validacao do Google Search Console. Tem de
+::   ficar no site PARA SEMPRE: se desaparecer, a propriedade deixa de estar
+::   validada e perde-se o historico de pesquisas.
+git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt fr es de zh tools "google*.html"
 if errorlevel 1 (
     echo [ERRO] git add falhou. Estas no repo dist certo?
     pause & exit /b 1
