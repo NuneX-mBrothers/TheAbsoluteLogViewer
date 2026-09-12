@@ -131,15 +131,18 @@ def bloco_hreflang(activas):
 # página. E é igual nos dois sites: mesmas bandeiras, mesma ordem, mesma
 # disposição.
 #   (bandeira, endónimo, código da língua do site ou None)
-# ⚠ Sem marcador de variante no nome: a bandeira já o diz — é a regra que o
-#   ExplorerFocus já tinha escrita para a grelha das 16.
+# ⚠ As etiquetas são as da BARRA DA APP, à letra. Até 12/09 o português e o
+#   inglês não levavam marcador («a bandeira já o diz»); o João, a olhar para
+#   o painel aberto, reparou que duas linhas a dizerem «Português» não se
+#   distinguem por quem não conhece as bandeiras — e agora o /pt/ e o /br/ são
+#   páginas diferentes, por isso não dizer qual é qual passou a ser um defeito.
 # ⚠ Emoji de bandeira NÃO: o Windows não tem glifos para elas e sai um par de
 #   letras numa caixa — exactamente no único sistema que nos importa.
 BARRA_DA_APP = [
     ("pt", "Português",   "pt"),
-    ("br", "Português",   "br"),
-    ("gb", "English",     "en"),
-    ("us", "English",     "en"),      # a única que ainda leva à mesma página
+    ("br", "Português (BR)", "br"),
+    ("gb", "English (GB)", "en"),
+    ("us", "English (US)", "en"),   # a única que ainda leva à mesma página
     ("es", "Español",     "es"),
     ("fr", "Français",    "fr"),
     ("it", "Italiano",    "it"),
@@ -159,20 +162,26 @@ def bandeira(fl):
     return ('<svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-%s"/></svg>' % fl)
 
 
-def selector(activas, pasta_actual, rot_actual):
+def selector(activas, pasta_actual, _rot_nao_usado):
     """Dezasseis línguas não cabem numa fila de botões: é um menu que abre.
     <details> porque funciona sem JavaScript nenhum, e as ligações ficam no
     HTML — que é o que os motores de busca leem.
     ⚠ Sem `hreflang` nas ligações: quem diz a verdade aos motores é o bloco
       <link rel="alternate"> do cabeçalho. Aqui há entradas que levam à mesma
-      página, e um hreflang errado seria um sinal errado."""
+      página, e um hreflang errado seria um sinal errado.
+    ⛔ O rótulo do botão FECHADO sai da BARRA_DA_APP, não do LINGUAS. São duas
+       listas, e em quatro entradas os nomes divergem («Português (BR)»,
+       «English (GB)»…): a tirá-lo do LINGUAS, a página /br/ abria a dizer
+       «Português» e por baixo, na lista, «Português (BR)» — a mesma língua com
+       dois nomes no mesmo canto do ecrã."""
     pasta_de = {c: p for c, p, *_ in activas}
     # ⛔ O `lang` da ligação é a etiqueta BCP-47, nunca o código do dicionário
     #    (ver a nota do <html>: o `br` do Brasil é o bretão em BCP-47).
     etiqueta_de = {c: h for c, _p, _r, h, _l in activas}
     para = lambda p: (("../" + p + "/") if p else "../") if pasta_actual else ((p + "/") if p else "./")
     cod_actual = next(c for c, p, *_ in activas if p == pasta_actual)
-    fl_actual = next((fl for fl, _r, c in BARRA_DA_APP if c == cod_actual), "us")
+    fl_actual, rot_actual = next(((fl, r) for fl, r, c in BARRA_DA_APP if c == cod_actual),
+                                 ("us", "English (US)"))
     itens = []
     for fl, rot, cod in BARRA_DA_APP:
         destino = pasta_de.get(cod) if cod else ""      # sem página → o inglês
