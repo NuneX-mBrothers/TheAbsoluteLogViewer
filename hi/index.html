@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="hi" data-lang-fixa="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Absolute LogViewer — विंडोज़ के लिए मुफ़्त लॉग व्यूअर, रीयल-टाइम टेलिंग</title>
+  <meta name="description" content=".NET 10 / WPF पर बना, विंडोज़ के लिए मुफ़्त लॉग व्यूअर। रीयल-टाइम टेलिंग, regex हाइलाइट नियम, स्प्लिट-पेन तुलना और संदर्भ पूर्वावलोकन। ClickOnce इंस्टॉल या पोर्टेबल .exe।" />
+  <meta name="author" content="mBrothers" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" content="#070b0f" />
+
+  <link rel="canonical" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/hi/" />
+  <!-- Uma porta por lingua. Cada pagina tem canonical propria e hreflang
+       reciproco; o texto vai JA TRADUZIDO no HTML, sem JavaScript.
+       As pastas por idioma sao GERADAS por tools/gerar-linguas.py -- mexer
+       no texto do site obriga a correr o gerador outra vez, e os dois .cmd
+       ja o fazem depois de injectarem a versao.
+       Regresso: etiqueta antes-das-urls-por-idioma. -->
+  <link rel="alternate" hreflang="x-default" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="en" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="pt" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/br/" />
+  <link rel="alternate" hreflang="es" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/es/" />
+  <link rel="alternate" hreflang="fr" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/fr/" />
+  <link rel="alternate" hreflang="it" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/it/" />
+  <link rel="alternate" hreflang="de" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
+  <link rel="alternate" hreflang="pl" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pl/" />
+  <link rel="alternate" hreflang="ru" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ru/" />
+  <link rel="alternate" hreflang="ar" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ar/" />
+  <link rel="alternate" hreflang="hi" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/hi/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh-tw/" />
+  <link rel="alternate" hreflang="ja" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ko/" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="alternate icon" href="../social-preview.jpg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Absolute LogViewer" />
+  <meta property="og:title" content="The Absolute LogViewer — विंडोज़ के लिए मुफ़्त लॉग व्यूअर, रीयल-टाइम टेलिंग" />
+  <meta property="og:description" content=".NET 10 / WPF पर बना, विंडोज़ के लिए मुफ़्त लॉग व्यूअर। रीयल-टाइम टेलिंग, regex हाइलाइट नियम, स्प्लिट-पेन तुलना और संदर्भ पूर्वावलोकन। ClickOnce इंस्टॉल या पोर्टेबल .exe।" />
+  <meta property="og:url" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/hi/" />
+  <meta property="og:image" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Absolute LogViewer — real-time Windows log viewer" />
+  <meta property="og:locale" content="hi_IN" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Absolute LogViewer — विंडोज़ के लिए मुफ़्त लॉग व्यूअर, रीयल-टाइम टेलिंग" />
+  <meta name="twitter:description" content=".NET 10 / WPF पर बना, विंडोज़ के लिए मुफ़्त लॉग व्यूअर। रीयल-टाइम टेलिंग, regex हाइलाइट नियम, स्प्लिट-पेन तुलना और संदर्भ पूर्वावलोकन। ClickOnce इंस्टॉल या पोर्टेबल .exe।" />
+  <meta name="twitter:image" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "The Absolute LogViewer",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "DeveloperApplication",
+    "softwareVersion": "1.5.3.4",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "downloadUrl": "https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest",
+    "url": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/hi/",
+    "image": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png",
+    "screenshot": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/screenshot-1-split-view.png",
+    "author": { "@type": "Organization", "name": "mBrothers", "url": "https://nunex-mbrothers.github.io/mBrothers/" },
+    "publisher": { "@type": "Organization", "name": "mBrothers", "url": "https://nunex-mbrothers.github.io/mBrothers/" },
+    "description": "Free .NET 10 / WPF log viewer for Windows with real-time tailing, regex highlight rules, split-pane comparison and context preview."
+  }
+  </script>
+
+  <noscript>
+    <!-- Sem JS o IntersectionObserver nunca acrescenta .in, e todo o conteúdo
+         .reveal ficaria em opacity:0 — ou seja, uma página em branco. -->
+    <style>.reveal{opacity:1 !important;transform:none !important}</style>
+  </noscript>
+</head>
+<body>
+<!-- Bandeiras em SVG (16). Sao as mesmas da pagina do ExplorerFocus.
+     ⚠ NAO se usa emoji de bandeira: o Windows nao tem glifos para elas e
+       sairia um par de letras numa caixa -- exatamente no unico sistema que
+       nos importa. O sprite nao ocupa espaco (.fl-sprite). -->
+<svg class="fl-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="fl-pt" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FF0000"/><rect width="8" height="14" fill="#006600"/><circle cx="8" cy="7" r="2.9" fill="#FFCC00"/><circle cx="8" cy="7" r="1.9" fill="#FFFFFF"/><rect x="7.1" y="5.9" width="1.8" height="2.2" fill="#003399"/></symbol>
+<symbol id="fl-br" viewBox="0 0 20 14"><rect width="20" height="14" fill="#009C3B"/><polygon points="10,1.4 18.6,7 10,12.6 1.4,7" fill="#FFDF00"/><circle cx="10" cy="7" r="2.9" fill="#002776"/><path d="M7.2 6.1a3.4 3.4 0 0 1 5.7 1.1l-.9.3a2.5 2.5 0 0 0-4.2-.8z" fill="#FFFFFF"/></symbol>
+<symbol id="fl-gb" viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#FFFFFF" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.4"/><path d="M10 0v14M0 7h20" stroke="#FFFFFF" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></symbol>
+<symbol id="fl-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><g fill="#B22234"><rect width="20" height="1.08"/><rect y="2.15" width="20" height="1.08"/><rect y="4.31" width="20" height="1.08"/><rect y="6.46" width="20" height="1.08"/><rect y="8.62" width="20" height="1.08"/><rect y="10.77" width="20" height="1.08"/><rect y="12.92" width="20" height="1.08"/></g><rect width="8" height="7.54" fill="#3C3B6E"/><g fill="#FFFFFF"><circle cx="1.6" cy="1.5" r=".36"/><circle cx="4" cy="1.5" r=".36"/><circle cx="6.4" cy="1.5" r=".36"/><circle cx="2.8" cy="3" r=".36"/><circle cx="5.2" cy="3" r=".36"/><circle cx="1.6" cy="4.5" r=".36"/><circle cx="4" cy="4.5" r=".36"/><circle cx="6.4" cy="4.5" r=".36"/><circle cx="2.8" cy="6" r=".36"/><circle cx="5.2" cy="6" r=".36"/></g></symbol>
+<symbol id="fl-es" viewBox="0 0 20 14"><rect width="20" height="14" fill="#AA151B"/><rect y="3.5" width="20" height="7" fill="#F1BF00"/></symbol>
+<symbol id="fl-fr" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><rect width="6.67" height="14" fill="#002395"/><rect x="13.33" width="6.67" height="14" fill="#ED2939"/></symbol>
+<symbol id="fl-it" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><rect width="6.67" height="14" fill="#009246"/><rect x="13.33" width="6.67" height="14" fill="#CE2B37"/></symbol>
+<symbol id="fl-de" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#000000"/><rect y="4.67" width="20" height="4.66" fill="#DD0000"/><rect y="9.33" width="20" height="4.67" fill="#FFCE00"/></symbol>
+<symbol id="fl-pl" viewBox="0 0 20 14"><rect width="20" height="7" fill="#FFFFFF"/><rect y="7" width="20" height="7" fill="#DC143C"/></symbol>
+<symbol id="fl-ru" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#FFFFFF"/><rect y="4.67" width="20" height="4.66" fill="#0039A6"/><rect y="9.33" width="20" height="4.67" fill="#D52B1E"/></symbol>
+<symbol id="fl-sa" viewBox="0 0 20 14"><rect width="20" height="14" fill="#006C35"/><path d="M4.2 6.2q1.45-1.4 2.9 0t2.9 0t2.9 0t2.9 0" fill="none" stroke="#FFFFFF" stroke-width=".9" stroke-linecap="round"/><rect x="4.6" y="8.7" width="11" height=".8" rx=".4" fill="#FFFFFF"/><path d="M4.6 9.1l1.7-1.2v2.4z" fill="#FFFFFF"/></symbol>
+<symbol id="fl-in" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#FF9933"/><rect y="4.67" width="20" height="4.66" fill="#FFFFFF"/><rect y="9.33" width="20" height="4.67" fill="#138808"/><circle cx="10" cy="7" r="1.8" fill="none" stroke="#000080" stroke-width=".45"/><circle cx="10" cy="7" r=".45" fill="#000080"/></symbol>
+<symbol id="fl-cn" viewBox="0 0 20 14"><rect width="20" height="14" fill="#DE2910"/><g fill="#FFDE00"><polygon points="3.33,1.33 3.73,2.55 5,2.55 3.97,3.30 4.36,4.51 3.33,3.76 2.30,4.51 2.70,3.30 1.67,2.55 2.94,2.55"/><polygon points="6.67,0.83 6.82,1.32 7.33,1.32 6.92,1.61 7.08,2.10 6.67,1.80 6.26,2.10 6.41,1.61 6.00,1.32 6.51,1.32"/><polygon points="8.00,2.00 8.16,2.48 8.66,2.48 8.25,2.78 8.41,3.26 8.00,2.97 7.59,3.26 7.75,2.78 7.34,2.48 7.84,2.48"/><polygon points="8.00,3.67 8.16,4.15 8.66,4.15 8.25,4.45 8.41,4.93 8.00,4.63 7.59,4.93 7.75,4.45 7.34,4.15 7.84,4.15"/><polygon points="6.67,4.83 6.82,5.32 7.33,5.32 6.92,5.61 7.08,6.10 6.67,5.80 6.26,6.10 6.41,5.61 6.00,5.32 6.51,5.32"/></g></symbol>
+<symbol id="fl-tw" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FE0000"/><rect width="10" height="7" fill="#000095"/><circle cx="5" cy="3.5" r="2.1" fill="#FFFFFF"/><circle cx="5" cy="3.5" r="1.4" fill="#000095"/><circle cx="5" cy="3.5" r="1" fill="#FFFFFF"/></symbol>
+<symbol id="fl-jp" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><circle cx="10" cy="7" r="4.2" fill="#BC002D"/></symbol>
+<symbol id="fl-kr" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><circle cx="10" cy="7" r="3" fill="#CD2E3A"/><path d="M7 7a1.5 1.5 0 0 1 3 0 1.5 1.5 0 0 0 3 0 3 3 0 0 1-6 0z" fill="#0047A0"/></symbol>
+</defs></svg>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#" aria-label="The Absolute LogViewer">
+      <img src="../assets/logo.svg" alt="" aria-hidden="true" />
+      <span class="wm">The Absolute Log<span>Viewer</span><small data-i18n="foot.made">फ्रीवेयर · .NET 10 और WPF से बना</small></span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-link" href="#features" data-i18n="nav.features">सुविधाएँ</a>
+      <a class="nav-link" href="#install" data-i18n="nav.install">डाउनलोड</a>
+      <!-- nav-keep: sobrevive ao breakpoint mobile (ver .nav-link{display:none}) -->
+      <a class="nav-link nav-keep" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+      <details class="lang-picker">
+        <summary class="lang-cur" title="Language"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-in"/></svg><span>हिन्दी</span></summary>
+        <div class="lang-list">
+          <a class="lang-btn" href="../pt/" lang="pt"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pt"/></svg><span>Português</span></a>
+          <a class="lang-btn" href="../br/" lang="pt-BR"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-br"/></svg><span>Português</span></a>
+          <a class="lang-btn" href="../" lang="en"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-gb"/></svg><span>English</span></a>
+          <a class="lang-btn" href="../" lang="en"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-us"/></svg><span>English</span></a>
+          <a class="lang-btn" href="../es/" lang="es"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-es"/></svg><span>Español</span></a>
+          <a class="lang-btn" href="../fr/" lang="fr"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-fr"/></svg><span>Français</span></a>
+          <a class="lang-btn" href="../it/" lang="it"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-it"/></svg><span>Italiano</span></a>
+          <a class="lang-btn" href="../de/" lang="de"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-de"/></svg><span>Deutsch</span></a>
+          <a class="lang-btn" href="../pl/" lang="pl"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pl"/></svg><span>Polski</span></a>
+          <a class="lang-btn" href="../ru/" lang="ru"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-ru"/></svg><span>Русский</span></a>
+          <a class="lang-btn" href="../ar/" lang="ar"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-sa"/></svg><span>العربية</span></a>
+          <a class="lang-btn" href="../hi/" lang="hi" aria-current="true"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-in"/></svg><span>हिन्दी</span></a>
+          <a class="lang-btn" href="../zh/" lang="zh-Hans"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-cn"/></svg><span>中文 (简体)</span></a>
+          <a class="lang-btn" href="../zh-tw/" lang="zh-Hant"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-tw"/></svg><span>中文 (繁體)</span></a>
+          <a class="lang-btn" href="../ja/" lang="ja"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-jp"/></svg><span>日本語</span></a>
+          <a class="lang-btn" href="../ko/" lang="ko"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-kr"/></svg><span>한국어</span></a>
+        </div>
+      </details>
+      <span class="ver-badge">v1.5.3.4</span>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-text reveal">
+        <img class="hero-emblem" src="../assets/logo-emblem.png" alt="The Absolute LogViewer" width="92" height="92" />
+        <span class="eyebrow"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">रीयल-टाइम लॉग टेलिंग</span></span>
+        <h1 data-i18n-html="hero.h1">अपने लॉग देखिए <span class="g">उसी पल</span> जब वे बनते हैं।</h1>
+        <p class="sub" data-i18n-html="hero.sub">.NET&nbsp;10 / WPF पर बना तेज़ और आधुनिक विंडोज़ लॉग व्यूअर। लाइव टेल, स्वतंत्र टैब, regex हाइलाइट नियम, स्प्लिट-पेन तुलना और संदर्भ पूर्वावलोकन — <b>16 भाषाओं में</b>।</p>
+      </div>
+
+      <!-- dir="ltr" a forca: um log le-se da esquerda para a direita em
+           qualquer lingua do mundo. Sem isto, a pagina arabe (dir="rtl")
+           punha os numeros de linha a direita e o texto ao contrario. -->
+      <div class="term reveal" aria-hidden="true" dir="ltr">
+        <div class="term-bar">
+          <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+          <span class="term-name">app_2026-06-11.log</span>
+          <span class="live"><span class="d"></span>Live</span>
+        </div>
+        <div class="term-body" id="term"></div>
+      </div>
+    </section>
+
+    <div class="hero-downloads reveal">
+      <div class="cta">
+        <a class="btn btn-primary" href="../LogViewer.application"><span aria-hidden="true">⬇</span> <span data-i18n="hero.cta.install">ClickOnce से इंस्टॉल करें</span></a>
+        <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe"><span aria-hidden="true">⬇</span> <span data-i18n="hero.cta.standalone">Standalone .exe</span></a>
+        <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe"><span aria-hidden="true">▣</span> <span data-i18n="hero.cta.portable">पोर्टेबल .exe</span></a>
+      </div>
+      <div class="cta-zip">
+        <span data-i18n="hero.zip.lead">.zip में भी:</span>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.zip">Standalone</a>
+        <span class="cta-zip-sep" aria-hidden="true">·</span>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.zip">Portable</a>
+      </div>
+      <div class="trust">
+        <span class="pill verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="trust.verify">SHA-256 से सत्यापित डाउनलोड</span></span>
+        <a class="pill pill-link" href="https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="trust.softpedia">Softpedia 100% Clean</span></a>
+        <span class="pill" data-i18n="trust.free">100% मुफ़्त</span>
+        <span class="pill" data-i18n="trust.notrack">गुमनाम · कोई कुकी नहीं</span>
+      </div>
+      <div class="dl-counter" id="dl-counter">
+        <span class="dl-stat"><span class="dl-arrow" aria-hidden="true">↓</span><strong id="dl-total">—</strong> <span data-i18n="dl.downloads">डाउनलोड</span></span>
+        <span class="dl-sep" aria-hidden="true">·</span>
+        <span class="dl-stat"><span data-i18n="dl.standalone">Standalone</span> <strong id="dl-standalone">—</strong></span>
+        <span class="dl-sep" aria-hidden="true">·</span>
+        <span class="dl-stat"><span data-i18n="dl.portable">Portable</span> <strong id="dl-portable">—</strong></span>
+      </div>
+    </div>
+
+    <section style="padding-top:10px">
+      <div class="band reveal">
+        <div class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div>
+          <h3 data-i18n="band.title">हर डाउनलोड जाँचा जा सकता है</h3>
+          <p data-i18n-html="band.text">Standalone और Portable डाउनलोड डिजिटल रूप से हस्ताक्षरित और टाइमस्टैंप किए हुए हैं। हर रिलीज़ <code>version.json</code> में एक <code>SHA-256</code> भी प्रकाशित करती है, और ऐप HTTPS पर कोई भी अपडेट इंस्टॉल करने से पहले उसे मिलाकर देखता है। छेड़छाड़ की गई फ़ाइलें अपने आप अस्वीकार कर दी जाती हैं।</p>
+          <a class="sp-award" href="https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status" target="_blank" rel="noopener">
+            <img src="../assets/softpedia-100-clean.webp" width="76" height="61" alt="Softpedia 100% Clean award" loading="lazy" />
+            <span data-i18n-html="band.softpedia">और आपको सिर्फ़ हमारी बात पर भरोसा करने की ज़रूरत नहीं: <strong>Softpedia Labs</strong> ने इसे स्वतंत्र रूप से परखा और <strong>100% Clean</strong> का प्रमाण दिया — कोई स्पायवेयर, ऐडवेयर या वायरस नहीं।</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="sec-label reveal" data-i18n="feat.label">उनके लिए जो लॉग में ही रहते हैं</div>
+      <h2 class="sec-title reveal" data-i18n="feat.title">वह सब, जो आप tail -f में चाहते थे।</h2>
+      <div class="feats reveal">
+        <!-- Cartao largo (fila inteira): com auto-fill um 9.o cartao normal ficava orfao.
+             Entra primeiro porque diz o que o LogViewer le -- e ja nao e so .log. -->
+        <div class="feat wide"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3"/><path d="M13 15h4"/></svg></div><h3 data-i18n="feat.text.t">सिर्फ़ .log नहीं — कोई भी टेक्स्ट लॉग</h3><p data-i18n="feat.text.d">लिनक्स और यूनिक्स के लॉग हर रूप में आते हैं: syslog, messages, घुमाई गई auth.log.1, और ऐसी फ़ाइलें जिनका कोई एक्सटेंशन ही नहीं होता। इसे फ़ाइल नाम के पैटर्न दीजिए और यह हर मेल खाती टेक्स्ट फ़ाइल को देखता रहता है — बाइनरी फ़ाइलें अपने आप छूट जाती हैं।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l3 3-3 3"/></svg></div><h3 data-i18n="feat.tail.t">रीयल-टाइम लॉग टेलिंग</h3><p data-i18n="feat.tail.d">लॉग फ़ाइलों को लाइव देखिए — नई पंक्तियाँ तुरंत आती हैं। ऊपर स्क्रॉल करते ही रुक जाता है, नीचे लौटते ही फिर चल पड़ता है।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M6 8V6a1 1 0 0 1 1-1h3v3"/><path d="M13 8V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/></svg></div><h3 data-i18n="feat.tabs.t">स्वतंत्र टैब</h3><p data-i18n="feat.tabs.d">हर टैब अपना अलग कार्यक्षेत्र है — अपने लॉग, अपना स्प्लिट, अपनी खोज और अपना क्रम। अलग-अलग प्रोजेक्ट एक साथ देखिए, बिना उन्हें आपस में मिलाए।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg></div><h3 data-i18n="feat.split.t">स्प्लिट-पेन तुलना</h3><p data-i18n="feat.split.d">दो स्वतंत्र पेन, दो फ़ाइलें अगल-बगल — हर एक की अपनी खोज और अपना टेल।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M15 9v11"/></svg></div><h3 data-i18n="feat.csv.t">.csv को कॉलम में टेल कीजिए</h3><p data-i18n="feat.csv.d">.csv/.tsv भी, पर तालिका के रूप में — फ़ाइल की हेडर पंक्ति कॉलम के शीर्षक बन जाती है और नई पंक्तियाँ लाइव दिखती हैं। कॉमा, सेमीकॉलन या टैब अपने आप पहचान लिए जाते हैं।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l14 10M19 7L5 17"/></svg></div><h3 data-i18n="feat.rules.t">regex हाइलाइट नियम</h3><p data-i18n="feat.rules.d">पूरी पंक्तियों या अकेले शब्दों को रंग दीजिए। शब्द-सीमा की मदद और लाइव पूर्वावलोकन के साथ।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 14h6"/></svg></div><h3 data-i18n="feat.preview.t">संदर्भ पूर्वावलोकन</h3><p data-i18n="feat.preview.d">किसी छनी हुई पंक्ति पर माउस ले जाइए और पूरी, बिना छनी फ़ाइल में उसके आगे-पीछे की पंक्तियाँ झाँक लीजिए।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></div><h3 data-i18n="feat.update.t">अंदर ही ऑटो-अपडेट</h3><p data-i18n="feat.update.d">Standalone और Portable खुद को अपडेट कर लेते हैं — HTTPS पर अखंडता की जाँच के साथ।</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3 data-i18n="feat.lang.t">16 भाषाएँ</h3><p data-i18n="feat.lang.d">पूरा इंटरफ़ेस अनूदित, और भाषा तुरंत बदलती है — फिर से चालू करने की ज़रूरत नहीं।</p></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="screenshots">
+      <div class="sec-label reveal" data-i18n="shots.label">अंदर एक नज़र</div>
+      <h2 class="sec-title reveal" data-i18n="shots.title">साफ़, सघन और कीबोर्ड के अनुकूल।</h2>
+      <div class="shots reveal">
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-1-split-view.png" data-full="../screenshot-1-split-view.png" alt="Split-pane view comparing two logs" /></div><div class="cap" data-i18n="shot.1">स्प्लिट-पेन दृश्य — दो लॉग एक साथ मिलाइए</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-2-filter-preview.png" data-full="../screenshot-2-filter-preview.png" alt="Filter with floating context preview" /></div><div class="cap" data-i18n="shot.2">तैरते संदर्भ पूर्वावलोकन के साथ फ़िल्टर</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-3-copy-lines.png" data-full="../screenshot-3-copy-lines.png" alt="Select and copy lines" /></div><div class="cap" data-i18n="shot.3">पंक्तियाँ चुनना और कॉपी करना</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-4-highlight-rules.png" data-full="../screenshot-4-highlight-rules.png" alt="Visual highlight-rule editor" /></div><div class="cap" data-i18n="shot.4">हाइलाइट नियमों का दृश्य संपादक</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-5-toolbar.png" data-full="../screenshot-5-toolbar.png" alt="Compact toolbar and file panel" /></div><div class="cap" data-i18n="shot.5">सघन टूलबार और फ़ाइल पैनल</div></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="languages">
+      <div class="sec-label reveal" data-i18n="langs.label">आपकी भाषा बोलता है</div>
+      <h2 class="sec-title reveal" data-i18n="langs.title">16 भाषाएँ, चलते-चलते बदलिए।</h2>
+      <p class="sec-sub reveal" data-i18n="langs.sub">पूरा इंटरफ़ेस, सिर्फ़ कुछ पंक्तियाँ नहीं — भाषा कभी भी बदलिए, बिना फिर से चालू किए।</p>
+      <!-- 16 línguas DENTRO DA APP desde 2026-09-11, as mesmas do ExplorerFocus.
+           Nomes no próprio idioma: iguais nas 6 línguas do site, sem data-i18n.
+           O chinês leva (简体)/(繁體) porque aí muda a ESCRITA, e isso a
+           bandeira não diz a quem não a lê. -->
+      <div class="langs reveal">
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pt"/></svg>Português</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-br"/></svg>Português</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-gb"/></svg>English</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-us"/></svg>English</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-es"/></svg>Español</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-fr"/></svg>Français</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-it"/></svg>Italiano</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-de"/></svg>Deutsch</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pl"/></svg>Polski</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-ru"/></svg>Русский</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-sa"/></svg>العربية</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-in"/></svg>हिन्दी</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-cn"/></svg>中文 (简体)</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-tw"/></svg>中文 (繁體)</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-jp"/></svg>日本語</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-kr"/></svg>한국어</div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="how">
+      <div class="sec-label reveal" data-i18n="how.label">एक मिनट में शुरू</div>
+      <h2 class="sec-title reveal" data-i18n="how.title">यह कैसे काम करता है</h2>
+      <div class="steps reveal">
+        <div class="step"><div class="step-num">1</div><div><h3 data-i18n="how.1.t">इंस्टॉल कीजिए या अनज़िप</h3><p data-i18n="how.1.d">एक क्लिक वाला ClickOnce, बहुत छोटा standalone .exe, या अपने आप में पूरा पोर्टेबल बिल्ड।</p></div></div>
+        <div class="step"><div class="step-num">2</div><div><h3 data-i18n="how.2.t">इसे अपने लॉग दिखाइए</h3><p data-i18n="how.2.d">फ़ोल्डर या अलग-अलग फ़ाइलें जोड़िए। यह आपके पैटर्न से मेल खाते लॉग उठा लेता है, बाइनरी छोड़ देता है और उन पर नज़र रखता है।</p></div></div>
+        <div class="step"><div class="step-num">3</div><div><h3 data-i18n="how.3.t">उन्हें लाइव देखिए</h3><p data-i18n="how.3.d">आपके हाइलाइट नियमों के साथ पंक्तियाँ रीयल टाइम में आती रहती हैं। बाँटिए, खोजिए, छानिए।</p></div></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="install">
+      <div class="sec-label reveal" data-i18n="install.label">डाउनलोड</div>
+      <h2 class="sec-title reveal" data-i18n="install.title">अपना संस्करण चुनिए</h2>
+      <p class="sec-sub reveal" data-i18n="install.sub">चलाने के तीन तरीके — सब मुफ़्त, और सब वही ऐप।</p>
+      <div class="editions reveal">
+        <div class="edition featured">
+          <span class="edition-tag tag-rec" data-i18n="ed.co.tag">★ अनुशंसित</span>
+          <h3 data-i18n="ed.co.h">ClickOnce</h3>
+          <p class="lede" data-i18n="ed.co.lede">एक क्लिक में इंस्टॉल, और खुद को अपने आप अपडेट रखता है। ज़्यादातर लोगों के लिए सबसे अच्छा।</p>
+          <div class="size">≈ 5 MB · auto-update</div>
+          <a class="btn btn-primary" href="../LogViewer.application" data-i18n="ed.co.btn">ClickOnce से इंस्टॉल करें</a>
+          <div class="chrome-note" id="chromeNote" data-i18n-html="chrome.note"><strong>Chrome में ClickOnce नहीं चलता</strong>ClickOnce से इंस्टॉल करने के लिए यह पेज Microsoft Edge में खोलिए, या सीधे Standalone या Portable बिल्ड ले लीजिए।</div>
+        </div>
+        <div class="edition">
+          <span class="edition-tag tag-alt" data-i18n="ed.sa.tag">सबसे छोटा</span>
+          <h3 data-i18n="ed.sa.h">Standalone</h3>
+          <p class="lede" data-i18n="ed.sa.lede">एक अकेली ~2.5 MB की .exe। इसके लिए .NET 10 Desktop Runtime इंस्टॉल होना चाहिए।</p>
+          <div class="size">≈ 2.5 MB</div>
+          <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe" data-i18n="ed.sa.btn">.exe डाउनलोड करें</a>
+          <div class="note" data-i18n-html="ed.sa.note"><a href="https://dotnet.microsoft.com/download/dotnet/10.0/runtime" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a> चाहिए।</div>
+          <a class="zip-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.zip" data-i18n="ed.zip.alt">.exe रुक गया? .zip लीजिए</a>
+        </div>
+        <div class="edition">
+          <span class="edition-tag tag-port" data-i18n="ed.pt.tag">इंस्टॉल की ज़रूरत नहीं</span>
+          <h3 data-i18n="ed.pt.h">Portable</h3>
+          <p class="lede" data-i18n="ed.pt.lede">अपने आप में पूरी ~160 MB की .exe। न रनटाइम, न इंस्टॉल — कहीं से भी चलती है।</p>
+          <div class="size">≈ 160 MB · self-contained</div>
+          <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe" data-i18n="ed.pt.btn">पोर्टेबल डाउनलोड करें</a>
+          <a class="zip-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.zip" data-i18n="ed.zip.alt">.exe रुक गया? .zip लीजिए</a>
+        </div>
+      </div>
+      <div class="req-list reveal">
+        <span class="req">Windows 10 / 11</span><span class="req">x64</span><span class="req">SHA-256 verified</span>
+      </div>
+      <p class="smartscreen reveal" data-i18n="install.smartscreen">Standalone और Portable डाउनलोड डिजिटल रूप से हस्ताक्षरित हैं — विंडोज़ प्रकाशक का नाम दिखाता है। हस्ताक्षर नया है, इसलिए ब्राउज़र या विंडोज़ अब भी पुष्टि माँग सकता है: अधिक जानकारी → फिर भी चलाएँ पर क्लिक कीजिए। चाहें तो हर रिलीज़ के साथ प्रकाशित SHA-256 मिलाकर देख लीजिए।</p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="faq">
+      <div class="sec-label reveal" data-i18n="faq.label">जानने लायक</div>
+      <h2 class="sec-title reveal" data-i18n="faq.title">सवाल</h2>
+      <div class="faq reveal">
+        <details><summary data-i18n="faq.q1">क्या यह सचमुच मुफ़्त है?</summary><p data-i18n="faq.a1">हाँ — फ्रीवेयर, निजी और व्यावसायिक दोनों उपयोग के लिए। न खाता, न कुकी; ऐप सिर्फ़ गुमनाम इंस्टॉल और अपडेट आँकड़े भेजता है, और उसे भी बंद किया जा सकता है।</p></details>
+        <details><summary data-i18n="faq.q2">खोलते समय विंडोज़ पुष्टि क्यों माँगता है?</summary><p data-i18n-html="faq.a2">हस्ताक्षर नया है, और विंडोज़ को नया प्रकाशक पहचानने में कुछ समय लगता है — फ़ाइल में कोई खराबी नहीं है। अधिक जानकारी → फिर भी चलाएँ पर क्लिक कीजिए। ClickOnce इंस्टॉल का अपना अलग हस्ताक्षर है और वह अब भी “अज्ञात प्रकाशक” दिखा सकता है। हर रिलीज़ के साथ एक <code>SHA-256</code> प्रकाशित होता है, जिसे आप जाँच सकते हैं।</p></details>
+        <details><summary data-i18n="faq.q3">मुझे कौन-सा संस्करण चुनना चाहिए?</summary><p data-i18n="faq.a3">बिना झंझट ऑटो-अपडेट चाहिए तो ClickOnce (Microsoft Edge चाहिए)। .NET 10 रनटाइम पहले से है तो Standalone। कुछ भी इंस्टॉल नहीं करना तो Portable।</p></details>
+        <details><summary data-i18n="faq.q4">सोर्स कोड कहाँ है?</summary><p data-i18n="faq.a4">ऐप फ्रीवेयर है और सोर्स निजी है, पर बग की सूचना और नई सुविधाओं के सुझाव GitHub पर हमेशा स्वागत योग्य हैं।</p></details>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../assets/logo-emblem.png" alt="The Absolute LogViewer" width="46" height="46" />
+        <div><b>The Absolute LogViewer</b><small data-i18n="foot.tagline">विंडोज़ के लिए एक आधुनिक लॉग व्यूअर।</small></div>
+      </div>
+      <div class="foot-links">
+        <a href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" data-i18n="foot.site">वेबसाइट</a>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="foot.github">GitHub</a>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases" target="_blank" rel="noopener" data-i18n="foot.releases">रिलीज़</a>
+        <a href="https://nunex-mbrothers.github.io/mBrothers/" target="_blank" rel="noopener" data-i18n="foot.mbrothers">mBrothers</a>
+      </div>
+    </div>
+    <p class="foot-copy">© 2026 mBrothers · <span data-i18n="foot.made">फ्रीवेयर · .NET 10 और WPF से बना</span></p>
+    <p class="foot-copy foot-privacy" data-i18n="foot.privacy">निजता: कुकी-रहित विश्लेषण (GoatCounter) और ऐप के भीतर गुमनाम इंस्टॉल/अपडेट आँकड़े (जिन्हें बंद किया जा सकता है) — न कुकी, न निजी डेटा।</p>
+    <p class="mb-credit" data-i18n-html="foot.mbcredit">एक <a href="https://nunex-mbrothers.github.io/mBrothers/" target="_blank" rel="noopener">mBrothers</a> उत्पाद<span class="sep" aria-hidden="true"></span>developing practical solutions for small planetary systems</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <img src="" alt="" />
+</div>
+
+<script src="../js/particles.js"></script>
+<script src="../js/site.js"></script>
+
+<!-- GoatCounter — analytics privacy-friendly (sem cookies, sem PII). Conta a
+     visita a pagina e disponibiliza window.goatcounter.count() para os eventos
+     de download (ver js/site.js seccao 7). Mesma conta partilhada dos outros
+     produtos mBrothers; o LogViewer distingue-se pelo prefixo /logviewer. O
+     count.js ignora localhost/file:// por omissao, por isso os previews locais
+     nao poluem as estatisticas. -->
+<script>
+  // Reescreve o path da VISITA automatica de /TheAbsoluteLogViewer/ para
+  // /logviewer/, para que TODO o trafego do LogViewer (visita + eventos de
+  // download em /logviewer/download/*) fique sob /logviewer* no dashboard
+  // partilhado, isolavel com um unico filtro. So afeta a visita automatica;
+  // os count() dos downloads ja mandam o path explicito e nao passam por aqui.
+  window.goatcounter = {
+    path: function (p) { return p.replace(/^\/TheAbsoluteLogViewer/, "/logviewer") || "/logviewer"; }
+  };
+</script>
+<script data-goatcounter="https://nunex.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -38,17 +38,28 @@ BASE = "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/"
 LINGUAS = [
     ("en",    "",       "English",    "en",      "en_US"),
     ("pt",    "pt",     "Português",  "pt",      "pt_PT"),
+    ("br",    "br",     "Português",  "pt-BR",   "pt_BR"),
     ("es",    "es",     "Español",    "es",      "es_ES"),
     ("fr",    "fr",     "Français",   "fr",      "fr_FR"),
     ("it",    "it",     "Italiano",   "it",      "it_IT"),
     ("de",    "de",     "Deutsch",    "de",      "de_DE"),
     ("pl",    "pl",     "Polski",     "pl",      "pl_PL"),
     ("ru",    "ru",     "Русский",    "ru",      "ru_RU"),
+    ("ar",    "ar",     "العربية",     "ar",      "ar_AR"),
+    ("hi",    "hi",     "हिन्दी",       "hi",      "hi_IN"),
     ("zh",    "zh",     "中文 (简体)",  "zh-Hans", "zh_CN"),
     ("zh-TW", "zh-tw",  "中文 (繁體)",  "zh-Hant", "zh_TW"),
     ("ja",    "ja",     "日本語",      "ja",      "ja_JP"),
     ("ko",    "ko",     "한국어",      "ko",      "ko_KR"),
 ]
+
+# ⚠ O `pt` fica em `pt` GENÉRICO e o Brasil em `pt-BR`, de propósito: assim o
+#   Brasil vai ao /br/ e Angola, Moçambique e Portugal vão ao /pt/. Se o /pt/
+#   fosse `pt-PT`, os outros países lusófonos caíam no x-default, que é inglês.
+
+# As línguas que se leem da direita para a esquerda. Só muda o `dir` do <html>
+# e liga o bloco de CSS [dir="rtl"] — o resto da página é o mesmo.
+RTL = {"ar"}
 
 
 def existe(cod):
@@ -126,17 +137,17 @@ def bloco_hreflang(activas):
 #   letras numa caixa — exactamente no único sistema que nos importa.
 BARRA_DA_APP = [
     ("pt", "Português",   "pt"),
-    ("br", "Português",   "pt"),      # Brasil → a mesma página
+    ("br", "Português",   "br"),
     ("gb", "English",     "en"),
-    ("us", "English",     "en"),
+    ("us", "English",     "en"),      # a única que ainda leva à mesma página
     ("es", "Español",     "es"),
     ("fr", "Français",    "fr"),
     ("it", "Italiano",    "it"),
     ("de", "Deutsch",     "de"),
     ("pl", "Polski",      "pl"),
     ("ru", "Русский",     "ru"),
-    ("sa", "العربية",      None),      # ainda sem página própria (o árabe é RTL)
-    ("in", "हिन्दी",        None),
+    ("sa", "العربية",      "ar"),
+    ("in", "हिन्दी",        "hi"),
     ("cn", "中文 (简体)",   "zh"),
     ("tw", "中文 (繁體)",   "zh-TW"),
     ("jp", "日本語",       "ja"),
@@ -156,6 +167,9 @@ def selector(activas, pasta_actual, rot_actual):
       <link rel="alternate"> do cabeçalho. Aqui há entradas que levam à mesma
       página, e um hreflang errado seria um sinal errado."""
     pasta_de = {c: p for c, p, *_ in activas}
+    # ⛔ O `lang` da ligação é a etiqueta BCP-47, nunca o código do dicionário
+    #    (ver a nota do <html>: o `br` do Brasil é o bretão em BCP-47).
+    etiqueta_de = {c: h for c, _p, _r, h, _l in activas}
     para = lambda p: (("../" + p + "/") if p else "../") if pasta_actual else ((p + "/") if p else "./")
     cod_actual = next(c for c, p, *_ in activas if p == pasta_actual)
     fl_actual = next((fl for fl, _r, c in BARRA_DA_APP if c == cod_actual), "us")
@@ -164,7 +178,7 @@ def selector(activas, pasta_actual, rot_actual):
         destino = pasta_de.get(cod) if cod else ""      # sem página → o inglês
         actual = ' aria-current="true"' if cod == cod_actual and fl == fl_actual else ""
         itens.append('          <a class="lang-btn" href="%s" lang="%s"%s>%s<span>%s</span></a>'
-                     % (para(destino), cod or "en", actual, bandeira(fl), rot))
+                     % (para(destino), etiqueta_de.get(cod, "en"), actual, bandeira(fl), rot))
     return ('      <details class="lang-picker">\n'
             '        <summary class="lang-cur" title="Language">%s<span>%s</span></summary>\n'
             '        <div class="lang-list">\n%s\n        </div>\n'
@@ -214,7 +228,14 @@ for cod, pasta, rot, hl, loc in activas:
     url = url_de(pasta)
 
     if pasta:
-        pag = uma_vez(pag, '<html lang="en">', '<html lang="%s" data-lang-fixa="%s">' % (cod, cod), cod)
+        # ⛔ O `lang` do <html> leva a ETIQUETA BCP-47 (`hl`), não o código do
+        #    dicionário. Não é cosmético: o código do dicionário do Brasil é
+        #    `br`, e `br` em BCP-47 é o BRETÃO. Com `lang="br"` a página dizia
+        #    aos motores e aos leitores de ecrã que estava escrita numa língua
+        #    da Bretanha. Vale para todos: `zh` → `zh-Hans`, `zh-TW` → `zh-Hant`.
+        direccao = ' dir="rtl"' if cod in RTL else ""
+        pag = uma_vez(pag, '<html lang="en">',
+                      '<html lang="%s"%s data-lang-fixa="%s">' % (hl, direccao, cod), cod)
     pag = uma_vez(pag, HL_ANTIGO, COMENTARIO + bloco_hreflang(activas) + "\n", cod)
     pag = uma_vez(pag, '<link rel="canonical" href="%s" />' % BASE,
                   '<link rel="canonical" href="%s" />' % url, cod)

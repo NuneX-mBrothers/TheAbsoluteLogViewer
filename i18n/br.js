@@ -1,0 +1,118 @@
+window.I18N = window.I18N || {};
+// Português do BRASIL. Não é uma cópia do pt com dois acentos trocados:
+//   · tratamento por VOCÊ (o pt trata por tu)   · ficheiro → arquivo
+//   · descarregar → baixar                      · rato → mouse
+//   · a app → o app                             · anónimo → anônimo
+//   · línguas → idiomas                         · detetados → detectados
+// ⚠ Um pt-BR a meio é PIOR do que uma página neutra: debaixo da bandeira do
+//   Brasil, um brasileiro repara em «ficheiro» muito mais do que repararia
+//   numa página genérica.
+window.I18N.br = {
+  "meta.title": "The Absolute LogViewer — visualizador de logs para Windows em tempo real",
+  "meta.desc": "Visualizador de logs para Windows, grátis, em .NET 10 / WPF. Tail em tempo real, regras de destaque com regex, visualização em painel duplo e preview de contexto. Instalação ClickOnce ou .exe portátil.",
+
+  "nav.features": "Recursos",
+  "nav.install": "Baixar",
+  "nav.github": "GitHub",
+
+  "hero.eyebrow": "Logs em tempo real",
+  "hero.h1": 'Veja seus logs <span class="g">no instante</span> em que acontecem.',
+  "hero.sub": 'Um visualizador de logs para Windows rápido e moderno, em .NET&nbsp;10 / WPF. Tail ao vivo, abas independentes, regras de destaque com regex, comparação em painel duplo e preview de contexto — <b>em 16 idiomas</b>.',
+  "hero.cta.install": "Instalar via ClickOnce",
+  "hero.cta.standalone": ".exe Standalone",
+  "hero.zip.lead": "Também em .zip:",
+  "hero.cta.portable": ".exe portátil",
+  "trust.verify": "Downloads verificados por SHA-256",
+  "trust.free": "100% grátis",
+  "trust.notrack": "Anônimo · sem cookies",
+
+  "trust.softpedia": "Softpedia 100% Clean",
+  "band.title": "Todo download é verificável",
+  "band.text": 'Os downloads Standalone e Portable são assinados digitalmente e carimbados no tempo. Cada versão publica também um <code>SHA-256</code> no <code>version.json</code>, e o app confere esse valor antes de instalar qualquer atualização por HTTPS. Binários adulterados são rejeitados automaticamente.',
+  "band.softpedia": 'E você não precisa acreditar só na nossa palavra: o <strong>Softpedia Labs</strong> testou de forma independente e deu a ele o selo <strong>100% Clean</strong> — sem spyware, adware nem vírus.',
+  "feat.label": "Feito para quem vive em logs",
+  "feat.title": "Tudo o que você queria que o tail -f tivesse.",
+  "feat.text.t": "Não é só .log — qualquer log de texto",
+  "feat.text.d": "Os logs de Linux e Unix vêm de todo jeito: syslog, messages, o auth.log.1 de uma rotação, arquivos sem extensão nenhuma. Dê a ele padrões de nomes de arquivo e ele acompanha todo arquivo de texto que combinar — os binários ficam de fora automaticamente.",
+  "feat.tail.t": "Tail de logs em tempo real",
+  "feat.tail.d": "Acompanha arquivos de log ao vivo — as linhas novas chegam na hora. Role para cima para pausar, volte ao fim para retomar.",
+  "feat.tabs.t": "Abas independentes",
+  "feat.tabs.d": "Cada aba é um ambiente próprio — com seu conjunto de logs, sua divisão, sua busca e sua ordenação. Acompanhe projetos diferentes ao mesmo tempo sem misturar um com o outro.",
+  "feat.split.t": "Comparação em painel duplo",
+  "feat.split.d": "Dois painéis independentes, dois arquivos lado a lado — cada um com sua busca e seu tail.",
+  "feat.csv.t": "Tail de .csv em colunas",
+  "feat.csv.d": "Também .csv/.tsv, mas em tabela — o cabeçalho do arquivo vira o título das colunas e as linhas novas aparecem ao vivo. Vírgula, ponto e vírgula ou tab, detectados automaticamente.",
+  "feat.rules.t": "Regras de destaque com regex",
+  "feat.rules.d": "Colore linhas inteiras ou palavras isoladas. Com ajuda de limite de palavra e preview ao vivo.",
+  "feat.preview.t": "Preview de contexto",
+  "feat.preview.d": "Passe o mouse sobre uma linha filtrada para espiar as linhas ao redor, no arquivo completo e sem filtro.",
+  "feat.update.t": "Atualização automática integrada",
+  "feat.update.d": "As edições Standalone e Portable se atualizam sozinhas — com verificação de integridade por HTTPS.",
+  "feat.lang.t": "16 idiomas",
+  "feat.lang.d": "Interface totalmente traduzida, com troca instantânea, sem reiniciar.",
+
+  "shots.label": "Por dentro",
+  "shots.title": "Limpo, denso e feito para o teclado.",
+  "shot.1": "Visualização em painel duplo — compare dois logs de uma vez",
+  "shot.2": "Filtro com preview de contexto flutuante",
+  "shot.3": "Selecionar e copiar linhas",
+  "shot.4": "Editor visual de regras de destaque",
+  "shot.5": "Barra de ferramentas e painel de arquivos compactos",
+
+  "langs.label": "Fala o seu idioma",
+  "langs.title": "16 idiomas, trocados ao vivo.",
+  "langs.sub": "A interface inteira, não só algumas frases — mude de idioma quando quiser, sem reiniciar.",
+
+  "how.label": "Funcionando em um minuto",
+  "how.title": "Como funciona",
+  "how.1.t": "Instale ou descompacte",
+  "how.1.d": "ClickOnce com um clique, um .exe standalone minúsculo, ou uma versão portátil autossuficiente.",
+  "how.2.t": "Aponte para seus logs",
+  "how.2.d": "Adicione pastas ou arquivos avulsos. Ele pega os logs que combinam com seus padrões, deixa os binários de fora e fica de olho neles.",
+  "how.3.t": "Veja tudo ao vivo",
+  "how.3.d": "As linhas chegam em tempo real com suas regras de destaque já aplicadas. Divida, busque, filtre.",
+
+  "install.label": "Baixar",
+  "install.title": "Escolha sua edição",
+  "install.sub": "Três jeitos de rodar — todos grátis, todos o mesmo app.",
+  "ed.co.tag": "★ Recomendado",
+  "ed.co.h": "ClickOnce",
+  "ed.co.lede": "Instalação com um clique que se mantém atualizada sozinha. A melhor opção para a maioria.",
+  "ed.co.btn": "Instalar via ClickOnce",
+  "ed.sa.tag": "Menor",
+  "ed.sa.h": "Standalone",
+  "ed.sa.lede": "Um único .exe de ~2,5 MB. Precisa do .NET 10 Desktop Runtime instalado.",
+  "ed.sa.btn": "Baixar .exe",
+  "ed.sa.note": 'Precisa do <a href="https://dotnet.microsoft.com/download/dotnet/10.0/runtime" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>.',
+  "ed.pt.tag": "Zero instalação",
+  "ed.pt.h": "Portable",
+  "ed.pt.lede": ".exe autossuficiente de ~160 MB. Sem runtime, sem instalação — roda de qualquer lugar.",
+  "ed.pt.btn": "Baixar portátil",
+  "ed.zip.alt": "Bloquearam o .exe? Use o .zip",
+  "install.smartscreen": "Os downloads Standalone e Portable são assinados digitalmente — o Windows mostra o nome do editor. Como a assinatura é recente, o navegador ou o Windows ainda podem pedir confirmação: clique em Mais informações → Executar assim mesmo. Se quiser, confira o SHA-256, publicado em cada versão.",
+  "chrome.note": "<strong>O Chrome não suporta ClickOnce</strong>Abra esta página no Microsoft Edge para usar a instalação ClickOnce, ou baixe direto a edição Standalone ou Portable.",
+
+  "faq.label": "Bom saber",
+  "faq.title": "Perguntas",
+  "faq.q1": "É mesmo grátis?",
+  "faq.a1": "É — freeware, para uso pessoal e comercial. Sem conta e sem cookies; o app só envia estatísticas anônimas de instalação e atualização, que você pode desligar.",
+  "faq.q2": "O Windows pede confirmação ao abrir. Por quê?",
+  "faq.a2": 'A assinatura é recente, e o Windows demora um pouco para reconhecer um editor novo — não é problema do arquivo. Clique em Mais informações → Executar assim mesmo. A instalação por ClickOnce mantém a assinatura própria e ainda pode mostrar “Editor desconhecido”. Cada versão publica um <code>SHA-256</code> que você pode conferir.',
+  "faq.q3": "Que edição devo escolher?",
+  "faq.a3": "ClickOnce se quiser atualização automática sem esforço (precisa do Microsoft Edge). Standalone se você já tem o runtime .NET 10. Portable se quiser zero instalação.",
+  "faq.q4": "Onde está o código-fonte?",
+  "faq.a4": "O app é freeware e o código é privado, mas relatos de bugs e sugestões de recursos são bem-vindos no GitHub.",
+
+  "dl.downloads": "downloads",
+  "dl.standalone": "Standalone",
+  "dl.portable": "Portátil",
+
+  "foot.tagline": "Um visualizador de logs moderno para Windows.",
+  "foot.made": "Freeware · Feito com .NET 10 & WPF",
+  "foot.site": "Site",
+  "foot.github": "GitHub",
+  "foot.releases": "Versões",
+  "foot.mbrothers": "mBrothers",
+  "foot.privacy": "Privacidade: análise sem cookies (GoatCounter) e estatísticas anônimas de instalação/atualização dentro do app (que você pode desligar) — sem cookies, sem dados pessoais.",
+  "foot.mbcredit": "Um produto <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
+};

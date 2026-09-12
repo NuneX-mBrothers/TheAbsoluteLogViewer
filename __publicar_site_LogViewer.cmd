@@ -74,14 +74,14 @@ echo       Versao injetada: v%VERSION%
 echo       OK
 
 :: -- 3b. Gerar as paginas por idioma -------------------------
-:: Tem de ser DEPOIS da injecao da versao: as 12 paginas por idioma sao
+:: Tem de ser DEPOIS da injecao da versao: as 15 paginas por idioma sao
 :: copias do index.html, e se fossem geradas antes ficavam a anunciar a
 :: versao anterior no cartao e no JSON-LD.
 echo [3b/4] A gerar as paginas por idioma...
 python "%DIST_DIR%tools\gerar-linguas.py"
 if errorlevel 1 (
     echo [ERRO] O gerador das paginas por idioma falhou.
-    echo        Sem ele, as 12 paginas por idioma ficam desactualizadas.
+    echo        Sem ele, as 15 paginas por idioma ficam desactualizadas.
     pause & exit /b 1
 )
 echo       OK
@@ -96,15 +96,15 @@ cd /d "%DIST_DIR%"
 :: raiz sao listados um a um.
 :: NOTA: se um dia adicionares um ficheiro de site NOVO na raiz de docs\
 :: (ex: robots.txt, sitemap.xml), acrescenta-o tambem a esta lista.
-:: pt fr es de zh it pl ru ja ko zh-tw = as 12 paginas por idioma
-::   (fase A + fase B, 2026-09-12), geradas por
+:: pt br fr es de zh it pl ru ar hi ja ko zh-tw = as 15 paginas por idioma
+::   (fases A, B e C, 2026-09-12), geradas por
 ::   tools\gerar-linguas.py a partir do index.html e dos dicionarios.
 ::   ATENCAO: se mexeres no TEXTO do site, corre o gerador ANTES de publicar
 ::   -- senao as paginas por idioma ficam a dizer o texto antigo.
 :: "google*.html" = o ficheiro de validacao do Google Search Console. Tem de
 ::   ficar no site PARA SEMPRE: se desaparecer, a propriedade deixa de estar
 ::   validada e perde-se o historico de pesquisas.
-git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt fr es de zh it pl ru ja ko zh-tw tools "google*.html"
+git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt br fr es de zh it pl ru ar hi ja ko zh-tw tools "google*.html"
 if errorlevel 1 (
     echo [ERRO] git add falhou. Estas no repo dist certo?
     pause & exit /b 1
