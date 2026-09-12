@@ -346,3 +346,22 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .cta-zip a{color:var(--green);text-decoration:none;border-bottom:1px solid rgba(0,230,118,.35);transition:border-color .15s,color .15s}
 .cta-zip a:hover{border-bottom-color:var(--green)}
 .cta-zip-sep{opacity:.45}
+
+/* ── Da direita para a esquerda (arabe) ───────────────────────
+   O `dir="rtl"` do <html> ja vira o texto, o flex e a grelha sozinho. O que
+   NAO vira sao as propriedades fisicas -- left/right e margin-left/right --,
+   e sao poucas: estao todas aqui.
+   ⛔ O mock-up do terminal NAO entra nesta lista: leva `dir="ltr"` no proprio
+      HTML, porque um log le-se da esquerda para a direita em qualquer lingua.
+      E por isso que os `margin-left` do .term-name, .live e .cursor e o
+      `text-align:right` dos numeros de linha ficam como estao. */
+[dir="rtl"] .skip{left:auto;right:-999px;border-radius:0 0 0 8px}
+[dir="rtl"] .skip:focus{left:auto;right:0}
+[dir="rtl"] .lang-cur::after{margin-left:0;margin-right:6px}
+[dir="rtl"] .lang-list{right:auto;left:0}
+[dir="rtl"] .chrome-note{text-align:right}
+[dir="rtl"] .dl-counter #dl-total{margin-right:0;margin-left:4px}
+[dir="rtl"] .dl-counter #dl-standalone,
+[dir="rtl"] .dl-counter #dl-portable{margin-left:0;margin-right:5px}
+[dir="rtl"] .dl-arrow{margin-right:0;margin-left:5px;transform:scaleX(-1)}
+[dir="rtl"] .lb-close{right:auto;left:22px}
