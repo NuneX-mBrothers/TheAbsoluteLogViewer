@@ -27,7 +27,7 @@ echo ==========================================
 echo.
 
 :: ── 1. Ler versao ATUAL do .csproj (sem bump) ─────────────────
-echo [1/4] A ler versao atual do .csproj...
+echo [1/5] A ler versao atual do .csproj...
 if not exist "%CSPROJ%" (
     echo [ERRO] Nao encontrou: %CSPROJ%
     pause & exit /b 1
@@ -47,7 +47,7 @@ echo       OK
 :: ExplorerFocus. Ate 2026-08-18 a fonte vivia em ..\LogViewer\docs\ e era
 :: copiada para ca por robocopy; havia duas copias e editar a errada perdia
 :: o trabalho todo. Deixou de haver copia: nao ha robocopy nenhum.
-echo [2/4] A validar o site...
+echo [2/5] A validar o site...
 if not exist "%DIST_INDEX%" (
     echo [ERRO] Nao encontrou o site: %DIST_INDEX%
     pause & exit /b 1
@@ -77,7 +77,7 @@ echo       OK
 :: Tem de ser DEPOIS da injecao da versao: as 15 paginas por idioma sao
 :: copias do index.html, e se fossem geradas antes ficavam a anunciar a
 :: versao anterior no cartao e no JSON-LD.
-echo [3b/4] A gerar as paginas por idioma...
+echo [3b/5] A gerar as paginas por idioma...
 python "%DIST_DIR%tools\gerar-linguas.py"
 if errorlevel 1 (
     echo [ERRO] O gerador das paginas por idioma falhou.
@@ -87,7 +87,7 @@ if errorlevel 1 (
 echo       OK
 
 :: -- 4. git add (so do site) + commit + push -----------------
-echo [4/4] git add ^(so site^) + commit + push...
+echo [4/5] git add ^(so site^) + commit + push...
 cd /d "%DIST_DIR%"
 
 :: Stage EXPLICITO dos ficheiros do site, para um run so-site nunca
@@ -101,10 +101,14 @@ cd /d "%DIST_DIR%"
 ::   tools\gerar-linguas.py a partir do index.html e dos dicionarios.
 ::   ATENCAO: se mexeres no TEXTO do site, corre o gerador ANTES de publicar
 ::   -- senao as paginas por idioma ficam a dizer o texto antigo.
+:: A chave do IndexNow (3ae8a566....txt) e o ficheiro de
+::   validacao do Google ("google*.html") tem os dois de ficar no site PARA
+::   SEMPRE -- se um desaparecer, o Bing recusa os avisos e o Google perde a
+::   propriedade validada.
 :: "google*.html" = o ficheiro de validacao do Google Search Console. Tem de
 ::   ficar no site PARA SEMPRE: se desaparecer, a propriedade deixa de estar
 ::   validada e perde-se o historico de pesquisas.
-git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt br fr es de zh it pl ru ar hi ja ko zh-tw tools "google*.html"
+git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt br fr es de zh it pl ru ar hi ja ko zh-tw tools "google*.html" "3ae8a566eee0cf71c4aa33092370e4ea.txt"
 if errorlevel 1 (
     echo [ERRO] git add falhou. Estas no repo dist certo?
     pause & exit /b 1
@@ -130,6 +134,35 @@ if errorlevel 1 (
     pause & exit /b 1
 )
 echo       OK
+
+:: -- 5. IndexNow: avisar o Bing -------------------------------
+:: O Bing nao e rapido a passar por si: o IndexNow avisa-o no momento do
+:: publish e a indexacao passa de dias para horas. O Yandex e o Seznam usam
+:: o mesmo protocolo; o DuckDuckGo vive do indice do Bing. O Google IGNORA
+:: o IndexNow -- ali o que acelera e o 'Pedir indexacao' do Search Console.
+::
+:: A lista de enderecos NAO esta escrita aqui: sai do sitemap.xml que o
+:: gerador acabou de escrever no passo [3b]. Escrita a mao, ficava para tras
+:: na proxima lingua -- e ficava em SILENCIO.
+::
+:: A chave vive em 3ae8a566eee0cf71c4aa33092370e4ea.txt, na raiz do site. O
+:: ficheiro PROVA ao Bing que quem avisa e quem manda no site, e por estar
+:: dentro de /TheAbsoluteLogViewer/ limita o aviso a este site e nao a todo
+:: o nunex-mbrothers.github.io. ATENCAO: se o apagares, os avisos passam a
+:: ser recusados -- esta na lista do git add, como o do Google.
+::
+:: ESPERA PELA CHAVE antes de avisar. O Bing vai BUSCAR o ficheiro da chave
+:: para confirmar que quem avisa manda no site; acabado de fazer push, o
+:: Pages ainda nao o serve, e o aviso vinha recusado com um 403 que nao
+:: queria dizer nada de errado. Tenta 8 vezes, de 15 em 15 segundos.
+::
+:: NAO ABORTA: nesta altura o site JA esta no ar e o IndexNow e so um aviso
+:: a terceiros. Mas tambem nao passa em claro -- diz OK ou diz [AVISO].
+echo [5/5] IndexNow: a avisar o Bing...
+powershell -NoProfile -Command "$ErrorActionPreference='Stop'; try { $k='3ae8a566eee0cf71c4aa33092370e4ea'; $kl='https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/3ae8a566eee0cf71c4aa33092370e4ea.txt'; $ok=$false; for ($i=1; $i -le 8; $i++) { try { if ((Invoke-WebRequest -Uri $kl -UseBasicParsing -TimeoutSec 15).Content.Trim() -eq $k) { $ok=$true; break } } catch { }; Write-Host ('      a chave ainda nao e servida; nova tentativa em 15s (' + $i + '/8)'); Start-Sleep -Seconds 15 }; if (-not $ok) { throw ('a chave nunca chegou a ser servida em ' + $kl) }; $s=[IO.File]::ReadAllText('%DIST_DIR%sitemap.xml'); $u=@([regex]::Matches($s,'<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value }); if ($u.Count -lt 1) { throw 'o sitemap nao tem nenhum endereco' }; $b=@{ host='nunex-mbrothers.github.io'; key=$k; keyLocation=$kl; urlList=$u } | ConvertTo-Json -Compress; $r=Invoke-WebRequest -Uri 'https://api.indexnow.org/indexnow' -Method Post -ContentType 'application/json; charset=utf-8' -Body $b -TimeoutSec 30 -UseBasicParsing; Write-Host ('      ' + $u.Count + ' enderecos anunciados ao Bing. HTTP ' + [int]$r.StatusCode) } catch { Write-Host ('      [AVISO] O IndexNow nao aceitou: ' + $_.Exception.Message); Write-Host '              O site ESTA publicado -- falhou so o aviso ao Bing.'; exit 1 }"
+if errorlevel 1 (
+    echo       Segue-se em frente: isto nao invalida o publish.
+)
 
 echo.
 echo ==========================================
