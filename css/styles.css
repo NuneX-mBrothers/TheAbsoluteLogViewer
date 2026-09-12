@@ -55,15 +55,34 @@ img{max-width:100%;display:block}
 .nav-right{display:flex;align-items:center;gap:14px}
 .nav-link{color:var(--muted);font-size:.86rem;font-weight:600;transition:color .15s}
 .nav-link:hover{color:var(--txt)}
-.lang-picker{display:flex;gap:5px;background:rgba(13,20,27,.7);border:1px solid var(--line);
-  padding:5px 7px;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.lang-btn{all:unset;cursor:pointer;font-size:.71rem;font-weight:700;color:var(--muted);
-  padding:3px 8px;border-radius:999px;transition:.15s;line-height:1}
-/* o selector passou a ligacoes: a lingua actual marca-se com aria-current.
-   O aria-pressed fica aceite para nao partir nada durante a transicao. */
-.lang-btn[aria-pressed="true"],.lang-btn[aria-current="true"]{color:#04210f;background:var(--green)}
-.lang-btn:hover:not([aria-pressed="true"]):not([aria-current="true"]){color:var(--txt)}
+/* Selector de linguas: com doze ja nao cabe uma fila de botoes. Passa a ser
+   um <details> -- abre sem JavaScript nenhum, e as ligacoes ficam no HTML,
+   que e o que os motores de busca leem. A lingua actual marca-se com
+   aria-current (sao ligacoes, nao botoes). */
+/* O sprite das bandeiras nao ocupa espaco nenhum na pagina. */
+.fl-sprite{position:absolute;width:0;height:0;overflow:hidden}
+/* Bandeiras em SVG, nao em emoji: o Windows nao tem glifos de bandeira e
+   mostraria um par de letras numa caixa -- no unico sistema que nos importa. */
+.lang-fl{width:20px;height:14px;border-radius:2px;flex:none;display:block;
+  box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.lang-picker{position:relative}
+.lang-cur{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  font-size:.71rem;font-weight:700;color:var(--txt);
+  background:rgba(13,20,27,.7);border:1px solid var(--line);padding:5px 11px;border-radius:999px;
+  white-space:nowrap;transition:.15s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.lang-cur::-webkit-details-marker{display:none}
+.lang-cur::after{content:'\25BE';margin-left:6px;color:var(--muted)}
+.lang-cur:hover,.lang-picker[open] .lang-cur{border-color:var(--green);color:#eafff3}
+.lang-list{position:absolute;right:0;top:calc(100% + 8px);z-index:60;display:grid;
+  grid-template-columns:1fr 1fr;gap:2px;min-width:268px;padding:6px;
+  background:var(--panel2);border:1px solid var(--line2);border-radius:10px;
+  box-shadow:0 18px 40px -12px #000}
+.lang-btn{all:unset;cursor:pointer;font-size:.78rem;font-weight:600;color:var(--muted);
+  padding:7px 10px;border-radius:7px;transition:.15s;line-height:1.2;white-space:nowrap}
+.lang-btn[aria-current="true"]{color:#04210f;background:var(--green);font-weight:800}
+.lang-btn:hover:not([aria-current="true"]){color:var(--txt);background:rgba(0,230,118,.08)}
 .lang-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+@media(max-width:560px){.lang-list{grid-template-columns:1fr;min-width:186px}}
 .ver-badge{font-size:.71rem;color:var(--green);border:1px solid rgba(0,230,118,.3);
   background:rgba(0,230,118,.06);padding:3px 10px;border-radius:999px;font-weight:700;white-space:nowrap}
 
@@ -187,7 +206,7 @@ section{padding:78px 0;position:relative;z-index:2}
 .lang-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem;
   display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--txt);transition:border-color .2s}
 .lang-card:hover{border-color:rgba(0,230,118,.3)}
-.lang-card .flag{font-size:1.25rem;line-height:1}
+.lang-card .lang-fl{width:22px;height:15.4px}
 
 /* ── How it works ─────────────────────────────────────────── */
 .steps{display:flex;flex-direction:column;gap:14px}

@@ -61,51 +61,20 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     2) i18n — dictionaries registered on window.I18N (loaded as
-        plain <script> so it also works from file:// previews)
+     2) Selector de linguas — so o comportamento do menu.
+        O i18n do lado do cliente SAIU daqui: cada lingua tem a sua
+        pagina, com o texto ja no HTML, e o selector e uma lista de
+        ligacoes dentro de um <details>. Os dicionarios continuam em
+        i18n/*.js, mas como FONTE do gerador, nao para o browser.
      ────────────────────────────────────────────────────────── */
-  var DICT = window.I18N || {};
-  var SUPPORTED = ["en", "pt", "fr", "es", "de", "zh"];
-  var KEY = "talv.lang";
-
-  function pickLang() {
-    var saved = null;
-    try { saved = localStorage.getItem(KEY); } catch (e) {}
-    if (saved && SUPPORTED.indexOf(saved) >= 0) return saved;
-    var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
-    return SUPPORTED.indexOf(nav) >= 0 ? nav : "en";
-  }
-
-  function applyLang(lang) {
-    var d = DICT[lang] || DICT.en || {};
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n")];
-      if (v != null) el.textContent = v;
+  var menu = document.querySelector("details.lang-picker");
+  if (menu) {
+    document.addEventListener("click", function (e) {
+      if (menu.open && !menu.contains(e.target)) menu.open = false;
     });
-    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n-html")];
-      if (v != null) el.innerHTML = v;
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.open) { menu.open = false; menu.querySelector("summary").focus(); }
     });
-    if (d["meta.title"]) document.title = d["meta.title"];
-    if (d["meta.desc"]) {
-      var m = document.querySelector('meta[name="description"]');
-      if (m) m.setAttribute("content", d["meta.desc"]);
-    }
-    document.documentElement.lang = lang;
-    document.querySelectorAll(".lang-btn").forEach(function (b) {
-      b.setAttribute("aria-current", b.getAttribute("hreflang") === lang ? "true" : "false");
-    });
-    try { localStorage.setItem(KEY, lang); } catch (e) {}
-  }
-
-  /* Uma porta por lingua (2026-09-12): o selector passou a LIGACOES para
-     /pt/, /de/, ... e ja nao troca o texto no lugar -- por isso nao ha
-     ouvintes de clique nenhuns. Nas paginas geradas o texto ja vem
-     traduzido no HTML e o <html> traz data-lang-fixa: ai o i18n do lado do
-     cliente NAO corre, senao punha por cima a lingua do navegador. Na raiz
-     corre, e e o que da o ingles e a deteccao automatica de sempre. */
-  if (!document.documentElement.hasAttribute("data-lang-fixa")) {
-    applyLang(pickLang());
   }
 
   /* ──────────────────────────────────────────────────────────

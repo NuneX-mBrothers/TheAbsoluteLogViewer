@@ -11,18 +11,25 @@
   <meta name="theme-color" content="#070b0f" />
 
   <link rel="canonical" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
-  <!-- Uma porta por lingua (fase A, 2026-09-12). Cada pagina tem canonical
-       propria e hreflang reciproco; o texto vai JA TRADUZIDO no HTML.
-       As paginas /pt/ /fr/ /es/ /de/ /zh/ sao GERADAS por tools/gerar-linguas.py
-       -- mexer no texto do site obriga a correr o gerador outra vez.
+  <!-- Uma porta por lingua. Cada pagina tem canonical propria e hreflang
+       reciproco; o texto vai JA TRADUZIDO no HTML, sem JavaScript.
+       As pastas por idioma sao GERADAS por tools/gerar-linguas.py -- mexer
+       no texto do site obriga a correr o gerador outra vez, e os dois .cmd
+       ja o fazem depois de injectarem a versao.
        Regresso: etiqueta antes-das-urls-por-idioma. -->
   <link rel="alternate" hreflang="x-default" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
   <link rel="alternate" hreflang="en" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
   <link rel="alternate" hreflang="pt" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/" />
-  <link rel="alternate" hreflang="fr" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/fr/" />
   <link rel="alternate" hreflang="es" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/es/" />
+  <link rel="alternate" hreflang="fr" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/fr/" />
+  <link rel="alternate" hreflang="it" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/it/" />
   <link rel="alternate" hreflang="de" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
-  <link rel="alternate" hreflang="zh" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+  <link rel="alternate" hreflang="pl" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pl/" />
+  <link rel="alternate" hreflang="ru" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ru/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh-tw/" />
+  <link rel="alternate" hreflang="ja" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/ko/" />
 
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <link rel="alternate icon" href="../social-preview.jpg" />
@@ -74,6 +81,28 @@
   </noscript>
 </head>
 <body>
+<!-- Bandeiras em SVG (16). Sao as mesmas da pagina do ExplorerFocus.
+     ⚠ NAO se usa emoji de bandeira: o Windows nao tem glifos para elas e
+       sairia um par de letras numa caixa -- exatamente no unico sistema que
+       nos importa. O sprite nao ocupa espaco (.fl-sprite). -->
+<svg class="fl-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="fl-pt" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FF0000"/><rect width="8" height="14" fill="#006600"/><circle cx="8" cy="7" r="2.9" fill="#FFCC00"/><circle cx="8" cy="7" r="1.9" fill="#FFFFFF"/><rect x="7.1" y="5.9" width="1.8" height="2.2" fill="#003399"/></symbol>
+<symbol id="fl-br" viewBox="0 0 20 14"><rect width="20" height="14" fill="#009C3B"/><polygon points="10,1.4 18.6,7 10,12.6 1.4,7" fill="#FFDF00"/><circle cx="10" cy="7" r="2.9" fill="#002776"/><path d="M7.2 6.1a3.4 3.4 0 0 1 5.7 1.1l-.9.3a2.5 2.5 0 0 0-4.2-.8z" fill="#FFFFFF"/></symbol>
+<symbol id="fl-gb" viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#FFFFFF" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.4"/><path d="M10 0v14M0 7h20" stroke="#FFFFFF" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></symbol>
+<symbol id="fl-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><g fill="#B22234"><rect width="20" height="1.08"/><rect y="2.15" width="20" height="1.08"/><rect y="4.31" width="20" height="1.08"/><rect y="6.46" width="20" height="1.08"/><rect y="8.62" width="20" height="1.08"/><rect y="10.77" width="20" height="1.08"/><rect y="12.92" width="20" height="1.08"/></g><rect width="8" height="7.54" fill="#3C3B6E"/><g fill="#FFFFFF"><circle cx="1.6" cy="1.5" r=".36"/><circle cx="4" cy="1.5" r=".36"/><circle cx="6.4" cy="1.5" r=".36"/><circle cx="2.8" cy="3" r=".36"/><circle cx="5.2" cy="3" r=".36"/><circle cx="1.6" cy="4.5" r=".36"/><circle cx="4" cy="4.5" r=".36"/><circle cx="6.4" cy="4.5" r=".36"/><circle cx="2.8" cy="6" r=".36"/><circle cx="5.2" cy="6" r=".36"/></g></symbol>
+<symbol id="fl-es" viewBox="0 0 20 14"><rect width="20" height="14" fill="#AA151B"/><rect y="3.5" width="20" height="7" fill="#F1BF00"/></symbol>
+<symbol id="fl-fr" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><rect width="6.67" height="14" fill="#002395"/><rect x="13.33" width="6.67" height="14" fill="#ED2939"/></symbol>
+<symbol id="fl-it" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><rect width="6.67" height="14" fill="#009246"/><rect x="13.33" width="6.67" height="14" fill="#CE2B37"/></symbol>
+<symbol id="fl-de" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#000000"/><rect y="4.67" width="20" height="4.66" fill="#DD0000"/><rect y="9.33" width="20" height="4.67" fill="#FFCE00"/></symbol>
+<symbol id="fl-pl" viewBox="0 0 20 14"><rect width="20" height="7" fill="#FFFFFF"/><rect y="7" width="20" height="7" fill="#DC143C"/></symbol>
+<symbol id="fl-ru" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#FFFFFF"/><rect y="4.67" width="20" height="4.66" fill="#0039A6"/><rect y="9.33" width="20" height="4.67" fill="#D52B1E"/></symbol>
+<symbol id="fl-sa" viewBox="0 0 20 14"><rect width="20" height="14" fill="#006C35"/><path d="M4.2 6.2q1.45-1.4 2.9 0t2.9 0t2.9 0t2.9 0" fill="none" stroke="#FFFFFF" stroke-width=".9" stroke-linecap="round"/><rect x="4.6" y="8.7" width="11" height=".8" rx=".4" fill="#FFFFFF"/><path d="M4.6 9.1l1.7-1.2v2.4z" fill="#FFFFFF"/></symbol>
+<symbol id="fl-in" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#FF9933"/><rect y="4.67" width="20" height="4.66" fill="#FFFFFF"/><rect y="9.33" width="20" height="4.67" fill="#138808"/><circle cx="10" cy="7" r="1.8" fill="none" stroke="#000080" stroke-width=".45"/><circle cx="10" cy="7" r=".45" fill="#000080"/></symbol>
+<symbol id="fl-cn" viewBox="0 0 20 14"><rect width="20" height="14" fill="#DE2910"/><g fill="#FFDE00"><polygon points="3.33,1.33 3.73,2.55 5,2.55 3.97,3.30 4.36,4.51 3.33,3.76 2.30,4.51 2.70,3.30 1.67,2.55 2.94,2.55"/><polygon points="6.67,0.83 6.82,1.32 7.33,1.32 6.92,1.61 7.08,2.10 6.67,1.80 6.26,2.10 6.41,1.61 6.00,1.32 6.51,1.32"/><polygon points="8.00,2.00 8.16,2.48 8.66,2.48 8.25,2.78 8.41,3.26 8.00,2.97 7.59,3.26 7.75,2.78 7.34,2.48 7.84,2.48"/><polygon points="8.00,3.67 8.16,4.15 8.66,4.15 8.25,4.45 8.41,4.93 8.00,4.63 7.59,4.93 7.75,4.45 7.34,4.15 7.84,4.15"/><polygon points="6.67,4.83 6.82,5.32 7.33,5.32 6.92,5.61 7.08,6.10 6.67,5.80 6.26,6.10 6.41,5.61 6.00,5.32 6.51,5.32"/></g></symbol>
+<symbol id="fl-tw" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FE0000"/><rect width="10" height="7" fill="#000095"/><circle cx="5" cy="3.5" r="2.1" fill="#FFFFFF"/><circle cx="5" cy="3.5" r="1.4" fill="#000095"/><circle cx="5" cy="3.5" r="1" fill="#FFFFFF"/></symbol>
+<symbol id="fl-jp" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><circle cx="10" cy="7" r="4.2" fill="#BC002D"/></symbol>
+<symbol id="fl-kr" viewBox="0 0 20 14"><rect width="20" height="14" fill="#FFFFFF"/><circle cx="10" cy="7" r="3" fill="#CD2E3A"/><path d="M7 7a1.5 1.5 0 0 1 3 0 1.5 1.5 0 0 0 3 0 3 3 0 0 1-6 0z" fill="#0047A0"/></symbol>
+</defs></svg>
 <a class="skip" href="#main">Skip to content</a>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="grid-bg" aria-hidden="true"></div>
@@ -89,14 +118,27 @@
       <a class="nav-link" href="#install" data-i18n="nav.install">下载</a>
       <!-- nav-keep: sobrevive ao breakpoint mobile (ver .nav-link{display:none}) -->
       <a class="nav-link nav-keep" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
-      <div class="lang-picker" role="group" aria-label="Language">
-        <a class="lang-btn" href="../" hreflang="en" lang="en">EN</a>
-        <a class="lang-btn" href="../pt/" hreflang="pt" lang="pt">PT</a>
-        <a class="lang-btn" href="../fr/" hreflang="fr" lang="fr">FR</a>
-        <a class="lang-btn" href="../es/" hreflang="es" lang="es">ES</a>
-        <a class="lang-btn" href="../de/" hreflang="de" lang="de">DE</a>
-        <a class="lang-btn" href="../zh/" hreflang="zh" lang="zh" aria-current="true">中文</a>
-      </div>
+      <details class="lang-picker">
+        <summary class="lang-cur" title="Language"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-cn"/></svg><span>中文 (简体)</span></summary>
+        <div class="lang-list">
+          <a class="lang-btn" href="../pt/" lang="pt"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pt"/></svg><span>Português</span></a>
+          <a class="lang-btn" href="../pt/" lang="pt"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-br"/></svg><span>Português</span></a>
+          <a class="lang-btn" href="../" lang="en"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-gb"/></svg><span>English</span></a>
+          <a class="lang-btn" href="../" lang="en"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-us"/></svg><span>English</span></a>
+          <a class="lang-btn" href="../es/" lang="es"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-es"/></svg><span>Español</span></a>
+          <a class="lang-btn" href="../fr/" lang="fr"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-fr"/></svg><span>Français</span></a>
+          <a class="lang-btn" href="../it/" lang="it"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-it"/></svg><span>Italiano</span></a>
+          <a class="lang-btn" href="../de/" lang="de"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-de"/></svg><span>Deutsch</span></a>
+          <a class="lang-btn" href="../pl/" lang="pl"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pl"/></svg><span>Polski</span></a>
+          <a class="lang-btn" href="../ru/" lang="ru"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-ru"/></svg><span>Русский</span></a>
+          <a class="lang-btn" href="../" lang="en"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-sa"/></svg><span>العربية</span></a>
+          <a class="lang-btn" href="../" lang="en"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-in"/></svg><span>हिन्दी</span></a>
+          <a class="lang-btn" href="../zh/" lang="zh" aria-current="true"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-cn"/></svg><span>中文 (简体)</span></a>
+          <a class="lang-btn" href="../zh-tw/" lang="zh-TW"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-tw"/></svg><span>中文 (繁體)</span></a>
+          <a class="lang-btn" href="../ja/" lang="ja"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-jp"/></svg><span>日本語</span></a>
+          <a class="lang-btn" href="../ko/" lang="ko"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-kr"/></svg><span>한국어</span></a>
+        </div>
+      </details>
       <span class="ver-badge">v1.5.3.4</span>
     </div>
   </nav>
@@ -204,22 +246,22 @@
            O chinês leva (简体)/(繁體) porque aí muda a ESCRITA, e isso a
            bandeira não diz a quem não a lê. -->
       <div class="langs reveal">
-        <div class="lang-card"><span class="flag">🇵🇹</span>Português</div>
-        <div class="lang-card"><span class="flag">🇬🇧</span>English (UK)</div>
-        <div class="lang-card"><span class="flag">🇺🇸</span>English (US)</div>
-        <div class="lang-card"><span class="flag">🇪🇸</span>Español</div>
-        <div class="lang-card"><span class="flag">🇫🇷</span>Français</div>
-        <div class="lang-card"><span class="flag">🇮🇹</span>Italiano</div>
-        <div class="lang-card"><span class="flag">🇩🇪</span>Deutsch</div>
-        <div class="lang-card"><span class="flag">🇧🇷</span>Português (BR)</div>
-        <div class="lang-card"><span class="flag">🇮🇳</span>हिन्दी</div>
-        <div class="lang-card"><span class="flag">🇸🇦</span>العربية</div>
-        <div class="lang-card"><span class="flag">🇨🇳</span>中文 (简体)</div>
-        <div class="lang-card"><span class="flag">🇹🇼</span>中文 (繁體)</div>
-        <div class="lang-card"><span class="flag">🇷🇺</span>Русский</div>
-        <div class="lang-card"><span class="flag">🇵🇱</span>Polski</div>
-        <div class="lang-card"><span class="flag">🇯🇵</span>日本語</div>
-        <div class="lang-card"><span class="flag">🇰🇷</span>한국어</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pt"/></svg>Português</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-br"/></svg>Português</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-gb"/></svg>English</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-us"/></svg>English</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-es"/></svg>Español</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-fr"/></svg>Français</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-it"/></svg>Italiano</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-de"/></svg>Deutsch</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-pl"/></svg>Polski</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-ru"/></svg>Русский</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-sa"/></svg>العربية</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-in"/></svg>हिन्दी</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-cn"/></svg>中文 (简体)</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-tw"/></svg>中文 (繁體)</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-jp"/></svg>日本語</div>
+        <div class="lang-card"><svg class="lang-fl" viewBox="0 0 20 14" aria-hidden="true"><use href="#fl-kr"/></svg>한국어</div>
       </div>
     </section>
 

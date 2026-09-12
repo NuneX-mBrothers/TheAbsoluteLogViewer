@@ -244,14 +244,14 @@ echo        Versao escrita no index.html: v%NEWVER%
 echo        OK
 
 :: ── 5b. Gerar as paginas por idioma ──────────────────────────
-:: Tem de ser DEPOIS da injecao da versao: /pt/ /fr/ /es/ /de/ /zh/ sao
+:: Tem de ser DEPOIS da injecao da versao: as 12 paginas por idioma sao
 :: copias do index.html e, geradas antes, ficavam a anunciar a versao
 :: anterior no cartao e no JSON-LD.
 echo [5b/11] A gerar as paginas por idioma...
 python "%DIST_DIR%tools\gerar-linguas.py"
 if errorlevel 1 (
     echo [ERRO] O gerador das paginas por idioma falhou.
-    echo        Sem ele, /pt/ /fr/ /es/ /de/ /zh/ ficam desactualizadas.
+    echo        Sem ele, as 12 paginas por idioma ficam desactualizadas.
     pause & exit /b 1
 )
 echo        OK
