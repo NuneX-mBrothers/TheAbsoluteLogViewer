@@ -73,6 +73,19 @@ if errorlevel 1 (
 echo       Versao injetada: v%VERSION%
 echo       OK
 
+:: -- 3b. Gerar as paginas por idioma -------------------------
+:: Tem de ser DEPOIS da injecao da versao: as paginas /pt/ /fr/ /es/ /de/
+:: /zh/ sao copias do index.html, e se fossem geradas antes ficavam a
+:: anunciar a versao anterior no cartao e no JSON-LD.
+echo [3b/4] A gerar as paginas por idioma...
+python "%DIST_DIR%tools\gerar-linguas.py"
+if errorlevel 1 (
+    echo [ERRO] O gerador das paginas por idioma falhou.
+    echo        Sem ele, /pt/ /fr/ /es/ /de/ /zh/ ficam desactualizadas.
+    pause & exit /b 1
+)
+echo       OK
+
 :: -- 4. git add (so do site) + commit + push -----------------
 echo [4/4] git add ^(so site^) + commit + push...
 cd /d "%DIST_DIR%"
@@ -83,7 +96,11 @@ cd /d "%DIST_DIR%"
 :: raiz sao listados um a um.
 :: NOTA: se um dia adicionares um ficheiro de site NOVO na raiz de docs\
 :: (ex: robots.txt, sitemap.xml), acrescenta-o tambem a esta lista.
-git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg
+:: pt fr es de zh = as paginas por idioma (fase A, 2026-09-12), geradas por
+::   tools\gerar-linguas.py a partir do index.html e dos dicionarios.
+::   ATENCAO: se mexeres no TEXTO do site, corre o gerador ANTES de publicar
+::   -- senao as paginas por idioma ficam a dizer o texto antigo.
+git add index.html README.md robots.txt sitemap.xml assets css i18n js "app-icon-*.png" "screenshot-*.png" social-preview.jpg pt fr es de zh tools
 if errorlevel 1 (
     echo [ERRO] git add falhou. Estas no repo dist certo?
     pause & exit /b 1

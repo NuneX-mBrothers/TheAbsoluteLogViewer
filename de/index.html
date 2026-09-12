@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de" data-lang-fixa="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Absolute LogViewer — kostenloser Windows-Log-Viewer mit Echtzeit-Tailing</title>
+  <meta name="description" content="Kostenloser .NET-10-/WPF-Log-Viewer für Windows. Echtzeit-Tailing, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau. ClickOnce-Installation oder portable .exe." />
+  <meta name="author" content="mBrothers" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" content="#070b0f" />
+
+  <link rel="canonical" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
+  <!-- Uma porta por lingua (fase A, 2026-09-12). Cada pagina tem canonical
+       propria e hreflang reciproco; o texto vai JA TRADUZIDO no HTML.
+       As paginas /pt/ /fr/ /es/ /de/ /zh/ sao GERADAS por tools/gerar-linguas.py
+       -- mexer no texto do site obriga a correr o gerador outra vez.
+       Regresso: etiqueta antes-das-urls-por-idioma. -->
+  <link rel="alternate" hreflang="x-default" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="en" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" />
+  <link rel="alternate" hreflang="pt" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/" />
+  <link rel="alternate" hreflang="fr" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/fr/" />
+  <link rel="alternate" hreflang="es" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/es/" />
+  <link rel="alternate" hreflang="de" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
+  <link rel="alternate" hreflang="zh" href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/zh/" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="alternate icon" href="../social-preview.jpg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Absolute LogViewer" />
+  <meta property="og:title" content="The Absolute LogViewer — kostenloser Windows-Log-Viewer mit Echtzeit-Tailing" />
+  <meta property="og:description" content="Kostenloser .NET-10-/WPF-Log-Viewer für Windows. Echtzeit-Tailing, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau. ClickOnce-Installation oder portable .exe." />
+  <meta property="og:url" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/" />
+  <meta property="og:image" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Absolute LogViewer — real-time Windows log viewer" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Absolute LogViewer — kostenloser Windows-Log-Viewer mit Echtzeit-Tailing" />
+  <meta name="twitter:description" content="Kostenloser .NET-10-/WPF-Log-Viewer für Windows. Echtzeit-Tailing, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau. ClickOnce-Installation oder portable .exe." />
+  <meta name="twitter:image" content="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "The Absolute LogViewer",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "DeveloperApplication",
+    "softwareVersion": "1.5.3.4",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "downloadUrl": "https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest",
+    "url": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/de/",
+    "image": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/assets/og-cover.png",
+    "screenshot": "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/screenshot-1-split-view.png",
+    "author": { "@type": "Organization", "name": "mBrothers", "url": "https://nunex-mbrothers.github.io/mBrothers/" },
+    "publisher": { "@type": "Organization", "name": "mBrothers", "url": "https://nunex-mbrothers.github.io/mBrothers/" },
+    "description": "Free .NET 10 / WPF log viewer for Windows with real-time tailing, regex highlight rules, split-pane comparison and context preview."
+  }
+  </script>
+
+  <noscript>
+    <!-- Sem JS o IntersectionObserver nunca acrescenta .in, e todo o conteúdo
+         .reveal ficaria em opacity:0 — ou seja, uma página em branco. -->
+    <style>.reveal{opacity:1 !important;transform:none !important}</style>
+  </noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#" aria-label="The Absolute LogViewer">
+      <img src="../assets/logo.svg" alt="" aria-hidden="true" />
+      <span class="wm">The Absolute Log<span>Viewer</span><small data-i18n="foot.made">Freeware · Erstellt mit .NET 10 &amp; WPF</small></span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-link" href="#features" data-i18n="nav.features">Funktionen</a>
+      <a class="nav-link" href="#install" data-i18n="nav.install">Download</a>
+      <!-- nav-keep: sobrevive ao breakpoint mobile (ver .nav-link{display:none}) -->
+      <a class="nav-link nav-keep" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+      <div class="lang-picker" role="group" aria-label="Language">
+        <a class="lang-btn" href="../" hreflang="en" lang="en">EN</a>
+        <a class="lang-btn" href="../pt/" hreflang="pt" lang="pt">PT</a>
+        <a class="lang-btn" href="../fr/" hreflang="fr" lang="fr">FR</a>
+        <a class="lang-btn" href="../es/" hreflang="es" lang="es">ES</a>
+        <a class="lang-btn" href="../de/" hreflang="de" lang="de" aria-current="true">DE</a>
+        <a class="lang-btn" href="../zh/" hreflang="zh" lang="zh">中文</a>
+      </div>
+      <span class="ver-badge">v1.5.3.4</span>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-text reveal">
+        <img class="hero-emblem" src="../assets/logo-emblem.png" alt="The Absolute LogViewer" width="92" height="92" />
+        <span class="eyebrow"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Echtzeit-Log-Tailing</span></span>
+        <h1 data-i18n-html="hero.h1">Sieh deine Logs <span class="g">im selben Moment</span>, in dem sie entstehen.</h1>
+        <p class="sub" data-i18n-html="hero.sub">Ein schneller, moderner Log-Viewer für Windows auf Basis von .NET&nbsp;10 / WPF. Live-Tail, unabhängige Tabs, Regex-Hervorhebungsregeln, Vergleich im geteilten Fenster und Kontextvorschau — <b>in 16 Sprachen</b>.</p>
+      </div>
+
+      <div class="term reveal" aria-hidden="true">
+        <div class="term-bar">
+          <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+          <span class="term-name">app_2026-06-11.log</span>
+          <span class="live"><span class="d"></span>Live</span>
+        </div>
+        <div class="term-body" id="term"></div>
+      </div>
+    </section>
+
+    <div class="hero-downloads reveal">
+      <div class="cta">
+        <a class="btn btn-primary" href="../LogViewer.application"><span aria-hidden="true">⬇</span> <span data-i18n="hero.cta.install">Per ClickOnce installieren</span></a>
+        <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe"><span aria-hidden="true">⬇</span> <span data-i18n="hero.cta.standalone">Standalone .exe</span></a>
+        <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe"><span aria-hidden="true">▣</span> <span data-i18n="hero.cta.portable">Portable .exe</span></a>
+      </div>
+      <div class="cta-zip">
+        <span data-i18n="hero.zip.lead">Auch als .zip:</span>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.zip">Standalone</a>
+        <span class="cta-zip-sep" aria-hidden="true">·</span>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.zip">Portable</a>
+      </div>
+      <div class="trust">
+        <span class="pill verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="trust.verify">SHA-256-geprüfte Downloads</span></span>
+        <a class="pill pill-link" href="https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="trust.softpedia">Softpedia 100% Clean</span></a>
+        <span class="pill" data-i18n="trust.free">100% kostenlos</span>
+        <span class="pill" data-i18n="trust.notrack">Anonym · keine Cookies</span>
+      </div>
+      <div class="dl-counter" id="dl-counter">
+        <span class="dl-stat"><span class="dl-arrow" aria-hidden="true">↓</span><strong id="dl-total">—</strong> <span data-i18n="dl.downloads">Downloads</span></span>
+        <span class="dl-sep" aria-hidden="true">·</span>
+        <span class="dl-stat"><span data-i18n="dl.standalone">Standalone</span> <strong id="dl-standalone">—</strong></span>
+        <span class="dl-sep" aria-hidden="true">·</span>
+        <span class="dl-stat"><span data-i18n="dl.portable">Portable</span> <strong id="dl-portable">—</strong></span>
+      </div>
+    </div>
+
+    <section style="padding-top:10px">
+      <div class="band reveal">
+        <div class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div>
+          <h3 data-i18n="band.title">Jeder Download ist überprüfbar</h3>
+          <p data-i18n-html="band.text">Die Downloads Standalone und Portable sind digital signiert und mit Zeitstempel versehen. Jede Version veröffentlicht außerdem einen <code>SHA-256</code> in <code>version.json</code>, den die App vor jeder Aktualisierung über HTTPS prüft. Manipulierte Binärdateien werden automatisch abgelehnt.</p>
+          <a class="sp-award" href="https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml#status" target="_blank" rel="noopener">
+            <img src="../assets/softpedia-100-clean.webp" width="76" height="61" alt="Softpedia 100% Clean award" loading="lazy" />
+            <span data-i18n-html="band.softpedia">Und Sie müssen uns nicht einfach glauben: <strong>Softpedia Labs</strong> hat es unabhängig getestet und mit <strong>100% Clean</strong> ausgezeichnet — keine Spyware, Adware oder Viren.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="sec-label reveal" data-i18n="feat.label">Für alle, die in Logs leben</div>
+      <h2 class="sec-title reveal" data-i18n="feat.title">Alles, was du dir von tail -f gewünscht hast.</h2>
+      <div class="feats reveal">
+        <!-- Cartao largo (fila inteira): com auto-fill um 9.o cartao normal ficava orfao.
+             Entra primeiro porque diz o que o LogViewer le -- e ja nao e so .log. -->
+        <div class="feat wide"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3"/><path d="M13 15h4"/></svg></div><h3 data-i18n="feat.text.t">Nicht nur .log — jedes Text-Log</h3><p data-i18n="feat.text.d">Linux- und Unix-Logs gibt es in jeder Form: syslog, messages, ein rotiertes auth.log.1, Dateien ganz ohne Endung. Gib Dateimuster an, und es verfolgt jede passende Textdatei — Binärdateien werden automatisch übersprungen.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l3 3-3 3"/></svg></div><h3 data-i18n="feat.tail.t">Echtzeit-Tail von Logs</h3><p data-i18n="feat.tail.d">Verfolgt Log-Dateien live — neue Zeilen erscheinen sofort. Nach oben scrollen pausiert, am Ende geht es weiter.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M6 8V6a1 1 0 0 1 1-1h3v3"/><path d="M13 8V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/></svg></div><h3 data-i18n="feat.tabs.t">Unabhängige Tabs</h3><p data-i18n="feat.tabs.d">Jeder Tab ist eine eigene Umgebung – mit eigenem Log-Satz, Split, Suche und Sortierung. Überwache getrennte Projekte gleichzeitig, ohne sie zu vermischen.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg></div><h3 data-i18n="feat.split.t">Geteilter Vergleich</h3><p data-i18n="feat.split.d">Zwei unabhängige Fenster, zwei Dateien nebeneinander — jeweils mit eigener Suche und eigenem Tail.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M15 9v11"/></svg></div><h3 data-i18n="feat.csv.t">Tail von .csv in Spalten</h3><p data-i18n="feat.csv.d">Auch .csv/.tsv, aber als Tabelle — die Kopfzeile wird zu den Spaltentiteln und neue Zeilen erscheinen live. Komma, Semikolon oder Tab, automatisch erkannt.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l14 10M19 7L5 17"/></svg></div><h3 data-i18n="feat.rules.t">Regex-Hervorhebung</h3><p data-i18n="feat.rules.d">Ganze Zeilen oder einzelne Wörter einfärben. Wortgrenzen-Helfer und Live-Vorschau.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 14h6"/></svg></div><h3 data-i18n="feat.preview.t">Kontextvorschau</h3><p data-i18n="feat.preview.d">Über eine gefilterte Zeile fahren, um die umliegenden Zeilen der vollständigen Datei zu sehen.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></div><h3 data-i18n="feat.update.t">Integriertes Auto-Update</h3><p data-i18n="feat.update.d">Standalone und Portable aktualisieren sich selbst — integritätsgeprüft über HTTPS.</p></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3 data-i18n="feat.lang.t">16 Sprachen</h3><p data-i18n="feat.lang.d">Vollständig lokalisierte Oberfläche mit sofortigem Wechsel – ohne Neustart.</p></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="screenshots">
+      <div class="sec-label reveal" data-i18n="shots.label">Ein Blick hinein</div>
+      <h2 class="sec-title reveal" data-i18n="shots.title">Klar, dicht und tastaturfreundlich.</h2>
+      <div class="shots reveal">
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-1-split-view.png" data-full="../screenshot-1-split-view.png" alt="Split-pane view comparing two logs" /></div><div class="cap" data-i18n="shot.1">Geteilte Ansicht — zwei Logs gleichzeitig vergleichen</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-2-filter-preview.png" data-full="../screenshot-2-filter-preview.png" alt="Filter with floating context preview" /></div><div class="cap" data-i18n="shot.2">Filtern mit schwebender Kontextvorschau</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-3-copy-lines.png" data-full="../screenshot-3-copy-lines.png" alt="Select and copy lines" /></div><div class="cap" data-i18n="shot.3">Zeilen markieren und kopieren</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-4-highlight-rules.png" data-full="../screenshot-4-highlight-rules.png" alt="Visual highlight-rule editor" /></div><div class="cap" data-i18n="shot.4">Visueller Editor für Hervorhebungsregeln</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-5-toolbar.png" data-full="../screenshot-5-toolbar.png" alt="Compact toolbar and file panel" /></div><div class="cap" data-i18n="shot.5">Kompakte Symbolleiste &amp; Dateibereich</div></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="languages">
+      <div class="sec-label reveal" data-i18n="langs.label">Spricht deine Sprache</div>
+      <h2 class="sec-title reveal" data-i18n="langs.title">16 Sprachen, live umgeschaltet.</h2>
+      <p class="sec-sub reveal" data-i18n="langs.sub">Die gesamte Oberfläche, nicht nur ein paar Texte — jederzeit ohne Neustart wechseln.</p>
+      <!-- 16 línguas DENTRO DA APP desde 2026-09-11, as mesmas do ExplorerFocus.
+           Nomes no próprio idioma: iguais nas 6 línguas do site, sem data-i18n.
+           O chinês leva (简体)/(繁體) porque aí muda a ESCRITA, e isso a
+           bandeira não diz a quem não a lê. -->
+      <div class="langs reveal">
+        <div class="lang-card"><span class="flag">🇵🇹</span>Português</div>
+        <div class="lang-card"><span class="flag">🇬🇧</span>English (UK)</div>
+        <div class="lang-card"><span class="flag">🇺🇸</span>English (US)</div>
+        <div class="lang-card"><span class="flag">🇪🇸</span>Español</div>
+        <div class="lang-card"><span class="flag">🇫🇷</span>Français</div>
+        <div class="lang-card"><span class="flag">🇮🇹</span>Italiano</div>
+        <div class="lang-card"><span class="flag">🇩🇪</span>Deutsch</div>
+        <div class="lang-card"><span class="flag">🇧🇷</span>Português (BR)</div>
+        <div class="lang-card"><span class="flag">🇮🇳</span>हिन्दी</div>
+        <div class="lang-card"><span class="flag">🇸🇦</span>العربية</div>
+        <div class="lang-card"><span class="flag">🇨🇳</span>中文 (简体)</div>
+        <div class="lang-card"><span class="flag">🇹🇼</span>中文 (繁體)</div>
+        <div class="lang-card"><span class="flag">🇷🇺</span>Русский</div>
+        <div class="lang-card"><span class="flag">🇵🇱</span>Polski</div>
+        <div class="lang-card"><span class="flag">🇯🇵</span>日本語</div>
+        <div class="lang-card"><span class="flag">🇰🇷</span>한국어</div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="how">
+      <div class="sec-label reveal" data-i18n="how.label">In einer Minute einsatzbereit</div>
+      <h2 class="sec-title reveal" data-i18n="how.title">So funktioniert es</h2>
+      <div class="steps reveal">
+        <div class="step"><div class="step-num">1</div><div><h3 data-i18n="how.1.t">Installieren oder entpacken</h3><p data-i18n="how.1.d">ClickOnce mit einem Klick, eine winzige Standalone-.exe oder ein eigenständiges Portable-Build.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div><h3 data-i18n="how.2.t">Auf deine Logs richten</h3><p data-i18n="how.2.d">Ordner oder einzelne Dateien hinzufügen. Logs, die zu deinen Dateimustern passen, werden erkannt, Binärdateien übersprungen — und alles wird überwacht.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div><h3 data-i18n="how.3.t">Live mitverfolgen</h3><p data-i18n="how.3.d">Zeilen laufen in Echtzeit ein, mit deinen Regeln. Teilen, suchen, filtern.</p></div></div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="install">
+      <div class="sec-label reveal" data-i18n="install.label">Download</div>
+      <h2 class="sec-title reveal" data-i18n="install.title">Wähle deine Edition</h2>
+      <p class="sec-sub reveal" data-i18n="install.sub">Drei Wege, sie auszuführen — alle kostenlos, alle dieselbe App.</p>
+      <div class="editions reveal">
+        <div class="edition featured">
+          <span class="edition-tag tag-rec" data-i18n="ed.co.tag">★ Empfohlen</span>
+          <h3 data-i18n="ed.co.h">ClickOnce</h3>
+          <p class="lede" data-i18n="ed.co.lede">Installation mit einem Klick, die sich automatisch aktuell hält. Für die meisten am besten.</p>
+          <div class="size">≈ 5 MB · auto-update</div>
+          <a class="btn btn-primary" href="../LogViewer.application" data-i18n="ed.co.btn">Per ClickOnce installieren</a>
+          <div class="chrome-note" id="chromeNote" data-i18n-html="chrome.note"><strong>Chrome unterstützt ClickOnce nicht</strong>Öffne diese Seite in Microsoft Edge für die ClickOnce-Installation, oder lade einfach die Standalone- oder Portable-Edition.</div>
+        </div>
+        <div class="edition">
+          <span class="edition-tag tag-alt" data-i18n="ed.sa.tag">Am kleinsten</span>
+          <h3 data-i18n="ed.sa.h">Standalone</h3>
+          <p class="lede" data-i18n="ed.sa.lede">Eine einzelne ~2,5 MB .exe. Benötigt die .NET 10 Desktop Runtime.</p>
+          <div class="size">≈ 2.5 MB</div>
+          <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe" data-i18n="ed.sa.btn">.exe herunterladen</a>
+          <div class="note" data-i18n-html="ed.sa.note">Benötigt die <a href="https://dotnet.microsoft.com/download/dotnet/10.0/runtime" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>.</div>
+          <a class="zip-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.zip" data-i18n="ed.zip.alt">.exe blockiert? Nimm die .zip</a>
+        </div>
+        <div class="edition">
+          <span class="edition-tag tag-port" data-i18n="ed.pt.tag">Ohne Installation</span>
+          <h3 data-i18n="ed.pt.h">Portable</h3>
+          <p class="lede" data-i18n="ed.pt.lede">Eigenständige ~160 MB .exe. Keine Runtime, keine Installation — läuft von überall.</p>
+          <div class="size">≈ 160 MB · self-contained</div>
+          <a class="btn btn-ghost" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe" data-i18n="ed.pt.btn">Portable herunterladen</a>
+          <a class="zip-alt" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.zip" data-i18n="ed.zip.alt">.exe blockiert? Nimm die .zip</a>
+        </div>
+      </div>
+      <div class="req-list reveal">
+        <span class="req">Windows 10 / 11</span><span class="req">x64</span><span class="req">SHA-256 verified</span>
+      </div>
+      <p class="smartscreen reveal" data-i18n="install.smartscreen">Die Downloads Standalone und Portable sind digital signiert — Windows zeigt den Namen des Herausgebers. Da die Signatur neu ist, fragen Browser oder Windows unter Umständen noch nach: Klicken Sie auf Weitere Informationen → Trotzdem ausführen. Auf Wunsch prüfen Sie den SHA-256, der mit jeder Version veröffentlicht wird.</p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="faq">
+      <div class="sec-label reveal" data-i18n="faq.label">Gut zu wissen</div>
+      <h2 class="sec-title reveal" data-i18n="faq.title">Fragen</h2>
+      <div class="faq reveal">
+        <details><summary data-i18n="faq.q1">Ist es wirklich kostenlos?</summary><p data-i18n="faq.a1">Ja — Freeware, für private und kommerzielle Nutzung. Kein Konto und keine Cookies; die App sendet nur anonyme Installations- und Update-Statistiken, die sich abschalten lassen.</p></details>
+        <details><summary data-i18n="faq.q2">Windows fragt beim Öffnen nach. Warum?</summary><p data-i18n-html="faq.a2">Die Signatur ist neu, und Windows braucht eine Weile, um einen neuen Herausgeber zu erkennen — es liegt nicht an der Datei. Klicken Sie auf Weitere Informationen → Trotzdem ausführen. Die ClickOnce-Installation behält ihre eigene Signatur und kann weiterhin „Unbekannter Herausgeber“ anzeigen. Jede Version veröffentlicht einen prüfbaren <code>SHA-256</code>.</p></details>
+        <details><summary data-i18n="faq.q3">Welche Edition soll ich wählen?</summary><p data-i18n="faq.a3">ClickOnce für mühelose Auto-Updates (benötigt Microsoft Edge). Standalone, wenn du die .NET-10-Runtime schon hast. Portable, wenn du gar nichts installieren willst.</p></details>
+        <details><summary data-i18n="faq.q4">Wo ist der Quellcode?</summary><p data-i18n="faq.a4">Die App ist Freeware und der Quellcode ist privat, aber Fehlerberichte und Funktionswünsche sind auf GitHub willkommen.</p></details>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../assets/logo-emblem.png" alt="The Absolute LogViewer" width="46" height="46" />
+        <div><b>The Absolute LogViewer</b><small data-i18n="foot.tagline">Ein moderner Log-Viewer für Windows.</small></div>
+      </div>
+      <div class="foot-links">
+        <a href="https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/" data-i18n="foot.site">Website</a>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer" target="_blank" rel="noopener" data-i18n="foot.github">GitHub</a>
+        <a href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases" target="_blank" rel="noopener" data-i18n="foot.releases">Releases</a>
+        <a href="https://nunex-mbrothers.github.io/mBrothers/" target="_blank" rel="noopener" data-i18n="foot.mbrothers">mBrothers</a>
+      </div>
+    </div>
+    <p class="foot-copy">© 2026 mBrothers · <span data-i18n="foot.made">Freeware · Erstellt mit .NET 10 &amp; WPF</span></p>
+    <p class="foot-copy foot-privacy" data-i18n="foot.privacy">Datenschutz: cookiefreie Analyse (GoatCounter) und anonyme Installations-/Update-Statistiken in der App (abschaltbar) — keine Cookies, keine personenbezogenen Daten.</p>
+    <p class="mb-credit" data-i18n-html="foot.mbcredit">Ein <a href="https://nunex-mbrothers.github.io/mBrothers/" target="_blank" rel="noopener">mBrothers</a>-Produkt<span class="sep" aria-hidden="true"></span>developing practical solutions for small planetary systems</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <img src="" alt="" />
+</div>
+
+<script src="../js/particles.js"></script>
+<script src="../js/site.js"></script>
+
+<!-- GoatCounter — analytics privacy-friendly (sem cookies, sem PII). Conta a
+     visita a pagina e disponibiliza window.goatcounter.count() para os eventos
+     de download (ver js/site.js seccao 7). Mesma conta partilhada dos outros
+     produtos mBrothers; o LogViewer distingue-se pelo prefixo /logviewer. O
+     count.js ignora localhost/file:// por omissao, por isso os previews locais
+     nao poluem as estatisticas. -->
+<script>
+  // Reescreve o path da VISITA automatica de /TheAbsoluteLogViewer/ para
+  // /logviewer/, para que TODO o trafego do LogViewer (visita + eventos de
+  // download em /logviewer/download/*) fique sob /logviewer* no dashboard
+  // partilhado, isolavel com um unico filtro. So afeta a visita automatica;
+  // os count() dos downloads ja mandam o path explicito e nao passam por aqui.
+  window.goatcounter = {
+    path: function (p) { return p.replace(/^\/TheAbsoluteLogViewer/, "/logviewer") || "/logviewer"; }
+  };
+</script>
+<script data-goatcounter="https://nunex.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
