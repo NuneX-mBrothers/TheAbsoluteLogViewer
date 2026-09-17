@@ -19,7 +19,7 @@ setlocal EnableDelayedExpansion
 ::   8) renomeia o Portable, ASSINA os 2 exes e cria os .zip
 ::      (assinar altera os bytes: tem de ser antes dos .zip e dos hashes)
 ::   9) gera o version.json (versao + data + SHA-256) p/ o auto-update
-::  10) cria a GitHub Release com os 4 ficheiros
+:: 10) cria a Release em rascunho, sobe os 4 ficheiros UM A UM e publica-a
 ::  11) commit + push do repo dist (site + ClickOnce + version.json)
 ::  12) avisa o Bing pelo IndexNow (nao aborta: o site ja esta no ar)
 ::
@@ -419,14 +419,19 @@ echo        OK
 :: ── 10. GitHub Release ───────────────────────────────────────
 :: Feita ANTES do push: se falhar aqui, o site e o ClickOnce ainda nao
 :: foram enviados, por isso nada fica inconsistente para os utilizadores.
-echo [10/12]A criar a Release v%NEWVER% no GitHub...
-echo        ^(upload de 4 ficheiros, ~225 MB - pode demorar 2-5 min^)
+:: Ficheiro a ficheiro, e nao os 4 num so 'gh release create' (2026-09-17):
+:: o GitHub responde HTTP 500 "Error saving asset" a meio dos ficheiros
+:: grandes -- aconteceu na 1.5.3.5 e na 1.5.3.6, sempre com o Portable de
+:: 159 MB -- e o gh recomeca esse ficheiro do principio em silencio, deixando
+:: o ecra meia hora parado na mesma linha sem se saber o que ja subiu. Assim
+:: ve-se cada ficheiro, repete-se so o que falhar (3 tentativas) e a Release
+:: so deixa de ser rascunho com os 4 la dentro. Medido nesse dia: o ficheiro
+:: que o gh nao conseguiu em 30 min subiu depois em 31 s (5 MB/s) -- a linha
+:: e o antivirus foram descartados por medicao, a falha e do lado do GitHub.
+echo [10/12]A criar a Release v%NEWVER% no GitHub ^(rascunho^)...
 gh release create "v%NEWVER%" ^
-    "%SA_EXE%" ^
-    "%SA_ZIP%" ^
-    "%PT_EXE%" ^
-    "%PT_ZIP%" ^
     --repo "%REPO%" ^
+    --draft ^
     --title "v%NEWVER%" ^
     --notes "Release v%NEWVER%. See landing page for installation options."
 if errorlevel 1 (
@@ -434,13 +439,42 @@ if errorlevel 1 (
     echo        Causas possiveis:
     echo          - sem ligacao a internet
     echo          - login expirado ^(corre 'gh auth status'^)
-    echo          - upload interrompido
     echo        NOTA: o site ainda NAO foi enviado, nada ficou inconsistente.
     echo              Podes voltar a correr este script com a mesma versao.
     pause & exit /b 1
 )
+echo        OK ^(rascunho: ainda nao e visivel para ninguem^)
+echo        ^(4 ficheiros, ~225 MB - o Portable sozinho leva a maior parte^)
+
+set "ASSET_N=0"
+call :SobeAsset "%SA_EXE%"
+if errorlevel 1 goto :release_incompleta
+call :SobeAsset "%SA_ZIP%"
+if errorlevel 1 goto :release_incompleta
+call :SobeAsset "%PT_EXE%"
+if errorlevel 1 goto :release_incompleta
+call :SobeAsset "%PT_ZIP%"
+if errorlevel 1 goto :release_incompleta
+
+echo [10/12]Os 4 ficheiros estao la: a publicar a Release...
+gh release edit "v%NEWVER%" --repo "%REPO%" --draft=false --latest
+if errorlevel 1 goto :release_incompleta
 echo        OK
 echo        URL: https://github.com/%REPO%/releases/tag/v%NEWVER%
+goto :release_feita
+
+:release_incompleta
+echo.
+echo [ERRO] A Release v%NEWVER% ficou incompleta e continua em RASCUNHO.
+echo        O site ainda NAO foi enviado: ninguem ve nada a meio.
+echo        Ve o que ja la esta e retoma SEM recompilar nem repetir o PIN:
+echo          gh release view "v%NEWVER%" --repo "%REPO%" --json assets
+echo          gh release upload "v%NEWVER%" "o que faltar" --repo "%REPO%" --clobber
+echo          gh release edit "v%NEWVER%" --repo "%REPO%" --draft=false --latest
+echo        e depois os passos 11 e 12 a mao.
+pause & exit /b 1
+
+:release_feita
 
 :: ── 11. commit + push do repo dist ───────────────────────────
 echo [11/12]git commit + push do repo dist...
@@ -529,3 +563,30 @@ echo     ClickOnceProfile.pubxml       -^> %NEWVER%
 echo ==========================================
 echo.
 pause
+exit /b 0
+
+:: ── subrotina do passo 10: um ficheiro, ate 3 tentativas ─────────────
+:: %~1 = caminho do ficheiro. Sai com errorlevel 1 se nenhuma tentativa
+:: pegar. O --clobber substitui um ficheiro que tenha ficado a meio, por
+:: isso repetir e sempre seguro.
+:SobeAsset
+set /a ASSET_N+=1
+for %%F in ("%~1") do (
+    set "ASSET_NOME=%%~nxF"
+    set /a ASSET_MB=%%~zF/1048576
+)
+:: A espera entre tentativas e um 'ping' e nao um 'timeout': o timeout aborta
+:: com "Input redirection is not supported" se a entrada estiver redirecionada.
+:: E dentro de um bloco ( ) os comentarios tem de ser 'rem' -- um "::" ali
+:: da "The system cannot find the drive specified".
+for /l %%T in (1,1,3) do (
+    echo        [!ASSET_N!/4] !ASSET_NOME! ^(!ASSET_MB! MB^) - tentativa %%T de 3...
+    gh release upload "v%NEWVER%" "%~1" --repo "%REPO%" --clobber
+    if not errorlevel 1 (
+        echo               OK
+        exit /b 0
+    )
+    echo               falhou; nova tentativa daqui a 10s
+    ping -n 11 127.0.0.1 >nul
+)
+exit /b 1
