@@ -21,6 +21,7 @@ setlocal EnableDelayedExpansion
 ::   9) gera o version.json (versao + data + SHA-256) p/ o auto-update
 ::  10) cria a GitHub Release com os 4 ficheiros
 ::  11) commit + push do repo dist (site + ClickOnce + version.json)
+::  12) avisa o Bing pelo IndexNow (nao aborta: o site ja esta no ar)
 ::
 ::  O codigo e PRIVADO (repo LogViewer) e NAO e tocado por este script
 ::  alem do bump de versao -- esse commit e teu, ver o lembrete no fim.
@@ -91,7 +92,7 @@ echo.
 :: Tudo o que pode falhar e verificado ANTES de editar o csproj, apagar o
 :: bin ou compilar. O 1-prepare antigo bumpava a versao e so la ao fundo
 :: descobria que o MSBuild nao existia, deixando o repo a meio.
-echo [1/11] Verificacoes previas...
+echo [1/12]Verificacoes previas...
 
 if not exist "%PROJ%"  ( echo [ERRO] Nao encontrou: %PROJ%  & pause & exit /b 1 )
 if not exist "%PUBXML%" (
@@ -169,14 +170,14 @@ echo        dotnet, gh ^(com login^), MSBuild e repo git: OK
 echo        OK
 
 :: ── 2. Ler a versao atual e pedir a nova ─────────────────────
-echo [2/11] A ler a versao atual do LogViewer.csproj...
+echo [2/12]A ler a versao atual do LogViewer.csproj...
 for /f "tokens=*" %%a in ('findstr /r "<Version>[0-9]" "%PROJ%"') do set LINE=%%a
 for /f "tokens=2 delims=><" %%b in ("%LINE%") do set CURRENT=%%b
 if "%CURRENT%"=="" ( echo [ERRO] Nao consegui ler o ^<Version^> do .csproj. & pause & exit /b 1 )
 echo        Versao atual: %CURRENT%
 echo        OK
 
-echo [3/11] Nova versao N.N.N.N ^(Enter = manter %CURRENT%^):
+echo [3/12]Nova versao N.N.N.N ^(Enter = manter %CURRENT%^):
 set /p NEWVER=       Nova versao:
 if "%NEWVER%"=="" set NEWVER=%CURRENT%
 set NEWVER=%NEWVER:"=%
@@ -205,7 +206,7 @@ echo        OK
 :: ── 4. Atualizar csproj + pubxml ─────────────────────────────
 :: O .csproj e a UNICA fonte de verdade da versao. Daqui propaga-se para o
 :: pubxml (ClickOnce), o version.json e o index.html -- tudo neste script.
-echo [4/11] A atualizar LogViewer.csproj e ClickOnceProfile.pubxml...
+echo [4/12]A atualizar LogViewer.csproj e ClickOnceProfile.pubxml...
 powershell -NoProfile -Command "$p='%PROJ%'; $c=[IO.File]::ReadAllText($p); $c=$c -replace '<Version>.*?</Version>','<Version>%NEWVER%</Version>' -replace '<AssemblyVersion>.*?</AssemblyVersion>','<AssemblyVersion>%NEWVER%</AssemblyVersion>' -replace '<FileVersion>.*?</FileVersion>','<FileVersion>%NEWVER%</FileVersion>'; [IO.File]::WriteAllText($p,$c,(New-Object Text.UTF8Encoding($false)))"
 if errorlevel 1 ( echo [ERRO] Falhou a atualizar o .csproj. & pause & exit /b 1 )
 
@@ -232,7 +233,7 @@ echo        OK: csproj + pubxml -^> %NEWVER%
 :: index.html tem caracteres nao-ASCII. Nao usar "Set-Content -Encoding UTF8",
 :: que no 5.1 escreve COM BOM.
 :: O ">" do HTML vai como \x3E no regex, para o cmd nao o ler como redireccao.
-echo [5/11] A escrever a versao no site...
+echo [5/12]A escrever a versao no site...
 powershell -NoProfile -Command "$q=[char]34; $p='%DIST_INDEX%'; $v='%NEWVER%'; $c=[IO.File]::ReadAllText($p,[Text.Encoding]::UTF8); $p1='(softwareVersion'+$q+'\s*:\s*'+$q+')[\d.]+'; $p2='(class='+$q+'ver-badge'+$q+'\x3Ev)[\d.]+'; if (([regex]::Matches($c,$p1)).Count -lt 1) { exit 2 }; if (([regex]::Matches($c,$p2)).Count -lt 1) { exit 3 }; $c=[regex]::Replace($c,$p1,('${1}'+$v)); $c=[regex]::Replace($c,$p2,('${1}'+$v)); [IO.File]::WriteAllText($p,$c,(New-Object Text.UTF8Encoding($false)))"
 if errorlevel 1 (
     echo [ERRO] Nao consegui escrever a versao no index.html.
@@ -247,7 +248,7 @@ echo        OK
 :: Tem de ser DEPOIS da injecao da versao: as 15 paginas por idioma sao
 :: copias do index.html e, geradas antes, ficavam a anunciar a versao
 :: anterior no cartao e no JSON-LD.
-echo [5b/11] A gerar as paginas por idioma...
+echo [5b/12]A gerar as paginas por idioma...
 python "%DIST_DIR%tools\gerar-linguas.py"
 if errorlevel 1 (
     echo [ERRO] O gerador das paginas por idioma falhou.
@@ -259,7 +260,7 @@ echo        OK
 :: ── 6. Parar a app + limpar artefactos ───────────────────────
 :: Se o LogViewer estiver aberto a partir do bin\Release, o rmdir falha.
 :: bin\Debug e preservado para nao estragar o F5 / o build manual.
-echo [6/11] A parar o LogViewer ^(se aberto^) e a limpar bin\Release + obj...
+echo [6/12]A parar o LogViewer ^(se aberto^) e a limpar bin\Release + obj...
 taskkill /im LogViewer.exe /f >nul 2>&1
 if exist "%BIN%" ( rmdir /s /q "%BIN%" & echo        Apagado: bin\Release\ )
 if exist "%OBJ%" ( rmdir /s /q "%OBJ%" & echo        Apagado: obj\ )
@@ -269,7 +270,7 @@ echo        OK
 :: Ordem: StandAlone -> ClickOnce -> Portable. As duas primeiras sao
 :: framework-dependent; a Portable (self-contained) fica para o fim para
 :: nao contaminar o bin\ partilhado das outras.
-echo [7/11] A compilar as 3 edicoes...
+echo [7/12]A compilar as 3 edicoes...
 
 echo        - restore...
 dotnet restore "%PROJ%" >nul
@@ -335,7 +336,7 @@ echo        OK
 
 :: ── 8. Renomear o Portable + criar os .zip ───────────────────
 :: Os .zip existem para PCs/organizacoes que bloqueiam downloads de .exe.
-echo [8/11] A renomear o Portable, ASSINAR e criar os .zip...
+echo [8/12]A renomear o Portable, ASSINAR e criar os .zip...
 
 if exist "%PT_PDB%" ( del "%PT_PDB%" & echo        Apagado: LogViewer.pdb )
 if exist "%SA_ZIP%" ( del "%SA_ZIP%" )
@@ -406,7 +407,7 @@ echo        OK
 :: calculado sobre os MESMOS bytes que vao para a Release (ja renomeados),
 :: e o UpdateService verifica-o no .exe descarregado antes de instalar.
 :: A data "released" e preservada se ja estiveres a republicar a mesma versao.
-echo [9/11] A gerar o version.json ^(versao + data + SHA-256^)...
+echo [9/12]A gerar o version.json ^(versao + data + SHA-256^)...
 powershell -NoProfile -Command "$vj='%VERSIONJSON%'; $ver='%NEWVER%'; $rel=(Get-Date -Format yyyy-MM-dd); if (Test-Path $vj) { try { $o=Get-Content $vj -Raw | ConvertFrom-Json; if ($o.version -eq $ver -and $o.released) { $rel=$o.released } } catch {} }; $s=[Security.Cryptography.SHA256]::Create(); $h1=[BitConverter]::ToString($s.ComputeHash([IO.File]::ReadAllBytes('%SA_EXE%'))).Replace('-',''); $h2=[BitConverter]::ToString($s.ComputeHash([IO.File]::ReadAllBytes('%PT_EXE%'))).Replace('-',''); $b='https://github.com/%REPO%/releases/latest/download'; $obj=[ordered]@{ version=$ver; released=$rel; min_version='1.0.0.0'; downloads=[ordered]@{ Standalone=($b+'/LogViewer.exe'); Portable=($b+'/LogViewerPortable.exe') }; sha256=[ordered]@{ Standalone=$h1; Portable=$h2 } }; [IO.File]::WriteAllText($vj, ($obj | ConvertTo-Json -Depth 6), (New-Object Text.UTF8Encoding($false)))"
 if errorlevel 1 ( echo [ERRO] Falhou a gerar o version.json. & pause & exit /b 1 )
 echo        --- version.json ---
@@ -418,7 +419,7 @@ echo        OK
 :: ── 10. GitHub Release ───────────────────────────────────────
 :: Feita ANTES do push: se falhar aqui, o site e o ClickOnce ainda nao
 :: foram enviados, por isso nada fica inconsistente para os utilizadores.
-echo [10/11] A criar a Release v%NEWVER% no GitHub...
+echo [10/12]A criar a Release v%NEWVER% no GitHub...
 echo        ^(upload de 4 ficheiros, ~225 MB - pode demorar 2-5 min^)
 gh release create "v%NEWVER%" ^
     "%SA_EXE%" ^
@@ -442,7 +443,7 @@ echo        OK
 echo        URL: https://github.com/%REPO%/releases/tag/v%NEWVER%
 
 :: ── 11. commit + push do repo dist ───────────────────────────
-echo [11/11] git commit + push do repo dist...
+echo [11/12]git commit + push do repo dist...
 cd /d "%DIST_DIR%"
 
 :: Os binarios grandes vivem nas Releases, nunca no repo (o Portable tem
@@ -475,6 +476,38 @@ if errorlevel 1 (
 git push origin main
 if errorlevel 1 ( echo [ERRO] git push falhou. Verifica 'git status' e o OneDrive. & pause & exit /b 1 )
 echo        OK
+
+:: ── 12. IndexNow: avisar o Bing ──────────────────────────────
+:: Igual ao passo [5/5] do __publicar_site_LogViewer.cmd, onde nasceu
+:: (2026-09-12). Uma release tambem muda as paginas -- a versao em todas as
+:: linguas e o sitemap --, e sem isto so o publish so-site avisava o Bing.
+::
+:: O Bing nao e rapido a passar por si: o IndexNow avisa-o no momento do
+:: publish e a indexacao passa de dias para horas. O Yandex e o Seznam usam
+:: o mesmo protocolo; o DuckDuckGo vive do indice do Bing. O Google IGNORA
+:: o IndexNow -- ali o que acelera e o 'Pedir indexacao' do Search Console.
+::
+:: A lista de enderecos NAO esta escrita aqui: sai do sitemap.xml que o
+:: gerador acabou de escrever no passo [5b]. Escrita a mao, ficava para tras
+:: na proxima lingua -- e ficava em SILENCIO.
+::
+:: A chave vive em 3ae8a566eee0cf71c4aa33092370e4ea.txt, na raiz do site. O
+:: ficheiro PROVA ao Bing que quem avisa e quem manda no site, e por estar
+:: dentro de /TheAbsoluteLogViewer/ limita o aviso a este site e nao a todo
+:: o nunex-mbrothers.github.io. ATENCAO: se o apagares, os avisos passam a
+:: ser recusados.
+::
+:: ESPERA PELA CHAVE antes de avisar: acabado de fazer push, o Pages pode
+:: ainda nao servir o ficheiro, e o aviso vinha recusado com um 403 que nao
+:: queria dizer nada de errado. Tenta 8 vezes, de 15 em 15 segundos.
+::
+:: NAO ABORTA: nesta altura a release e o site JA estao no ar e o IndexNow e
+:: so um aviso a terceiros. Mas tambem nao passa em claro -- diz OK ou [AVISO].
+echo [12/12] IndexNow: a avisar o Bing...
+powershell -NoProfile -Command "$ErrorActionPreference='Stop'; try { $k='3ae8a566eee0cf71c4aa33092370e4ea'; $kl='https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/3ae8a566eee0cf71c4aa33092370e4ea.txt'; $ok=$false; for ($i=1; $i -le 8; $i++) { try { if ((Invoke-WebRequest -Uri $kl -UseBasicParsing -TimeoutSec 15).Content.Trim() -eq $k) { $ok=$true; break } } catch { }; Write-Host ('       a chave ainda nao e servida; nova tentativa em 15s (' + $i + '/8)'); Start-Sleep -Seconds 15 }; if (-not $ok) { throw ('a chave nunca chegou a ser servida em ' + $kl) }; $s=[IO.File]::ReadAllText('%DIST_DIR%sitemap.xml'); $u=@([regex]::Matches($s,'<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value }); if ($u.Count -lt 1) { throw 'o sitemap nao tem nenhum endereco' }; $b=@{ host='nunex-mbrothers.github.io'; key=$k; keyLocation=$kl; urlList=$u } | ConvertTo-Json -Compress; $r=Invoke-WebRequest -Uri 'https://api.indexnow.org/indexnow' -Method Post -ContentType 'application/json; charset=utf-8' -Body $b -TimeoutSec 30 -UseBasicParsing; Write-Host ('       ' + $u.Count + ' enderecos anunciados ao Bing. HTTP ' + [int]$r.StatusCode) } catch { Write-Host ('       [AVISO] O IndexNow nao aceitou: ' + $_.Exception.Message); Write-Host '               O site ESTA publicado -- falhou so o aviso ao Bing.'; exit 1 }"
+if errorlevel 1 (
+    echo        Segue-se em frente: isto nao invalida o publish.
+)
 
 echo.
 echo ==========================================
