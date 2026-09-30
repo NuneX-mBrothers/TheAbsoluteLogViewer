@@ -105,6 +105,13 @@ window.I18N.zh = {
   "foot.github": "GitHub",
   "foot.releases": "版本",
   "foot.mbrothers": "mBrothers",
+  "share.h": "发给朋友",
+  "share.email": "邮件",
+  "share.other": "其他…",
+  "share.msg": "发现了一个免费的 Windows 实时日志查看器：The Absolute LogViewer。去看看：",
+  "share.subject": "The Absolute LogViewer — 去看看",
+  "share.copy": "复制链接",
+  "share.copied": "链接已复制",
   "foot.privacy": "隐私：无 Cookie 的分析（GoatCounter）以及应用内匿名的安装/更新统计（可关闭）— 无 Cookie，无个人数据。",
   "foot.mbcredit": "一款 <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 产品<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

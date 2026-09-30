@@ -105,6 +105,13 @@ window.I18N.pl = {
   "foot.github": "GitHub",
   "foot.releases": "Wydania",
   "foot.mbrothers": "mBrothers",
+  "share.h": "Wyślij znajomym",
+  "share.email": "E-mail",
+  "share.other": "Inne…",
+  "share.msg": "Polecam The Absolute LogViewer, darmową przeglądarkę logów dla Windows w czasie rzeczywistym. Zobacz:",
+  "share.subject": "The Absolute LogViewer — zobacz",
+  "share.copy": "Kopiuj link",
+  "share.copied": "Link skopiowany",
   "foot.privacy": "Prywatność: analityka bez ciasteczek (GoatCounter) oraz anonimowe statystyki instalacji i aktualizacji w programie (można je wyłączyć) — bez ciasteczek i bez danych osobowych.",
   "foot.mbcredit": "Produkt <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>praktyczne rozwiązania dla małych układów planetarnych"
 };

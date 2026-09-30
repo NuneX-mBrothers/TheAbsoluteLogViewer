@@ -108,6 +108,13 @@ window.I18N.hi = {
   "foot.github": "GitHub",
   "foot.releases": "रिलीज़",
   "foot.mbrothers": "mBrothers",
+  "share.h": "किसी दोस्त को भेजें",
+  "share.email": "ईमेल",
+  "share.other": "अन्य…",
+  "share.msg": "मुझे The Absolute LogViewer मिला — Windows के लिए मुफ़्त, रीयल-टाइम लॉग व्यूअर। देखो:",
+  "share.subject": "The Absolute LogViewer — देखो",
+  "share.copy": "लिंक कॉपी करें",
+  "share.copied": "लिंक कॉपी हो गया",
   "foot.privacy": "निजता: कुकी-रहित विश्लेषण (GoatCounter) और ऐप के भीतर गुमनाम इंस्टॉल/अपडेट आँकड़े (जिन्हें बंद किया जा सकता है) — न कुकी, न निजी डेटा।",
   "foot.mbcredit": "एक <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> उत्पाद<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

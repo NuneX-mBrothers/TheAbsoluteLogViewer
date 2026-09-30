@@ -105,6 +105,13 @@ window.I18N.fr = {
   "foot.github": "GitHub",
   "foot.releases": "Versions",
   "foot.mbrothers": "mBrothers",
+  "share.h": "Envoyez-le à un proche",
+  "share.email": "E-mail",
+  "share.other": "Autre…",
+  "share.msg": "J’ai trouvé The Absolute LogViewer, un visualiseur de logs gratuit pour Windows avec suivi en temps réel. Jette un œil :",
+  "share.subject": "The Absolute LogViewer — jette un œil",
+  "share.copy": "Copier le lien",
+  "share.copied": "Lien copié",
   "foot.privacy": "Confidentialité : analyse sans cookies (GoatCounter) et statistiques anonymes d’installation/mise à jour dans l’application (désactivables) — aucun cookie, aucune donnée personnelle.",
   "foot.mbcredit": "Un produit <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };
