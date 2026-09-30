@@ -105,6 +105,13 @@ window.I18N.ru = {
   "foot.github": "GitHub",
   "foot.releases": "Выпуски",
   "foot.mbrothers": "mBrothers",
+  "share.h": "Поделиться с друзьями",
+  "share.email": "Эл. почта",
+  "share.other": "Другое…",
+  "share.msg": "Рекомендую The Absolute LogViewer — бесплатный просмотр логов Windows в реальном времени. Посмотри:",
+  "share.subject": "The Absolute LogViewer — посмотри",
+  "share.copy": "Копировать ссылку",
+  "share.copied": "Ссылка скопирована",
   "foot.privacy": "Конфиденциальность: аналитика без cookie (GoatCounter) и анонимная статистика установок и обновлений в приложении (её можно отключить) — без cookie и без личных данных.",
   "foot.mbcredit": "Продукт <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>практические решения для небольших планетных систем"
 };

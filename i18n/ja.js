@@ -105,6 +105,13 @@ window.I18N.ja = {
   "foot.github": "GitHub",
   "foot.releases": "リリース",
   "foot.mbrothers": "mBrothers",
+  "share.h": "友だちに送る",
+  "share.email": "メール",
+  "share.other": "その他…",
+  "share.msg": "Windows 用の無料リアルタイムログビューアー「The Absolute LogViewer」を見つけました。見てみて：",
+  "share.subject": "The Absolute LogViewer — 見てみて",
+  "share.copy": "リンクをコピー",
+  "share.copied": "リンクをコピーしました",
   "foot.privacy": "プライバシー：Cookie を使わない解析（GoatCounter）と、アプリ内の匿名のインストール・更新統計（切ることができます）のみ — Cookie も個人データもありません。",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> の製品<span class=\"sep\" aria-hidden=\"true\"></span>小さな惑星系のための実用的な解決策"
 };

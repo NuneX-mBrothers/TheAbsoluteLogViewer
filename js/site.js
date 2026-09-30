@@ -194,4 +194,57 @@
       });
     });
   })();
+
+  /* ──────────────────────────────────────────────────────────
+     8) «Envie a um amigo» (30/09) — o mesmo do ExplorerFocus.
+        Monta as ligações a partir dos textos da página (cada língua traz
+        os seus) e do endereço canónico (a página na língua de quem
+        partilha). ?ref=<canal> deixa ver no GoatCounter as visitas que
+        chegam por partilha; cada clique conta como
+        /logviewer/share/<canal>, sem cookies. «Outro…» abre a partilha do
+        sistema; sem ela, copia a ligação; se copiar falhar, MOSTRA-A.
+     ────────────────────────────────────────────────────────── */
+  (function () {
+    var box = document.querySelector(".foot-share");
+    if (!box) return;
+    function txt(k) { var el = box.querySelector('[data-i18n="' + k + '"]'); return el ? el.textContent.trim() : ""; }
+    var canon = document.querySelector('link[rel="canonical"]');
+    var base = canon ? canon.href : location.origin + location.pathname;
+    function link(ref) { return base + (base.indexOf("?") < 0 ? "?" : "&") + "ref=" + ref; }
+    var msg = txt("share.msg"), subj = txt("share.subject");
+    var hrefs = {
+      x: "https://twitter.com/intent/tweet?text=" + encodeURIComponent(msg) + "&url=" + encodeURIComponent(link("x")),
+      whatsapp: "https://wa.me/?text=" + encodeURIComponent(msg + " " + link("wa")),
+      email: "mailto:?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(msg + "\n" + link("mail"))
+    };
+    box.querySelectorAll("[data-share]").forEach(function (a) {
+      var ch = a.getAttribute("data-share");
+      if (hrefs[ch]) a.href = hrefs[ch];
+      if (ch === "other" && !navigator.share) a.textContent = txt("share.copy");
+      a.addEventListener("click", function (e) {
+        if (window.goatcounter && window.goatcounter.count) {
+          window.goatcounter.count({ path: "/logviewer/share/" + ch, title: "Share " + ch, event: true });
+        }
+        if (ch !== "other") return;
+        e.preventDefault();
+        var url = link("share");
+        if (navigator.share) { navigator.share({ title: subj, text: msg, url: url }).catch(function () {}); return; }
+        var texto = msg + " " + url;
+        function antigo() {
+          var ta = document.createElement("textarea"); ta.value = texto; ta.setAttribute("readonly", "");
+          ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select();
+          var ok = false; try { ok = document.execCommand("copy"); } catch (err) {}
+          document.body.removeChild(ta); return ok;
+        }
+        var copia = (navigator.clipboard && navigator.clipboard.writeText)
+          ? navigator.clipboard.writeText(texto).then(function () { return true; }, antigo)
+          : Promise.resolve(antigo());
+        copia.then(function (ok) {
+          if (!ok) { window.prompt(txt("share.copy"), texto); return; }
+          a.textContent = txt("share.copied");
+          setTimeout(function () { a.textContent = txt("share.copy"); }, 2000);
+        });
+      });
+    });
+  })();
 })();

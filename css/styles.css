@@ -270,6 +270,10 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .foot-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem}
 .foot-links a{color:var(--muted);transition:color .15s}
 .foot-links a:hover{color:var(--green)}
+.foot-share{margin-top:18px;display:flex;justify-content:center;align-items:baseline;gap:18px;flex-wrap:wrap;font-size:.85rem}
+.foot-share-h{color:var(--dim);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+.foot-share a{color:var(--muted);transition:color .15s}
+.foot-share a:hover{color:var(--green)}
 .foot-copy{margin-top:22px;text-align:center;color:var(--dim);font-size:.78rem}
 .foot-privacy{margin-top:6px;font-size:.72rem;opacity:.72}
 /* Assinatura mBrothers -- igual a' do ExplorerFocus (mesma frase, mesmo link) */
