@@ -96,6 +96,8 @@ window.I18N.pl = {
   "faq.a4": "Program jest darmowy, a kod źródłowy prywatny, ale zgłoszenia błędów i propozycje funkcji są mile widziane na GitHubie.",
 
   "dl.downloads": "pobrań",
+  "dl.osNote": "The Absolute LogViewer to program dla Windows — nie działa na telefonach ani tabletach. Aby go pobrać, otwórz tę stronę na komputerze z Windows.",
+  "dl.osAsk": "Pobrać mimo to?",
   "dl.standalone": "Standalone",
   "dl.portable": "Portable",
 

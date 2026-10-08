@@ -96,6 +96,8 @@ window.I18N.ko = {
   "faq.a4": "앱은 프리웨어이고 소스는 비공개입니다. 다만 버그 제보와 기능 제안은 GitHub에서 언제든 환영합니다.",
 
   "dl.downloads": "다운로드",
+  "dl.osNote": "The Absolute LogViewer는 Windows용 프로그램으로, 휴대폰이나 태블릿에서는 실행되지 않습니다. 다운로드하려면 Windows PC에서 이 페이지를 여십시오.",
+  "dl.osAsk": "그래도 다운로드하시겠습니까?",
   "dl.standalone": "Standalone",
   "dl.portable": "Portable",
 

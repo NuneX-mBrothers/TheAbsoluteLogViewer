@@ -101,6 +101,8 @@ window.I18N.ar = {
   "faq.a4": "التطبيق مجاني والشيفرة غير معلنة، لكن بلاغات الأخطاء واقتراحات المزايا مرحّب بها دائماً على GitHub.",
 
   "dl.downloads": "تنزيل",
+  "dl.osNote": "The Absolute LogViewer برنامج لنظام Windows، ولا يعمل على الهواتف أو الأجهزة اللوحية. لتنزيله، افتح هذه الصفحة على جهاز كمبيوتر يعمل بنظام Windows.",
+  "dl.osAsk": "هل تريد تنزيله على أي حال؟",
   "dl.standalone": "Standalone",
   "dl.portable": "Portable",
 

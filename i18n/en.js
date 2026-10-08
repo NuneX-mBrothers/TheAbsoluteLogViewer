@@ -96,6 +96,8 @@ window.I18N.en = {
   "faq.a4": "The app is freeware and the source is private, but bug reports and feature requests are welcome on GitHub.",
 
   "dl.downloads": "downloads",
+  "dl.osNote": "The Absolute LogViewer is a Windows program and doesn't run on phones or tablets. To download it, open this page on your Windows computer.",
+  "dl.osAsk": "Download it anyway?",
   "dl.standalone": "Standalone",
   "dl.portable": "Portable",
 
