@@ -96,6 +96,8 @@ window.I18N["zh-TW"] = {
   "faq.a4": "程式是免費軟體，原始碼並未公開，但歡迎在 GitHub 上回報問題或提出功能建議。",
 
   "dl.downloads": "次下載",
+  "dl.osNote": "The Absolute LogViewer 是 Windows 程式，無法在手機或平板電腦上執行。請在你的 Windows 電腦上開啟本頁面下載。",
+  "dl.osAsk": "仍要下載嗎？",
   "dl.standalone": "Standalone",
   "dl.portable": "Portable",
 

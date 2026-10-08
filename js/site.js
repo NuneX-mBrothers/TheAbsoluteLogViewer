@@ -169,6 +169,32 @@
   })();
 
   /* ──────────────────────────────────────────────────────────
+     6b) Fora do Windows (Android, iPhone, iPad, Mac, Linux): o
+        LogViewer é um programa para Windows (2026-10-08, o mesmo do
+        ExplorerFocus). Mostra o aviso por baixo dos botões e, no clique
+        em descarregar, pergunta («… Descarregar na mesma?»). Quem
+        confirma segue (há quem passe o ficheiro depois para o
+        computador); quem cancela não descarrega nem conta como descarga.
+        Escuta na fase de captura, para correr antes do contador da 7.
+     ────────────────────────────────────────────────────────── */
+  (function () {
+    var n = document.getElementById("osNote");
+    if (!n || /Windows/i.test(navigator.userAgent || "")) return;
+    n.hidden = false;
+    var ask = document.getElementById("osAsk");
+    var pergunta = n.textContent.trim() + "\n\n" + (ask ? ask.textContent.trim() : "");
+    var SEL = 'a[href$="LogViewer.application"], a[href$="/LogViewer.exe"], a[href$="/LogViewer.zip"], ' +
+              'a[href$="LogViewerPortable.exe"], a[href$="LogViewerPortable.zip"]';
+    document.querySelectorAll(SEL).forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (window.confirm(pergunta)) return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }, true);
+    });
+  })();
+
+  /* ──────────────────────────────────────────────────────────
      7) Download analytics (GoatCounter events, cookieless)
         Conta cliques por tipo de edicao. O count.js e carregado no
         fim do index.html e expoe window.goatcounter.count().

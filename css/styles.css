@@ -349,6 +349,9 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .cta-zip{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:8px;margin:-6px 0 18px;font-size:.82rem;color:var(--muted)}
 .cta-zip a{color:var(--green);text-decoration:none;border-bottom:1px solid rgba(0,230,118,.35);transition:border-color .15s,color .15s}
 .cta-zip a:hover{border-bottom-color:var(--green)}
+/* O aviso a quem abre a página fora do Windows (2026-10-08): o LogViewer é um programa para Windows. */
+.os-note{max-width:620px;margin:0 auto 18px;padding:10px 14px;border-left:3px solid var(--amber);border-radius:8px;background:var(--panel);color:var(--txt);font-size:.9rem;line-height:1.5;text-align:left}
+.os-note[hidden]{display:none}
 .cta-zip-sep{opacity:.45}
 
 /* ── Da direita para a esquerda (arabe) ───────────────────────
