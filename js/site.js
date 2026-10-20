@@ -146,7 +146,10 @@
     }
     try {
       var c = JSON.parse(sessionStorage.getItem(CK) || "null");
-      if (c && typeof c.sa === "number" && now - c.ts < 300000) { show(c.tot, c.sa, c.por); return; }
+      // 20/10/2026: so vale se foi guardado ha MENOS de 5 minutos E NAO no futuro. Com o relogio da maquina adiantado
+      // quando se guardou, a idade dava negativa e o numero velho ficava para sempre na aba (o Chrome da Minix, no EF).
+      var idade = c ? now - c.ts : -1;
+      if (c && typeof c.sa === "number" && idade >= 0 && idade < 300000) { show(c.tot, c.sa, c.por); return; }
     } catch (e) {}
     var run = function () {
       // per_page=100: por omissão a API devolve só 30 releases, e a partir daí o
