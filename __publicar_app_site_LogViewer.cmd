@@ -12,6 +12,7 @@ setlocal EnableDelayedExpansion
 ::   1) verifica ferramentas e caminhos ANTES de tocar em nada
 ::   2) le a versao atual e pede a nova (N.N.N.N)
 ::   3) confirma que a tag ainda nao existe (falha em 5s, nao em 5min)
+::  3b) confere as notas da Release (o ficheiro N.N.N.md do marketing)
 ::   4) atualiza o .csproj e o ClickOnceProfile.pubxml
 ::   5) escreve a versao no index.html (o site E esta pasta -- nao ha copia)
 ::   6) para a app, limpa bin\Release + obj
@@ -19,7 +20,8 @@ setlocal EnableDelayedExpansion
 ::   8) renomeia o Portable, ASSINA os 2 exes e cria os .zip
 ::      (assinar altera os bytes: tem de ser antes dos .zip e dos hashes)
 ::   9) gera o version.json (versao + data + SHA-256) p/ o auto-update
-:: 10) cria a Release em rascunho, sobe os 4 ficheiros UM A UM e publica-a
+:: 10) cria a Release em rascunho (com as notas + o rodape dos SHA-256),
+::      sobe os 4 ficheiros UM A UM e publica-a
 ::  11) commit + push do repo dist (site + ClickOnce + version.json)
 ::  12) avisa o Bing pelo IndexNow (nao aborta: o site ja esta no ar)
 ::
@@ -201,6 +203,51 @@ if not errorlevel 1 (
     pause & exit /b 1
 )
 echo        Nova versao: %NEWVER%   ^(tag v%NEWVER% livre^)
+echo        OK
+
+:: -- 3b. As notas da Release (o ficheiro do marketing) --------
+:: Pedido do marketing (M-002, 25/10/2026): cada Release no GitHub leva as
+:: notas com o historico das versoes -- o MajorGeeks e outros directorios
+:: mostram dali a "Version History". Quem escreve as notas e o MARKETING, em
+:: Marketing\LogViewer\Docs\notas-da-versao\N.N.N.md (os 3 primeiros campos da
+:: versao: 1.5.4.md serve a 1.5.4.x). O rodape com os SHA-256 poe-no o passo
+:: [10], porque so ai os hashes existem.
+:: Confere-se AQUI, antes de mexer no projeto: sem o ficheiro pergunta-se se
+:: segue so com o rodape (S) ou se para (N) -- e o N para sem ter mexido em
+:: nada. Escrito com GOTO e sem blocos, como a verificacao do signtool.
+for /f "tokens=1-3 delims=." %%a in ("%NEWVER%") do set "VER3=%%a.%%b.%%c"
+for %%n in ("%DIST_DIR%..\..\Marketing\LogViewer\Docs\notas-da-versao\%VER3%.md") do set "NOTAS=%%~fn"
+echo [3b/12]As notas da Release ^(%VER3%.md do marketing^)...
+if not exist "%NOTAS%" goto :notas_falta
+:: Vazio (ou so espacos) conta como nao haver: descobri-lo so no passo [10]
+:: era descobri-lo depois de compilar e assinar.
+powershell -NoProfile -Command "if (([IO.File]::ReadAllText('%NOTAS%',[Text.Encoding]::UTF8)).Trim().Length -lt 1) { exit 1 }"
+if not errorlevel 1 goto :notas_ok
+echo        [AVISO] O ficheiro das notas desta versao esta VAZIO:
+goto :notas_pergunta
+
+:notas_falta
+echo        [AVISO] Nao ha o ficheiro das notas desta versao:
+
+:notas_pergunta
+echo          %NOTAS%
+echo        Sem notas, a Release sai so com o rodape dos SHA-256, e o marketing
+echo        troca o texto depois.
+set "NOTAS_RESP="
+set /p NOTAS_RESP=       Seguir so com o rodape? [S/N]:
+if /i "%NOTAS_RESP%"=="S" goto :notas_sem
+echo        Parado. Nada foi alterado.
+pause & exit /b 1
+
+:notas_sem
+set "NOTAS="
+echo        A Release vai so com o rodape.
+goto :notas_fim
+
+:notas_ok
+echo        Notas: %NOTAS%
+
+:notas_fim
 echo        OK
 
 :: ── 4. Atualizar csproj + pubxml ─────────────────────────────
@@ -428,12 +475,29 @@ echo        OK
 :: so deixa de ser rascunho com os 4 la dentro. Medido nesse dia: o ficheiro
 :: que o gh nao conseguiu em 30 min subiu depois em 31 s (5 MB/s) -- a linha
 :: e o antivirus foram descartados por medicao, a falha e do lado do GitHub.
+::
+:: As NOTAS da Release (M-002, 25/10/2026): as do marketing (passo [3b]), se
+:: houver, + uma linha "---" + o rodape com os dois SHA-256 do version.json
+:: que o passo [9] acabou de escrever. A linha em branco antes do "---" nao e
+:: enfeite: sem ela, o Markdown faz da ultima linha das notas um titulo.
+:: Escreve-se em UTF-8 SEM BOM (as notas tem travessoes e aspas curvas).
+echo [10/12]A preparar as notas da Release...
+set "NOTAS_TMP=%TEMP%\_lv_notas_v%NEWVER%.md"
+powershell -NoProfile -Command "$n='%NOTAS%'; $o=Get-Content '%VERSIONJSON%' -Raw | ConvertFrom-Json; if (-not $o.sha256.Standalone -or -not $o.sha256.Portable) { exit 2 }; $nl=[char]10; $t=''; if ($n -and (Test-Path -LiteralPath $n)) { $t=([IO.File]::ReadAllText($n,[Text.Encoding]::UTF8)).Trim(); if ($t.Length -lt 1) { exit 3 }; $t=$t+$nl+$nl }; $r=@('---', 'Three editions, all free and all the same app: ClickOnce (installed from the website), Standalone `LogViewer.exe` (needs the .NET 10 runtime) and Portable `LogViewerPortable.exe` (self-contained, nothing to install). Each `.exe` is also in a `.zip`.', ('SHA-256 of `LogViewer.exe`: `'+$o.sha256.Standalone+'`'), ('SHA-256 of `LogViewerPortable.exe`: `'+$o.sha256.Portable+'`'), 'Details: https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/'); $t=$t+($r -join $nl)+$nl; [IO.File]::WriteAllText('%NOTAS_TMP%',$t,(New-Object Text.UTF8Encoding($false)))"
+if errorlevel 1 (
+    echo [ERRO] Nao consegui preparar as notas da Release.
+    echo        Codigo 2 = o version.json nao tem os SHA-256; 3 = o ficheiro das notas esta vazio.
+    echo        NOTA: nada foi enviado ainda.
+    pause & exit /b 1
+)
+if defined NOTAS ( echo        Notas do marketing + rodape: %NOTAS_TMP% ) else ( echo        So o rodape: %NOTAS_TMP% )
+
 echo [10/12]A criar a Release v%NEWVER% no GitHub ^(rascunho^)...
 gh release create "v%NEWVER%" ^
     --repo "%REPO%" ^
     --draft ^
     --title "v%NEWVER%" ^
-    --notes "Release v%NEWVER%. See landing page for installation options."
+    --notes-file "%NOTAS_TMP%"
 if errorlevel 1 (
     echo [ERRO] gh release create falhou.
     echo        Causas possiveis:
