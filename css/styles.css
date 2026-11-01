@@ -259,6 +259,10 @@ section{padding:78px 0;position:relative;z-index:2}
 .dl-counter #dl-portable{color:var(--cyan);margin-left:5px}
 .dl-arrow{color:var(--green);font-weight:700;margin-right:5px}
 .dl-sep{opacity:.45}
+/* O historico das versoes (01/11/2026): por baixo do contador, a tracejado, como uma ligacao discreta. */
+.dl-history{text-align:center;margin-top:10px;font-size:.86rem}
+.dl-history a{color:var(--muted);text-decoration:none;border-bottom:1px dashed currentColor}
+.dl-history a:hover{color:var(--blue);border-bottom-style:solid}
 
 /* ── Footer ───────────────────────────────────────────────── */
 footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-index:2}
