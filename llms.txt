@@ -1,0 +1,28 @@
+# The Absolute LogViewer
+
+> The Absolute LogViewer is a free log viewer for Windows: live tail of growing log files, highlight rules with regular expressions, split-pane comparison and context preview. It is built on .NET 10 and WPF, its interface is in 16 languages, and it is made by mBrothers, an independent developer in Portugal.
+
+## What it does
+
+- **Live tail:** follows log files as they grow, in real time.
+- **Highlight rules:** colours lines by regular expressions, so errors and warnings stand out.
+- **Split-pane comparison:** two logs side by side.
+- **Context preview:** the lines around a match, without losing your place.
+
+## The essentials
+
+- **Free.** No account.
+- **Windows, .NET 10 / WPF.** Three editions: install via ClickOnce (updates itself), a standalone .exe, or a self-contained portable .exe. The two .exe files are also available as .zip.
+- **Signed and verifiable:** the standalone and portable downloads are digitally signed, and each release publishes its SHA-256.
+- **Languages:** English (UK and US), Portuguese (Portugal), Portuguese (Brazil), Spanish, French, Italian, German, Polish, Russian, Arabic, Hindi, Chinese (Simplified and Traditional), Japanese and Korean.
+
+## Links
+
+- [Website](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/)
+- [Website (Português, Portugal)](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/)
+- [Website (Português, Brasil)](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/br/)
+- [Download and version history (GitHub Releases)](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases)
+- [MajorGeeks](https://www.majorgeeks.com/files/details/the_absolute_logviewer.html)
+- [Softpedia](https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml)
+- [mBrothers](https://nunex-mbrothers.github.io/mBrothers/)
+- Contact: NunexmBrothers@gmail.com
