@@ -25,4 +25,4 @@
 - [MajorGeeks](https://www.majorgeeks.com/files/details/the_absolute_logviewer.html)
 - [Softpedia](https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml)
 - [mBrothers](https://nunex-mbrothers.github.io/mBrothers/)
-- Contact: NunexmBrothers@gmail.com
+- Contact: logviewer@intrepidparallel.com

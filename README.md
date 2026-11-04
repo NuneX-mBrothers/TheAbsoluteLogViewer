@@ -67,7 +67,7 @@ accepted, since the source lives elsewhere.
 ## About
 
 Made by **mBrothers** — three brothers who keep talking each other into building things.
-Questions and ideas: [NunexmBrothers@gmail.com](mailto:NunexmBrothers@gmail.com)
+Questions and ideas: [logviewer@intrepidparallel.com](mailto:logviewer@intrepidparallel.com)
 
 Also from us: [**ExplorerFocus**](https://nunex-mbrothers.github.io/ExplorerFocus/) — a distraction-free file explorer for Windows.
 
