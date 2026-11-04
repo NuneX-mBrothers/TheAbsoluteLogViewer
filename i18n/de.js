@@ -118,5 +118,6 @@ window.I18N.de = {
   "share.copied": "Link kopiert",
   "foot.privacy": "Datenschutz: cookiefreie Analyse (GoatCounter) und anonyme Installations-/Update-Statistiken in der App (abschaltbar) — keine Cookies, keine personenbezogenen Daten.",
   "foot.company": "Ein Produkt der Intrepid Parallel, Lda mit Sitz in Lissabon, Portugal.",
+  "foot.legal": "Impressum",
   "foot.mbcredit": "Ein <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a>-Produkt<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

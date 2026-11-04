@@ -118,5 +118,6 @@ window.I18N.ko = {
   "share.copied": "링크를 복사했습니다",
   "foot.privacy": "개인정보: 쿠키 없는 분석(GoatCounter)과 앱 내 익명 설치·업데이트 통계(끌 수 있습니다)뿐입니다 — 쿠키도, 개인 데이터도 없습니다.",
   "foot.company": "포르투갈 리스본에 있는 Intrepid Parallel, Lda의 제품입니다.",
+  "foot.legal": "법적 고지",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 제품<span class=\"sep\" aria-hidden=\"true\"></span>작은 행성계를 위한 실용적인 해결책"
 };

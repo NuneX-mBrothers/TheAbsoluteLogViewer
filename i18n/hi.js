@@ -121,5 +121,6 @@ window.I18N.hi = {
   "share.copied": "लिंक कॉपी हो गया",
   "foot.privacy": "निजता: कुकी-रहित विश्लेषण (GoatCounter) और ऐप के भीतर गुमनाम इंस्टॉल/अपडेट आँकड़े (जिन्हें बंद किया जा सकता है) — न कुकी, न निजी डेटा।",
   "foot.company": "Intrepid Parallel, Lda का एक उत्पाद, जिसका मुख्यालय लिस्बन, पुर्तगाल में है।",
+  "foot.legal": "कानूनी सूचना",
   "foot.mbcredit": "एक <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> उत्पाद<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

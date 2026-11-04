@@ -123,5 +123,6 @@ window.I18N.ar = {
   "share.copied": "تم نسخ الرابط",
   "foot.privacy": "الخصوصية: تحليلات بلا كوكيز (GoatCounter) وإحصاءات تثبيت/تحديث مجهولة داخل التطبيق (يمكنك إيقافها) — بلا كوكيز وبلا بيانات شخصية.",
   "foot.company": "منتج من شركة Intrepid Parallel, Lda، ومقرّها لشبونة، البرتغال.",
+  "foot.legal": "إشعار قانوني",
   "foot.mbcredit": "منتج من <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };
