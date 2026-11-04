@@ -117,5 +117,6 @@ window.I18N.zh = {
   "share.copy": "复制链接",
   "share.copied": "链接已复制",
   "foot.privacy": "隐私：无 Cookie 的分析（GoatCounter）以及应用内匿名的安装/更新统计（可关闭）— 无 Cookie，无个人数据。",
+  "foot.company": "Intrepid Parallel, Lda 的产品，总部位于葡萄牙里斯本。",
   "foot.mbcredit": "一款 <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 产品<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

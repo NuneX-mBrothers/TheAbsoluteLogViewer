@@ -117,5 +117,6 @@ window.I18N.pl = {
   "share.copy": "Kopiuj link",
   "share.copied": "Link skopiowany",
   "foot.privacy": "Prywatność: analityka bez ciasteczek (GoatCounter) oraz anonimowe statystyki instalacji i aktualizacji w programie (można je wyłączyć) — bez ciasteczek i bez danych osobowych.",
+  "foot.company": "Produkt firmy Intrepid Parallel, Lda z siedzibą w Lizbonie w Portugalii.",
   "foot.mbcredit": "Produkt <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>praktyczne rozwiązania dla małych układów planetarnych"
 };

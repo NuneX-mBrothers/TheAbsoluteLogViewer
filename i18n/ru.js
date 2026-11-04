@@ -117,5 +117,6 @@ window.I18N.ru = {
   "share.copy": "Копировать ссылку",
   "share.copied": "Ссылка скопирована",
   "foot.privacy": "Конфиденциальность: аналитика без cookie (GoatCounter) и анонимная статистика установок и обновлений в приложении (её можно отключить) — без cookie и без личных данных.",
+  "foot.company": "Продукт компании Intrepid Parallel, Lda из Лиссабона, Португалия.",
   "foot.mbcredit": "Продукт <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>практические решения для небольших планетных систем"
 };

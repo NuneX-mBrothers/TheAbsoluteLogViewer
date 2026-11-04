@@ -117,5 +117,6 @@ window.I18N["zh-TW"] = {
   "share.copy": "複製連結",
   "share.copied": "已複製連結",
   "foot.privacy": "隱私：不使用 Cookie 的分析（GoatCounter），以及程式內匿名的安裝與更新統計（可以關掉） — 沒有 Cookie，也沒有個人資料。",
+  "foot.company": "Intrepid Parallel, Lda 的產品，總部位於葡萄牙里斯本。",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 的產品<span class=\"sep\" aria-hidden=\"true\"></span>為小型行星系統打造實用的解決方案"
 };

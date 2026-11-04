@@ -117,5 +117,6 @@ window.I18N.ja = {
   "share.copy": "リンクをコピー",
   "share.copied": "リンクをコピーしました",
   "foot.privacy": "プライバシー：Cookie を使わない解析（GoatCounter）と、アプリ内の匿名のインストール・更新統計（切ることができます）のみ — Cookie も個人データもありません。",
+  "foot.company": "Intrepid Parallel, Lda（ポルトガル・リスボン）の製品です。",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> の製品<span class=\"sep\" aria-hidden=\"true\"></span>小さな惑星系のための実用的な解決策"
 };
