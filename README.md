@@ -66,8 +66,7 @@ accepted, since the source lives elsewhere.
 
 ## About
 
-Made by **mBrothers** — three brothers who keep talking each other into building things.
-mBrothers is a brand of Intrepid Parallel, Lda, in Lisbon, Portugal.
+Made by **mBrothers**, a brand of Intrepid Parallel, Lda, in Lisbon, Portugal.
 Questions and ideas: [logviewer@intrepidparallel.com](mailto:logviewer@intrepidparallel.com)
 
 Also from us: [**ExplorerFocus**](https://nunex-mbrothers.github.io/ExplorerFocus/) — a distraction-free file explorer for Windows.
