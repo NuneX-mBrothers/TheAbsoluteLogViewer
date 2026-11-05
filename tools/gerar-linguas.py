@@ -126,14 +126,14 @@ def bloco_hreflang(activas):
 
 
 # ── A BARRA DA APP, espelhada no site ───────────────────────────────────────
-# Decisão do João (12/09): o selector mostra **as 16 línguas que existem dentro
+# Decisão de 12/09: o selector mostra **as 16 línguas que existem dentro
 # das apps**, pela ordem da barra da app, mesmo que algumas levem à mesma
 # página. E é igual nos dois sites: mesmas bandeiras, mesma ordem, mesma
 # disposição.
 #   (bandeira, endónimo, código da língua do site ou None)
 # ⚠ As etiquetas são as da BARRA DA APP, à letra. Até 12/09 o português e o
-#   inglês não levavam marcador («a bandeira já o diz»); o João, a olhar para
-#   o painel aberto, reparou que duas linhas a dizerem «Português» não se
+#   inglês não levavam marcador («a bandeira já o diz»); ao olhar para
+#   o painel aberto, viu-se que duas linhas a dizerem «Português» não se
 #   distinguem por quem não conhece as bandeiras — e agora o /pt/ e o /br/ são
 #   páginas diferentes, por isso não dizer qual é qual passou a ser um defeito.
 # ⚠ Emoji de bandeira NÃO: o Windows não tem glifos para elas e sai um par de

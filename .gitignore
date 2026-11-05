@@ -5,7 +5,7 @@
 # O repo só contém o site, os manifestos ClickOnce, o version.json e os
 # assets gráficos.
 
-# Os publicadores ficam SÓ na pasta local (o João, 01/11/2026: «ficam só aqui
+# Os publicadores ficam SÓ na pasta local (01/11/2026: «ficam só aqui
 # na pasta local esses dois publicadores»). O repo é público, e eles mostram
 # os passos da publicação e as pastas do código. Também os de 2 passos de antes.
 *.cmd
