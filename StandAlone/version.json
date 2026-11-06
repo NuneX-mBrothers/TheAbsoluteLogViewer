@@ -1,13 +1,13 @@
 {
-    "version":  "1.5.3.8",
-    "released":  "2026-09-30",
+    "version":  "1.6.0.1",
+    "released":  "2026-11-06",
     "min_version":  "1.0.0.0",
     "downloads":  {
                       "Standalone":  "https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe",
                       "Portable":  "https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe"
                   },
     "sha256":  {
-                   "Standalone":  "542D6FA2668B8D398F4E11A462F5A8D12287AEE5A192EBA59A3AEBFA4E642B79",
-                   "Portable":  "5682C879D8E1D8E0C7508A777107EF05093FB1DBD393DB308060B3A9697F5093"
+                   "Standalone":  "6197EC456F9AD94B2572E43D6A39DE8D856195414E7977F004E4E76F7EBAF3DE",
+                   "Portable":  "968A0B99F630DF147CC75017713B5561C8F6816AFA6E50D7EBC2566E89E58028"
                }
 }
