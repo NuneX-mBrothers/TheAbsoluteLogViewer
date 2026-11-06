@@ -20,7 +20,8 @@ import tarfile
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FORA_NO_TOPO = {
-    ".git", ".gitignore", ".gitattributes", ".claude", "tools", "docs", "README.md", "_headers", "netlify.toml",
+    ".git", ".gitignore", ".gitattributes", ".claude", ".nojekyll", "tools", "docs", "README.md", "_headers",
+    "netlify.toml",
     "LogViewer.application", "Application Files", "StandAlone", "Portable", "setup.exe", "Publish.html",
 }
 
