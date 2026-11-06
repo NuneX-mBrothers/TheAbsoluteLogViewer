@@ -16,7 +16,7 @@ window.I18N.ko = {
   "hero.cta.portable": "포터블 .exe",
   "trust.verify": "SHA-256으로 검증되는 다운로드",
   "trust.free": "100% 무료",
-  "trust.notrack": "익명 · 쿠키 없음",
+  "trust.notrack2": "쿠키 없음 · 광고 없음",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "모든 다운로드는 검증할 수 있습니다",
@@ -87,7 +87,7 @@ window.I18N.ko = {
   "faq.label": "알아 두면 좋은 것",
   "faq.title": "질문",
   "faq.q1": "정말 무료인가요?",
-  "faq.a1": "예 — 프리웨어이며 개인용과 상업용 모두 가능합니다. 계정도 쿠키도 없습니다. 앱이 보내는 것은 익명의 설치·업데이트 통계뿐이고, 그것도 끌 수 있습니다.",
+  "faq.a1b": "예 — 프리웨어이며 개인용과 상업용 모두 가능합니다. 계정도 쿠키도 없습니다.",
   "faq.q2": "열 때 Windows가 확인을 요구합니다. 왜 그런가요?",
   "faq.a2": '서명이 최근 것이고, Windows가 새 게시자를 알아보는 데에는 시간이 걸립니다 — 파일의 문제가 아닙니다. 추가 정보 → 실행을 누르세요. ClickOnce 설치는 자체 서명을 쓰기 때문에 여전히 "알 수 없는 게시자"로 보일 수 있습니다. 모든 릴리스에는 확인할 수 있는 <code>SHA-256</code>이 함께 공개됩니다.',
   "faq.q3": "어떤 버전을 골라야 하나요?",
@@ -116,8 +116,8 @@ window.I18N.ko = {
   "share.subject": "The Absolute LogViewer — 한번 보세요",
   "share.copy": "링크 복사",
   "share.copied": "링크를 복사했습니다",
-  "foot.privacy": "개인정보: 쿠키 없는 분석(GoatCounter)과 앱 내 익명 설치·업데이트 통계(끌 수 있습니다)뿐입니다 — 쿠키도, 개인 데이터도 없습니다.",
-  "foot.company": "포르투갈 리스본에 있는 Intrepid Parallel, Lda의 제품입니다.",
+  "foot.privacy2": "개인정보: 쿠키를 쓰지 않습니다. 자세한 내용은 법적 고지에 있습니다.",
+  "foot.company2": "포르투갈 리스본에 있는 Intrepid Parallel, Lda가 배포합니다.",
   "foot.legal": "법적 고지",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 제품<span class=\"sep\" aria-hidden=\"true\"></span>작은 행성계를 위한 실용적인 해결책"
 };

@@ -16,7 +16,7 @@ window.I18N.pl = {
   "hero.cta.portable": "Przenośny .exe",
   "trust.verify": "Pliki z weryfikacją SHA-256",
   "trust.free": "100% za darmo",
-  "trust.notrack": "Anonimowo · bez ciasteczek",
+  "trust.notrack2": "Bez ciasteczek · bez reklam",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Każdy plik można zweryfikować",
@@ -87,7 +87,7 @@ window.I18N.pl = {
   "faq.label": "Warto wiedzieć",
   "faq.title": "Pytania",
   "faq.q1": "Czy to naprawdę jest darmowe?",
-  "faq.a1": "Tak — freeware, do użytku osobistego i komercyjnego. Bez konta i bez ciasteczek; program wysyła tylko anonimowe statystyki instalacji i aktualizacji, które można wyłączyć.",
+  "faq.a1b": "Tak — freeware, do użytku osobistego i komercyjnego. Bez konta i bez ciasteczek.",
   "faq.q2": "Windows prosi o potwierdzenie przy uruchomieniu. Dlaczego?",
   "faq.a2": 'Podpis jest świeży, a Windows potrzebuje czasu, aby rozpoznać nowego wydawcę — to nie jest problem z plikiem. Kliknij Więcej informacji → Uruchom mimo to. Instalacja ClickOnce ma własny podpis i może nadal pokazywać „Nieznany wydawca”. Każde wydanie publikuje <code>SHA-256</code>, który możesz sprawdzić.',
   "faq.q3": "Którą wersję wybrać?",
@@ -116,8 +116,8 @@ window.I18N.pl = {
   "share.subject": "The Absolute LogViewer — zobacz",
   "share.copy": "Kopiuj link",
   "share.copied": "Link skopiowany",
-  "foot.privacy": "Prywatność: analityka bez ciasteczek (GoatCounter) oraz anonimowe statystyki instalacji i aktualizacji w programie (można je wyłączyć) — bez ciasteczek i bez danych osobowych.",
-  "foot.company": "Produkt firmy Intrepid Parallel, Lda z siedzibą w Lizbonie w Portugalii.",
+  "foot.privacy2": "Prywatność: bez ciasteczek. Szczegóły w Nocie prawnej.",
+  "foot.company2": "Wydawany przez firmę Intrepid Parallel, Lda z siedzibą w Lizbonie w Portugalii.",
   "foot.legal": "Nota prawna",
   "foot.mbcredit": "Produkt <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>praktyczne rozwiązania dla małych układów planetarnych"
 };

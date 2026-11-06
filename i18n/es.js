@@ -16,7 +16,7 @@ window.I18N.es = {
   "hero.cta.portable": ".exe portable",
   "trust.verify": "Descargas verificadas con SHA-256",
   "trust.free": "100% gratis",
-  "trust.notrack": "Anónimo · sin cookies",
+  "trust.notrack2": "Sin cookies · sin publicidad",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Cada descarga es verificable",
@@ -87,7 +87,7 @@ window.I18N.es = {
   "faq.label": "Bueno saberlo",
   "faq.title": "Preguntas",
   "faq.q1": "¿Es realmente gratis?",
-  "faq.a1": "Sí — freeware, para uso personal y comercial. Sin cuenta y sin cookies; la app solo envía estadísticas anónimas de instalación y actualización, que puedes desactivar.",
+  "faq.a1b": "Sí — freeware, para uso personal y comercial. Sin cuenta y sin cookies.",
   "faq.q2": "Windows pide confirmación al abrir. ¿Por qué?",
   "faq.a2": 'La firma es reciente y Windows tarda un tiempo en reconocer a un editor nuevo: no es un problema del archivo. Haz clic en Más información → Ejecutar de todas formas. La instalación por ClickOnce mantiene su propia firma y aún puede mostrar “Editor desconocido”. Cada versión publica un <code>SHA-256</code> que puedes verificar.',
   "faq.q3": "¿Qué edición debo elegir?",
@@ -116,8 +116,8 @@ window.I18N.es = {
   "share.subject": "The Absolute LogViewer — échale un vistazo",
   "share.copy": "Copiar enlace",
   "share.copied": "Enlace copiado",
-  "foot.privacy": "Privacidad: analítica sin cookies (GoatCounter) y estadísticas anónimas de instalación/actualización en la app (desactivables) — sin cookies, sin datos personales.",
-  "foot.company": "Un producto de Intrepid Parallel, Lda, con sede en Lisboa, Portugal.",
+  "foot.privacy2": "Privacidad: sin cookies. Detalles en el Aviso legal.",
+  "foot.company2": "Publicado por Intrepid Parallel, Lda, con sede en Lisboa, Portugal.",
   "foot.legal": "Aviso legal",
   "foot.mbcredit": "Un producto <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

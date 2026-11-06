@@ -19,7 +19,7 @@ window.I18N.hi = {
   "hero.cta.portable": "पोर्टेबल .exe",
   "trust.verify": "SHA-256 से सत्यापित डाउनलोड",
   "trust.free": "100% मुफ़्त",
-  "trust.notrack": "गुमनाम · कोई कुकी नहीं",
+  "trust.notrack2": "न कुकी · न विज्ञापन",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "हर डाउनलोड जाँचा जा सकता है",
@@ -90,7 +90,7 @@ window.I18N.hi = {
   "faq.label": "जानने लायक",
   "faq.title": "सवाल",
   "faq.q1": "क्या यह सचमुच मुफ़्त है?",
-  "faq.a1": "हाँ — फ्रीवेयर, निजी और व्यावसायिक दोनों उपयोग के लिए। न खाता, न कुकी; ऐप सिर्फ़ गुमनाम इंस्टॉल और अपडेट आँकड़े भेजता है, और उसे भी बंद किया जा सकता है।",
+  "faq.a1b": "हाँ — फ्रीवेयर, निजी और व्यावसायिक दोनों उपयोग के लिए। न खाता, न कुकी.",
   "faq.q2": "खोलते समय विंडोज़ पुष्टि क्यों माँगता है?",
   "faq.a2": 'हस्ताक्षर नया है, और विंडोज़ को नया प्रकाशक पहचानने में कुछ समय लगता है — फ़ाइल में कोई खराबी नहीं है। अधिक जानकारी → फिर भी चलाएँ पर क्लिक कीजिए। ClickOnce इंस्टॉल का अपना अलग हस्ताक्षर है और वह अब भी “अज्ञात प्रकाशक” दिखा सकता है। हर रिलीज़ के साथ एक <code>SHA-256</code> प्रकाशित होता है, जिसे आप जाँच सकते हैं।',
   "faq.q3": "मुझे कौन-सा संस्करण चुनना चाहिए?",
@@ -119,8 +119,8 @@ window.I18N.hi = {
   "share.subject": "The Absolute LogViewer — देखो",
   "share.copy": "लिंक कॉपी करें",
   "share.copied": "लिंक कॉपी हो गया",
-  "foot.privacy": "निजता: कुकी-रहित विश्लेषण (GoatCounter) और ऐप के भीतर गुमनाम इंस्टॉल/अपडेट आँकड़े (जिन्हें बंद किया जा सकता है) — न कुकी, न निजी डेटा।",
-  "foot.company": "Intrepid Parallel, Lda का एक उत्पाद, जिसका मुख्यालय लिस्बन, पुर्तगाल में है।",
+  "foot.privacy2": "गोपनीयता: कोई कुकी नहीं। विवरण कानूनी सूचना में।",
+  "foot.company2": "लिस्बन, पुर्तगाल स्थित Intrepid Parallel, Lda द्वारा प्रकाशित।",
   "foot.legal": "कानूनी सूचना",
   "foot.mbcredit": "एक <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> उत्पाद<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

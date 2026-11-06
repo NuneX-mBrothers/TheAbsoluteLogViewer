@@ -16,7 +16,7 @@ window.I18N["zh-TW"] = {
   "hero.cta.portable": "免安裝 .exe",
   "trust.verify": "下載皆可用 SHA-256 驗證",
   "trust.free": "100% 免費",
-  "trust.notrack": "匿名 · 不使用 Cookie",
+  "trust.notrack2": "無 Cookie · 無廣告",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "每一個下載都可以驗證",
@@ -87,7 +87,7 @@ window.I18N["zh-TW"] = {
   "faq.label": "值得知道的事",
   "faq.title": "常見問題",
   "faq.q1": "真的免費嗎？",
-  "faq.a1": "是的 — 免費軟體，個人與商業用途都可以。不需要帳號，也沒有 Cookie；程式只會送出匿名的安裝與更新統計，而且可以關掉。",
+  "faq.a1b": "是的 — 免費軟體，個人與商業用途都可以。不需要帳號，也沒有 Cookie。",
   "faq.q2": "開啟時 Windows 要我確認，為什麼？",
   "faq.a2": '簽章還很新，Windows 需要一段時間才會認得新的發行者 — 這不是檔案的問題。請點「其他資訊」→「仍要執行」。ClickOnce 安裝使用自己的簽章，可能仍會顯示「不明的發行者」。每個版本都會公開可供比對的 <code>SHA-256</code>。',
   "faq.q3": "我該選哪一個版本？",
@@ -116,8 +116,8 @@ window.I18N["zh-TW"] = {
   "share.subject": "The Absolute LogViewer — 去看看",
   "share.copy": "複製連結",
   "share.copied": "已複製連結",
-  "foot.privacy": "隱私：不使用 Cookie 的分析（GoatCounter），以及程式內匿名的安裝與更新統計（可以關掉） — 沒有 Cookie，也沒有個人資料。",
-  "foot.company": "Intrepid Parallel, Lda 的產品，總部位於葡萄牙里斯本。",
+  "foot.privacy2": "隱私：不使用 Cookie。詳見法律聲明。",
+  "foot.company2": "由總部位於葡萄牙里斯本的 Intrepid Parallel, Lda 發行。",
   "foot.legal": "法律聲明",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 的產品<span class=\"sep\" aria-hidden=\"true\"></span>為小型行星系統打造實用的解決方案"
 };

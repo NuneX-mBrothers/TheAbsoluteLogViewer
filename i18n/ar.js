@@ -21,7 +21,7 @@ window.I18N.ar = {
   "hero.cta.portable": "ملف .exe محمول",
   "trust.verify": "تنزيلات موثّقة بـ SHA-256",
   "trust.free": "مجاني 100%",
-  "trust.notrack": "مجهول · بلا كوكيز",
+  "trust.notrack2": "بلا كوكيز · بلا إعلانات",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "كل تنزيل قابل للتحقق",
@@ -92,7 +92,7 @@ window.I18N.ar = {
   "faq.label": "من المفيد أن تعرف",
   "faq.title": "أسئلة",
   "faq.q1": "هل هو مجاني فعلاً؟",
-  "faq.a1": "نعم — برنامج مجاني، للاستخدام الشخصي والتجاري. بلا حساب وبلا كوكيز؛ ولا يرسل التطبيق سوى إحصاءات تثبيت وتحديث مجهولة، ويمكنك إيقافها.",
+  "faq.a1b": "نعم — برنامج مجاني، للاستخدام الشخصي والتجاري. بلا حساب وبلا كوكيز.",
   "faq.q2": "لماذا يطلب ويندوز تأكيداً عند الفتح؟",
   "faq.a2": 'التوقيع حديث، ويحتاج ويندوز إلى بعض الوقت ليتعرّف على ناشر جديد — والأمر ليس خللاً في الملف. اضغط «مزيد من المعلومات» ← «تشغيل على أي حال». أما تثبيت ClickOnce فله توقيعه الخاص، وقد يظهر «ناشر غير معروف». ومع كل إصدار تُنشر قيمة <code>SHA-256</code> يمكنك التحقق منها.',
   "faq.q3": "أي نسخة أختار؟",
@@ -121,8 +121,8 @@ window.I18N.ar = {
   "share.subject": "The Absolute LogViewer — ألقِ نظرة",
   "share.copy": "نسخ الرابط",
   "share.copied": "تم نسخ الرابط",
-  "foot.privacy": "الخصوصية: تحليلات بلا كوكيز (GoatCounter) وإحصاءات تثبيت/تحديث مجهولة داخل التطبيق (يمكنك إيقافها) — بلا كوكيز وبلا بيانات شخصية.",
-  "foot.company": "منتج من شركة Intrepid Parallel, Lda، ومقرّها لشبونة، البرتغال.",
+  "foot.privacy2": "الخصوصية: بلا كوكيز. التفاصيل في الإشعار القانوني.",
+  "foot.company2": "تنشره شركة Intrepid Parallel, Lda، ومقرّها لشبونة، البرتغال.",
   "foot.legal": "إشعار قانوني",
   "foot.mbcredit": "منتج من <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

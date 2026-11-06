@@ -16,7 +16,7 @@ window.I18N.pt = {
   "hero.cta.portable": ".exe portátil",
   "trust.verify": "Downloads verificados por SHA-256",
   "trust.free": "100% grátis",
-  "trust.notrack": "Anónimo · sem cookies",
+  "trust.notrack2": "Sem cookies · sem publicidade",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Cada download é verificável",
@@ -87,7 +87,7 @@ window.I18N.pt = {
   "faq.label": "Bom saber",
   "faq.title": "Perguntas",
   "faq.q1": "É mesmo grátis?",
-  "faq.a1": "Sim — freeware, para uso pessoal e comercial. Sem conta e sem cookies; a app só envia estatísticas anónimas de instalação e atualização, que podes desligar.",
+  "faq.a1b": "Sim — freeware, para uso pessoal e comercial. Sem conta e sem cookies.",
   "faq.q2": "O Windows pede confirmação ao abrir. Porquê?",
   "faq.a2": 'A assinatura é recente, e o Windows leva algum tempo a reconhecer um editor novo — não é um problema com o ficheiro. Clica em Mais informações → Executar mesmo assim. A instalação por ClickOnce mantém a assinatura própria e pode ainda mostrar “Editor desconhecido”. Cada versão publica um <code>SHA-256</code> que podes verificar.',
   "faq.q3": "Que edição devo escolher?",
@@ -116,8 +116,8 @@ window.I18N.pt = {
   "share.subject": "The Absolute LogViewer — vai ver",
   "share.copy": "Copiar ligação",
   "share.copied": "Ligação copiada",
-  "foot.privacy": "Privacidade: analítica sem cookies (GoatCounter) e estatísticas anónimas de instalação/atualização na app (desligáveis) — sem cookies, sem dados pessoais.",
-  "foot.company": "Um produto da Intrepid Parallel, Lda, com sede em Lisboa, Portugal.",
+  "foot.privacy2": "Privacidade: sem cookies. Pormenores no Aviso legal.",
+  "foot.company2": "Publicado pela Intrepid Parallel, Lda, com sede em Lisboa, Portugal.",
   "foot.legal": "Aviso legal",
   "foot.mbcredit": "Um produto <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

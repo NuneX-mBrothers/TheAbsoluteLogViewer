@@ -16,7 +16,7 @@ window.I18N.en = {
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "SHA-256 verified downloads",
   "trust.free": "100% free",
-  "trust.notrack": "Anonymous · no cookies",
+  "trust.notrack2": "No cookies · no ads",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Every download is verifiable",
@@ -87,7 +87,7 @@ window.I18N.en = {
   "faq.label": "Good to know",
   "faq.title": "Questions",
   "faq.q1": "Is it really free?",
-  "faq.a1": "Yes — freeware, for personal and commercial use. No account and no cookies; the app only sends anonymous install and update stats, which you can turn off.",
+  "faq.a1b": "Yes — freeware, for personal and commercial use. No account and no cookies.",
   "faq.q2": "Windows asks me to confirm when opening. Why?",
   "faq.a2": 'The signature is recent, and Windows takes a while to recognise a new publisher — it is not a problem with the file. Click More info → Run anyway. The ClickOnce install keeps its own signature and may still show “Unknown publisher”. Every release publishes a <code>SHA-256</code> you can verify.',
   "faq.q3": "Which edition should I pick?",
@@ -116,8 +116,8 @@ window.I18N.en = {
   "share.subject": "The Absolute LogViewer — take a look",
   "share.copy": "Copy link",
   "share.copied": "Link copied",
-  "foot.privacy": "Privacy: cookieless analytics (GoatCounter) plus anonymous in-app install/update stats (which you can turn off) — no cookies, no personal data.",
-  "foot.company": "A product of Intrepid Parallel, Lda, located in Lisbon, Portugal.",
+  "foot.privacy2": "Privacy: no cookies. Details in the Legal notice.",
+  "foot.company2": "Published by Intrepid Parallel, Lda, located in Lisbon, Portugal.",
   "foot.legal": "Legal notice",
   "foot.mbcredit": "An <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> product<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

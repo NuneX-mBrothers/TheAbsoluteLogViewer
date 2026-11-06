@@ -24,7 +24,7 @@ window.I18N.br = {
   "hero.cta.portable": ".exe portátil",
   "trust.verify": "Downloads verificados por SHA-256",
   "trust.free": "100% grátis",
-  "trust.notrack": "Anônimo · sem cookies",
+  "trust.notrack2": "Sem cookies · sem anúncios",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Todo download é verificável",
@@ -95,7 +95,7 @@ window.I18N.br = {
   "faq.label": "Bom saber",
   "faq.title": "Perguntas",
   "faq.q1": "É mesmo grátis?",
-  "faq.a1": "É — freeware, para uso pessoal e comercial. Sem conta e sem cookies; o app só envia estatísticas anônimas de instalação e atualização, que você pode desligar.",
+  "faq.a1b": "É — freeware, para uso pessoal e comercial. Sem conta e sem cookies.",
   "faq.q2": "O Windows pede confirmação ao abrir. Por quê?",
   "faq.a2": 'A assinatura é recente, e o Windows demora um pouco para reconhecer um editor novo — não é problema do arquivo. Clique em Mais informações → Executar assim mesmo. A instalação por ClickOnce mantém a assinatura própria e ainda pode mostrar “Editor desconhecido”. Cada versão publica um <code>SHA-256</code> que você pode conferir.',
   "faq.q3": "Que edição devo escolher?",
@@ -124,8 +124,8 @@ window.I18N.br = {
   "share.subject": "The Absolute LogViewer — dá uma olhada",
   "share.copy": "Copiar link",
   "share.copied": "Link copiado",
-  "foot.privacy": "Privacidade: análise sem cookies (GoatCounter) e estatísticas anônimas de instalação/atualização dentro do app (que você pode desligar) — sem cookies, sem dados pessoais.",
-  "foot.company": "Um produto da Intrepid Parallel, Lda, com sede em Lisboa, Portugal.",
+  "foot.privacy2": "Privacidade: sem cookies. Detalhes no Aviso legal.",
+  "foot.company2": "Publicado pela Intrepid Parallel, Lda, com sede em Lisboa, Portugal.",
   "foot.legal": "Aviso legal",
   "foot.mbcredit": "Um produto <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

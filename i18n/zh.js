@@ -16,7 +16,7 @@ window.I18N.zh = {
   "hero.cta.portable": "便携版 .exe",
   "trust.verify": "SHA-256 校验下载",
   "trust.free": "100% 免费",
-  "trust.notrack": "匿名 · 无 Cookie",
+  "trust.notrack2": "无 Cookie · 无广告",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "每个下载都可校验",
@@ -87,7 +87,7 @@ window.I18N.zh = {
   "faq.label": "须知",
   "faq.title": "常见问题",
   "faq.q1": "真的免费吗？",
-  "faq.a1": "是的——免费软件，可用于个人和商业用途。无需账户、无 Cookie；应用仅发送匿名的安装和更新统计，且可关闭。",
+  "faq.a1b": "是的——免费软件，可用于个人和商业用途。无需账户、无 Cookie。",
   "faq.q2": "打开时 Windows 要求确认，为什么？",
   "faq.a2": '签名较新，Windows 需要一段时间才会认识新的发布者——这与文件本身无关。点击“更多信息”→“仍要运行”。ClickOnce 安装保留自己的签名，仍可能显示“未知发布者”。每个版本都会公布可核对的 <code>SHA-256</code>。',
   "faq.q3": "我该选哪个版本？",
@@ -116,8 +116,8 @@ window.I18N.zh = {
   "share.subject": "The Absolute LogViewer — 去看看",
   "share.copy": "复制链接",
   "share.copied": "链接已复制",
-  "foot.privacy": "隐私：无 Cookie 的分析（GoatCounter）以及应用内匿名的安装/更新统计（可关闭）— 无 Cookie，无个人数据。",
-  "foot.company": "Intrepid Parallel, Lda 的产品，总部位于葡萄牙里斯本。",
+  "foot.privacy2": "隐私：不使用 Cookie。详见法律声明。",
+  "foot.company2": "由总部位于葡萄牙里斯本的 Intrepid Parallel, Lda 发布。",
   "foot.legal": "法律声明",
   "foot.mbcredit": "一款 <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 产品<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

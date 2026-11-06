@@ -7,7 +7,7 @@
 **Everything you wish `tail -f` had — on Windows.**
 Real-time tailing, independent tabs, split-pane compare, regex highlight rules and context preview.
 
-[**⬇ Install (ClickOnce)**](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/) · [**Standalone .exe**](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe) · [**Portable .exe**](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe) · [**Website**](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/)
+[**⬇ Install (ClickOnce)**](https://intrepidparallel.com/logviewer/) · [**Standalone .exe**](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe) · [**Portable .exe**](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe) · [**Website**](https://intrepidparallel.com/logviewer/)
 
 Free · .NET 10 / WPF · 16 languages · SHA-256 verified downloads
 
@@ -35,7 +35,7 @@ Free · .NET 10 / WPF · 16 languages · SHA-256 verified downloads
 
 | Edition | Install | Size | Requirements |
 |---|---|---|---|
-| **ClickOnce** | from the [website](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/) | ~5 MB | Microsoft Edge · auto-updates via Windows |
+| **ClickOnce** | from the [website](https://intrepidparallel.com/logviewer/) | ~5 MB | Microsoft Edge · auto-updates via Windows |
 | **Standalone** | [`LogViewer.exe`](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewer.exe) | ~2.5 MB | [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0/runtime) |
 | **Portable** | [`LogViewerPortable.exe`](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases/latest/download/LogViewerPortable.exe) | ~158 MB | none — self-contained |
 

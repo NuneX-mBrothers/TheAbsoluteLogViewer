@@ -16,7 +16,7 @@ window.I18N.ja = {
   "hero.cta.portable": "ポータブル .exe",
   "trust.verify": "SHA-256 で検証できるダウンロード",
   "trust.free": "完全無料",
-  "trust.notrack": "匿名 · Cookie なし",
+  "trust.notrack2": "Cookie なし · 広告なし",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "どのダウンロードも検証できます",
@@ -87,7 +87,7 @@ window.I18N.ja = {
   "faq.label": "知っておくと良いこと",
   "faq.title": "よくある質問",
   "faq.q1": "本当に無料ですか？",
-  "faq.a1": "はい — フリーウェアで、個人でも商用でも使えます。アカウントも Cookie もありません。アプリが送るのは匿名のインストールと更新の統計だけで、それも切ることができます。",
+  "faq.a1b": "はい — フリーウェアで、個人でも商用でも使えます。アカウントも Cookie もありません。",
   "faq.q2": "開くときに Windows が確認を求めます。なぜですか？",
   "faq.a2": '署名が新しく、Windows が新しい発行元を認識するには時間がかかります — ファイルの問題ではありません。「詳細情報」→「実行」を選んでください。ClickOnce のインストールは独自の署名を使うため、「不明な発行元」と表示されることがあります。各リリースでは、確認できる <code>SHA-256</code> を公開しています。',
   "faq.q3": "どの版を選べばいいですか？",
@@ -116,8 +116,8 @@ window.I18N.ja = {
   "share.subject": "The Absolute LogViewer — 見てみて",
   "share.copy": "リンクをコピー",
   "share.copied": "リンクをコピーしました",
-  "foot.privacy": "プライバシー：Cookie を使わない解析（GoatCounter）と、アプリ内の匿名のインストール・更新統計（切ることができます）のみ — Cookie も個人データもありません。",
-  "foot.company": "Intrepid Parallel, Lda（ポルトガル・リスボン）の製品です。",
+  "foot.privacy2": "プライバシー：Cookie は使いません。詳しくは法的表示をご覧ください。",
+  "foot.company2": "発行：Intrepid Parallel, Lda（ポルトガル・リスボン）。",
   "foot.legal": "法的表示",
   "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> の製品<span class=\"sep\" aria-hidden=\"true\"></span>小さな惑星系のための実用的な解決策"
 };

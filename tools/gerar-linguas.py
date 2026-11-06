@@ -30,7 +30,7 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8")
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE = "https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/"
+BASE = "https://intrepidparallel.com/logviewer/"
 
 # código do dicionário (i18n/<código>.js) → pasta, rótulo no selector,
 # hreflang e og:locale. O inglês é a raiz e não tem pasta.

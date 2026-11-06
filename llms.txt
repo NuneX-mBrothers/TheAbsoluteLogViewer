@@ -18,9 +18,9 @@
 
 ## Links
 
-- [Website](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/)
-- [Website (Português, Portugal)](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/pt/)
-- [Website (Português, Brasil)](https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/br/)
+- [Website](https://intrepidparallel.com/logviewer/)
+- [Website (Português, Portugal)](https://intrepidparallel.com/logviewer/pt/)
+- [Website (Português, Brasil)](https://intrepidparallel.com/logviewer/br/)
 - [Download and version history (GitHub Releases)](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases)
 - [MajorGeeks](https://www.majorgeeks.com/files/details/the_absolute_logviewer.html)
 - [Softpedia](https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml)

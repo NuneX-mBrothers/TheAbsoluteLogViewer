@@ -16,7 +16,7 @@ window.I18N.de = {
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "SHA-256-geprüfte Downloads",
   "trust.free": "100% kostenlos",
-  "trust.notrack": "Anonym · keine Cookies",
+  "trust.notrack2": "Keine Cookies · keine Werbung",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Jeder Download ist überprüfbar",
@@ -87,7 +87,7 @@ window.I18N.de = {
   "faq.label": "Gut zu wissen",
   "faq.title": "Fragen",
   "faq.q1": "Ist es wirklich kostenlos?",
-  "faq.a1": "Ja — Freeware, für private und kommerzielle Nutzung. Kein Konto und keine Cookies; die App sendet nur anonyme Installations- und Update-Statistiken, die sich abschalten lassen.",
+  "faq.a1b": "Ja — Freeware, für private und kommerzielle Nutzung. Kein Konto und keine Cookies.",
   "faq.q2": "Windows fragt beim Öffnen nach. Warum?",
   "faq.a2": 'Die Signatur ist neu, und Windows braucht eine Weile, um einen neuen Herausgeber zu erkennen — es liegt nicht an der Datei. Klicken Sie auf Weitere Informationen → Trotzdem ausführen. Die ClickOnce-Installation behält ihre eigene Signatur und kann weiterhin „Unbekannter Herausgeber“ anzeigen. Jede Version veröffentlicht einen prüfbaren <code>SHA-256</code>.',
   "faq.q3": "Welche Edition soll ich wählen?",
@@ -116,8 +116,8 @@ window.I18N.de = {
   "share.subject": "The Absolute LogViewer — schau mal rein",
   "share.copy": "Link kopieren",
   "share.copied": "Link kopiert",
-  "foot.privacy": "Datenschutz: cookiefreie Analyse (GoatCounter) und anonyme Installations-/Update-Statistiken in der App (abschaltbar) — keine Cookies, keine personenbezogenen Daten.",
-  "foot.company": "Ein Produkt der Intrepid Parallel, Lda mit Sitz in Lissabon, Portugal.",
+  "foot.privacy2": "Datenschutz: keine Cookies. Details im Impressum.",
+  "foot.company2": "Herausgegeben von der Intrepid Parallel, Lda mit Sitz in Lissabon, Portugal.",
   "foot.legal": "Impressum",
   "foot.mbcredit": "Ein <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a>-Produkt<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

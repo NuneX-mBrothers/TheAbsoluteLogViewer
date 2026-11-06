@@ -16,7 +16,7 @@ window.I18N.fr = {
   "hero.cta.portable": "Portable .exe",
   "trust.verify": "Téléchargements vérifiés par SHA-256",
   "trust.free": "100 % gratuit",
-  "trust.notrack": "Anonyme · aucun cookie",
+  "trust.notrack2": "Sans cookies · sans publicité",
 
   "trust.softpedia": "Softpedia 100% Clean",
   "band.title": "Chaque téléchargement est vérifiable",
@@ -87,7 +87,7 @@ window.I18N.fr = {
   "faq.label": "Bon à savoir",
   "faq.title": "Questions",
   "faq.q1": "Est-ce vraiment gratuit ?",
-  "faq.a1": "Oui — un freeware, pour un usage personnel et commercial. Aucun compte et aucun cookie ; l’application envoie seulement des statistiques anonymes d’installation et de mise à jour, que vous pouvez désactiver.",
+  "faq.a1b": "Oui — un freeware, pour un usage personnel et commercial. Aucun compte et aucun cookie.",
   "faq.q2": "Windows demande confirmation à l’ouverture. Pourquoi ?",
   "faq.a2": 'La signature est récente, et Windows met un certain temps à reconnaître un nouvel éditeur — ce n’est pas un problème du fichier. Cliquez sur Informations complémentaires → Exécuter quand même. L’installation ClickOnce conserve sa propre signature et peut encore afficher « Éditeur inconnu ». Chaque version publie un <code>SHA-256</code> vérifiable.',
   "faq.q3": "Quelle édition choisir ?",
@@ -116,8 +116,8 @@ window.I18N.fr = {
   "share.subject": "The Absolute LogViewer — jette un œil",
   "share.copy": "Copier le lien",
   "share.copied": "Lien copié",
-  "foot.privacy": "Confidentialité : analyse sans cookies (GoatCounter) et statistiques anonymes d’installation/mise à jour dans l’application (désactivables) — aucun cookie, aucune donnée personnelle.",
-  "foot.company": "Un produit d'Intrepid Parallel, Lda, basée à Lisbonne, au Portugal.",
+  "foot.privacy2": "Confidentialité : aucun cookie. Détails dans les Mentions légales.",
+  "foot.company2": "Publié par Intrepid Parallel, Lda, basée à Lisbonne, au Portugal.",
   "foot.legal": "Mentions légales",
   "foot.mbcredit": "Un produit <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

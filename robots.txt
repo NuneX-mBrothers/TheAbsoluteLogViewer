@@ -4,4 +4,4 @@ Disallow: /Application%20Files/
 Disallow: /StandAlone/
 Disallow: /tools/
 
-Sitemap: https://nunex-mbrothers.github.io/TheAbsoluteLogViewer/sitemap.xml
+Sitemap: https://intrepidparallel.com/logviewer/sitemap.xml
