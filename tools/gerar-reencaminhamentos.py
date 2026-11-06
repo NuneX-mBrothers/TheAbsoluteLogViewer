@@ -18,7 +18,7 @@ novo: a portuguesa para a portuguesa, o Aviso legal para o Aviso legal.
    e nunca escreve por cima de um ficheiro que não seja seu.
 ⛔ Sem nada de terceiros nestas páginas: só reencaminham.
 ⚠ O GitHub Pages só serve docs/ depois de a fonte passar para «main, /docs», o que se faz na ordem combinada com a
-  engenharia e com o OK do João.
+  engenharia e com o OK de quem publica.
 
 Corre-se da raiz do site:  python tools/gerar-reencaminhamentos.py
 """
