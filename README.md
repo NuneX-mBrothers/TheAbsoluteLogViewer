@@ -66,7 +66,7 @@ accepted, since the source lives elsewhere.
 
 ## About
 
-Made by **mBrothers**, a brand of Intrepid Parallel, Lda, in Lisbon, Portugal.
+Made by **mBrothers**, a brand used by Intrepid Parallel, Lda, in Lisbon, Portugal.
 Questions and ideas: [logviewer@intrepidparallel.com](mailto:logviewer@intrepidparallel.com)
 
 Also from us: [**ExplorerFocus**](https://nunex-mbrothers.github.io/ExplorerFocus/) — a distraction-free file explorer for Windows.

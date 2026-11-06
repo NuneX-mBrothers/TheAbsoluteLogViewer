@@ -1,6 +1,6 @@
 # The Absolute LogViewer
 
-> The Absolute LogViewer is a free log viewer for Windows: live tail of growing log files, highlight rules with regular expressions, split-pane comparison and context preview. It is built on .NET 10 and WPF, its interface is in 16 languages, and it is made by mBrothers, a brand of Intrepid Parallel, Lda, in Lisbon, Portugal.
+> The Absolute LogViewer is a free log viewer for Windows: live tail of growing log files, highlight rules with regular expressions, split-pane comparison and context preview. It is built on .NET 10 and WPF, its interface is in 16 languages, and it is made by mBrothers, a brand used by Intrepid Parallel, Lda, in Lisbon, Portugal.
 
 ## What it does
 
