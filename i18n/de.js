@@ -52,6 +52,7 @@ window.I18N.de = {
   "shot.3": "Zeilen markieren und kopieren",
   "shot.4": "Visueller Editor für Hervorhebungsregeln",
   "shot.5": "Kompakte Symbolleiste & Dateibereich",
+  "shot.6": "Dunkelmodus – dunkel, hell oder wie Windows",
 
   "langs.label": "Spricht deine Sprache",
   "langs.title": "16 Sprachen, live umgeschaltet.",

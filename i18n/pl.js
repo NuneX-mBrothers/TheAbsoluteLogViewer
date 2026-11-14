@@ -52,6 +52,7 @@ window.I18N.pl = {
   "shot.3": "Zaznaczanie i kopiowanie wierszy",
   "shot.4": "Wizualny edytor reguł podświetlania",
   "shot.5": "Kompaktowy pasek narzędzi i panel plików",
+  "shot.6": "Tryb ciemny — ciemny, jasny lub jak Windows",
 
   "langs.label": "Mówi Twoim językiem",
   "langs.title": "16 języków, przełączanych na żywo.",

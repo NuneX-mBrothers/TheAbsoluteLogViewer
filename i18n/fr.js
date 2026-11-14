@@ -52,6 +52,7 @@ window.I18N.fr = {
   "shot.3": "Sélectionner et copier des lignes",
   "shot.4": "Éditeur visuel de règles de coloration",
   "shot.5": "Barre d’outils et panneau de fichiers compacts",
+  "shot.6": "Mode sombre — sombre, clair ou comme Windows",
 
   "langs.label": "Parle votre langue",
   "langs.title": "16 langues, changées en direct.",

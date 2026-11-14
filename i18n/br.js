@@ -60,6 +60,7 @@ window.I18N.br = {
   "shot.3": "Selecionar e copiar linhas",
   "shot.4": "Editor visual de regras de destaque",
   "shot.5": "Barra de ferramentas e painel de arquivos compactos",
+  "shot.6": "Modo escuro — escuro, claro ou igual ao Windows",
 
   "langs.label": "Fala o seu idioma",
   "langs.title": "16 idiomas, trocados ao vivo.",

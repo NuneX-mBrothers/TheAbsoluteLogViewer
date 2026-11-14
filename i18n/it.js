@@ -52,6 +52,7 @@ window.I18N.it = {
   "shot.3": "Selezione e copia delle righe",
   "shot.4": "Editor visuale delle regole di evidenziazione",
   "shot.5": "Barra compatta e pannello dei file",
+  "shot.6": "Modalità scura — scuro, chiaro o come Windows",
 
   "langs.label": "Parla la tua lingua",
   "langs.title": "16 lingue, cambiate al volo.",

@@ -52,6 +52,7 @@ window.I18N.pt = {
   "shot.3": "Selecionar e copiar linhas",
   "shot.4": "Editor visual de regras de highlight",
   "shot.5": "Barra de ferramentas e painel de ficheiros compactos",
+  "shot.6": "Modo escuro — escuro, claro ou igual ao Windows",
 
   "langs.label": "Fala a tua língua",
   "langs.title": "16 línguas, trocadas ao vivo.",

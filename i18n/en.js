@@ -52,6 +52,7 @@ window.I18N.en = {
   "shot.3": "Select and copy lines",
   "shot.4": "Visual highlight-rule editor",
   "shot.5": "Compact toolbar & file panel",
+  "shot.6": "Dark mode — dark, light or the same as Windows",
 
   "langs.label": "Speaks your language",
   "langs.title": "16 languages, switched live.",
