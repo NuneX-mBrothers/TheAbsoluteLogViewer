@@ -246,3 +246,22 @@
     });
   })();
 })();
+
+/* O topo: as fotografias reais passam a cada 5 s (14/11/2026). Com o rato em cima param; com «reduzir o movimento»
+   no sistema, não passam sozinhas: só pelos pontos. */
+(function () {
+  var box = document.getElementById("heroShots");
+  if (!box) return;
+  var imgs = box.querySelectorAll(".frame img"), dots = box.querySelectorAll(".dots button"), i = 0, paused = false;
+  function show(k) {
+    imgs[i].classList.remove("on"); dots[i].classList.remove("on");
+    i = (k + imgs.length) % imgs.length;
+    imgs[i].classList.add("on"); dots[i].classList.add("on");
+  }
+  dots.forEach(function (d, k) { d.addEventListener("click", function () { show(k); }); });
+  box.addEventListener("mouseenter", function () { paused = true; });
+  box.addEventListener("mouseleave", function () { paused = false; });
+  var calmo = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!calmo) setInterval(function () { if (!paused && !document.hidden) show(i + 1); }, 5000);
+})();
+

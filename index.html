@@ -113,8 +113,8 @@
 <div class="wrap">
   <nav class="nav">
     <a class="brand" href="#" aria-label="The Absolute LogViewer">
-      <img src="assets/logo.svg" alt="" aria-hidden="true" />
-      <span class="wm">The Absolute Log<span>Viewer</span><small data-i18n="foot.made">Freeware · Built with .NET 10 &amp; WPF</small></span>
+      <img class="lockup" src="assets/logo-lockup.png" alt="The Absolute LogViewer" width="190" height="44" />
+      <small class="made" data-i18n="foot.made">Freeware · Built with .NET 10 &amp; WPF</small>
     </a>
     <div class="nav-right">
       <a class="nav-link" href="#features" data-i18n="nav.features">Features</a>
@@ -155,16 +155,17 @@
         <p class="sub" data-i18n-html="hero.sub">A fast, modern Windows log viewer built on .NET&nbsp;10 / WPF. Live tail, regex highlight rules, split-pane comparison and context preview — <b>in 16 languages</b>.</p>
       </div>
 
-      <!-- dir="ltr" a forca: um log le-se da esquerda para a direita em
-           qualquer lingua do mundo. Sem isto, a pagina arabe (dir="rtl")
-           punha os numeros de linha a direita e o texto ao contrario. -->
-      <div class="term reveal" aria-hidden="true" dir="ltr">
-        <div class="term-bar">
-          <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
-          <span class="term-name">app_2026-06-11.log</span>
-          <span class="live"><span class="d"></span>Live</span>
+      <!-- O topo: fotografias reais do LogViewer (14/11/2026, o João: «Vamos pôr uma imagem real do log viewer… Ou
+           então faz um carrossel… com 3 ou 4 imagens»). Substitui o terminal animado. -->
+      <div class="hero-shots reveal" id="heroShots">
+        <div class="frame">
+          <img src="screenshot-6-dark-mode.png" alt="The Absolute LogViewer in dark mode, with two logs side by side" width="1366" height="913" class="on" />
+          <img src="screenshot-2-filter-preview.png" alt="Filtering a log, with the context preview floating" width="1366" height="913" loading="lazy" />
+          <img src="screenshot-1-split-view.png" alt="Two logs side by side, live" width="1366" height="913" loading="lazy" />
+          <img src="screenshot-4-highlight-rules.png" alt="The highlight-rule editor" width="1366" height="913" loading="lazy" />
         </div>
-        <div class="term-body" id="term"></div>
+        <div class="dots"><button type="button" aria-label="1" class="on"></button><button type="button" aria-label="2"></button><button type="button" aria-label="3"></button><button type="button" aria-label="4"></button></div>
+      </div>
       </div>
     </section>
 
