@@ -97,8 +97,8 @@ img{max-width:100%;display:block}
 
 /* ── Hero ─────────────────────────────────────────────────── */
 .hero{display:grid;grid-template-columns:1.02fr 1.18fr;gap:46px;align-items:center;padding:34px 0 62px}
-.hero-emblem{width:92px;height:92px;border-radius:50%;display:block;margin-bottom:18px;
-  box-shadow:0 0 36px rgba(0,230,118,.34);border:1px solid rgba(0,230,118,.32)}
+.hero-emblem{width:92px;height:92px;display:block;margin-bottom:18px;
+  filter:drop-shadow(0 0 18px rgba(95,211,154,.35))}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.71rem;font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;color:var(--green2);
   border:1px solid var(--line2);background:rgba(13,20,27,.6);padding:6px 12px;border-radius:999px}
@@ -267,7 +267,7 @@ section{padding:78px 0;position:relative;z-index:2}
 footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-index:2}
 .foot-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .foot-brand{display:flex;align-items:center;gap:14px}
-.foot-brand img{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,230,118,.2)}
+.foot-brand img{width:46px;height:46px}
 .foot-brand b{color:#cdd6e0;font-weight:800}
 .foot-brand small{display:block;color:var(--dim);font-size:.74rem}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem}
