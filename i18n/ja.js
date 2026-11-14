@@ -42,6 +42,8 @@ window.I18N.ja = {
   "feat.update.d": "Standalone と Portable は自分で更新します — HTTPS 経由で整合性を確認します。",
   "feat.lang.t": "16 の言語",
   "feat.lang.d": "インターフェイス全体が翻訳済みで、その場で切り替えられます — 再起動は不要です。",
+  "feat.dark.t": "ダークモード",
+  "feat.dark.d": "ダーク、ライト、または Windows と同じ設定 — その場で切り替えられ、再起動は不要です。",
 
   "shots.label": "中をのぞく",
   "shots.title": "すっきり、密度があり、キーボードで使いやすい。",

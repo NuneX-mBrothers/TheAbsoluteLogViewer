@@ -42,6 +42,8 @@ window.I18N.zh = {
   "feat.update.d": "Standalone 与 Portable 会自动更新——通过 HTTPS 进行完整性校验。",
   "feat.lang.t": "16 种语言",
   "feat.lang.d": "界面完全本地化，可即时切换，无需重启。",
+  "feat.dark.t": "深色模式",
+  "feat.dark.d": "深色、浅色或跟随 Windows，可即时切换，无需重启。",
 
   "shots.label": "内部一览",
   "shots.title": "简洁、紧凑、键盘友好。",

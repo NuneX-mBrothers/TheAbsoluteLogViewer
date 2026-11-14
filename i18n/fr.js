@@ -42,6 +42,8 @@ window.I18N.fr = {
   "feat.update.d": "Les éditions Standalone et Portable se mettent à jour elles-mêmes — avec vérification d’intégrité via HTTPS.",
   "feat.lang.t": "16 langues",
   "feat.lang.d": "Interface entièrement localisée, avec changement instantané — sans redémarrage.",
+  "feat.dark.t": "Mode sombre",
+  "feat.dark.d": "Sombre, clair ou comme Windows — avec changement instantané, sans redémarrage.",
 
   "shots.label": "Un aperçu de l’intérieur",
   "shots.title": "Épuré, dense, pensé pour le clavier.",

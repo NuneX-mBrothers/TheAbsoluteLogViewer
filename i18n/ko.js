@@ -42,6 +42,8 @@ window.I18N.ko = {
   "feat.update.d": "Standalone과 Portable은 스스로 업데이트합니다 — HTTPS로 무결성을 확인합니다.",
   "feat.lang.t": "16개 언어",
   "feat.lang.d": "인터페이스 전체가 번역되어 있고 즉시 전환됩니다 — 다시 시작할 필요가 없습니다.",
+  "feat.dark.t": "다크 모드",
+  "feat.dark.d": "어둡게, 밝게 또는 Windows와 같게 — 즉시 전환되며 다시 시작할 필요가 없습니다.",
 
   "shots.label": "안을 들여다보기",
   "shots.title": "깔끔하고, 촘촘하고, 키보드로 편합니다.",

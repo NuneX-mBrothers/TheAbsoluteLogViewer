@@ -42,6 +42,8 @@ window.I18N.it = {
   "feat.update.d": "Standalone e Portable si aggiornano da sole — con verifica di integrità via HTTPS.",
   "feat.lang.t": "16 lingue",
   "feat.lang.d": "Interfaccia tradotta per intero, con cambio immediato — senza riavviare.",
+  "feat.dark.t": "Modalità scura",
+  "feat.dark.d": "Scuro, chiaro o come Windows — con cambio immediato, senza riavviare.",
 
   "shots.label": "Uno sguardo dentro",
   "shots.title": "Pulito, denso, comodo da tastiera.",

@@ -42,6 +42,8 @@ window.I18N.de = {
   "feat.update.d": "Standalone und Portable aktualisieren sich selbst — integritätsgeprüft über HTTPS.",
   "feat.lang.t": "16 Sprachen",
   "feat.lang.d": "Vollständig lokalisierte Oberfläche mit sofortigem Wechsel – ohne Neustart.",
+  "feat.dark.t": "Dunkelmodus",
+  "feat.dark.d": "Dunkel, hell oder wie Windows – mit sofortigem Wechsel, ohne Neustart.",
 
   "shots.label": "Ein Blick hinein",
   "shots.title": "Klar, dicht und tastaturfreundlich.",

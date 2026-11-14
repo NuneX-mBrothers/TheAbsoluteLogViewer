@@ -8,6 +8,7 @@
 - **Highlight rules:** colours lines by regular expressions, so errors and warnings stand out.
 - **Split-pane comparison:** two logs side by side.
 - **Context preview:** the lines around a match, without losing your place.
+- **Dark mode:** dark, light or the same as Windows, switched at once.
 
 ## The essentials
 

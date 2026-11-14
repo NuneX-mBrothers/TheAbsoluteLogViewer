@@ -42,6 +42,8 @@ window.I18N.en = {
   "feat.update.d": "Standalone & Portable update themselves — integrity-checked over HTTPS.",
   "feat.lang.t": "16 languages",
   "feat.lang.d": "Fully localised UI with instant switching — no restart needed.",
+  "feat.dark.t": "Dark mode",
+  "feat.dark.d": "Dark, light or the same as Windows — and it switches at once, no restart needed.",
 
   "shots.label": "A look inside",
   "shots.title": "Clean, dense, keyboard-friendly.",

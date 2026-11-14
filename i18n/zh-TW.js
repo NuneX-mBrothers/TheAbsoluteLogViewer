@@ -42,6 +42,8 @@ window.I18N["zh-TW"] = {
   "feat.update.d": "Standalone 與 Portable 會自行更新 — 透過 HTTPS 檢查完整性。",
   "feat.lang.t": "16 種語言",
   "feat.lang.d": "整個介面都已翻譯，可即時切換 — 不需要重新啟動。",
+  "feat.dark.t": "深色模式",
+  "feat.dark.d": "深色、淺色或跟隨 Windows，可即時切換 — 不需要重新啟動。",
 
   "shots.label": "看看裡面",
   "shots.title": "乾淨、緊湊、對鍵盤友善。",

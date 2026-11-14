@@ -42,6 +42,8 @@ window.I18N.es = {
   "feat.update.d": "Standalone y Portable se actualizan solos — con comprobación de integridad por HTTPS.",
   "feat.lang.t": "16 idiomas",
   "feat.lang.d": "Interfaz totalmente localizada con cambio instantáneo, sin reiniciar.",
+  "feat.dark.t": "Modo oscuro",
+  "feat.dark.d": "Oscuro, claro o igual que Windows, con cambio instantáneo, sin reiniciar.",
 
   "shots.label": "Un vistazo por dentro",
   "shots.title": "Limpio, denso y cómodo con el teclado.",
