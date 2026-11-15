@@ -119,5 +119,5 @@ window.I18N.ja = {
   "foot.privacy2": "プライバシー：Cookie は使いません。詳しくは法的表示をご覧ください。",
   "foot.company2": "発行：Intrepid Parallel, Lda（ポルトガル・リスボン）。",
   "foot.legal": "法的表示",
-  "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> の製品<span class=\"sep\" aria-hidden=\"true\"></span>小さな惑星系のための実用的な解決策"
+  "foot.mbcredit": "<a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> の製品<span class=\"sep\" aria-hidden=\"true\"></span>小さな惑星系のための実用的な解決策"
 };

@@ -119,5 +119,5 @@ window.I18N.ko = {
   "foot.privacy2": "개인정보: 쿠키를 쓰지 않습니다. 자세한 내용은 법적 고지에 있습니다.",
   "foot.company2": "포르투갈 리스본에 있는 Intrepid Parallel, Lda가 배포합니다.",
   "foot.legal": "법적 고지",
-  "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 제품<span class=\"sep\" aria-hidden=\"true\"></span>작은 행성계를 위한 실용적인 해결책"
+  "foot.mbcredit": "<a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 제품<span class=\"sep\" aria-hidden=\"true\"></span>작은 행성계를 위한 실용적인 해결책"
 };

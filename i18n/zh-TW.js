@@ -119,5 +119,5 @@ window.I18N["zh-TW"] = {
   "foot.privacy2": "隱私：不使用 Cookie。詳見法律聲明。",
   "foot.company2": "由總部位於葡萄牙里斯本的 Intrepid Parallel, Lda 發行。",
   "foot.legal": "法律聲明",
-  "foot.mbcredit": "<a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 的產品<span class=\"sep\" aria-hidden=\"true\"></span>為小型行星系統打造實用的解決方案"
+  "foot.mbcredit": "<a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> 的產品<span class=\"sep\" aria-hidden=\"true\"></span>為小型行星系統打造實用的解決方案"
 };

@@ -122,5 +122,5 @@ window.I18N.hi = {
   "foot.privacy2": "गोपनीयता: कोई कुकी नहीं। विवरण कानूनी सूचना में।",
   "foot.company2": "लिस्बन, पुर्तगाल स्थित Intrepid Parallel, Lda द्वारा प्रकाशित।",
   "foot.legal": "कानूनी सूचना",
-  "foot.mbcredit": "एक <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> उत्पाद<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
+  "foot.mbcredit": "एक <a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a> उत्पाद<span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

@@ -25,5 +25,5 @@
 - [Download and version history (GitHub Releases)](https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases)
 - [MajorGeeks](https://www.majorgeeks.com/files/details/the_absolute_logviewer.html)
 - [Softpedia](https://www.softpedia.com/get/Programming/Other-Programming-Files/The-Absolute-LogViewer.shtml)
-- [mBrothers](https://nunex-mbrothers.github.io/mBrothers/)
+- [mBrothers](https://intrepidparallel.com/)
 - Contact: logviewer@intrepidparallel.com

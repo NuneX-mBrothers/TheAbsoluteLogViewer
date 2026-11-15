@@ -124,5 +124,5 @@ window.I18N.ar = {
   "foot.privacy2": "الخصوصية: بلا كوكيز. التفاصيل في الإشعار القانوني.",
   "foot.company2": "تنشره شركة Intrepid Parallel, Lda، ومقرّها لشبونة، البرتغال.",
   "foot.legal": "إشعار قانوني",
-  "foot.mbcredit": "منتج من <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
+  "foot.mbcredit": "منتج من <a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>developing practical solutions for small planetary systems"
 };

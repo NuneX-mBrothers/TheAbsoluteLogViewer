@@ -119,5 +119,5 @@ window.I18N.it = {
   "foot.privacy2": "Privacy: nessun cookie. Dettagli nelle Note legali.",
   "foot.company2": "Pubblicato da Intrepid Parallel, Lda, con sede a Lisbona, in Portogallo.",
   "foot.legal": "Note legali",
-  "foot.mbcredit": "Un prodotto <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>soluzioni pratiche per piccoli sistemi planetari"
+  "foot.mbcredit": "Un prodotto <a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>soluzioni pratiche per piccoli sistemi planetari"
 };

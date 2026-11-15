@@ -119,5 +119,5 @@ window.I18N.ru = {
   "foot.privacy2": "Конфиденциальность: без cookie. Подробности — в разделе «Правовая информация».",
   "foot.company2": "Выпускает компания Intrepid Parallel, Lda из Лиссабона, Португалия.",
   "foot.legal": "Правовая информация",
-  "foot.mbcredit": "Продукт <a href=\"https://nunex-mbrothers.github.io/mBrothers/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>практические решения для небольших планетных систем"
+  "foot.mbcredit": "Продукт <a href=\"https://intrepidparallel.com/\" target=\"_blank\" rel=\"noopener\">mBrothers</a><span class=\"sep\" aria-hidden=\"true\"></span>практические решения для небольших планетных систем"
 };
