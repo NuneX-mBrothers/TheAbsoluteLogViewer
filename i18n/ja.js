@@ -9,6 +9,7 @@ window.I18N.ja = {
 
   "hero.eyebrow": "リアルタイムのログ追跡",
   "hero.h1": 'ログを、<span class="g">生まれたその瞬間に</span>見る。',
+  "hero.h1b": '…そして中を検索して、必要なものを数秒で見つける。',
   "hero.sub": '.NET&nbsp;10 / WPF で作られた、速くて現代的な Windows 用ログビューアー。ライブ追跡、独立したタブ、正規表現のハイライト、分割表示での比較、前後のプレビュー — <b>16 の言語</b>で。',
   "hero.cta.install": "ClickOnce でインストール",
   "hero.cta.standalone": "Standalone .exe",

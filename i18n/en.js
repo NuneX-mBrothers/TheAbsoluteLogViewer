@@ -9,6 +9,7 @@ window.I18N.en = {
 
   "hero.eyebrow": "Real-time log tailing",
   "hero.h1": 'See your logs <span class="g">the instant</span> they happen.',
+  "hero.h1b": '…and search through them to find whatever you need, in seconds.',
   "hero.sub": 'A fast, modern Windows log viewer built on .NET&nbsp;10 / WPF. Live tail, independent tabs, regex highlight rules, split-pane comparison and context preview — <b>in 16 languages</b>.',
   "hero.cta.install": "Install via ClickOnce",
   "hero.cta.standalone": "Standalone .exe",

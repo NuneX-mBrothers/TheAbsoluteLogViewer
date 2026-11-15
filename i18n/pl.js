@@ -9,6 +9,7 @@ window.I18N.pl = {
 
   "hero.eyebrow": "Logi na żywo",
   "hero.h1": 'Zobacz swoje logi <span class="g">w chwili</span>, gdy powstają.',
+  "hero.h1b": '…i przeszukaj je, by w kilka sekund znaleźć to, czego potrzebujesz.',
   "hero.sub": 'Szybka, nowoczesna przeglądarka logów dla Windows na .NET&nbsp;10 / WPF. Podgląd na żywo, niezależne karty, reguły podświetlania z regex, porównanie w dwóch panelach i podgląd kontekstu — <b>w 16 językach</b>.',
   "hero.cta.install": "Zainstaluj przez ClickOnce",
   "hero.cta.standalone": "Standalone .exe",

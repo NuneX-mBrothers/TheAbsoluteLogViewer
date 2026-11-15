@@ -9,6 +9,7 @@ window.I18N.zh = {
 
   "hero.eyebrow": "实时日志 tail",
   "hero.h1": '在日志<span class="g">产生的瞬间</span>就看到它们。',
+  "hero.h1b": '……还能在其中搜索，几秒钟就找到你需要的内容。',
   "hero.sub": '一款基于 .NET&nbsp;10 / WPF 的快速、现代的 Windows 日志查看器。实时 tail、独立标签页、正则高亮规则、分屏对比与上下文预览 — <b>支持 16 种语言</b>。',
   "hero.cta.install": "通过 ClickOnce 安装",
   "hero.cta.standalone": "Standalone .exe",

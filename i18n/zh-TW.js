@@ -9,6 +9,7 @@ window.I18N["zh-TW"] = {
 
   "hero.eyebrow": "即時日誌追蹤",
   "hero.h1": '在日誌<span class="g">產生的那一刻</span>就看見它。',
+  "hero.h1b": '……還能在其中搜尋，幾秒鐘就找到你需要的內容。',
   "hero.sub": '以 .NET&nbsp;10 / WPF 打造、快速而現代的 Windows 日誌檢視器。即時 tail、獨立分頁、正規表示式標示規則、分割視窗比對與前後文預覽 — <b>支援 16 種語言</b>。',
   "hero.cta.install": "以 ClickOnce 安裝",
   "hero.cta.standalone": "Standalone .exe",

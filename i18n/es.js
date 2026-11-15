@@ -9,6 +9,7 @@ window.I18N.es = {
 
   "hero.eyebrow": "Seguimiento de logs en tiempo real",
   "hero.h1": 'Mira tus logs <span class="g">en el instante</span> en que ocurren.',
+  "hero.h1b": '…y busca en ellos lo que necesites, en segundos.',
   "hero.sub": 'Un visor de logs para Windows rápido y moderno, sobre .NET&nbsp;10 / WPF. Tail en directo, pestañas independientes, reglas de resaltado con regex, comparación en panel dividido y vista previa de contexto — <b>en 16 idiomas</b>.',
   "hero.cta.install": "Instalar con ClickOnce",
   "hero.cta.standalone": ".exe Standalone",

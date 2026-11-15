@@ -9,6 +9,7 @@ window.I18N.ko = {
 
   "hero.eyebrow": "실시간 로그 추적",
   "hero.h1": '로그가 <span class="g">생기는 그 순간</span>에 봅니다.',
+  "hero.h1b": '…그리고 그 안을 검색해 필요한 것을 몇 초 만에 찾습니다.',
   "hero.sub": '.NET&nbsp;10 / WPF로 만든 빠르고 현대적인 Windows 로그 뷰어. 실시간 추적, 독립된 탭, 정규식 강조 규칙, 분할 창 비교, 앞뒤 문맥 미리보기 — <b>16개 언어</b>로 제공합니다.',
   "hero.cta.install": "ClickOnce로 설치",
   "hero.cta.standalone": "Standalone .exe",
