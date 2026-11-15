@@ -34,8 +34,8 @@
   <link rel="alternate" hreflang="ja" href="https://intrepidparallel.com/logviewer/ja/" />
   <link rel="alternate" hreflang="ko" href="https://intrepidparallel.com/logviewer/ko/" />
 
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=20261115" />
-  <link rel="alternate icon" type="image/png" href="../app-icon-32.png?v=20261115" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=2026111502" />
+  <link rel="alternate icon" type="image/png" href="../app-icon-32.png?v=2026111502" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="The Absolute LogViewer" />
@@ -56,9 +56,9 @@
   <meta name="twitter:description" content="基于 .NET 10 / WPF 的免费 Windows 日志查看器。实时 tail、正则高亮规则、分屏对比与上下文预览。支持 ClickOnce 安装或便携版 .exe。" />
   <meta name="twitter:image" content="https://intrepidparallel.com/logviewer/assets/og-cover.png" />
 
-  <!-- ?v=20261115: para quem já visitou o site ir buscar logo as imagens, o CSS e o JS novos (o servidor não manda
+  <!-- ?v=2026111502: para quem já visitou o site ir buscar logo as imagens, o CSS e o JS novos (o servidor não manda
        Cache-Control). Quando um destes ficheiros mudar, muda-se o número em todos de uma vez. -->
-  <link rel="stylesheet" href="../css/styles.css?v=20261115" />
+  <link rel="stylesheet" href="../css/styles.css?v=2026111502" />
 
   <script type="application/ld+json">
   {
@@ -115,7 +115,7 @@
 <div class="wrap">
   <nav class="nav">
     <a class="brand" href="#" aria-label="The Absolute LogViewer">
-      <img class="mark" src="../assets/logo.svg?v=20261115" alt="The Absolute LogViewer" width="36" height="36" />
+      <img class="mark" src="../assets/logo.svg?v=2026111502" alt="The Absolute LogViewer" width="36" height="36" />
       <small class="made" data-i18n="foot.made">免费软件 · 使用 .NET 10 与 WPF 构建</small>
     </a>
     <div class="nav-right">
@@ -151,7 +151,7 @@
   <main id="main">
     <section class="hero">
       <div class="hero-text reveal">
-        <img class="hero-lockup" src="../assets/logo-lockup-hero.png?v=20261115" alt="The Absolute LogViewer" width="340" height="85" />
+        <img class="hero-lockup" src="../assets/logo-lockup-hero.png?v=2026111502" alt="The Absolute LogViewer" width="340" height="85" />
         <span class="eyebrow"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">实时日志 tail</span></span>
         <h1 data-i18n-html="hero.h1">在日志<span class="g">产生的瞬间</span>就看到它们。</h1>
         <p class="h1b" data-i18n="hero.h1b">……还能在其中搜索，几秒钟就找到你需要的内容。</p>
@@ -162,10 +162,10 @@
            então faz um carrossel… com 3 ou 4 imagens»). Substitui o terminal animado. -->
       <div class="hero-shots reveal" id="heroShots">
         <div class="frame">
-          <img src="../screenshot-6-dark-mode.png?v=20261115" alt="The Absolute LogViewer in dark mode, with two logs side by side" width="1366" height="913" class="on" />
-          <img src="../screenshot-2-filter-preview.png?v=20261115" alt="Filtering a log, with the context preview floating" width="1366" height="913" loading="lazy" />
-          <img src="../screenshot-1-split-view.png?v=20261115" alt="Two logs side by side, live" width="1366" height="913" loading="lazy" />
-          <img src="../screenshot-4-highlight-rules.png?v=20261115" alt="The highlight-rule editor" width="1366" height="913" loading="lazy" />
+          <img src="../screenshot-6-dark-mode.png?v=2026111502" alt="The Absolute LogViewer in dark mode, with two logs side by side" width="1366" height="913" class="on" />
+          <img src="../screenshot-2-filter-preview.png?v=2026111502" alt="Filtering a log, with the context preview floating" width="1366" height="913" loading="lazy" />
+          <img src="../screenshot-1-split-view.png?v=2026111502" alt="Two logs side by side, live" width="1366" height="913" loading="lazy" />
+          <img src="../screenshot-4-highlight-rules.png?v=2026111502" alt="The highlight-rule editor" width="1366" height="913" loading="lazy" />
         </div>
         <div class="dots"><button type="button" aria-label="1" class="on"></button><button type="button" aria-label="2"></button><button type="button" aria-label="3"></button><button type="button" aria-label="4"></button></div>
       </div>
@@ -197,14 +197,9 @@
         <span class="pill" data-i18n="trust.free">100% 免费</span>
         <span class="pill" data-i18n="trust.notrack2">无 Cookie · 无广告</span>
       </div>
-      <div class="dl-counter" id="dl-counter">
-        <span class="dl-stat"><span class="dl-arrow" aria-hidden="true">↓</span><strong id="dl-total">—</strong> <span data-i18n="dl.downloads">次下载</span></span>
-        <span class="dl-sep" aria-hidden="true">·</span>
-        <span class="dl-stat"><span data-i18n="dl.standalone">Standalone</span> <strong id="dl-standalone">—</strong></span>
-        <span class="dl-sep" aria-hidden="true">·</span>
-        <span class="dl-stat"><span data-i18n="dl.portable">便携版</span> <strong id="dl-portable">—</strong></span>
-        <!-- 01/11/2026: o historico das versoes, as Releases do GitHub, numa pagina nova, no fim da linha. -->
-        <span class="dl-sep" aria-hidden="true">·</span>
+      <!-- 15/11/2026: o contador de descargas saiu. Perguntava à GitHub, a partir do navegador de quem visita, a cada
+           visita (o João: «tira o contador do LogViewer»). Fica a ligação ao histórico das versões. -->
+      <div class="dl-counter">
         <a class="dl-history" href="https://github.com/NuneX-mBrothers/TheAbsoluteLogViewer/releases" target="_blank" rel="noopener"><span data-i18n="dl.history">版本历史</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -248,12 +243,12 @@
       <div class="sec-label reveal" data-i18n="shots.label">内部一览</div>
       <h2 class="sec-title reveal" data-i18n="shots.title">简洁、紧凑、键盘友好。</h2>
       <div class="shots reveal">
-        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-1-split-view.png?v=20261115" data-full="../screenshot-1-split-view.png?v=20261115" alt="Split-pane view comparing two logs" /></div><div class="cap" data-i18n="shot.1">分屏视图——同时对比两个日志</div></div>
-        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-2-filter-preview.png?v=20261115" data-full="../screenshot-2-filter-preview.png?v=20261115" alt="Filter with floating context preview" /></div><div class="cap" data-i18n="shot.2">带浮动上下文预览的过滤</div></div>
-        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-3-copy-lines.png?v=20261115" data-full="../screenshot-3-copy-lines.png?v=20261115" alt="Select and copy lines" /></div><div class="cap" data-i18n="shot.3">选择并复制行</div></div>
-        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-4-highlight-rules.png?v=20261115" data-full="../screenshot-4-highlight-rules.png?v=20261115" alt="Visual highlight-rule editor" /></div><div class="cap" data-i18n="shot.4">可视化高亮规则编辑器</div></div>
-        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-5-toolbar.png?v=20261115" data-full="../screenshot-5-toolbar.png?v=20261115" alt="Compact toolbar and file panel" /></div><div class="cap" data-i18n="shot.5">紧凑的工具栏与文件面板</div></div>
-        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-6-dark-mode.png?v=20261115" data-full="../screenshot-6-dark-mode.png?v=20261115" alt="Dark mode, with the Appearance box open" /></div><div class="cap" data-i18n="shot.6">深色模式 — 深色、浅色或跟随 Windows</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-1-split-view.png?v=2026111502" data-full="../screenshot-1-split-view.png?v=2026111502" alt="Split-pane view comparing two logs" /></div><div class="cap" data-i18n="shot.1">分屏视图——同时对比两个日志</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-2-filter-preview.png?v=2026111502" data-full="../screenshot-2-filter-preview.png?v=2026111502" alt="Filter with floating context preview" /></div><div class="cap" data-i18n="shot.2">带浮动上下文预览的过滤</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-3-copy-lines.png?v=2026111502" data-full="../screenshot-3-copy-lines.png?v=2026111502" alt="Select and copy lines" /></div><div class="cap" data-i18n="shot.3">选择并复制行</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-4-highlight-rules.png?v=2026111502" data-full="../screenshot-4-highlight-rules.png?v=2026111502" alt="Visual highlight-rule editor" /></div><div class="cap" data-i18n="shot.4">可视化高亮规则编辑器</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-5-toolbar.png?v=2026111502" data-full="../screenshot-5-toolbar.png?v=2026111502" alt="Compact toolbar and file panel" /></div><div class="cap" data-i18n="shot.5">紧凑的工具栏与文件面板</div></div>
+        <div class="shot" tabindex="0" role="button" aria-label="Open screenshot"><div class="imgwrap"><img loading="lazy" width="380" height="238" src="../screenshot-6-dark-mode.png?v=2026111502" data-full="../screenshot-6-dark-mode.png?v=2026111502" alt="Dark mode, with the Appearance box open" /></div><div class="cap" data-i18n="shot.6">深色模式 — 深色、浅色或跟随 Windows</div></div>
       </div>
     </section>
 
@@ -361,7 +356,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img src="../assets/logo-emblem.png?v=20261115" alt="The Absolute LogViewer" width="46" height="46" />
+        <img src="../assets/logo-emblem.png?v=2026111502" alt="The Absolute LogViewer" width="46" height="46" />
         <div><b>The Absolute LogViewer</b><small data-i18n="foot.tagline">面向 Windows 的现代日志查看器。</small></div>
       </div>
       <div class="foot-links">
@@ -398,8 +393,8 @@
   <img src="" alt="" />
 </div>
 
-<script src="../js/particles.js?v=20261115"></script>
-<script src="../js/site.js?v=20261115"></script>
+<script src="../js/particles.js?v=2026111502"></script>
+<script src="../js/site.js?v=2026111502"></script>
 
 </body>
 </html>
