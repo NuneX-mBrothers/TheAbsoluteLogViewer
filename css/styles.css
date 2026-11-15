@@ -50,7 +50,7 @@ img{max-width:100%;display:block}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:16px}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;font-size:1.02rem}
 .brand img{width:36px;height:36px}
-.brand img.lockup{width:auto;height:44px;flex-shrink:0}
+.brand img.mark{width:36px;height:36px;flex-shrink:0}
 .brand small.made{margin:0 0 0 4px;padding-left:12px;border-left:1px solid var(--line2);max-width:12em;line-height:1.35}
 .brand .wm span{color:var(--green)}
 .brand small{display:block;color:var(--dim);font-weight:600;font-size:.66rem;letter-spacing:.05em;margin-top:1px}
@@ -99,7 +99,7 @@ img{max-width:100%;display:block}
 
 /* ── Hero ─────────────────────────────────────────────────── */
 .hero{display:grid;grid-template-columns:1.02fr 1.18fr;gap:46px;align-items:center;padding:34px 0 62px}
-.hero-emblem{width:92px;height:92px;display:block;margin-bottom:18px;
+.hero-lockup{width:340px;max-width:100%;height:auto;display:block;margin-bottom:20px;
   filter:drop-shadow(0 0 18px rgba(95,211,154,.35))}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.71rem;font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;color:var(--green2);
@@ -394,14 +394,12 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 .hero-shots .dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line2);cursor:pointer}
 .hero-shots .dots button.on{background:var(--green)}
 @media (prefers-reduced-motion: reduce){.hero-shots img{transition:none}}
-/* Num ecrã estreito, a barra fica só com o nome desenhado (14/11/2026); o nome não encolhe, e o GitHub sai da barra
+/* Em cima, só o símbolo; o logótipo completo está no topo da página (o João, 15/11/2026). O símbolo não encolhe, e o GitHub sai da barra
    no ecrã de telemóvel (fica no rodapé). */
 .brand{flex-shrink:0}
 @media (max-width:720px){
   .brand small.made{display:none}
-  .brand img.lockup{height:34px}
 }
 @media (max-width:430px){
   .nav-right .nav-link{display:none}
-  .brand img.lockup{height:30px}
 }
