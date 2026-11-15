@@ -111,9 +111,10 @@ h1{font-size:clamp(2.2rem,4.3vw,3.5rem);line-height:1.05;font-weight:900;letter-
   margin:16px 0 14px;color:#eef6ef}
 h1 .g{background:linear-gradient(120deg,#5FD39A,#8BF0BF 55%,#6EE7C8);
   -webkit-background-clip:text;background-clip:text;color:transparent}
-.h1b{font-size:clamp(1.2rem,2.1vw,1.65rem);line-height:1.25;font-weight:800;letter-spacing:-.01em;
+.h1b{font-size:clamp(1.2rem,2.1vw,1.65rem);line-height:1.25;font-weight:800;letter-spacing:-.01em;text-wrap:balance;
   margin:-4px 0 18px;max-width:24em;background:linear-gradient(120deg,#5FD39A,#8BF0BF 55%,#6EE7C8);
   -webkit-background-clip:text;background-clip:text;color:transparent}
+:lang(ja) .h1b{word-break:auto-phrase}
 .sub{font-size:1.06rem;color:var(--muted);max-width:32em;margin-bottom:24px}
 .sub b{color:var(--cyan);font-weight:600}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
