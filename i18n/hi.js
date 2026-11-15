@@ -102,13 +102,9 @@ window.I18N.hi = {
   "faq.q4": "सोर्स कोड कहाँ है?",
   "faq.a4": "ऐप फ्रीवेयर है और सोर्स निजी है, पर बग की सूचना और नई सुविधाओं के सुझाव GitHub पर हमेशा स्वागत योग्य हैं।",
 
-  "dl.downloads": "डाउनलोड",
-
   "dl.history": "संस्करण इतिहास",
   "dl.osNote": "The Absolute LogViewer, Windows का प्रोग्राम है और फ़ोन या टैबलेट पर नहीं चलता। इसे डाउनलोड करने के लिए यह पेज अपने Windows कंप्यूटर पर खोलें।",
   "dl.osAsk": "फिर भी डाउनलोड करें?",
-  "dl.standalone": "Standalone",
-  "dl.portable": "Portable",
 
   "foot.tagline": "विंडोज़ के लिए एक आधुनिक लॉग व्यूअर।",
   "foot.made": "फ्रीवेयर · .NET 10 और WPF से बना",

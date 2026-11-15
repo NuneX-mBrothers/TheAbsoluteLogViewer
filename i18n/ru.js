@@ -99,13 +99,9 @@ window.I18N.ru = {
   "faq.q4": "Где исходный код?",
   "faq.a4": "Программа бесплатная, а исходный код закрыт, но сообщения об ошибках и пожелания всегда приветствуются на GitHub.",
 
-  "dl.downloads": "загрузок",
-
   "dl.history": "История версий",
   "dl.osNote": "The Absolute LogViewer — программа для Windows, на телефонах и планшетах она не работает. Чтобы скачать её, откройте эту страницу на компьютере с Windows.",
   "dl.osAsk": "Всё равно скачать?",
-  "dl.standalone": "Standalone",
-  "dl.portable": "Portable",
 
   "foot.tagline": "Современный просмотрщик логов для Windows.",
   "foot.made": "Freeware · Сделано на .NET 10 и WPF",

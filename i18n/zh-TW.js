@@ -99,13 +99,9 @@ window.I18N["zh-TW"] = {
   "faq.q4": "原始碼在哪裡？",
   "faq.a4": "程式是免費軟體，原始碼並未公開，但歡迎在 GitHub 上回報問題或提出功能建議。",
 
-  "dl.downloads": "次下載",
-
   "dl.history": "版本歷史",
   "dl.osNote": "The Absolute LogViewer 是 Windows 程式，無法在手機或平板電腦上執行。請在你的 Windows 電腦上開啟本頁面下載。",
   "dl.osAsk": "仍要下載嗎？",
-  "dl.standalone": "Standalone",
-  "dl.portable": "Portable",
 
   "foot.tagline": "為 Windows 打造的現代日誌檢視器。",
   "foot.made": "免費軟體 · 以 .NET 10 與 WPF 打造",

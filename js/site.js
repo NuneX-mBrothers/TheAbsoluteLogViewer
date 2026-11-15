@@ -129,49 +129,6 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     6) Downloads counter (GitHub Releases API) — cached, silent
-     ────────────────────────────────────────────────────────── */
-  (function () {
-    var box = document.getElementById("dl-counter");
-    var elT = document.getElementById("dl-total"),
-        elS = document.getElementById("dl-standalone"),
-        elP = document.getElementById("dl-portable");
-    if (!box || !elT) return;
-    var CK = "talv.dl", now = Date.now();
-    function show(t, s, p) {
-      elT.textContent = Number(t).toLocaleString();
-      if (elS) elS.textContent = Number(s).toLocaleString();
-      if (elP) elP.textContent = Number(p).toLocaleString();
-      box.style.display = "flex";
-    }
-    try {
-      var c = JSON.parse(sessionStorage.getItem(CK) || "null");
-      // 20/10/2026: so vale se foi guardado ha MENOS de 5 minutos E NAO no futuro. Com o relogio da maquina adiantado
-      // quando se guardou, a idade dava negativa e o numero velho ficava para sempre na aba (o Chrome da Minix, no EF).
-      var idade = c ? now - c.ts : -1;
-      if (c && typeof c.sa === "number" && idade >= 0 && idade < 300000) { show(c.tot, c.sa, c.por); return; }
-    } catch (e) {}
-    var run = function () {
-      // per_page=100: por omissão a API devolve só 30 releases, e a partir daí o
-      // total de downloads ficaria subcontado sem qualquer aviso.
-      fetch("https://api.github.com/repos/NuneX-mBrothers/TheAbsoluteLogViewer/releases?per_page=100")
-        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-        .then(function (rel) {
-          var t = 0, s = 0, p = 0;
-          rel.forEach(function (rl) {
-            (rl.assets || []).forEach(function (a) {
-              var dc = a.download_count || 0; t += dc;
-              if (/portable/i.test(a.name)) p += dc; else s += dc;
-            });
-          });
-          if (t > 0) { show(t, s, p); try { sessionStorage.setItem(CK, JSON.stringify({ tot: t, sa: s, por: p, ts: now })); } catch (e) {} }
-        })
-        .catch(function () {});
-    };
-    if (window.requestIdleCallback) requestIdleCallback(run); else setTimeout(run, 1200);
-  })();
-
-  /* ──────────────────────────────────────────────────────────
      6b) Fora do Windows (Android, iPhone, iPad, Mac, Linux): o
         LogViewer é um programa para Windows (2026-10-08, o mesmo do
         ExplorerFocus). Mostra o aviso por baixo dos botões e, no clique

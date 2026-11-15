@@ -258,13 +258,7 @@ section{padding:78px 0;position:relative;z-index:2}
 .faq a{color:var(--green2);border-bottom:1px dashed rgba(95,211,154,.35)}
 
 /* ── Downloads counter ────────────────────────────────────── */
-.dl-counter{display:none;justify-content:center;align-items:center;gap:11px;margin-top:16px;color:var(--muted);font-size:.86rem;flex-wrap:wrap}
-.dl-counter strong{font-weight:700;font-size:1.05rem}
-.dl-counter #dl-total{color:var(--green);margin-right:4px}
-.dl-counter #dl-standalone{color:var(--blue);margin-left:5px}
-.dl-counter #dl-portable{color:var(--cyan);margin-left:5px}
-.dl-arrow{color:var(--green);font-weight:700;margin-right:5px}
-.dl-sep{opacity:.45}
+.dl-counter{display:flex;justify-content:center;align-items:center;gap:11px;margin-top:16px;color:var(--muted);font-size:.86rem;flex-wrap:wrap}
 /* O historico das versoes (01/11/2026): no fim da linha das descargas, a tracejado. */
 .dl-history{color:var(--muted);text-decoration:none;border-bottom:1px dashed currentColor}
 .dl-history:hover{color:var(--blue);border-bottom-style:solid}
@@ -376,10 +370,6 @@ footer{border-top:1px solid var(--line);padding:42px 0 36px;position:relative;z-
 [dir="rtl"] .lang-cur::after{margin-left:0;margin-right:6px}
 [dir="rtl"] .lang-list{right:auto;left:0}
 [dir="rtl"] .chrome-note{text-align:right}
-[dir="rtl"] .dl-counter #dl-total{margin-right:0;margin-left:4px}
-[dir="rtl"] .dl-counter #dl-standalone,
-[dir="rtl"] .dl-counter #dl-portable{margin-left:0;margin-right:5px}
-[dir="rtl"] .dl-arrow{margin-right:0;margin-left:5px;transform:scaleX(-1)}
 [dir="rtl"] .lb-close{right:auto;left:22px}
 
 /* O topo: fotografias reais do LogViewer, no lugar do terminal animado (14/11/2026, o João). Passam devagar; com
